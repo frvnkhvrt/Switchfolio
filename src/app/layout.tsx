@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { Toaster } from "react-hot-toast"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -97,6 +98,7 @@ export default function RootLayout({
       >
         <Toaster />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
