@@ -69,7 +69,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
   return (
     <div
       onClick={() => setOpen((prev) => !prev)}
-      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan transition-colors duration-100 border border-primaryBlue rounded-none"
+      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan transition-colors duration-100 border border-primaryBlue rounded-none shadow-sm"
     >
       <AnimatePresence mode="wait">
         {show && (

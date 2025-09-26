@@ -1,13 +1,11 @@
-import { SiBuymeacoffee } from "react-icons/si"
-import { FaXTwitter, FaGithub, FaDiscord, FaInstagram, FaLinkedinIn } from "react-icons/fa6"
-import { SiBluesky } from "react-icons/si"
-import { MdOutlineMail } from "react-icons/md"
+import { FaXTwitter, FaInstagram } from "react-icons/fa6"
+import { IconType } from "react-icons"
 
 interface FooterLink {
   id: number
   name: string
   link: string
-  icon: any
+  icon: IconType
 }
 
 const frankhurtImage = "/assets/Images/pfps/Frankhurt.png"

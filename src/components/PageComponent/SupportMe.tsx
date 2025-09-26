@@ -3,13 +3,8 @@ import SectionTitle from "../SectionTitle"
 import { supportText } from "@/data/Common/data"
 import { FaRegHeart } from "react-icons/fa6"
 import { SiBuymeacoffee } from "react-icons/si"
-import toast from "react-hot-toast"
 
 const SupportMe = () => {
-  const handleShare = async (url: string) => {
-    await navigator.clipboard.writeText(url)
-    toast.success("Copied to clipboard")
-  }
   return (
     <section className="flex flex-col gap-0.5">
       <SectionTitle title="Support Me" />

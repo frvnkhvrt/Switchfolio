@@ -5,19 +5,13 @@ import { franciscoImage } from "@/data/FranciscoData/data"
 import Image from "next/image"
 import { navLinks } from "@/data/Common/data"
 import { InfoTipNav } from "../InfoTipNav"
-import { useState } from "react"
 
 const Nav = () => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
-  const [isArrowVisible, setIsArrowVisible] = useState(true)
-
-  const handleArrowVisibility = () => {
-    setIsArrowVisible(false)
-  }
 
   return (
     <div className="fixed bottom-6 left-0 right-0 flex justify-center items-center">
-      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue px-3 py-2 rounded-none flex items-center gap-3">
+      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue px-3 py-2 rounded-none flex items-center gap-3 shadow-sm">
         <div className=" flex gap-4 items-center">
           {navLinks.map((nav) => (
             <InfoTipNav key={nav.id} text={nav.name}>
@@ -31,7 +25,6 @@ const Nav = () => {
         <div
           className="rounded-none md:hover:brightness-75 transition duration-200 cursor-pointer"
           onClick={toggleSwitch}
-          onMouseEnter={handleArrowVisibility}
         >
           <Image
             src={isSwitchOn ? franciscoImage : frankhurtImage}

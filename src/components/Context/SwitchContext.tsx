@@ -18,7 +18,13 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
     // Fetch initial value from localStorage after the component mounts
     const storedValue = localStorage.getItem("isSwitchOn")
     if (storedValue !== null) {
-      setIsSwitchOn(JSON.parse(storedValue))
+      try {
+        setIsSwitchOn(JSON.parse(storedValue))
+      } catch (error) {
+        console.error("Error parsing localStorage value for isSwitchOn:", error)
+        // Reset to default if corrupted
+        localStorage.removeItem("isSwitchOn")
+      }
     }
     setIsLoaded(true) // Indicate the component has mounted
   }, [])

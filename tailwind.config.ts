@@ -19,6 +19,10 @@ export default {
         folderBrown: "#8b4513", // Brown for emphasis
         primaryBlue: "#3e43f0", // Blue for buttons, borders, fonts
       },
+      boxShadow: {
+        'sm': '4px 4px 0px 0px rgba(62, 67, 240, 0.15)',
+        'DEFAULT': '4px 4px 0px 0px rgba(62, 67, 240, 0.15)',
+      },
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
         mono: ['Geist Mono', 'monospace'],

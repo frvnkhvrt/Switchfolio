@@ -54,7 +54,7 @@ const Newsletter = () => {
       <SectionTitle title="Newsletter" />
       <div className=" flex flex-col gap-2">
         <p>{newsText}</p>
-        <div className="flex items-center justify-between p-5 border border-primaryBlue rounded-none bg-primaryBlue text-folderWhite">
+        <div className="flex items-center justify-between p-5 border border-primaryBlue rounded-none bg-primaryBlue text-folderWhite shadow-sm">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col md:flex-row items-stretch md:items-center gap-2 w-full h-full"

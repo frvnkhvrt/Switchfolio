@@ -1,46 +1,53 @@
-import { BiLogoPostgresql } from "react-icons/bi"
 import { FaXTwitter, FaInstagram } from "react-icons/fa6"
 import { SiGithub, SiLinkedin, SiPython } from "react-icons/si"
 import { DiJavascript } from "react-icons/di"
-import { FaGitAlt } from "react-icons/fa6"
-import { IoLogoNodejs } from "react-icons/io5"
-import { PiFigmaLogoBold } from "react-icons/pi"
-import { FaDocker, FaMediumM } from "react-icons/fa"
-import { BsFiletypeSql } from "react-icons/bs"
-import { ImLab } from "react-icons/im"
+import { FaDocker } from "react-icons/fa"
+import { IconType } from "react-icons"
 
 import {
-  RiBearSmileLine,
-  RiJavaLine,
   RiNextjsLine,
-  RiReactjsLine,
-  RiTailwindCssFill,
 } from "react-icons/ri"
 import {
-  SiRedis,
-  SiExpress,
-  SiGreensock,
-  SiMongodb,
-  SiPostman,
-  SiShadcnui,
   SiVercel,
-  SiReactquery,
-  SiLeetcode,
-  SiPrisma,
-  SiDjango,
   SiIrobot,
   SiLightning,
   SiRocket,
 } from "react-icons/si"
-import {
-  TbBrandCpp,
-  TbBrandFramerMotion,
-  TbBrandTypescript,
-  TbHexagonLetterC,
-} from "react-icons/tb"
-import { VscTerminalLinux } from "react-icons/vsc"
 
-const skills = [
+interface Project {
+  id: number
+  img: string
+  title: string
+  status: boolean
+  content: string
+  url: string
+  github: string
+  skill: string[]
+  preview: string
+}
+
+interface Writing {
+  id: number
+  img: string
+  head: string
+  des: string
+  link: string
+}
+
+interface NavLink {
+  id: number
+  name: string
+  link: string
+  icon: IconType
+}
+
+interface Skill {
+  id: number
+  icon: IconType
+  text: string
+}
+
+const skills: Skill[] = [
   { id: 1, icon: RiNextjsLine, text: "Next.js" },
   { id: 2, icon: SiPython, text: "Python" },
   { id: 3, icon: FaDocker, text: "Docker" },
@@ -51,7 +58,7 @@ const skills = [
   { id: 8, icon: SiVercel, text: "Product Development" },
 ]
 
-const projects = [
+const projects: Project[] = [
   // Add your projects here
   // Example:
   // {
@@ -67,7 +74,7 @@ const projects = [
   // },
 ]
 
-const writings = [
+const writings: Writing[] = [
   // Add your writings here
   // Example:
   // {
@@ -84,7 +91,7 @@ const hireText =
 const emailLink =
   "mailto:franciscohm@icloud.com?subject=Interested%20in%20Hiring%20You"
 
-const navLinks = [
+const navLinks: NavLink[] = [
   {
     id: 1,
     name: "LinkedIn",
