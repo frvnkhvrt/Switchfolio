@@ -1,10 +1,6 @@
 "use client"
-import React, { createContext, useContext, useEffect, useState } from "react"
-
-type SwitchContextType = {
-  isSwitchOn: boolean
-  toggleSwitch: () => void
-}
+import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from "react"
+import { SwitchContextType } from "@/types"
 
 const SwitchContext = createContext<SwitchContextType | undefined>(undefined)
 
@@ -12,40 +8,52 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false)
-  const [isLoaded, setIsLoaded] = useState(false) // Ensure client-side rendering
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    // Fetch initial value from localStorage after the component mounts
-    const storedValue = localStorage.getItem("isSwitchOn")
-    if (storedValue !== null) {
-      try {
-        setIsSwitchOn(JSON.parse(storedValue))
-      } catch (error) {
-        console.error("Error parsing localStorage value for isSwitchOn:", error)
-        // Reset to default if corrupted
-        localStorage.removeItem("isSwitchOn")
+    // Safely load initial value from localStorage
+    try {
+      const storedValue = localStorage.getItem("isSwitchOn")
+      if (storedValue !== null) {
+        const parsedValue = JSON.parse(storedValue)
+        if (typeof parsedValue === 'boolean') {
+          setIsSwitchOn(parsedValue)
+        }
       }
+    } catch (error) {
+      console.warn("Failed to load switch state from localStorage:", error)
+      // Clear corrupted data
+      localStorage.removeItem("isSwitchOn")
+    } finally {
+      setIsLoaded(true)
     }
-    setIsLoaded(true) // Indicate the component has mounted
   }, [])
 
-  const toggleSwitch = () => {
+  const toggleSwitch = useCallback(() => {
     setIsSwitchOn((prev) => {
       const newValue = !prev
-      localStorage.setItem("isSwitchOn", JSON.stringify(newValue))
+      try {
+        localStorage.setItem("isSwitchOn", JSON.stringify(newValue))
+      } catch (error) {
+        console.error("Failed to save switch state to localStorage:", error)
+      }
       return newValue
     })
-  }
+  }, [])
+
+  const contextValue = useMemo<SwitchContextType>(() => ({
+    isSwitchOn,
+    toggleSwitch,
+  }), [isSwitchOn, toggleSwitch])
 
   return (
-    <SwitchContext.Provider value={{ isSwitchOn, toggleSwitch }}>
-      {isLoaded ? children : null}{" "}
-      {/* Ensure children render only after mounting */}
+    <SwitchContext.Provider value={contextValue}>
+      {isLoaded ? children : null}
     </SwitchContext.Provider>
   )
 }
 
-export const useSwitch = () => {
+export const useSwitch = (): SwitchContextType => {
   const context = useContext(SwitchContext)
   if (!context) {
     throw new Error("useSwitch must be used within a SwitchProvider")

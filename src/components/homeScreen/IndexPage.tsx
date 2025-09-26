@@ -1,19 +1,38 @@
 "use client"
+import dynamic from "next/dynamic"
 import Screen from "@/layout/Screen"
-import AboutMe from "../PageComponent/AboutMe"
-import Footer from "../PageComponent/Footer"
-import InfoCard from "../PageComponent/InfoCard"
-// import Projects from "../PageComponent/Projects"
-import Skills from "../PageComponent/Skills"
-import ReachOut from "../PageComponent/ReachOut"
-// import Writings from "../PageComponent/Writings"
-import HireMe from "../PageComponent/HireMe"
 import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
-import SupportMe from "../PageComponent/SupportMe"
-// import Newsletter from "../PageComponent/Newsletter"
-// import Quote from "../PageComponent/Quote"
+
+// Lazy load components for better performance
+const InfoCard = dynamic(() => import("../PageComponent/InfoCard"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded-lg" />
+})
+const AboutMe = dynamic(() => import("../PageComponent/AboutMe"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-24 rounded-lg" />
+})
+const ReachOut = dynamic(() => import("../PageComponent/ReachOut"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-20 rounded-lg" />
+})
+const HireMe = dynamic(() => import("../PageComponent/HireMe"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-16 rounded-lg" />
+})
+const Skills = dynamic(() => import("../PageComponent/Skills"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-28 rounded-lg" />
+})
+const SupportMe = dynamic(() => import("../PageComponent/SupportMe"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-20 rounded-lg" />
+})
+const Footer = dynamic(() => import("../PageComponent/Footer"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-12 rounded-lg" />
+})
+
+// Commented out components (can be enabled later)
+// const Projects = dynamic(() => import("../PageComponent/Projects"))
+// const Writings = dynamic(() => import("../PageComponent/Writings"))
+// const Newsletter = dynamic(() => import("../PageComponent/Newsletter"))
+// const Quote = dynamic(() => import("../PageComponent/Quote"))
 
 const IndexPage = () => {
   const { isSwitchOn } = useSwitch()

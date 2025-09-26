@@ -3,6 +3,7 @@ import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { Toaster } from "react-hot-toast"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -96,9 +97,11 @@ export default function RootLayout({
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster />
-        {children}
-        <SpeedInsights />
+        <ErrorBoundary>
+          <Toaster />
+          {children}
+          <SpeedInsights />
+        </ErrorBoundary>
       </body>
     </html>
   )

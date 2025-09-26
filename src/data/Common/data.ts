@@ -1,4 +1,4 @@
-import { IconType } from "react-icons"
+
 
 interface Project {
   id: number
