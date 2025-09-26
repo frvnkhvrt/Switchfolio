@@ -11,8 +11,8 @@ interface FooterLink {
 }
 
 const franciscoImage = "/assets/Images/pfps/Francisco.jpg"
-const franciscoName = "Francisco Hurtado"
-const franciscoShortName = "Frankhurt"
+const franciscoName = "Francisco"
+const franciscoShortName = "Francisco"
 const franciscoBio = "Engineer + Marketer + Manager"
 const franciscoAbout = `
   <p>
