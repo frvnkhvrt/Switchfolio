@@ -1,17 +1,44 @@
 import { FaXTwitter, FaInstagram } from "react-icons/fa6"
 import { SiGithub, SiLinkedin, SiPython } from "react-icons/si"
-import { DiJavascript } from "react-icons/di"
-import { FaDocker } from "react-icons/fa"
+import { DiJavascript, DiJava, DiVisualstudio } from "react-icons/di"
+import { FaDocker, FaWindows } from "react-icons/fa"
 import { IconType } from "react-icons"
 
 import {
   RiNextjsLine,
 } from "react-icons/ri"
 import {
-  SiVercel,
-  SiIrobot,
-  SiLightning,
   SiRocket,
+  SiLightning,
+  SiTypescript,
+  SiSharp,
+  SiCplusplus,
+  SiPhp,
+  SiR,
+  SiReact,
+  SiPostgresql,
+  SiMysql,
+  SiFirebase,
+  SiSqlite,
+  SiElasticsearch,
+  SiAmazon,
+  SiGit,
+  SiTailwindcss,
+  SiSass,
+  SiNodedotjs,
+  SiFigma,
+  SiAdobephotoshop,
+  SiLinux,
+  SiApple,
+  SiJira,
+  SiSlack,
+  SiTrello,
+  SiNotion,
+  SiMarkdown,
+  SiThreedotjs,
+  SiAdobeaftereffects,
+  SiAdobepremierepro,
+  SiObsstudio,
 } from "react-icons/si"
 
 interface Project {
@@ -48,14 +75,57 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { id: 1, icon: RiNextjsLine, text: "Next.js" },
-  { id: 2, icon: SiPython, text: "Python" },
-  { id: 3, icon: FaDocker, text: "Docker" },
-  { id: 4, icon: DiJavascript, text: "JavaScript" },
-  { id: 5, icon: SiIrobot, text: "Automation Engineering" },
-  { id: 6, icon: SiLightning, text: "Marketing" },
-  { id: 7, icon: SiRocket, text: "Startup" },
-  { id: 8, icon: SiVercel, text: "Product Development" },
+  // Programming Languages
+  { id: 1, icon: DiJavascript, text: "JavaScript" },
+  { id: 2, icon: SiTypescript, text: "TypeScript" },
+  { id: 3, icon: SiPython, text: "Python" },
+  { id: 4, icon: DiJava, text: "Java" },
+  { id: 5, icon: SiSharp, text: "C#" },
+  { id: 6, icon: SiCplusplus, text: "C++" },
+  { id: 7, icon: SiPhp, text: "PHP" },
+  { id: 8, icon: SiR, text: "R" },
+  // Frameworks & Libraries
+  { id: 9, icon: SiReact, text: "React" },
+  { id: 10, icon: RiNextjsLine, text: "Next.js" },
+  { id: 11, icon: SiNodedotjs, text: "Node.js" },
+  { id: 12, icon: SiThreedotjs, text: "Three.js" },
+  // Databases
+  { id: 13, icon: SiPostgresql, text: "PostgreSQL" },
+  { id: 14, icon: SiMysql, text: "MySQL" },
+  { id: 15, icon: SiFirebase, text: "Firebase" },
+  { id: 16, icon: SiSqlite, text: "SQLite" },
+  { id: 17, icon: SiElasticsearch, text: "Elasticsearch" },
+  // DevOps & Cloud
+  { id: 18, icon: FaDocker, text: "Docker" },
+  { id: 19, icon: SiAmazon, text: "AWS" },
+  // Version Control
+  { id: 20, icon: SiGit, text: "Git" },
+  // Styling
+  { id: 21, icon: SiTailwindcss, text: "Tailwind CSS" },
+  { id: 22, icon: SiSass, text: "Sass" },
+  // Design
+  { id: 23, icon: SiFigma, text: "Figma" },
+  { id: 24, icon: SiAdobephotoshop, text: "Photoshop" },
+  // IDEs
+  { id: 25, icon: DiVisualstudio, text: "Visual Studio" },
+  // Operating Systems
+  { id: 26, icon: SiLinux, text: "Linux" },
+  { id: 27, icon: FaWindows, text: "Windows" },
+  { id: 28, icon: SiApple, text: "macOS" },
+  // Project Management
+  { id: 29, icon: SiJira, text: "Jira" },
+  { id: 30, icon: SiTrello, text: "Trello" },
+  // Communication & Productivity
+  { id: 31, icon: SiSlack, text: "Slack" },
+  { id: 32, icon: SiNotion, text: "Notion" },
+  { id: 33, icon: SiMarkdown, text: "Markdown" },
+  // Video & Streaming
+  { id: 34, icon: SiAdobeaftereffects, text: "After Effects" },
+  { id: 35, icon: SiAdobepremierepro, text: "Premiere Pro" },
+  { id: 36, icon: SiObsstudio, text: "OBS Studio" },
+  // Other
+  { id: 37, icon: SiRocket, text: "Startup" },
+  { id: 38, icon: SiLightning, text: "Marketing" },
 ]
 
 const projects: Project[] = [

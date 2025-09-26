@@ -41,7 +41,7 @@ const IndexPage = () => {
           <AnimatedWrapper delay={0.55}>
             <Skills />
           </AnimatedWrapper>
-          <AnimatedWrapper delay={0.65}>
+          {/* <AnimatedWrapper delay={0.65}>
             <Projects />
           </AnimatedWrapper>
           <AnimatedWrapper delay={0.75}>
@@ -49,7 +49,7 @@ const IndexPage = () => {
           </AnimatedWrapper>
           <AnimatedWrapper delay={0.85}>
             <Newsletter />
-          </AnimatedWrapper>
+          </AnimatedWrapper> */}
           <AnimatedWrapper delay={0.95}>
             <SupportMe />
           </AnimatedWrapper>
