@@ -1,11 +1,10 @@
-import { FaXTwitter, FaInstagram } from "react-icons/fa6"
 import { IconType } from "react-icons"
 
 interface FooterLink {
   id: number
   name: string
   link: string
-  icon: IconType
+  icon: string
 }
 
 const frankhurtImage = "/assets/Images/pfps/Frankhurt.png"
@@ -15,7 +14,7 @@ const frankhurtAbout = `
     Code conjurer, glitch reaper, axiom arsonist.
   </p>
   <p>
-    My nights thrive on writing looping obsessions, hacking, and digital addiction. Driven by Coke sips and midnight dog walks. Lurking from the abyss. 🇨🇴
+    My nights thrive on writing looping obsessions, hacking, and digital addiction. Driven by Coke sips and midnight dog walks. Lurking.
   </p>
 `
 
@@ -26,13 +25,13 @@ const frankhurtLink = [
     id: 1,
     name: "Twitter",
     link: "https://twitter.com/frvnkhvrt",
-    icon: FaXTwitter,
+    icon: "simple-icons:x",
   },
   {
     id: 2,
     name: "Instagram",
     link: "https://instagram.com/frvnkhvrt",
-    icon: FaInstagram,
+    icon: "simple-icons:instagram",
   },
 
 ]
@@ -48,13 +47,13 @@ const frankhurtContactLink = [
     id: 2,
     name: "Twitter",
     link: "https://twitter.com/frvnkhvrt",
-    icon: FaXTwitter,
+    icon: "simple-icons:x",
   },
   {
     id: 3,
     name: "Instagram",
     link: "https://instagram.com/frvnkhvrt",
-    icon: FaInstagram,
+    icon: "simple-icons:instagram",
   },
 ]
 

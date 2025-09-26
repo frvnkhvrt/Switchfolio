@@ -3,6 +3,7 @@ import { frankhurtContact, frankhurtContactLink } from "@/data/FrankhurtData/dat
 import SectionTitle from "../SectionTitle"
 import { useSwitch } from "../Context/SwitchContext"
 import { franciscoContact, franciscoContactLink } from "@/data/FranciscoData/data"
+import { Icon } from "@iconify/react"
 
 const ReachOut = () => {
   const { isSwitchOn } = useSwitch()
@@ -10,14 +11,14 @@ const ReachOut = () => {
 
   return (
     <section className="flex flex-col gap-0.5">
-      <SectionTitle title="Reach out to me" />
+      <SectionTitle title="Get in touch" />
       <div className=" flex flex-col gap-2.5">
         <p>{isSwitchOn ? frankhurtContact : franciscoContact}</p>
         <div>
           <div className=" flex flex-wrap items-center gap-2">
             {contactLink.map((link) => (
               <a className="btn" key={link.id} target="_blank" href={link.link}>
-                <link.icon />
+                <Icon icon={link.icon} />
                 {link.name}
               </a>
             ))}

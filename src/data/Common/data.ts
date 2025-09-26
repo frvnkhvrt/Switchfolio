@@ -1,45 +1,4 @@
-import { FaXTwitter, FaInstagram } from "react-icons/fa6"
-import { SiGithub, SiLinkedin, SiPython } from "react-icons/si"
-import { DiJavascript, DiJava, DiVisualstudio } from "react-icons/di"
-import { FaDocker, FaWindows } from "react-icons/fa"
 import { IconType } from "react-icons"
-
-import {
-  RiNextjsLine,
-} from "react-icons/ri"
-import {
-  SiRocket,
-  SiLightning,
-  SiTypescript,
-  SiSharp,
-  SiCplusplus,
-  SiPhp,
-  SiR,
-  SiReact,
-  SiPostgresql,
-  SiMysql,
-  SiFirebase,
-  SiSqlite,
-  SiElasticsearch,
-  SiAmazon,
-  SiGit,
-  SiTailwindcss,
-  SiSass,
-  SiNodedotjs,
-  SiFigma,
-  SiAdobephotoshop,
-  SiLinux,
-  SiApple,
-  SiJira,
-  SiSlack,
-  SiTrello,
-  SiNotion,
-  SiMarkdown,
-  SiThreedotjs,
-  SiAdobeaftereffects,
-  SiAdobepremierepro,
-  SiObsstudio,
-} from "react-icons/si"
 
 interface Project {
   id: number
@@ -65,67 +24,53 @@ interface NavLink {
   id: number
   name: string
   link: string
-  icon: IconType
+  icon: string
 }
 
 interface Skill {
   id: number
-  icon: IconType
+  icon: string
   text: string
 }
 
 const skills: Skill[] = [
   // Programming Languages
-  { id: 1, icon: DiJavascript, text: "JavaScript" },
-  { id: 2, icon: SiTypescript, text: "TypeScript" },
-  { id: 3, icon: SiPython, text: "Python" },
-  { id: 4, icon: DiJava, text: "Java" },
-  { id: 5, icon: SiSharp, text: "C#" },
-  { id: 6, icon: SiCplusplus, text: "C++" },
-  { id: 7, icon: SiPhp, text: "PHP" },
-  { id: 8, icon: SiR, text: "R" },
-  // Frameworks & Libraries
-  { id: 9, icon: SiReact, text: "React" },
-  { id: 10, icon: RiNextjsLine, text: "Next.js" },
-  { id: 11, icon: SiNodedotjs, text: "Node.js" },
-  { id: 12, icon: SiThreedotjs, text: "Three.js" },
+  { id: 1, icon: "simple-icons:cplusplus", text: "C++" },
+  { id: 2, icon: "simple-icons:javascript", text: "JavaScript" },
+  { id: 3, icon: "simple-icons:typescript", text: "TypeScript" },
+  { id: 4, icon: "simple-icons:python", text: "Python" },
+  { id: 5, icon: "simple-icons:r", text: "R" },
   // Databases
-  { id: 13, icon: SiPostgresql, text: "PostgreSQL" },
-  { id: 14, icon: SiMysql, text: "MySQL" },
-  { id: 15, icon: SiFirebase, text: "Firebase" },
-  { id: 16, icon: SiSqlite, text: "SQLite" },
-  { id: 17, icon: SiElasticsearch, text: "Elasticsearch" },
+  { id: 6, icon: "simple-icons:mysql", text: "SQL" },
+  // Frameworks & Libraries
+  { id: 7, icon: "simple-icons:nextdotjs", text: "Next.js" },
   // DevOps & Cloud
-  { id: 18, icon: FaDocker, text: "Docker" },
-  { id: 19, icon: SiAmazon, text: "AWS" },
+  { id: 8, icon: "simple-icons:docker", text: "Docker" },
+  { id: 9, icon: "simple-icons:n8n", text: "n8n" },
+  { id: 10, icon: "simple-icons:vercel", text: "Vercel" },
   // Version Control
-  { id: 20, icon: SiGit, text: "Git" },
+  { id: 11, icon: "simple-icons:github", text: "GitHub" },
   // Styling
-  { id: 21, icon: SiTailwindcss, text: "Tailwind CSS" },
-  { id: 22, icon: SiSass, text: "Sass" },
-  // Design
-  { id: 23, icon: SiFigma, text: "Figma" },
-  { id: 24, icon: SiAdobephotoshop, text: "Photoshop" },
+  { id: 12, icon: "simple-icons:tailwindcss", text: "Tailwind" },
   // IDEs
-  { id: 25, icon: DiVisualstudio, text: "Visual Studio" },
+  { id: 13, icon: "simple-icons:visualstudiocode", text: "VS Code" },
   // Operating Systems
-  { id: 26, icon: SiLinux, text: "Linux" },
-  { id: 27, icon: FaWindows, text: "Windows" },
-  { id: 28, icon: SiApple, text: "macOS" },
+  { id: 14, icon: "simple-icons:linux", text: "Linux" },
   // Project Management
-  { id: 29, icon: SiJira, text: "Jira" },
-  { id: 30, icon: SiTrello, text: "Trello" },
+  { id: 15, icon: "simple-icons:asana", text: "Asana" },
+  { id: 16, icon: "simple-icons:trello", text: "Trello" },
   // Communication & Productivity
-  { id: 31, icon: SiSlack, text: "Slack" },
-  { id: 32, icon: SiNotion, text: "Notion" },
-  { id: 33, icon: SiMarkdown, text: "Markdown" },
-  // Video & Streaming
-  { id: 34, icon: SiAdobeaftereffects, text: "After Effects" },
-  { id: 35, icon: SiAdobepremierepro, text: "Premiere Pro" },
-  { id: 36, icon: SiObsstudio, text: "OBS Studio" },
-  // Other
-  { id: 37, icon: SiRocket, text: "Startup" },
-  { id: 38, icon: SiLightning, text: "Marketing" },
+  { id: 17, icon: "simple-icons:notion", text: "Notion" },
+  { id: 18, icon: "simple-icons:slack", text: "Slack" },
+  // Marketing & Analytics
+  { id: 19, icon: "simple-icons:salesforce", text: "Salesforce" },
+  { id: 20, icon: "simple-icons:amazon", text: "Amazon Ads" },
+  { id: 21, icon: "simple-icons:googleads", text: "Google Ads" },
+  { id: 22, icon: "simple-icons:linkedin", text: "LinkedIn Ads" },
+  { id: 23, icon: "simple-icons:meta", text: "Meta Ads" },
+  // Design & Media
+  { id: 24, icon: "simple-icons:figma", text: "Figma" },
+  { id: 25, icon: "simple-icons:adobepremierepro", text: "Premiere Pro" },
 ]
 
 const projects: Project[] = [
@@ -157,7 +102,7 @@ const writings: Writing[] = [
 ]
 
 const hireText =
-  "I'm an engineer obsessed with fusing big ideas with tech. Open to full-time, freelance, or collabs."
+  "Open to full-time jobs and freelance work."
 const emailLink =
   "mailto:franciscohm@icloud.com?subject=Interested%20in%20Hiring%20You"
 
@@ -166,25 +111,25 @@ const navLinks: NavLink[] = [
     id: 1,
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/franciscoahm",
-    icon: SiLinkedin,
+    icon: "simple-icons:linkedin",
   },
   {
     id: 2,
     name: "GitHub",
     link: "https://github.com/frvnkhvrt",
-    icon: SiGithub,
+    icon: "simple-icons:github",
   },
   {
     id: 3,
     name: "Twitter",
     link: "https://twitter.com/frvnkhvrt",
-    icon: FaXTwitter,
+    icon: "simple-icons:x",
   },
   {
     id: 4,
     name: "Instagram",
     link: "https://instagram.com/frvnkhvrt",
-    icon: FaInstagram,
+    icon: "simple-icons:instagram",
   },
 ]
 

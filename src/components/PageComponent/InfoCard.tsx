@@ -13,6 +13,7 @@ import {
 import { AnimatePresence } from "framer-motion"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Icon } from "@iconify/react"
 const InfoCard: React.FC = () => {
   const { isSwitchOn } = useSwitch()
   const [isOpen, setIsOpen] = useState(false)
@@ -52,7 +53,7 @@ const InfoCard: React.FC = () => {
               {socialLink.map((link) => (
                 <InfoTip key={link.id} text={link.name}>
                   <a className="social-card" href={link.link} target="_blank">
-                    {<link.icon />}
+                    <Icon icon={link.icon} />
                   </a>
                 </InfoTip>
               ))}

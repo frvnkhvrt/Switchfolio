@@ -1,17 +1,17 @@
 "use client"
 import SectionTitle from "../SectionTitle"
-import { PiSuitcaseSimpleBold } from "react-icons/pi"
 import { emailLink, hireText } from "@/data/Common/data"
+import { Icon } from "@iconify/react"
 
 const HireMe = () => {
   return (
     <section className="flex flex-col gap-0.5">
-      <SectionTitle title="Hire Me" />
+      <SectionTitle title="Hire me" />
       <div className=" flex flex-col gap-2">
         <p>{hireText}</p>
         <div>
           <a className="btn" target="_blank" href={emailLink}>
-            <PiSuitcaseSimpleBold />
+            <Icon icon="mdi:briefcase" />
             Hire Me
           </a>
         </div>

@@ -1,13 +1,10 @@
-import { FaLinkedinIn } from "react-icons/fa6"
-import { FaGithub } from "react-icons/fa6"
-import { MdOutlineMail } from "react-icons/md"
 import { IconType } from "react-icons"
 
 interface FooterLink {
   id: number
   name: string
   link: string
-  icon: IconType
+  icon: string
 }
 
 const franciscoImage = "/assets/Images/pfps/Francisco.jpg"
@@ -19,7 +16,7 @@ const franciscoAbout = `
     Tech wizard, pixel assassin, status quo saboteur.
   </p>
   <p>
-    My days ignite with reading fantasy stories, rogue ideas, and screen epics. Turbocharged by cappuccinos and sunny doggo walks. Bogotá-based. 🇨🇴
+    My days ignite with reading fantasy stories, coding, and late movie binges. Fueled by cappuccinos and sunny doggo walks. Bogotá-based. 🇨🇴
   </p>`
 
 const franciscoLink = [
@@ -27,13 +24,13 @@ const franciscoLink = [
     id: 1,
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/franciscoahm",
-    icon: FaLinkedinIn,
+    icon: "simple-icons:linkedin",
   },
   {
     id: 2,
-    name: "Github",
+    name: "GitHub",
     link: "https://github.com/frvnkhvrt",
-    icon: FaGithub,
+    icon: "simple-icons:github",
   },
 ]
 
@@ -44,13 +41,13 @@ const franciscoContactLink = [
     id: 1,
     name: "Email",
     link: "mailto:franciscohm@icloud.com",
-    icon: MdOutlineMail,
+    icon: "simple-icons:maildotru",
   },
- {
+  {
     id: 2,
     name: "LinkedIn",
     link: "https://www.linkedin.com/in/franciscoahm",
-    icon: FaLinkedinIn,
+    icon: "simple-icons:linkedin",
   },
 ]
 

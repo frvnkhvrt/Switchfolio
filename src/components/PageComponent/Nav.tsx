@@ -5,6 +5,7 @@ import { franciscoImage } from "@/data/FranciscoData/data"
 import Image from "next/image"
 import { navLinks } from "@/data/Common/data"
 import { InfoTipNav } from "../InfoTipNav"
+import { Icon } from "@iconify/react"
 
 const Nav = () => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
@@ -16,7 +17,7 @@ const Nav = () => {
           {navLinks.map((nav) => (
             <InfoTipNav key={nav.id} text={nav.name}>
               <a className=" " href={nav.link}>
-                {<nav.icon />}
+                <Icon icon={nav.icon} />
               </a>
             </InfoTipNav>
           ))}

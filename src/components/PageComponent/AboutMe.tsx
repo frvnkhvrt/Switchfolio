@@ -9,7 +9,7 @@ const AboutMe = () => {
 
   return (
     <section className="flex flex-col gap-0.5">
-      <SectionTitle title="About Me" />
+      <SectionTitle title="About" />
       <div className="flex flex-col gap-2">
         <div
           dangerouslySetInnerHTML={{

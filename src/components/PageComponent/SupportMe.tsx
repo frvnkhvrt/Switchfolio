@@ -1,8 +1,7 @@
 import React from "react"
 import SectionTitle from "../SectionTitle"
 import { supportText } from "@/data/Common/data"
-import { FaRegHeart } from "react-icons/fa6"
-import { SiBuymeacoffee } from "react-icons/si"
+import { Icon } from "@iconify/react"
 
 const SupportMe = () => {
   return (
@@ -16,15 +15,15 @@ const SupportMe = () => {
             target="_blank"
             href="https://github.com/sponsors/frvnkhvrt"
           >
-            <FaRegHeart className="text-pink-400" />
+            <Icon icon="simple-icons:githubsponsors" className="text-pink-400" />
             GitHub Sponsors
           </a>
           <a
             className="btn"
             target="_blank"
-            href="https://https://buymeacoffee.com/frankhurt"
+            href="https://buymeacoffee.com/frankhurt"
           >
-            <SiBuymeacoffee className="text-yellow-400" />
+            <Icon icon="simple-icons:buymeacoffee" className="text-yellow-400" />
             Buy Me a Coffee
           </a>
         </div>
