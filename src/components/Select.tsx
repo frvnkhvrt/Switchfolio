@@ -13,8 +13,8 @@ const Select = ({ options }: { options: Option[] }) => {
       <select
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
-        className="w-full px-3 py-1 bg-zinc-900 border border-zinc-700 rounded-md 
-                   focus:outline-none focus:border-zinc-500 hover:border-zinc-500 appearance-none cursor-pointer transition duration-100"
+        className="w-full px-3 py-1 bg-folderWhite border border-primaryBlue rounded-none
+                   focus:outline-none focus:border-primaryBlue hover:border-primaryBlue appearance-none cursor-pointer transition duration-100"
       >
         <option value="Show all">Show all</option>
         {options.map((option) => (

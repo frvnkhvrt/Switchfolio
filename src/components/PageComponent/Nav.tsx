@@ -1,7 +1,7 @@
 "use client"
-import { gruzImage } from "@/data/GruzData/data"
+import { frankhurtImage } from "@/data/FrankhurtData/data"
 import { useSwitch } from "../Context/SwitchContext"
-import { rinkitImage } from "@/data/RinkitData/data"
+import { franciscoImage } from "@/data/FranciscoData/data"
 import Image from "next/image"
 import { navLinks } from "@/data/Common/data"
 import { InfoTipNav } from "../InfoTipNav"
@@ -17,7 +17,7 @@ const Nav = () => {
 
   return (
     <div className="fixed bottom-6 left-0 right-0 flex justify-center items-center">
-      <div className="relative bg-mainBlack border border-zinc-700 px-3 py-2 rounded-xl flex items-center gap-3">
+      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue px-3 py-2 rounded-none flex items-center gap-3">
         <div className=" flex gap-4 items-center">
           {navLinks.map((nav) => (
             <InfoTipNav key={nav.id} text={nav.name}>
@@ -27,32 +27,21 @@ const Nav = () => {
             </InfoTipNav>
           ))}
         </div>
-        <div className="h-8 w-[1px] bg-zinc-500  mr-1"></div>
+        <div className="h-8 w-[1px] bg-primaryBlue  mr-1"></div>
         <div
-          className="rounded-md md:hover:brightness-75 transition duration-200 cursor-pointer"
+          className="rounded-none md:hover:brightness-75 transition duration-200 cursor-pointer"
           onClick={toggleSwitch}
           onMouseEnter={handleArrowVisibility}
         >
           <Image
-            src={isSwitchOn ? rinkitImage : gruzImage}
+            src={isSwitchOn ? franciscoImage : frankhurtImage}
             alt="Profile Picture"
-            className="rounded-md"
+            className="rounded-none"
             width={35}
             height={35}
-            // title={isSwitchOn ? rinkitShortName : gruzName}
+            // title={isSwitchOn ? franciscoShortName : frankhurtName}
           />
         </div>
-        {isArrowVisible && (
-          <div id="arrow" className="absolute -rotate-90 bottom-6 -right-9">
-            <Image
-              src="/assets/Images/gif/arrow.gif"
-              alt="arrow"
-              className="size-12 "
-              width={100}
-              height={100}
-            />
-          </div>
-        )}
       </div>
     </div>
   )

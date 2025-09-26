@@ -2,7 +2,7 @@ import React from "react"
 import SectionTitle from "../SectionTitle"
 import { supportText } from "@/data/Common/data"
 import { FaRegHeart } from "react-icons/fa6"
-import { SiBuymeacoffee, SiPaytm, SiSolana } from "react-icons/si"
+import { SiBuymeacoffee } from "react-icons/si"
 import toast from "react-hot-toast"
 
 const SupportMe = () => {
@@ -19,7 +19,7 @@ const SupportMe = () => {
           <a
             className="btn"
             target="_blank"
-            href="https://github.com/sponsors/rinkitadhana"
+            href="https://github.com/sponsors/frvnkhvrt"
           >
             <FaRegHeart className="text-pink-400" />
             GitHub Sponsors
@@ -27,32 +27,11 @@ const SupportMe = () => {
           <a
             className="btn"
             target="_blank"
-            href="https://buymeacoffee.com/rinkitadhana"
+            href="https://https://buymeacoffee.com/frankhurt"
           >
             <SiBuymeacoffee className="text-yellow-400" />
             Buy Me a Coffee
           </a>
-
-          <div
-            className="btn"
-            onClick={(e) => {
-              e.stopPropagation()
-              handleShare("2YosBffP2VFhHFN94taBCxVK7jMUv4ZksVS3TArMuLoG")
-            }}
-          >
-            <SiSolana className="text-[#00ffa3]" />
-            Solana
-          </div>
-          <div
-            className="btn"
-            onClick={(e) => {
-              e.stopPropagation()
-              handleShare("9911039595@ptsbi")
-            }}
-          >
-            <SiPaytm className="text-[#01BAF2]" />
-            Paytm
-          </div>
         </div>
       </div>
     </section>

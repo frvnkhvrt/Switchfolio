@@ -15,7 +15,7 @@ const WritingsBox: React.FC<BlogBoxProps> = ({ img, head, des, link }) => {
       className=" blog-post flex md:flex-row flex-col   items-center gap-3"
     >
       <Image
-        className=" md:w-[20%] w-full object-cover  h-[100px] select-none rounded-md"
+        className=" md:w-[20%] w-full object-cover  h-[100px] select-none rounded-none"
         src={img}
         alt="Blog Image"
         width={200}

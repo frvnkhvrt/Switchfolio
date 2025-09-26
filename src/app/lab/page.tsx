@@ -15,7 +15,7 @@ const page = () => {
       </div>
       <div>
         {components.map((component) => (
-            <Link className="px-6 py-2 border border-zinc-700 rounded-[10px] hover:bg-zinc-800 transition-colors duration-100" href={component.link} key={component.name}>{component.name}</Link>
+            <Link className="px-6 py-2 border border-primaryBlue rounded-none hover:bg-primaryBlue/10 hover:text-primaryBlue transition-colors duration-100" href={component.link} key={component.name}>{component.name}</Link>
         ))}
       </div>
     </div>

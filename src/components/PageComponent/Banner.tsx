@@ -1,13 +1,12 @@
 "use client"
 import React from "react"
 import LocalTime from "@/utils/LocalTime"
-import StarButton from "../StarButton"
 
 const Banner: React.FC = () => {
 
   return (
     <>
-      <section className=" md:fixed md:top-4 flex w-full items-center md:justify-between justify-end md:px-8 px-4 select-none">
+      <section className=" md:fixed md:top-4 flex w-full items-center justify-end md:px-8 px-4 select-none">
         <a
           href="https://www.google.com/search?q=time"
           target="_blank"
@@ -18,9 +17,6 @@ const Banner: React.FC = () => {
             <LocalTime />
           </span>
         </a>
-        <div className=" flex gap-2.5 items-center">
-          <StarButton />
-        </div>
       </section>
     </>
   )

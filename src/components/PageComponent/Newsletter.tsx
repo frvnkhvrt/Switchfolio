@@ -54,37 +54,37 @@ const Newsletter = () => {
       <SectionTitle title="Newsletter" />
       <div className=" flex flex-col gap-2">
         <p>{newsText}</p>
-        <div className="flex items-center justify-between p-5 border border-zinc-700 rounded-md bg-zinc-900">
+        <div className="flex items-center justify-between p-5 border border-primaryBlue rounded-none bg-primaryBlue text-folderWhite">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col md:flex-row items-stretch md:items-center gap-2 w-full h-full"
           >
             <input
               type="text"
-              placeholder="John Smith"
+              placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-zinc-700 rounded-md bg-mainBlack w-full sm:w-[160px] focus:outline-none focus:border-zinc-400 "
+              className="placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-primaryBlue rounded-none bg-folderWhite text-primaryBlue w-full sm:w-[160px] focus:outline-none focus:border-primaryBlue "
             />
 
             <input
               type="email"
-              placeholder="john.smith@techcorp.com"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-zinc-700 rounded-md bg-mainBlack focus:outline-none focus:border-zinc-400 "
+              className="flex-1 placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-primaryBlue rounded-none bg-folderWhite text-primaryBlue focus:outline-none focus:border-primaryBlue "
             />
 
             {loading ? (
-              <div className="px-3 md:w-[110px] text-center flex items-center justify-center py-1.5 mx-auto h-full bg-white rounded-md border border-white text-black whitespace-nowrap">
+              <div className="px-3 md:w-[110px] text-center flex items-center justify-center py-1.5 mx-auto h-full bg-primaryBlue rounded-none border border-primaryBlue text-folderWhite whitespace-nowrap">
                 <AiOutlineLoading3Quarters className="animate-spin text-xl" />
               </div>
             ) : (
               <button
                 type="submit"
-                className="px-3 md:w-[110px] w-full mx-auto py-1 h-full bg-white hover:bg-white/80 hover:border-white/80 rounded-md border border-white text-black whitespace-nowrap transition-all duration-200"
+                className="px-3 md:w-[110px] w-full mx-auto py-1 h-full bg-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 rounded-none border border-primaryBlue text-folderWhite whitespace-nowrap transition-all duration-200 text-center"
               >
                 Subscribe!
               </button>

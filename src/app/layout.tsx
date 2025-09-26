@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { Toaster } from "react-hot-toast"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const rubik = Rubik({
+  variable: "--font-rubik",
   subsets: ["latin"],
 })
 
@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Rinkit Adhana - Portfolio",
-    template: "%s | Rinkit Adhana"
+    default: "Francisco Hurtado",
+    template: "%s | Francisco Hurtado"
   },
-  description: "Portfolio of Rinkit Adhana - Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-  keywords: ["Rinkit Adhana", "Portfolio", "Full Stack Developer", "React", "Next.js", "Node.js", "Web Developer"],
-  authors: [{ name: "Rinkit Adhana" }],
-  creator: "Rinkit Adhana",
-  metadataBase: new URL("https://www.rinkit.tech"),
+  description: "Francisco Hurtado - Engineer + Marketer + Manager specializing in innovative solutions.",
+  keywords: ["Francisco Hurtado", "Portfolio", "Engineer", "Marketer", "Manager", "Coder"],
+  authors: [{ name: "Francisco Hurtado" }],
+  creator: "Francisco Hurtado",
+  metadataBase: new URL("https://www.frankhurt.dev"),
   icons: {
     icon: [
       {
@@ -50,27 +50,27 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Rinkit Adhana - Portfolio",
-    description: "Portfolio of Rinkit Adhana - Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-    url: "https://www.rinkit.tech",
+    title: "Francisco Hurtado - Portfolio",
+    description: "Portfolio of Francisco Hurtado - Engineer + Marketer + Manager specializing in innovative solutions.",
+    url: "https://www.franciscohurtado.com",
     siteName: "Switchfolio",
     images: [
       {
-        url: "https://res.cloudinary.com/dhcocqegu/image/upload/v1753737110/OGN_o7spwl.png",
+        url: "https://res.cloudinary.com/yourcloud/image/upload/placeholder.png",
         width: 1200,
         height: 630,
-        alt: "Rinkit Adhana - Portfolio"
+        alt: "Francisco Hurtado - Portfolio"
       },
     ],
-    locale: "en-IN",
+    locale: "en-US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rinkit Adhana - Portfolio",
-    description: "Portfolio of Rinkit Adhana - Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-    images: ["https://res.cloudinary.com/dhcocqegu/image/upload/v1753737110/OGN_o7spwl.png"],
-    creator: "@damnGruz",
+    title: "Francisco Hurtado - Portfolio",
+    description: "Portfolio of Francisco Hurtado - Engineer + Marketer + Manager specializing in innovative solutions.",
+    images: ["https://res.cloudinary.com/yourcloud/image/upload/placeholder.png"],
+    creator: "@frvnkhvrt",
   },
   robots: {
     index: true,
@@ -93,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <Toaster />
         {children}

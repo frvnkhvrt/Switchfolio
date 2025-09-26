@@ -3,15 +3,40 @@
 @tailwind utilities;
 
 body {
-  @apply bg-mainBlack text-mainWhite;
-}
-::selection {
-  @apply bg-mainWhite text-mainBlack;
+  @apply bg-backgroundCream text-primaryBlue font-mono;
 }
 
-/* For Firefox-specific styling */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-sans;
+}
+
+/* Remove rounded corners from video controls */
+video {
+  border-radius: 0 !important;
+}
+
+video::-webkit-media-controls-panel {
+  border-radius: 0 !important;
+}
+
+video::-webkit-media-controls {
+  border-radius: 0 !important;
+}
+
+video::-moz-media-controls {
+  border-radius: 0 !important;
+}
+
+video::-ms-media-controls {
+  border-radius: 0 !important;
+}
+::selection {
+  @apply bg-folderTan text-inkBlack;
+}
+
+ /* For Firefox-specific styling */
 ::-moz-selection {
-  @apply bg-mainWhite text-mainBlack;
+  @apply bg-folderTan text-inkBlack;
 }
 
 .screen {
@@ -22,14 +47,14 @@ body {
 }
 
 .pro-pic {
-  @apply md:size-[130px] size-auto rounded-md select-none;
+  @apply md:size-[130px] size-auto rounded-none select-none;
 }
 
 .social-card {
-  @apply select-none bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-[1.35rem] hover:bg-zinc-900 transition-all duration-100;
+  @apply select-none bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-folderTan hover:border-primaryBlue transition-all duration-100;
 }
 .skills-card {
-  @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-zinc-900 border border-zinc-700 px-2  py-1 rounded-md;
+  @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-2  py-1 rounded-none hover:bg-primaryBlue/80;
 }
 
 .head-name {
@@ -37,13 +62,13 @@ body {
 }
 
 .showMore-btn {
-  @apply select-none bg-zinc-700/30 w-full px-2 py-1 rounded-md hover:bg-zinc-700/50 transition-colors duration-100;
+  @apply select-none bg-primaryBlue/10 w-full px-2 py-1 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-100;
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1.5 items-center bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 px-2  py-1 rounded-md;
+  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-2  py-1 rounded-none;
 }
 
 .blog-post {
-  @apply cursor-pointer bg-zinc-900 border border-zinc-700 hover:bg-zinc-800/75 p-2 rounded-md transition-colors duration-100;
+  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-2 rounded-none transition-colors duration-100;
 }

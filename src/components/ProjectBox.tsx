@@ -69,7 +69,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
   return (
     <div
       onClick={() => setOpen((prev) => !prev)}
-      className="project-box bg-zinc-900 cursor-pointer hover:bg-zinc-800/75 transition-colors duration-100 border border-zinc-700 rounded-md"
+      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan transition-colors duration-100 border border-primaryBlue rounded-none"
     >
       <AnimatePresence mode="wait">
         {show && (
@@ -92,8 +92,8 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
             transition={{ ease: "easeInOut", duration: 0.3 }}
             className=" overflow-hidden"
           >
-            <div className="p-2">
-              <video className="rounded-md w-full" loop autoPlay controls>
+            <div className="p-2 rounded-none">
+              <video className="rounded-none w-full" loop autoPlay controls>
                 <source src={preview} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -104,7 +104,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
       <div className="flex md:flex-row flex-col gap-3 p-2">
         <div className="basis-[22%] p-1 select-none">
           <Image
-            className="rounded-md md:h-[130px] h-[200px] w-full object-cover"
+            className="rounded-none md:h-[130px] h-[200px] w-full object-cover"
             src={img}
             alt="Project Image"
             width={200}
@@ -116,14 +116,14 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
             <div className="flex gap-2 items-center truncate">
               <h1 className="text-2xl font-semibold">{title}</h1>
               {status ? (
-                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-md flex items-center bg-green-400/10 text-green-400">
+                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-primaryBlue/10 text-primaryBlue">
                   <span className="animate-pulse">
                     <GoDotFill />
                   </span>
                   Running
                 </div>
               ) : (
-                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-md flex items-center bg-red-400/10 text-red-400">
+                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-red-400/10 text-red-400">
                   <span className="animate-pulse">
                     <GoDotFill />
                   </span>
@@ -142,7 +142,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                           setShow((prev) => !prev)
                         }}
                         target="_blank"
-                        className="cursor-pointer hover:text-zinc-400 transition-colors duration-100"
+                        className="cursor-pointer hover:text-primaryBlue transition-colors duration-100"
                       >
                         <FaEyeSlash />
                       </a>
@@ -155,7 +155,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                           setShow((prev) => !prev)
                         }}
                         target="_blank"
-                        className="cursor-pointer hover:text-zinc-400 transition-colors duration-100"
+                        className="cursor-pointer hover:text-primaryBlue transition-colors duration-100"
                       >
                         <FaEye />
                       </a>
@@ -168,7 +168,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                 <InfoTipProjects text="Live">
                   <a
                     target="_blank"
-                    className="hover:text-zinc-400 transition-colors duration-100"
+                    className="hover:text-primaryBlue transition-colors duration-100"
                     href={url}
                     onClick={(e) => {
                       e.stopPropagation()
@@ -185,7 +185,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                       e.stopPropagation()
                     }}
                     target="_blank"
-                    className="hover:text-zinc-400 transition-colors duration-100"
+                    className="hover:text-primaryBlue transition-colors duration-100"
                     href={github}
                   >
                     <FiGithub />
@@ -215,13 +215,13 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
             transition={{ ease: "easeInOut", duration: 0.3 }}
             className=" overflow-hidden"
           >
-            <div className="flex border-t border-zinc-700 w-[97%] mt-3 md:mt-0 mx-auto" />
+            <div className="flex border-t border-primaryBlue w-[97%] mt-3 md:mt-0 mx-auto" />
             <div className="flex justify-between items-center md:py-2 py-3 px-3 transition-all duration-100">
               <div className="flex flex-wrap gap-1.5 select-none">
                 {skill.map((skill, index) => (
                   <p
                     key={index}
-                    className="border border-zinc-700 px-2 py-0.5 rounded-md text-sm"
+                    className="border border-primaryBlue px-2 py-0.5 rounded-none text-sm"
                   >
                     {skill}
                   </p>
@@ -229,7 +229,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
               </div>
               <div className="flex gap-4 items-center md:px-2 px-2.5 md:text-lg text-xl">
                 <div
-                  className="cursor-pointer select-none hover:text-zinc-400 transition-colors duration-100"
+                  className="cursor-pointer select-none hover:text-primaryBlue transition-colors duration-100"
                   onClick={(e) => {
                     e.stopPropagation()
                     handleShare(url ? url : github)
