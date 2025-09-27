@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 import { Persona } from "@/types"
 import { AnimatePresence, motion } from "framer-motion"
 
@@ -21,11 +22,12 @@ export const ProfileImageModal: React.FC<ProfileImageModalProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="select-none fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
           onClick={onClose}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
+          style={{ zIndex: 50 }}
         >
           <motion.button
             initial={{ opacity: 0, scale: 0.5 }}
@@ -60,13 +62,15 @@ export const ProfileImageModal: React.FC<ProfileImageModalProps> = ({
             className="w-[600px] max-w-[90vw] md:max-w-[25vw] rounded-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <h2 id="modal-title" className="sr-only">
+              {persona.name}&apos;s profile picture
+            </h2>
+            <Image
               src={persona.image}
-              alt={`${persona.name}'s profile picture - enlarged view`}
+              alt={`${persona.name}&apos;s profile picture - enlarged view`}
               className="rounded-lg w-full h-full object-contain"
               width={600}
               height={600}
-              id="modal-title"
             />
           </motion.div>
         </motion.div>

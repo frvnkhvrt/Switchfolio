@@ -10,7 +10,7 @@ export const franciscoData = {
       Tech wizard, pixel assassin, status quo saboteur.
     </p>
     <p>
-      My days ignite with reading fantasy stories, coding, and late movie binges. Fueled by cappuccinos and sunny doggo walks. Bogotá-based. 🇨🇴
+      My days ignite with reading, coding, and movie binges. Fueled by cappuccinos and sunny doggo walks. Bogotá-based. 🇨🇴
     </p>`,
   image: "/assets/Images/pfps/Francisco.jpg",
   contact: "",

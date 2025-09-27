@@ -1,10 +1,11 @@
 "use client"
 import React, { useState } from "react"
+import Image from "next/image"
 import { personaService } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
-import { ProfileHeader } from "./InfoCard/ProfileHeader"
-import { SocialLinks } from "./InfoCard/SocialLinks"
-import { ProfileImageModal } from "./InfoCard/ProfileImageModal"
+import { ProfileHeader } from "@/components/PageComponent/InfoCard/ProfileHeader"
+import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
+import { ProfileImageModal } from "@/components/PageComponent/InfoCard/ProfileImageModal"
 
 const InfoCard: React.FC = () => {
   const { isSwitchOn } = useSwitch()
@@ -29,13 +30,13 @@ const InfoCard: React.FC = () => {
               }
             }}
           >
-            <img
+            <Image
               src={currentPersona.image}
               alt={`${currentPersona.name}'s profile picture`}
               className="pro-pic"
               width={200}
               height={200}
-              loading="eager"
+              priority
             />
           </div>
 
