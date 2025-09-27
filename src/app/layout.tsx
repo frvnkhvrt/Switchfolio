@@ -3,6 +3,7 @@ import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { Toaster } from "react-hot-toast"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
 
 const geistMono = Geist_Mono({
@@ -101,6 +102,7 @@ export default function RootLayout({
           <Toaster />
           {children}
           <SpeedInsights />
+          <Analytics />
         </ErrorBoundary>
       </body>
     </html>
