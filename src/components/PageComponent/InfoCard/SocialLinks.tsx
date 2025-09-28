@@ -2,6 +2,7 @@ import React from "react"
 import { SocialLink } from "@/types"
 import { InfoTip } from "../../InfoTip"
 import { Icon } from "@iconify/react"
+import { LINK_ATTRIBUTES, ARIA_LABELS } from "@/constants"
 
 interface SocialLinksProps {
   links: SocialLink[]
@@ -15,9 +16,9 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
           <a
             className="social-card"
             href={link.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${link.name} (opens in new tab)`}
+            target={LINK_ATTRIBUTES.target}
+            rel={LINK_ATTRIBUTES.rel}
+            aria-label={ARIA_LABELS.socialLink(link.name)}
           >
             <Icon icon={link.icon} aria-hidden="true" className="text-inkBlack dark:text-inkBlack" />
           </a>

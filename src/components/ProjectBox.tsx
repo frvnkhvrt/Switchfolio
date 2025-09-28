@@ -8,6 +8,7 @@ import { InfoTipProjects } from "./InfoTipProjects"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 import { toast } from "react-hot-toast"
+import { COMPONENT_SIZES, LINK_ATTRIBUTES } from "@/constants"
 
 interface ProjectBoxProps {
   img: string
@@ -107,8 +108,8 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
             className="rounded-none md:h-[130px] h-[200px] w-full object-cover"
             src={img}
             alt="Project Image"
-            width={200}
-            height={200}
+            width={COMPONENT_SIZES.projectImage.width}
+            height={COMPONENT_SIZES.projectImage.height}
           />
         </div>
         <div className="basis-[78%] flex flex-col md:gap-0 gap-1">
@@ -141,7 +142,8 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                           e.stopPropagation()
                           setShow((prev) => !prev)
                         }}
-                        target="_blank"
+                        target={LINK_ATTRIBUTES.target}
+                        rel={LINK_ATTRIBUTES.rel}
                         className="cursor-pointer hover:text-primaryBlue transition-colors duration-100"
                       >
                         <FaEyeSlash />
@@ -167,7 +169,8 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
               {url && (
                 <InfoTipProjects text="Live">
                   <a
-                    target="_blank"
+                    target={LINK_ATTRIBUTES.target}
+                    rel={LINK_ATTRIBUTES.rel}
                     className="hover:text-primaryBlue transition-colors duration-100"
                     href={url}
                     onClick={(e) => {
@@ -184,7 +187,8 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                     onClick={(e) => {
                       e.stopPropagation()
                     }}
-                    target="_blank"
+                    target={LINK_ATTRIBUTES.target}
+                    rel={LINK_ATTRIBUTES.rel}
                     className="hover:text-primaryBlue transition-colors duration-100"
                     href={github}
                   >

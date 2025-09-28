@@ -6,6 +6,7 @@ import { useSwitch } from "../Context/SwitchContext"
 import { ProfileHeader } from "@/components/PageComponent/InfoCard/ProfileHeader"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { ProfileImageModal } from "@/components/PageComponent/InfoCard/ProfileImageModal"
+import { ARIA_LABELS, COMPONENT_SIZES } from "@/constants"
 
 const InfoCard: React.FC = () => {
   const { isSwitchOn } = useSwitch()
@@ -22,7 +23,7 @@ const InfoCard: React.FC = () => {
             className="cursor-pointer hover:brightness-75 transition duration-200 select-none w-1/3 md:w-auto"
             role="button"
             tabIndex={0}
-            aria-label={`View ${currentPersona.name}'s profile image`}
+            aria-label={ARIA_LABELS.profileImage(currentPersona.name)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault()
@@ -34,8 +35,8 @@ const InfoCard: React.FC = () => {
               src={currentPersona.image}
               alt={`${currentPersona.name}'s profile picture`}
               className="pro-pic"
-              width={200}
-              height={200}
+              width={COMPONENT_SIZES.profileImageModal.width}
+              height={COMPONENT_SIZES.profileImageModal.height}
               priority
             />
           </div>

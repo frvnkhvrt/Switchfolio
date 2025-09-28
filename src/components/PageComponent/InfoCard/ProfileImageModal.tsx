@@ -2,6 +2,7 @@ import React from "react"
 import Image from "next/image"
 import { Persona } from "@/types"
 import { AnimatePresence, motion } from "framer-motion"
+import { COMPONENT_SIZES } from "@/constants"
 
 interface ProfileImageModalProps {
   isOpen: boolean
@@ -69,8 +70,8 @@ export const ProfileImageModal: React.FC<ProfileImageModalProps> = ({
               src={persona.image}
               alt={`${persona.name}&apos;s profile picture - enlarged view`}
               className="rounded-lg w-full h-full object-contain"
-              width={600}
-              height={600}
+              width={COMPONENT_SIZES.modalImage.width}
+              height={COMPONENT_SIZES.modalImage.height}
             />
           </motion.div>
         </motion.div>

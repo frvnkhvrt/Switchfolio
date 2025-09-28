@@ -6,13 +6,14 @@ import Image from "next/image"
 import { navLinks } from "@/data/Common/data"
 import { InfoTipNav } from "../InfoTipNav"
 import { Icon } from "@iconify/react"
+import { COMPONENT_SIZES } from "@/constants"
 
 const Nav = () => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
 
   return (
     <div className="fixed bottom-6 left-0 right-0 flex justify-center items-center">
-      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue px-3 py-2 rounded-none flex items-center gap-3 shadow-sm">
+      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue px-3 py-2 rounded-none flex items-center gap-3 shadow-sm dark:shadow-dark-sm">
         <div className=" flex gap-4 items-center">
           {navLinks.map((nav) => (
             <InfoTipNav key={nav.id} text={nav.name}>
@@ -31,8 +32,8 @@ const Nav = () => {
             src={isSwitchOn ? franciscoImage : frankhurtImage}
             alt="Profile Picture"
             className="rounded-none"
-            width={35}
-            height={35}
+            width={COMPONENT_SIZES.profileImage.width}
+            height={COMPONENT_SIZES.profileImage.height}
             // title={isSwitchOn ? franciscoShortName : frankhurtName}
           />
         </div>

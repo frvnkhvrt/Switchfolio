@@ -2,6 +2,7 @@
 import React from "react"
 import { personaService } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
+import { LINK_ATTRIBUTES, ARIA_LABELS } from "@/constants"
 
 const Footer: React.FC = () => {
   const { isSwitchOn } = useSwitch()
@@ -16,10 +17,10 @@ const Footer: React.FC = () => {
             <a
               key={link.id}
               className="select-none md:text-base text-xl text-primaryBlue hover:opacity-75 flex gap-1 items-center transition duration-100"
-              target="_blank"
-              rel="noopener noreferrer"
+              target={LINK_ATTRIBUTES.target}
+              rel={LINK_ATTRIBUTES.rel}
               href={link.link}
-              aria-label={`${link.name} (opens in new tab)`}
+              aria-label={ARIA_LABELS.socialLink(link.name)}
             >
               <span className="sr-only">{link.name}</span>
               <span className="hidden md:block">{link.name}</span>

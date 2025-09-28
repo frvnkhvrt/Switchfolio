@@ -6,10 +6,16 @@ export const frankhurtData = {
   bio: "Coder + Gamer + Cinephile",
   about: `
     <p>
-      Code conjurer, glitch reaper, axiom arsonist.
+      Code conjurer and axiom arsonist.
     </p>
     <p>
-      My nights thrive on writing, hacking, and digital addiction. Driven by Coke sips and midnight dog walks. Lurking.
+      My nights thrive on writing, hacking, and digital addiction.
+    </p>
+    <p>
+    Driven by Coke sips and midnight dog walks.
+    </p>
+    <p>
+    Lurking.
     </p>`,
   image: "/assets/Images/pfps/Frankhurt.png",
   contact: "",
