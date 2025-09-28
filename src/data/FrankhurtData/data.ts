@@ -9,10 +9,10 @@ export const frankhurtData = {
       Code conjurer and axiom arsonist.
     </p>
     <p>
-      My nights: writing, hacking, and games.
+      My nights: writing, hacks, and games.
     </p>
     <p>
-    Driven by Coke sips and digital addiction..
+    Driven by Coke and digital addiction.
     </p>
     <p>
     ロムっている。
