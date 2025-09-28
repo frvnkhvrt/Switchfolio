@@ -16,7 +16,7 @@ export const franciscoData = {
       Fueled by cappuccinos and dog walks.
     </p>
     <p>
-      Bogotá-based. 🇨🇴
+      🇨🇴 Bogotá-based.
     </p>`,
   image: "/assets/Images/pfps/Francisco.jpg",
   contact: "",
