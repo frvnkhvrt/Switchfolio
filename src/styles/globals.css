@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-backgroundCream text-inkBlack font-mono;
+  @apply bg-backgroundCream text-inkBlack font-mono dark:bg-darkerBlue dark:text-backgroundCream;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,10 +51,10 @@ video::-ms-media-controls {
 }
 
 .social-card {
-  @apply select-none bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-folderTan hover:border-primaryBlue transition-all duration-100 shadow-sm;
+  @apply select-none bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-folderTan hover:border-primaryBlue transition-all duration-100 shadow-sm dark:shadow-dark-sm;
 }
 .skills-card {
-  @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-2  py-1 rounded-none hover:bg-primaryBlue/80 shadow-sm;
+  @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-2  py-1 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm;
 }
 
 .head-name {
@@ -66,9 +66,9 @@ video::-ms-media-controls {
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-2  py-1 rounded-none shadow-sm;
+  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-2  py-1 rounded-none shadow-sm dark:shadow-dark-sm;
 }
 
 .blog-post {
-  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-2 rounded-none transition-colors duration-100 shadow-sm;
+  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-2 rounded-none transition-colors duration-100 shadow-sm dark:shadow-dark-sm;
 }

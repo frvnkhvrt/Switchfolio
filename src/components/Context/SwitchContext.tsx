@@ -29,6 +29,16 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [])
 
+  useEffect(() => {
+    if (isLoaded) {
+      if (isSwitchOn) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    }
+  }, [isSwitchOn, isLoaded])
+
   const toggleSwitch = useCallback(() => {
     setIsSwitchOn((prev) => {
       const newValue = !prev
@@ -41,10 +51,13 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
     })
   }, [])
 
+  const theme = isSwitchOn ? 'dark' : 'light'
+
   const contextValue = useMemo<SwitchContextType>(() => ({
     isSwitchOn,
     toggleSwitch,
-  }), [isSwitchOn, toggleSwitch])
+    theme,
+  }), [isSwitchOn, toggleSwitch, theme])
 
   return (
     <SwitchContext.Provider value={contextValue}>

@@ -12,8 +12,8 @@ const Banner: React.FC = () => {
           target="_blank"
           className="  flex gap-1 md:gap-2 items-center text-white/65 hover:text-white/90 transition-all duration-100 font-medium"
         >
-          <span className=" hidden md:block">Local time</span>
-          <span className="md:text-sm text-base">
+          <span className=" hidden md:block text-inkBlack dark:text-backgroundCream">Local time</span>
+          <span className="md:text-sm text-base text-inkBlack dark:text-backgroundCream">
             <LocalTime />
           </span>
         </a>

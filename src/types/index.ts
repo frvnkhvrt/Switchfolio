@@ -37,6 +37,7 @@ export interface FooterLink {
 export interface SwitchContextType {
   isSwitchOn: boolean
   toggleSwitch: () => void
+  theme: 'light' | 'dark'
 }
 
 // Component prop types

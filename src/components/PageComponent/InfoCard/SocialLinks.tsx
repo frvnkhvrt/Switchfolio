@@ -19,7 +19,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
             rel="noopener noreferrer"
             aria-label={`${link.name} (opens in new tab)`}
           >
-            <Icon icon={link.icon} aria-hidden="true" />
+            <Icon icon={link.icon} aria-hidden="true" className="text-inkBlack dark:text-inkBlack" />
           </a>
         </InfoTip>
       ))}
