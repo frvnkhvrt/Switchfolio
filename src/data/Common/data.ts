@@ -34,43 +34,36 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  // Programming Languages
+  // Engineer
   { id: 1, icon: "simple-icons:cplusplus", text: "C++" },
   { id: 2, icon: "simple-icons:javascript", text: "JavaScript" },
   { id: 3, icon: "simple-icons:typescript", text: "TypeScript" },
   { id: 4, icon: "simple-icons:python", text: "Python" },
   { id: 5, icon: "simple-icons:r", text: "R" },
-  // Databases
-  { id: 6, icon: "simple-icons:mysql", text: "SQL" },
-  // Frameworks & Libraries
-  { id: 7, icon: "simple-icons:nextdotjs", text: "Next.js" },
-  // DevOps & Cloud
-  { id: 8, icon: "simple-icons:docker", text: "Docker" },
-  { id: 9, icon: "simple-icons:n8n", text: "n8n" },
-  { id: 10, icon: "simple-icons:vercel", text: "Vercel" },
-  // Version Control
-  { id: 11, icon: "simple-icons:github", text: "GitHub" },
-  // Styling
-  { id: 12, icon: "simple-icons:tailwindcss", text: "Tailwind" },
-  // IDEs
-  { id: 13, icon: "simple-icons:visualstudiocode", text: "VS Code" },
-  // Operating Systems
-  { id: 14, icon: "simple-icons:linux", text: "Linux" },
-  // Project Management
-  { id: 15, icon: "simple-icons:asana", text: "Asana" },
-  { id: 16, icon: "simple-icons:trello", text: "Trello" },
-  // Communication & Productivity
-  { id: 17, icon: "simple-icons:notion", text: "Notion" },
-  { id: 18, icon: "simple-icons:slack", text: "Slack" },
-  // Marketing & Analytics
+  { id: 6, icon: "simple-icons:pytorch", text: "PyTorch" },
+  { id: 7, icon: "simple-icons:tensorflow", text: "TensorFlow" },
+  { id: 8, icon: "simple-icons:keras", text: "Keras" },
+  { id: 9, icon: "simple-icons:mysql", text: "SQL" },
+  { id: 10, icon: "simple-icons:openai", text: "OpenAI" },
+  { id: 11, icon: "simple-icons:docker", text: "Docker" },
+  { id: 12, icon: "simple-icons:n8n", text: "n8n" },
+  { id: 13, icon: "simple-icons:nextdotjs", text: "Next.js" },
+  { id: 14, icon: "simple-icons:vercel", text: "Vercel" },
+  { id: 15, icon: "simple-icons:git", text: "Git" },
+  { id: 16, icon: "simple-icons:github", text: "GitHub" },
+  { id: 17, icon: "simple-icons:visualstudiocode", text: "VS Code" },
+  { id: 18, icon: "simple-icons:linux", text: "Linux" },
+  // Marketer
   { id: 19, icon: "simple-icons:salesforce", text: "Salesforce" },
-  { id: 20, icon: "simple-icons:amazon", text: "Amazon Ads" },
-  { id: 21, icon: "simple-icons:googleads", text: "Google Ads" },
-  { id: 22, icon: "simple-icons:linkedin", text: "LinkedIn Ads" },
-  { id: 23, icon: "simple-icons:meta", text: "Meta Ads" },
-  // Design & Media
-  { id: 24, icon: "simple-icons:figma", text: "Figma" },
-  { id: 25, icon: "simple-icons:adobepremierepro", text: "Premiere Pro" },
+  { id: 20, icon: "simple-icons:hubspot", text: "HubSpot" },
+  { id: 21, icon: "simple-icons:powerbi", text: "Power BI" },
+  { id: 22, icon: "simple-icons:amazon", text: "QuickSight" },
+  // Manager
+  { id: 23, icon: "simple-icons:asana", text: "Asana" },
+  { id: 24, icon: "simple-icons:trello", text: "Trello" },
+  { id: 25, icon: "simple-icons:notion", text: "Notion" },
+  { id: 26, icon: "simple-icons:slack", text: "Slack" },
+  { id: 27, icon: "simple-icons:figma", text: "Figma" },
 ]
 
 const projects: Project[] = [
