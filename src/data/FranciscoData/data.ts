@@ -4,7 +4,7 @@
 export const franciscoData = {
   name: "Francisco",
   shortName: "Francisco",
-  bio: "Engineer+Marketer+Manager",
+  bio: "Engineer & Marketer",
   about: `
     <p>
       Tech wizard and status quo saboteur.
