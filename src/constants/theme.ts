@@ -1,20 +1,26 @@
 // Theme constants for unified color management
 export const colors = {
-  // Light theme colors
-  backgroundCream: "#f6f7eb",
-  folderCream: "#f5f5dc",
-  folderWhite: "#ffffff",
-  inkBlack: "#000000",
-  inkGray: "#333333",
-  folderTan: "#d2b48c",
-  folderBeige: "#f5deb3",
-  folderBrown: "#8b4513",
+  // Light theme
+  light: {
+    bg: "#f0f6ffff",
+    font: "#000000",
+    accent: "#ecd4b4ff",
+  },
+
+  // Dark theme
+  dark: {
+    bg: "#0f172a",
+    font: "#f0f6ffff",
+    accent: "#ecd4b4ff",
+  },
+
+  // General colors
+  availableGreen: "#22c55e",
   primaryBlue: "#3e43f0",
 
-  // Dark theme colors
-  darkerBlue: "#1e3a8a",
-  backgroundCreamDark: "#f6f7eb", // Same as light for text
-  availableGreen: "#22c55e",
+  // Additional colors still in use
+  folderCream: "#f5f5dc",
+  folderWhite: "#ffffff",
 }
 
 // Shadow values

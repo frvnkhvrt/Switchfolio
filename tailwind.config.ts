@@ -10,7 +10,17 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      colors,
+      colors: {
+        ...colors,
+        // Flatten theme colors for Tailwind compatibility
+        backgroundCream: colors.light.bg,
+        inkBlack: colors.light.font,
+        folderTan: colors.light.accent,
+        darkerBlue: colors.dark.bg,
+        // Map for dark mode text
+        backgroundCreamDark: colors.dark.font,
+        // Keep existing mappings for backward compatibility
+      },
       boxShadow: {
         'sm': shadows.light,
         'DEFAULT': shadows.light,

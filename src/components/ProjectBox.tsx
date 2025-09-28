@@ -62,7 +62,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-start">
             <div className="flex gap-2 items-center truncate flex-1">
-              <h1 className="text-2xl font-semibold dark:text-backgroundCream">{title}</h1>
+              <h1 className="text-2xl font-semibold dark:text-backgroundCreamDark">{title}</h1>
               {status ? (
                 <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-primaryBlue/10 text-primaryBlue dark:bg-availableGreen/10 dark:text-availableGreen">
                   <span className="animate-pulse">
@@ -112,7 +112,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
               )}
             </div>
           </div>
-          <p className="opacity-80 dark:text-backgroundCream/80">{content}</p>
+          <p className="opacity-80 dark:text-backgroundCreamDark/80">{content}</p>
         </div>
       </div>
       <AnimatePresence mode="wait">

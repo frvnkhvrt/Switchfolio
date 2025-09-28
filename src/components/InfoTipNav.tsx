@@ -8,7 +8,7 @@ export const InfoTipNav: React.FC<InfoTipNavProps> = ({ text, children }) => {
     <div className="relative flex items-center select-none">
       <div className="group relative flex">
         {children}
-        <span className="absolute  bottom-[30px] left-1/2 transform transition-all -translate-x-1/2 mb-2 w-max bg-mainWhite dark:bg-darkerBlue text-mainBlack dark:text-backgroundCream font-medium text-sm rounded-none py-1 px-1.5 scale-0 group-hover:scale-100  duration-100">
+        <span className="absolute  bottom-[30px] left-1/2 transform transition-all -translate-x-1/2 mb-2 w-max bg-mainWhite dark:bg-darkerBlue text-mainBlack dark:text-backgroundCreamDark font-medium text-sm rounded-none py-1 px-1.5 scale-0 group-hover:scale-100  duration-100">
           {text}
         </span>
       </div>

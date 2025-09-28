@@ -38,7 +38,7 @@ export const franciscoData = {
     {
       id: 1,
       name: "Email",
-      link: "mailto:franciscohm@icloud.com",
+      link: "mailto:frankhurt@icloud.com",
       icon: "simple-icons:maildotru",
     },
     {

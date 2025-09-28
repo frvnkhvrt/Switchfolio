@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-backgroundCream text-inkBlack font-mono dark:bg-darkerBlue dark:text-backgroundCream;
+  @apply bg-backgroundCream text-inkBlack font-mono dark:bg-darkerBlue dark:text-backgroundCreamDark;
 }
 
 h1, h2, h3, h4, h5, h6 {
