@@ -60,10 +60,10 @@ const projects: Project[] = [
     img: "/assets/Images/project/",
     title: "Bold Choice",
     status: false,
-    content: "We are an startup that integrates advanced technology with specialized expertise to automate and optimize our clients' business operations.",
+    content: "Tech Startup.",
     url: "",
     github: "",
-    skill: ["Startup", "Automation", "AI", "Engineering"],
+    skill: ["Electronics", "Engineering", "Automation", "AI"],
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ const projects: Project[] = [
     status: true,
     content: "This website.",
     url: "https://frankhurt.dev",
-    github: "",
+    github: "https://github.com/frvnkhvrt/Portfolio",
     skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
   },
 ]

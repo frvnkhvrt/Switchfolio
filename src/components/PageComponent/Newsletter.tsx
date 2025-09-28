@@ -54,7 +54,7 @@ const Newsletter = () => {
       <SectionTitle title="Newsletter" />
       <div className=" flex flex-col gap-2">
         <p>{newsText}</p>
-        <div className="flex items-center justify-between p-5 border border-primaryBlue rounded-none bg-primaryBlue text-folderWhite shadow-sm">
+        <div className="flex items-center justify-between p-5 border border-primaryBlue dark:border-backgroundCream rounded-none bg-primaryBlue text-folderWhite shadow-sm dark:shadow-dark-sm">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col md:flex-row items-stretch md:items-center gap-2 w-full h-full"
@@ -65,7 +65,7 @@ const Newsletter = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-primaryBlue rounded-none bg-folderWhite text-primaryBlue w-full sm:w-[160px] focus:outline-none focus:border-primaryBlue "
+              className="placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-primaryBlue dark:border-backgroundCream rounded-none bg-folderWhite dark:bg-darkerBlue text-primaryBlue w-full sm:w-[160px] focus:outline-none focus:border-primaryBlue dark:focus:border-backgroundCream"
             />
 
             <input
@@ -74,17 +74,17 @@ const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-primaryBlue rounded-none bg-folderWhite text-primaryBlue focus:outline-none focus:border-primaryBlue "
+              className="flex-1 placeholder:text-sm placeholder:font-medium py-1.5 px-2.5 border border-primaryBlue dark:border-backgroundCream rounded-none bg-folderWhite dark:bg-darkerBlue text-primaryBlue focus:outline-none focus:border-primaryBlue dark:focus:border-backgroundCream"
             />
 
             {loading ? (
-              <div className="px-3 md:w-[110px] text-center flex items-center justify-center py-1.5 mx-auto h-full bg-primaryBlue rounded-none border border-primaryBlue text-folderWhite whitespace-nowrap">
+              <div className="px-3 md:w-[110px] text-center flex items-center justify-center py-1.5 mx-auto h-full bg-primaryBlue rounded-none border border-primaryBlue dark:border-backgroundCream text-folderWhite whitespace-nowrap">
                 <AiOutlineLoading3Quarters className="animate-spin text-xl" />
               </div>
             ) : (
               <button
                 type="submit"
-                className="px-3 md:w-[110px] w-full mx-auto py-1 h-full bg-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 rounded-none border border-primaryBlue text-folderWhite whitespace-nowrap transition-all duration-200 text-center"
+                className="px-3 md:w-[110px] w-full mx-auto py-1 h-full bg-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 dark:hover:border-backgroundCream/80 rounded-none border border-primaryBlue dark:border-backgroundCream text-folderWhite whitespace-nowrap transition-all duration-200 text-center"
               >
                 Subscribe!
               </button>

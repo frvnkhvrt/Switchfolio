@@ -133,7 +133,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
             transition={{ ease: "easeInOut", duration: 0.3 }}
             className=" overflow-hidden"
           >
-            <div className="flex border-t border-primaryBlue w-[97%] mt-3 md:mt-0 mx-auto" />
+            <div className="flex border-t border-primaryBlue dark:border-backgroundCream w-[97%] mt-3 md:mt-0 mx-auto" />
             <div className="flex justify-start items-center md:py-2 py-3 px-3 transition-all duration-100">
               <div className="flex flex-wrap gap-1.5 select-none">
                 {skill.map((skill, index) => (
