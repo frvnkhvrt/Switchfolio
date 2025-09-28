@@ -51,20 +51,21 @@ const skills: Skill[] = [
   { id: 14, icon: "simple-icons:github", text: "GitHub" },
   { id: 15, icon: "simple-icons:openai", text: "OpenAI" },
   { id: 16, icon: "simple-icons:docker", text: "Docker" },
-  { id: 17, icon: "simple-icons:n8n", text: "n8n" },
-  { id: 18, icon: "simple-icons:visualstudiocode", text: "VS Code" },
-  { id: 19, icon: "simple-icons:linux", text: "Linux" },
+  { id: 17, icon: "simple-icons:kubernetes", text: "Kubernetes" },
+  { id: 18, icon: "simple-icons:n8n", text: "n8n" },
+  { id: 19, icon: "simple-icons:visualstudiocode", text: "VS Code" },
+  { id: 20, icon: "simple-icons:linux", text: "Linux" },
   // Marketer
-  { id: 20, icon: "simple-icons:salesforce", text: "Salesforce" },
-  { id: 21, icon: "simple-icons:hubspot", text: "HubSpot" },
-  { id: 22, icon: "simple-icons:powerbi", text: "Power BI" },
-  { id: 23, icon: "simple-icons:tableau", text: "Tableau" },
-  { id: 24, icon: "simple-icons:amazon", text: "QuickSight" },
+  { id: 21, icon: "simple-icons:salesforce", text: "Salesforce" },
+  { id: 22, icon: "simple-icons:hubspot", text: "HubSpot" },
+  { id: 23, icon: "simple-icons:powerbi", text: "Power BI" },
+  { id: 24, icon: "simple-icons:tableau", text: "Tableau" },
+  { id: 25, icon: "simple-icons:amazon", text: "QuickSight" },
   // Manager
-  { id: 25, icon: "simple-icons:asana", text: "Asana" },
-  { id: 26, icon: "simple-icons:trello", text: "Trello" },
-  { id: 27, icon: "simple-icons:notion", text: "Notion" },
-  { id: 28, icon: "simple-icons:slack", text: "Slack" },
+  { id: 26, icon: "simple-icons:asana", text: "Asana" },
+  { id: 27, icon: "simple-icons:trello", text: "Trello" },
+  { id: 28, icon: "simple-icons:notion", text: "Notion" },
+  { id: 29, icon: "simple-icons:slack", text: "Slack" },
 ]
 
 const projects: Project[] = [
