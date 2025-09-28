@@ -3,16 +3,16 @@
 // Centralized Frankhurt persona data
 export const frankhurtData = {
   name: "Frankhurt",
-  bio: "Coder + Gamer + Cinephile",
+  bio: "Coder+Gamer+Cinephile",
   about: `
     <p>
       Code conjurer and axiom arsonist.
     </p>
     <p>
-      My nights thrive on writing, hacking, and digital addiction.
+      My nights: writing, hacking, and games.
     </p>
     <p>
-    Driven by Coke sips and midnight dog walks.
+    Driven by Coke sips and digital addiction..
     </p>
     <p>
     ロムっている。
