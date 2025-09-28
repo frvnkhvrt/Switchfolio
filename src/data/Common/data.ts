@@ -68,7 +68,7 @@ const projects: Project[] = [
   {
     id: 2,
     img: "/assets/Images/project/",
-    title: "Portfolio Website",
+    title: "Portfolio",
     status: true,
     content: "This website.",
     url: "https://frankhurt.dev",
