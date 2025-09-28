@@ -1,6 +1,6 @@
 # Switchfolio
 
-**Switchfolio** is a dynamic, two-in-one portfolio website that lets users seamlessly switch between two distinct personas using a toggle button.
+**Switchfolio** is a two-in-one portfolio website that lets users switch between two distinct personas using a toggle button.
 
 ## Features
 
