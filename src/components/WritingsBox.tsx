@@ -24,8 +24,8 @@ const WritingsBox: React.FC<BlogBoxProps> = ({ img, head, des, link }) => {
         height={COMPONENT_SIZES.blogImage.height}
       />
       <div className=" md:w-[80%] flex flex-col gap-0.5 ">
-        <h1 className=" md:text-lg text-xl font-semibold">{head}</h1>
-        <p className=" opacity-80">{des}</p>
+        <h1 className=" md:text-lg text-xl font-semibold dark:text-backgroundCream">{head}</h1>
+        <p className=" opacity-80 dark:text-backgroundCream/80">{des}</p>
       </div>
     </a>
   )

@@ -28,9 +28,13 @@ const Footer = dynamic(() => import("../PageComponent/Footer"), {
   loading: () => <div className="animate-pulse bg-gray-200 h-12 rounded-lg" />
 })
 
-// Commented out components (can be enabled later)
-// const Projects = dynamic(() => import("../PageComponent/Projects"))
-// const Writings = dynamic(() => import("../PageComponent/Writings"))
+// Dynamic imports for components
+const Projects = dynamic(() => import("../PageComponent/Projects"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-40 rounded-lg" />
+})
+const Writings = dynamic(() => import("../PageComponent/Writings"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded-lg" />
+})
 // const Newsletter = dynamic(() => import("../PageComponent/Newsletter"))
 // const Quote = dynamic(() => import("../PageComponent/Quote"))
 
@@ -60,13 +64,13 @@ const IndexPage = () => {
           <AnimatedWrapper delay={0.55}>
             <Skills />
           </AnimatedWrapper>
-          {/* <AnimatedWrapper delay={0.65}>
+          <AnimatedWrapper delay={0.65}>
             <Projects />
           </AnimatedWrapper>
           <AnimatedWrapper delay={0.75}>
             <Writings />
           </AnimatedWrapper>
-          <AnimatedWrapper delay={0.85}>
+          {/* <AnimatedWrapper delay={0.85}>
             <Newsletter />
           </AnimatedWrapper> */}
           <AnimatedWrapper delay={0.95}>

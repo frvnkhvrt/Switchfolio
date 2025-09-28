@@ -39,7 +39,7 @@ export const COMPONENT_SIZES = {
   },
   blogImage: {
     width: 200,
-    height: 200,
+    height: 100,
   },
   projectImage: {
     width: 200,

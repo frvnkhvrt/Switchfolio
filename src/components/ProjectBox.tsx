@@ -70,7 +70,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
   return (
     <div
       onClick={() => setOpen((prev) => !prev)}
-      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan transition-colors duration-100 border border-primaryBlue rounded-none shadow-sm"
+      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan transition-colors duration-100 border border-primaryBlue rounded-none shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm"
     >
       <AnimatePresence mode="wait">
         {show && (
@@ -115,9 +115,9 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
         <div className="basis-[78%] flex flex-col md:gap-0 gap-1">
           <div className="flex justify-between items-center">
             <div className="flex gap-2 items-center truncate">
-              <h1 className="text-2xl font-semibold">{title}</h1>
+              <h1 className="text-2xl font-semibold dark:text-backgroundCream">{title}</h1>
               {status ? (
-                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-primaryBlue/10 text-primaryBlue">
+                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-primaryBlue/10 text-primaryBlue dark:bg-availableGreen/10 dark:text-availableGreen">
                   <span className="animate-pulse">
                     <GoDotFill />
                   </span>
@@ -198,7 +198,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
               )}
             </div>
           </div>
-          <p className="opacity-80">{content}</p>
+          <p className="opacity-80 dark:text-backgroundCream/80">{content}</p>
         </div>
       </div>
       <AnimatePresence mode="wait">
@@ -225,7 +225,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                 {skill.map((skill, index) => (
                   <p
                     key={index}
-                    className="border border-primaryBlue px-2 py-0.5 rounded-none text-sm"
+                    className="border border-primaryBlue px-2 py-0.5 rounded-none text-sm dark:border-folderCream dark:text-folderCream"
                   >
                     {skill}
                   </p>

@@ -51,7 +51,7 @@ video::-ms-media-controls {
 }
 
 .social-card {
-  @apply select-none bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-folderTan hover:border-primaryBlue transition-all duration-100 shadow-sm dark:shadow-dark-sm;
+  @apply select-none bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-primaryBlue transition-all duration-100 shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue;
 }
 .skills-card {
   @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-2  py-1 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm;
@@ -70,5 +70,5 @@ video::-ms-media-controls {
 }
 
 .blog-post {
-  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-2 rounded-none transition-colors duration-100 shadow-sm dark:shadow-dark-sm;
+  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-2 rounded-none transition-colors duration-100 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm;
 }

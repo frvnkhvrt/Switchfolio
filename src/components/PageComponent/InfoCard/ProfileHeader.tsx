@@ -3,7 +3,7 @@ import Available from "../../Available"
 
 export const ProfileHeader: React.FC = () => {
   return (
-    <div className="block md:hidden">
+    <div className="block">
       <Available text="Available" />
     </div>
   )
