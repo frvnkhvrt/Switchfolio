@@ -57,13 +57,13 @@ const skills: Skill[] = [
   { id: 19, icon: "simple-icons:salesforce", text: "Salesforce" },
   { id: 20, icon: "simple-icons:hubspot", text: "HubSpot" },
   { id: 21, icon: "simple-icons:powerbi", text: "Power BI" },
-  { id: 22, icon: "simple-icons:amazon", text: "QuickSight" },
+  { id: 22, icon: "simple-icons:tableau", text: "Tableau" },
+  { id: 23, icon: "simple-icons:amazon", text: "QuickSight" },
   // Manager
-  { id: 23, icon: "simple-icons:asana", text: "Asana" },
-  { id: 24, icon: "simple-icons:trello", text: "Trello" },
-  { id: 25, icon: "simple-icons:notion", text: "Notion" },
-  { id: 26, icon: "simple-icons:slack", text: "Slack" },
-  { id: 27, icon: "simple-icons:figma", text: "Figma" },
+  { id: 24, icon: "simple-icons:asana", text: "Asana" },
+  { id: 25, icon: "simple-icons:trello", text: "Trello" },
+  { id: 26, icon: "simple-icons:notion", text: "Notion" },
+  { id: 27, icon: "simple-icons:slack", text: "Slack" },
 ]
 
 const projects: Project[] = [
