@@ -13,7 +13,7 @@ const Nav = () => {
 
   return (
     <div className="fixed bottom-6 left-0 right-0 flex justify-center items-center">
-      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue dark:border-backgroundCream px-3 py-2 rounded-none flex items-center gap-3 shadow-sm dark:shadow-dark-sm">
+      <div className="relative bg-folderWhite text-primaryBlue border border-primaryBlue px-3 py-2 rounded-none flex items-center gap-3 shadow-sm dark:shadow-dark-sm">
         <div className=" flex gap-4 items-center">
           {navLinks.map((nav) => (
             <InfoTipNav key={nav.id} text={nav.name}>
@@ -23,7 +23,7 @@ const Nav = () => {
             </InfoTipNav>
           ))}
         </div>
-        <div className="h-8 w-[1px] bg-primaryBlue dark:bg-backgroundCream mr-1"></div>
+        <div className="h-8 w-[1px] bg-primaryBlue mr-1"></div>
         <div
           className="rounded-none md:hover:brightness-75 transition duration-200 cursor-pointer"
           onClick={toggleSwitch}
