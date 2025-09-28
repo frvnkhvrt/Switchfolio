@@ -122,7 +122,7 @@ const newsText =
   "Lock in, stay wired, and claim first dibs on the chaos I'm unleashing next."
 
   const supportText =
-  "Dig my vibe? Your support powers my work."
+  "Dig my vibe? Fuel my grind."
 
 export {
   projects,
