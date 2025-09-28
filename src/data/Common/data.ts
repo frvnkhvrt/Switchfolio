@@ -57,33 +57,33 @@ const skills: Skill[] = [
 const projects: Project[] = [
   {
     id: 1,
-    img: "/assets/Images/project/placeholder-1.png",
+    img: "/assets/Images/project/",
     title: "Bold Choice",
     status: false,
-    content: "Startup that combines tech and expertise to automate our clients business.",
-    url: "https://example.com/project1",
-    github: "https://github.com/username/project1",
+    content: "We are an startup that integrates advanced technology with specialized expertise to automate and optimize our clients' business operations.",
+    url: "",
+    github: "",
     skill: ["Startup", "Automation", "AI", "Engineering"],
   },
   {
     id: 2,
-    img: "/assets/Images/project/placeholder-2.png",
+    img: "/assets/Images/project/",
     title: "Portfolio Website",
     status: true,
     content: "This website.",
-    url: "https://example.com/project2",
-    github: "https://github.com/username/project2",
-    skill: ["Next.js", "Tailwind", "TypeScript", "Motion"],
+    url: "https://frankhurt.dev",
+    github: "",
+    skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
   },
 ]
 
 const writings: Writing[] = [
   {
     id: 1,
-    img: "/assets/Images/writing/placeholder-1.png",
-    head: "My day as a engineer",
-    des: "A common day in my life as founder and engineer of a automation startup.",
-    link: "https://medium.com/@username/article-1",
+    img: "/assets/Images/writing/",
+    head: "My days as a engineer",
+    des: "Follow me on Medium.",
+    link: "https://frankhurt.medium.com",
   },
 ]
 
