@@ -2,11 +2,10 @@
 import React, { useState, useEffect } from "react"
 import { FiGithub } from "react-icons/fi"
 import { GoDotFill } from "react-icons/go"
-import { LuLink, LuShare } from "react-icons/lu"
+import { LuLink } from "react-icons/lu"
 import { InfoTipProjects } from "./InfoTipProjects"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
-import { toast } from "react-hot-toast"
 import { COMPONENT_SIZES, LINK_ATTRIBUTES } from "@/constants"
 
 interface ProjectBoxProps {
@@ -44,24 +43,6 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
       document.removeEventListener("click", handleOutsideClick)
     }
   }, [])
-  const handleShare = async (url: string) => {
-    const shareData = {
-      title: "Check out this Project",
-      url: url,
-    }
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData)
-      } else {
-        await navigator.clipboard.writeText(shareData.url)
-        toast.success("Copied to clipboard")
-      }
-    } catch (error) {
-      console.error("Error sharing:", error)
-      toast.error("Error sharing")
-    }
-  }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -165,7 +146,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
             className=" overflow-hidden"
           >
             <div className="flex border-t border-primaryBlue w-[97%] mt-3 md:mt-0 mx-auto" />
-            <div className="flex justify-between items-center md:py-2 py-3 px-3 transition-all duration-100">
+            <div className="flex justify-start items-center md:py-2 py-3 px-3 transition-all duration-100">
               <div className="flex flex-wrap gap-1.5 select-none">
                 {skill.map((skill, index) => (
                   <p
@@ -175,17 +156,6 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                     {skill}
                   </p>
                 ))}
-              </div>
-              <div className="flex gap-4 items-center md:px-2 px-2.5 md:text-lg text-xl">
-                <div
-                  className="cursor-pointer select-none hover:text-primaryBlue transition-colors duration-100"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    handleShare(url ? url : github)
-                  }}
-                >
-                  <LuShare />
-                </div>
               </div>
             </div>
           </motion.div>
