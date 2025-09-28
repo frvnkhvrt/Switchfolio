@@ -4,16 +4,16 @@
 export const franciscoData = {
   name: "Francisco",
   shortName: "Francisco",
-  bio: "Engineer, Marketer, Manager",
+  bio: "Engineer+Marketer+Manager",
   about: `
     <p>
       Tech wizard and status quo saboteur.
     </p>
     <p>
-      My days are reading, coding, and movies.
+      My days: reading, coding, and movies.
     </p>
     <p>
-      Fueled by cappuccinos and sunny doggo walks.
+      Fueled by cappuccinos and doggo walks.
     </p>
     <p>
       Bogotá-based. 🇨🇴
