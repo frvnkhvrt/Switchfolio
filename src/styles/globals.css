@@ -10,26 +10,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply font-sans;
 }
 
-/* Remove rounded corners from video controls */
-video {
-  border-radius: 0 !important;
-}
-
-video::-webkit-media-controls-panel {
-  border-radius: 0 !important;
-}
-
-video::-webkit-media-controls {
-  border-radius: 0 !important;
-}
-
-video::-moz-media-controls {
-  border-radius: 0 !important;
-}
-
-video::-ms-media-controls {
-  border-radius: 0 !important;
-}
 ::selection {
   @apply bg-folderTan text-inkBlack;
 }
@@ -51,8 +31,9 @@ video::-ms-media-controls {
 }
 
 .social-card {
-  @apply select-none bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-primaryBlue transition-all duration-100 shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue;
+  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-primaryBlue hover:text-backgroundCream duration-100 shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue;
 }
+
 .skills-card {
   @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-2  py-1 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm;
 }

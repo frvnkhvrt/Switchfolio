@@ -14,7 +14,7 @@ const WritingsBox: React.FC<BlogBoxProps> = ({ img, head, des, link }) => {
       href={link}
       target={LINK_ATTRIBUTES.target}
       rel={LINK_ATTRIBUTES.rel}
-      className=" blog-post flex md:flex-row flex-col   items-center gap-3"
+      className=" blog-post flex md:flex-row flex-col items-center gap-3 focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 dark:focus:ring-folderCream/50 rounded-sm"
     >
       <Image
         className=" md:w-[20%] w-full object-cover  h-[100px] select-none rounded-none"

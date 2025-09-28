@@ -12,12 +12,12 @@ const Banner: React.FC = () => {
           href={EXTERNAL_LINKS.googleTimeSearch}
           target={LINK_ATTRIBUTES.target}
           rel={LINK_ATTRIBUTES.rel}
-          className="  flex gap-1 md:gap-2 items-center text-white/65 hover:text-white/90 transition-all duration-100 font-medium"
+          className="  flex gap-1 md:gap-2 items-center text-white/65 hover:text-white/90 focus:text-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-100 font-medium rounded-sm"
         >
           <span className=" hidden md:block text-inkBlack dark:text-backgroundCream">Local time</span>
-          <span className="md:text-sm text-base text-inkBlack dark:text-backgroundCream">
+          <time className="md:text-sm text-base text-inkBlack dark:text-backgroundCream" dateTime={new Date().toISOString()}>
             <LocalTime />
-          </span>
+          </time>
         </a>
       </section>
     </>

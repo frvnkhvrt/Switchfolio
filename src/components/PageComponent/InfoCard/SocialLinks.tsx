@@ -20,7 +20,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
             rel={LINK_ATTRIBUTES.rel}
             aria-label={ARIA_LABELS.socialLink(link.name)}
           >
-            <Icon icon={link.icon} aria-hidden="true" className="text-inkBlack" />
+            <Icon icon={link.icon} aria-hidden="true"/>
           </a>
         </InfoTip>
       ))}

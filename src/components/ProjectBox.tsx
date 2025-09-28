@@ -1,6 +1,5 @@
 "use client"
 import React, { useState, useEffect } from "react"
-import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { FiGithub } from "react-icons/fi"
 import { GoDotFill } from "react-icons/go"
 import { LuLink, LuShare } from "react-icons/lu"
@@ -18,7 +17,6 @@ interface ProjectBoxProps {
   url: string
   github: string
   skill: string[]
-  preview: string
 }
 
 const ProjectBox: React.FC<ProjectBoxProps> = ({
@@ -29,9 +27,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
   url,
   github,
   skill,
-  preview,
 }) => {
-  const [show, setShow] = useState(false)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -67,41 +63,23 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      setOpen((prev) => !prev)
+    }
+  }
+
   return (
     <div
       onClick={() => setOpen((prev) => !prev)}
-      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan transition-colors duration-100 border border-primaryBlue rounded-none shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm"
+      onKeyDown={handleKeyDown}
+      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 transition-colors duration-100 border border-primaryBlue rounded-none shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:focus:ring-folderCream/50"
+      tabIndex={0}
+      role="button"
+      aria-expanded={open}
+      aria-label={`Project: ${title}. ${status ? 'Running' : 'Building'}. Click to ${open ? 'collapse' : 'expand'} details.`}
     >
-      <AnimatePresence mode="wait">
-        {show && (
-          <motion.div
-            onClick={(e) => {
-              e.stopPropagation()
-            }}
-            initial={{
-              opacity: 0,
-              height: 0,
-            }}
-            animate={{
-              opacity: 1,
-              height: "auto",
-            }}
-            exit={{
-              opacity: 0,
-              height: 0,
-            }}
-            transition={{ ease: "easeInOut", duration: 0.3 }}
-            className=" overflow-hidden"
-          >
-            <div className="p-2 rounded-none">
-              <video className="rounded-none w-full" loop autoPlay controls>
-                <source src={preview} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
       <div className="flex md:flex-row flex-col gap-3 p-2">
         <div className="basis-[22%] p-1 select-none">
           <Image
@@ -133,39 +111,6 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
               )}
             </div>
             <div className="select-none flex gap-2 px-2 text-base">
-              {preview && (
-                <>
-                  {show ? (
-                    <InfoTipProjects text="Close">
-                      <a
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setShow((prev) => !prev)
-                        }}
-                        target={LINK_ATTRIBUTES.target}
-                        rel={LINK_ATTRIBUTES.rel}
-                        className="cursor-pointer hover:text-primaryBlue transition-colors duration-100"
-                      >
-                        <FaEyeSlash />
-                      </a>
-                    </InfoTipProjects>
-                  ) : (
-                    <InfoTipProjects text="Preview">
-                      <a
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setShow((prev) => !prev)
-                        }}
-                        target="_blank"
-                        className="cursor-pointer hover:text-primaryBlue transition-colors duration-100"
-                      >
-                        <FaEye />
-                      </a>
-                    </InfoTipProjects>
-                  )}
-                </>
-              )}
-
               {url && (
                 <InfoTipProjects text="Live">
                   <a

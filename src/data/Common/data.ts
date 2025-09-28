@@ -9,7 +9,6 @@ interface Project {
   url: string
   github: string
   skill: string[]
-  preview: string
 }
 
 interface Writing {
@@ -59,35 +58,22 @@ const projects: Project[] = [
   {
     id: 1,
     img: "/assets/Images/project/placeholder-1.png",
-    title: "Project Title 1",
-    status: true,
-    content: "This is a placeholder description for project 1. Replace with your actual project details.",
+    title: "Bold Choice",
+    status: false,
+    content: "Startup that combines tech and expertise to automate our clients business.",
     url: "https://example.com/project1",
     github: "https://github.com/username/project1",
-    skill: ["React", "TypeScript"],
-    preview: "/assets/Videos/demo/project1.mp4",
+    skill: ["Startup", "Automation", "AI", "Engineering"],
   },
   {
     id: 2,
     img: "/assets/Images/project/placeholder-2.png",
-    title: "Project Title 2",
-    status: false,
-    content: "This is a placeholder description for project 2. Replace with your actual project details.",
+    title: "Portfolio Website",
+    status: true,
+    content: "This website.",
     url: "https://example.com/project2",
     github: "https://github.com/username/project2",
-    skill: ["Next.js", "Tailwind"],
-    preview: "/assets/Videos/demo/project2.mp4",
-  },
-  {
-    id: 3,
-    img: "/assets/Images/project/placeholder-3.png",
-    title: "Project Title 3",
-    status: true,
-    content: "This is a placeholder description for project 3. Replace with your actual project details.",
-    url: "https://example.com/project3",
-    github: "https://github.com/username/project3",
-    skill: ["Python", "Django"],
-    preview: "/assets/Videos/demo/project3.mp4",
+    skill: ["Next.js", "Tailwind", "TypeScript", "Motion"],
   },
 ]
 
@@ -95,23 +81,9 @@ const writings: Writing[] = [
   {
     id: 1,
     img: "/assets/Images/writing/placeholder-1.png",
-    head: "Article Title 1",
-    des: "This is a placeholder description for article 1. Replace with your actual article summary.",
+    head: "My day as a engineer",
+    des: "A common day in my life as founder and engineer of a automation startup.",
     link: "https://medium.com/@username/article-1",
-  },
-  {
-    id: 2,
-    img: "/assets/Images/writing/placeholder-2.png",
-    head: "Article Title 2",
-    des: "This is a placeholder description for article 2. Replace with your actual article summary.",
-    link: "https://medium.com/@username/article-2",
-  },
-  {
-    id: 3,
-    img: "/assets/Images/writing/placeholder-3.png",
-    head: "Article Title 3",
-    des: "This is a placeholder description for article 3. Replace with your actual article summary.",
-    link: "https://medium.com/@username/article-3",
   },
 ]
 

@@ -20,7 +20,7 @@ const InfoCard: React.FC = () => {
         <div className="flex gap-3 items-center">
           <div
             onClick={() => setIsModalOpen(true)}
-            className="cursor-pointer hover:brightness-75 transition duration-200 select-none w-1/3 md:w-auto"
+            className="cursor-pointer hover:brightness-75 focus:brightness-75 focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 dark:focus:ring-folderCream/50 transition duration-200 select-none w-1/3 md:w-auto rounded-sm"
             role="button"
             tabIndex={0}
             aria-label={ARIA_LABELS.profileImage(currentPersona.name)}
