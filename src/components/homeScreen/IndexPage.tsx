@@ -36,7 +36,6 @@ const Writings = dynamic(() => import("../PageComponent/Writings"), {
   loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded-lg" />
 })
 // const Newsletter = dynamic(() => import("../PageComponent/Newsletter"))
-// const Quote = dynamic(() => import("../PageComponent/Quote"))
 
 const IndexPage = () => {
   const { isSwitchOn } = useSwitch()
@@ -76,9 +75,6 @@ const IndexPage = () => {
           <AnimatedWrapper delay={0.95}>
             <SupportMe />
           </AnimatedWrapper>
-          {/* <AnimatedWrapper delay={1.05}>
-            <Quote />
-          </AnimatedWrapper> */}
         </div>
         <AnimatedWrapper delay={1.15}>
           <Footer />
