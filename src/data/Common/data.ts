@@ -87,7 +87,7 @@ const writings: Writing[] = [
 ]
 
 const hireText =
-  "Open to full-time jobs and freelance work."
+  "Open to full-time and freelance jobs."
 const emailLink =
   "mailto:franciscohm@icloud.com?subject=Interested%20in%20Hiring%20You"
 
