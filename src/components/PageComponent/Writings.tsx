@@ -23,7 +23,6 @@ const Writings = () => {
             delay={writings.id === 1 ? delayValue : (delayValue += 0.075)}
           >
             <WritingsBox
-              img={writings.img}
               head={writings.head}
               des={writings.des}
               link={writings.link}

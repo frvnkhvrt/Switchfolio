@@ -37,14 +37,6 @@ export const COMPONENT_SIZES = {
     width: 600,
     height: 600,
   },
-  blogImage: {
-    width: 200,
-    height: 100,
-  },
-  projectImage: {
-    width: 200,
-    height: 200,
-  },
 } as const
 
 // Animation delays

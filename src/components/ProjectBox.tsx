@@ -5,11 +5,9 @@ import { GoDotFill } from "react-icons/go"
 import { LuLink } from "react-icons/lu"
 import { InfoTipProjects } from "./InfoTipProjects"
 import { AnimatePresence, motion } from "motion/react"
-import Image from "next/image"
-import { COMPONENT_SIZES, LINK_ATTRIBUTES } from "@/constants"
+import { LINK_ATTRIBUTES } from "@/constants"
 
 interface ProjectBoxProps {
-  img: string
   status: boolean
   title: string
   content: string
@@ -19,7 +17,6 @@ interface ProjectBoxProps {
 }
 
 const ProjectBox: React.FC<ProjectBoxProps> = ({
-  img,
   status,
   title,
   content,
@@ -61,19 +58,10 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
       aria-expanded={open}
       aria-label={`Project: ${title}. ${status ? 'Running' : 'Building'}. Click to ${open ? 'collapse' : 'expand'} details.`}
     >
-      <div className="flex md:flex-row flex-col gap-3 p-2">
-        <div className="basis-[22%] p-1 select-none">
-          <Image
-            className="rounded-none md:h-[130px] h-[200px] w-full object-cover"
-            src={img}
-            alt="Project Image"
-            width={COMPONENT_SIZES.projectImage.width}
-            height={COMPONENT_SIZES.projectImage.height}
-          />
-        </div>
-        <div className="basis-[78%] flex flex-col md:gap-0 gap-1">
-          <div className="flex justify-between items-center">
-            <div className="flex gap-2 items-center truncate">
+      <div className="flex flex-col gap-3 p-2">
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-start">
+            <div className="flex gap-2 items-center truncate flex-1">
               <h1 className="text-2xl font-semibold dark:text-backgroundCream">{title}</h1>
               {status ? (
                 <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-primaryBlue/10 text-primaryBlue dark:bg-availableGreen/10 dark:text-availableGreen">
@@ -91,7 +79,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
                 </div>
               )}
             </div>
-            <div className="select-none flex gap-2 px-2 text-base">
+            <div className="select-none flex gap-3 text-lg">
               {url && (
                 <InfoTipProjects text="Live">
                   <a

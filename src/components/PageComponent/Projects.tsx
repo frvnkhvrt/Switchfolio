@@ -25,13 +25,11 @@ const Projects = () => {
           >
             <ProjectBox
               title={project.title}
-              img={project.img}
               content={project.content}
               status={project.status}
               skill={project.skill}
               url={project.url || ""}
               github={project.github || ""}
-              preview={project.preview || ""}
             />
           </AnimatedWrapper>
         ))}
