@@ -13,7 +13,7 @@ export const franciscoData = {
       My days: reading, coding, and movies.
     </p>
     <p>
-      Fueled by cappuccinos and doggo walks.
+      Fueled by cappuccinos and dog walks.
     </p>
     <p>
       Bogotá-based. 🇨🇴
