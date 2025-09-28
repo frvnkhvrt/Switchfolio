@@ -34,7 +34,6 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  // Engineer
   { id: 1, icon: "simple-icons:cplusplus", text: "C++" },
   { id: 2, icon: "simple-icons:oracle", text: "Java" },
   { id: 3, icon: "simple-icons:python", text: "Python" },
@@ -43,29 +42,20 @@ const skills: Skill[] = [
   { id: 6, icon: "simple-icons:tensorflow", text: "TensorFlow" },
   { id: 7, icon: "simple-icons:keras", text: "Keras" },
   { id: 8, icon: "simple-icons:mysql", text: "SQL" },
-  { id: 9, icon: "simple-icons:javascript", text: "JavaScript" },
-  { id: 10, icon: "simple-icons:typescript", text: "TypeScript" },
-  { id: 11, icon: "simple-icons:nextdotjs", text: "Next.js" },
-  { id: 12, icon: "simple-icons:vercel", text: "Vercel" },
-  { id: 13, icon: "simple-icons:git", text: "Git" },
-  { id: 14, icon: "simple-icons:github", text: "GitHub" },
-  { id: 15, icon: "simple-icons:openai", text: "OpenAI" },
-  { id: 16, icon: "simple-icons:docker", text: "Docker" },
-  { id: 17, icon: "simple-icons:kubernetes", text: "Kubernetes" },
+  { id: 9, icon: "simple-icons:openai", text: "LLMs" },
+  { id: 10, icon: "simple-icons:javascript", text: "JavaScript" },
+  { id: 11, icon: "simple-icons:typescript", text: "TypeScript" },
+  { id: 12, icon: "simple-icons:nextdotjs", text: "Next.js" },
+  { id: 13, icon: "simple-icons:vercel", text: "Vercel" },
+  { id: 14, icon: "simple-icons:git", text: "Git" },
+  { id: 15, icon: "simple-icons:github", text: "GitHub" },
+  { id: 16, icon: "simple-icons:visualstudiocode", text: "VS Code" },
+  { id: 17, icon: "simple-icons:docker", text: "Docker" },
   { id: 18, icon: "simple-icons:n8n", text: "n8n" },
-  { id: 19, icon: "simple-icons:visualstudiocode", text: "VS Code" },
-  { id: 20, icon: "simple-icons:linux", text: "Linux" },
-  // Marketer
+  { id: 19, icon: "simple-icons:linux", text: "Linux" },
+  { id: 20, icon: "simple-icons:powerbi", text: "Power BI" },
   { id: 21, icon: "simple-icons:salesforce", text: "Salesforce" },
-  { id: 22, icon: "simple-icons:hubspot", text: "HubSpot" },
-  { id: 23, icon: "simple-icons:powerbi", text: "Power BI" },
-  { id: 24, icon: "simple-icons:tableau", text: "Tableau" },
-  { id: 25, icon: "simple-icons:amazon", text: "QuickSight" },
-  // Manager
-  { id: 26, icon: "simple-icons:asana", text: "Asana" },
-  { id: 27, icon: "simple-icons:trello", text: "Trello" },
-  { id: 28, icon: "simple-icons:notion", text: "Notion" },
-  { id: 29, icon: "simple-icons:slack", text: "Slack" },
+  { id: 22, icon: "simple-icons:microsoft", text: "M365" },
 ]
 
 const projects: Project[] = [
