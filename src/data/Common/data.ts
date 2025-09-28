@@ -34,28 +34,25 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { id: 1, icon: "simple-icons:cplusplus", text: "C++" },
-  { id: 2, icon: "simple-icons:oracle", text: "Java" },
-  { id: 3, icon: "simple-icons:python", text: "Python" },
-  { id: 4, icon: "simple-icons:r", text: "R" },
-  { id: 5, icon: "simple-icons:pytorch", text: "PyTorch" },
-  { id: 6, icon: "simple-icons:tensorflow", text: "TensorFlow" },
-  { id: 7, icon: "simple-icons:keras", text: "Keras" },
-  { id: 8, icon: "simple-icons:mysql", text: "SQL" },
-  { id: 9, icon: "simple-icons:openai", text: "LLMs" },
-  { id: 10, icon: "simple-icons:javascript", text: "JavaScript" },
-  { id: 11, icon: "simple-icons:typescript", text: "TypeScript" },
-  { id: 12, icon: "simple-icons:nextdotjs", text: "Next.js" },
-  { id: 13, icon: "simple-icons:vercel", text: "Vercel" },
-  { id: 14, icon: "simple-icons:git", text: "Git" },
-  { id: 15, icon: "simple-icons:github", text: "GitHub" },
-  { id: 16, icon: "simple-icons:visualstudiocode", text: "VS Code" },
-  { id: 17, icon: "simple-icons:docker", text: "Docker" },
-  { id: 18, icon: "simple-icons:n8n", text: "n8n" },
-  { id: 19, icon: "simple-icons:linux", text: "Linux" },
-  { id: 20, icon: "simple-icons:powerbi", text: "Power BI" },
-  { id: 21, icon: "simple-icons:salesforce", text: "Salesforce" },
-  { id: 22, icon: "simple-icons:microsoft", text: "M365" },
+  { id: 1, icon: "simple-icons:c", text: "C" },
+  { id: 2, icon: "simple-icons:cplusplus", text: "C++" },
+  { id: 3, icon: "simple-icons:oracle", text: "Java" },
+  { id: 4, icon: "simple-icons:python", text: "Python" },
+  { id: 5, icon: "simple-icons:mysql", text: "SQL" },
+  { id: 6, icon: "simple-icons:pytorch", text: "PyTorch" },
+  { id: 7, icon: "simple-icons:tensorflow", text: "TensorFlow" },
+  { id: 8, icon: "simple-icons:keras", text: "Keras" },
+  { id: 9, icon: "simple-icons:javascript", text: "JavaScript" },
+  { id: 10, icon: "simple-icons:nextdotjs", text: "Next.js" },
+  { id: 11, icon: "simple-icons:vercel", text: "Vercel" },
+  { id: 12, icon: "simple-icons:github", text: "GitHub" },
+  { id: 13, icon: "simple-icons:visualstudiocode", text: "VS Code" },
+  { id: 14, icon: "simple-icons:openai", text: "OpenAI API" },
+  { id: 15, icon: "simple-icons:n8n", text: "n8n" },
+  { id: 16, icon: "simple-icons:docker", text: "Docker" },
+  { id: 17, icon: "simple-icons:linux", text: "Linux" },
+  { id: 18, icon: "simple-icons:salesforce", text: "Salesforce" },
+  { id: 19, icon: "simple-icons:tableau", text: "Tableau" },
 ]
 
 const projects: Project[] = [
@@ -119,7 +116,7 @@ const navLinks: NavLink[] = [
 ]
 
 const newsText =
-  "Lock in, stay wired, and claim first dibs on the chaos I'm unleashing next."
+  "Stay wired on the chaos I'm unleashing."
 
   const supportText =
   "Dig my vibe? Fuel my grind."
