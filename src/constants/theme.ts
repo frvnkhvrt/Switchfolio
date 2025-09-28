@@ -14,6 +14,7 @@ export const colors = {
   // Dark theme colors
   darkerBlue: "#1e3a8a",
   backgroundCreamDark: "#f6f7eb", // Same as light for text
+  availableGreen: "#22c55e",
 }
 
 // Shadow values
