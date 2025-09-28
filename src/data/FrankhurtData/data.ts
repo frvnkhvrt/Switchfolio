@@ -15,7 +15,7 @@ export const frankhurtData = {
     Driven by Coke sips and midnight dog walks.
     </p>
     <p>
-    Lurking.
+    ロムっている。
     </p>`,
   image: "/assets/Images/pfps/Frankhurt.png",
   contact: "",
