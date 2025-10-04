@@ -1,14 +1,23 @@
+"use client"
 import React from "react"
 import SectionTitle from "../SectionTitle"
-import { supportText } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
+import { useSwitch } from "../Context/SwitchContext"
 
 const SupportMe = () => {
+  const { isSwitchOn } = useSwitch()
+  
+  // Francisco (isSwitchOn = false): Professional tone
+  // Frankhurt (isSwitchOn = true): Casual, edgy tone
+  const supportMessage = isSwitchOn
+    ? "Dig my vibe? Fuel my grind."
+    : "Support my work and future projects."
+
   return (
-    <section className="flex flex-col gap-0.5">
-      <SectionTitle title="Support Me" />
-      <div className=" flex flex-col gap-2">
-        <p>{supportText}</p>
+    <section className="flex flex-col gap-2">
+      <SectionTitle title="Support Me" level={4} />
+      <div className="flex flex-col gap-2">
+        <p>{supportMessage}</p>
         <div className="flex flex-wrap items-center gap-2">
           <a
             className="btn"

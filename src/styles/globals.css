@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  @apply focus-visible:outline-none;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 2rem; /* Account for fixed nav */
+}
+
 body {
   @apply bg-backgroundCream text-inkBlack font-mono dark:bg-darkerBlue dark:text-backgroundCreamDark;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -14,16 +31,114 @@ h1, h2, h3, h4, h5, h6 {
   @apply bg-folderTan text-inkBlack;
 }
 
- /* For Firefox-specific styling */
 ::-moz-selection {
   @apply bg-folderTan text-inkBlack;
 }
 
+/* ============================================
+   ACCESSIBILITY STYLES
+   ============================================ */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip links */
+.skip-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 1rem 1.5rem;
+  background: #3e43f0;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0;
+  transition: all 0.2s ease;
+}
+
+.skip-link:focus {
+  left: 0;
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Focus visible styles for keyboard navigation */
+.keyboard-user *:focus-visible,
+*:focus-visible {
+  outline: 2px solid #3e43f0;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.dark .keyboard-user *:focus-visible,
+.dark *:focus-visible {
+  outline-color: #ecd4b4;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px !important;
+  }
+  
+  button, a {
+    text-decoration: underline;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch target minimum size */
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Ensure sufficient color contrast */
+.text-secondary {
+  @apply text-gray-600 dark:text-gray-300;
+}
+
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
+
 .screen {
-  @apply md:w-[800px] md:mx-auto px-4 md:py-14 py-4;
+  @apply md:w-[800px] md:mx-auto px-4 md:py-10 py-3;
 }
 .main-screen {
-  @apply py-3;
+  @apply py-2;
 }
 
 .pro-pic {
@@ -31,11 +146,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .social-card {
-  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-1.5 text-[1.35rem] hover:bg-primaryBlue hover:text-backgroundCream duration-100 shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue;
+  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-1 text-[1.35rem] hover:bg-primaryBlue hover:text-backgroundCream duration-100 shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue;
 }
 
 .skills-card {
-  @apply select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-2  py-1 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm;
+  @apply select-none transition-colors duration-100 flex flex-row gap-0.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm min-h-[44px];
 }
 
 .head-name {
@@ -43,13 +158,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .showMore-btn {
-  @apply select-none bg-primaryBlue/10 w-full px-2 py-1 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-100;
+  @apply select-none bg-primaryBlue/10 w-full px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-100 text-xs;
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-2  py-1 rounded-none shadow-sm dark:shadow-dark-sm;
+  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-1.5 py-0.5 rounded-none shadow-sm dark:shadow-dark-sm text-xs;
 }
 
 .blog-post {
-  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-2 rounded-none transition-colors duration-100 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm;
+  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-1.5 rounded-none transition-colors duration-100 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm;
 }

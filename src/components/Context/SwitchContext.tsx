@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from "react"
 import { SwitchContextType } from "@/types"
 
-const SwitchContext = createContext<SwitchContextType | undefined>(undefined)
+export const SwitchContext = createContext<SwitchContextType | undefined>(undefined)
 
 export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

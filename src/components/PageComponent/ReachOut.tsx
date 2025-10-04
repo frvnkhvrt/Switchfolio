@@ -10,8 +10,8 @@ const ReachOut = () => {
   const contactLink = isSwitchOn ? frankhurtContactLink : franciscoContactLink
 
   return (
-    <section className="flex flex-col gap-0.5">
-      <SectionTitle title="Get in touch" />
+    <section className="flex flex-col gap-2">
+      <SectionTitle title="Get in touch" level={4} />
       <div className=" flex flex-col gap-2.5">
         <p>{isSwitchOn ? frankhurtContact : franciscoContact}</p>
         <div>
@@ -24,6 +24,7 @@ const ReachOut = () => {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   )

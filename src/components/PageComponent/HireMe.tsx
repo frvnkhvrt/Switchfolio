@@ -5,8 +5,8 @@ import { Icon } from "@iconify/react"
 
 const HireMe = () => {
   return (
-    <section className="flex flex-col gap-0.5">
-      <SectionTitle title="Hire me" />
+    <section className="flex flex-col gap-1">
+      <SectionTitle title="Hire me" level={4} />
       <div className=" flex flex-col gap-2">
         <p>{hireText}</p>
         <div>

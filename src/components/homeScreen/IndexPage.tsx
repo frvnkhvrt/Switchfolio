@@ -1,41 +1,47 @@
 "use client"
 import dynamic from "next/dynamic"
 import Screen from "@/layout/Screen"
-import AnimatedWrapper from "@/utils/AnimatedWrapper"
+import EnhancedAnimatedWrapper from "@/utils/EnhancedAnimatedWrapper"
 import { useSwitch } from "../Context/SwitchContext"
-import Nav from "../PageComponent/Nav"
+import EnhancedNav from "../PageComponent/EnhancedNav"
+import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
+import { SkeletonCard, SkeletonProject, SkeletonSkills, SkeletonWriting } from "../Loading/SkeletonLoader"
 
-// Lazy load components for better performance
+// Lazy load components for better performance with branded skeleton loaders
 const InfoCard = dynamic(() => import("../PageComponent/InfoCard"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded-lg" />
+  loading: () => <SkeletonCard />
 })
 const AboutMe = dynamic(() => import("../PageComponent/AboutMe"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-24 rounded-lg" />
+  loading: () => <SkeletonCard className="h-24" />
 })
 const ReachOut = dynamic(() => import("../PageComponent/ReachOut"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-20 rounded-lg" />
+  loading: () => <SkeletonCard className="h-20" />
 })
 const HireMe = dynamic(() => import("../PageComponent/HireMe"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-16 rounded-lg" />
+  loading: () => <SkeletonCard className="h-16" />
 })
-const Skills = dynamic(() => import("../PageComponent/Skills"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-28 rounded-lg" />
+const Skills = dynamic(() => import("../PageComponent/EnhancedSkills"), {
+  loading: () => <SkeletonSkills />
 })
 const SupportMe = dynamic(() => import("../PageComponent/SupportMe"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-20 rounded-lg" />
+  loading: () => <SkeletonCard className="h-20" />
 })
 const Footer = dynamic(() => import("../PageComponent/Footer"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-12 rounded-lg" />
+  loading: () => <SkeletonCard className="h-12" />
 })
 
 // Dynamic imports for components
 const Projects = dynamic(() => import("../PageComponent/Projects"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-40 rounded-lg" />
+  loading: () => (
+    <div className="space-y-3">
+      <SkeletonProject />
+      <SkeletonProject />
+    </div>
+  )
 })
 const Writings = dynamic(() => import("../PageComponent/Writings"), {
-  loading: () => <div className="animate-pulse bg-gray-200 h-32 rounded-lg" />
+  loading: () => <SkeletonWriting />
 })
-// const Newsletter = dynamic(() => import("../PageComponent/Newsletter"))
 
 const IndexPage = () => {
   const { isSwitchOn } = useSwitch()
@@ -43,43 +49,42 @@ const IndexPage = () => {
   return (
     <>
       <Screen>
-        <div className="flex flex-col gap-5">
-          <AnimatedWrapper delay={0.15}>
-            <InfoCard />
-          </AnimatedWrapper>
-          <AnimatedWrapper delay={0.25}>
-            <AboutMe />
-          </AnimatedWrapper>
-          <AnimatedWrapper delay={0.35}>
-            <ReachOut />
-          </AnimatedWrapper>
-          {isSwitchOn ? (
-            <></>
-          ) : (
-            <AnimatedWrapper delay={0.45}>
-              <HireMe />
-            </AnimatedWrapper>
-          )}
-          <AnimatedWrapper delay={0.55}>
-            <Skills />
-          </AnimatedWrapper>
-          <AnimatedWrapper delay={0.65}>
-            <Projects />
-          </AnimatedWrapper>
-          <AnimatedWrapper delay={0.75}>
-            <Writings />
-          </AnimatedWrapper>
-          {/* <AnimatedWrapper delay={0.85}>
-            <Newsletter />
-          </AnimatedWrapper> */}
-          <AnimatedWrapper delay={0.95}>
-            <SupportMe />
-          </AnimatedWrapper>
-        </div>
-        <AnimatedWrapper delay={1.15}>
-          <Footer />
-        </AnimatedWrapper>
-        <Nav />
+        <main id="main-content" role="main">
+          <PersonaSwitchTransition>
+            <div className="flex flex-col gap-4">
+            <EnhancedAnimatedWrapper delay={0.15} variant="blur">
+              <InfoCard />
+            </EnhancedAnimatedWrapper>
+            <EnhancedAnimatedWrapper delay={0.25} variant="slideUp">
+              <AboutMe />
+            </EnhancedAnimatedWrapper>
+            <EnhancedAnimatedWrapper delay={0.35} variant="slideUp">
+              <ReachOut />
+            </EnhancedAnimatedWrapper>
+            {!isSwitchOn && (
+              <EnhancedAnimatedWrapper delay={0.45} variant="slideUp">
+                <HireMe />
+              </EnhancedAnimatedWrapper>
+            )}
+            <EnhancedAnimatedWrapper delay={0.55} variant="fade">
+              <Skills />
+            </EnhancedAnimatedWrapper>
+            <EnhancedAnimatedWrapper delay={0.65} variant="slideUp">
+              <Projects />
+            </EnhancedAnimatedWrapper>
+            <EnhancedAnimatedWrapper delay={0.75} variant="slideUp">
+              <Writings />
+            </EnhancedAnimatedWrapper>
+            <EnhancedAnimatedWrapper delay={0.95} variant="slideUp">
+              <SupportMe />
+            </EnhancedAnimatedWrapper>
+            </div>
+            <EnhancedAnimatedWrapper delay={1.15} variant="fade">
+              <Footer />
+            </EnhancedAnimatedWrapper>
+          </PersonaSwitchTransition>
+        </main>
+        <EnhancedNav />
       </Screen>
     </>
   )

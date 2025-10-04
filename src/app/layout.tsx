@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
+import PlausibleAnalytics from "@/components/Analytics/PlausibleAnalytics"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     default: "Francisco Hurtado",
     template: "%s | Francisco Hurtado"
   },
-  description: "Francisco Hurtado - Engineer + Marketer + Manager specializing in innovative solutions.",
+  description: "Francisco Hurtado - Engineer + Marketer + Manager.",
   keywords: ["Francisco Hurtado", "Portfolio", "Engineer", "Marketer", "Manager", "Coder"],
   authors: [{ name: "Francisco Hurtado" }],
   creator: "Francisco Hurtado",
@@ -94,15 +95,47 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="theme-color" content="#3e43f0" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/assets/Images/icon/icon-192.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Switchfolio" />
+      </head>
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
-          <Toaster />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: '#3e43f0',
+                color: '#fff',
+              },
+              success: {
+                iconTheme: {
+                  primary: '#22c55e',
+                  secondary: '#fff',
+                },
+              },
+              error: {
+                iconTheme: {
+                  primary: '#ef4444',
+                  secondary: '#fff',
+                },
+              },
+            }}
+          />
           {children}
           <SpeedInsights />
           <Analytics />
+          <PlausibleAnalytics />
         </ErrorBoundary>
       </body>
     </html>

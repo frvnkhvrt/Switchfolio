@@ -10,6 +10,15 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      animation: {
+        shimmer: 'shimmer 2s infinite',
+      },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+      },
       colors: {
         ...colors,
         // Flatten theme colors for Tailwind compatibility

@@ -9,8 +9,8 @@ const AboutMe: React.FC = () => {
   const currentPersona = personaService.getCurrentPersona(isSwitchOn)
 
   return (
-    <section className="flex flex-col gap-0.5">
-      <SectionTitle title="About" />
+    <section className="flex flex-col gap-2">
+      <SectionTitle title="About" level={4} />
       <div className="flex flex-col gap-2">
         <div
           dangerouslySetInnerHTML={{

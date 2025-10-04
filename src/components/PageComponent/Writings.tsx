@@ -13,8 +13,8 @@ const Writings = () => {
   const visibleWritings = showAll ? writings : writings.slice(0, 2)
   let delayValue = 0
   return (
-    <section className="flex flex-col gap-3">
-      <SectionTitle title="Writings" />
+    <section className="flex flex-col gap-2">
+      <SectionTitle title="Writings" level={4} />
       {/* <StillWorking /> */}
       <div className="  flex flex-col md:gap-2.5 gap-3.5">
         {visibleWritings.map((writings) => (

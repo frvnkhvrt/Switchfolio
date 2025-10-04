@@ -5,8 +5,9 @@ import { personaService } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
 import { ProfileHeader } from "@/components/PageComponent/InfoCard/ProfileHeader"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
-import { ProfileImageModal } from "@/components/PageComponent/InfoCard/ProfileImageModal"
-import { ARIA_LABELS, COMPONENT_SIZES } from "@/constants"
+import EnhancedProfileImageModal from "@/components/PageComponent/InfoCard/EnhancedProfileImageModal"
+import { ariaLabels } from "@/utils/accessibility"
+import { COMPONENT_SIZES } from "@/constants"
 
 const InfoCard: React.FC = () => {
   const { isSwitchOn } = useSwitch()
@@ -15,15 +16,15 @@ const InfoCard: React.FC = () => {
 
   return (
     <section>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5">
         <ProfileHeader />
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-2 items-center">
           <div
             onClick={() => setIsModalOpen(true)}
             className="cursor-pointer hover:brightness-75 focus:brightness-75 focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 dark:focus:ring-folderCream/50 transition duration-200 select-none w-1/3 md:w-auto rounded-sm"
             role="button"
             tabIndex={0}
-            aria-label={ARIA_LABELS.profileImage(currentPersona.name)}
+            aria-label={ariaLabels.profileImage(currentPersona.name)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault()
@@ -41,8 +42,8 @@ const InfoCard: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-2">
-            <div className="flex gap-4 items-center">
+          <div className="flex flex-col gap-1.5">
+            <div className="flex gap-3 items-center">
               <h1 className="head-name">
                 {currentPersona.name}
               </h1>
@@ -53,7 +54,7 @@ const InfoCard: React.FC = () => {
         </div>
       </div>
 
-      <ProfileImageModal
+      <EnhancedProfileImageModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         persona={currentPersona}

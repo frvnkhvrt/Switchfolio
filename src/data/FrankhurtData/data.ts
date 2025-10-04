@@ -6,7 +6,7 @@ export const frankhurtData = {
   bio: "Gamer & Cinephile",
   about: `
     <p>
-      Code conjurer and axiom arsonist.
+      Words conjurer and axiom arsonist.
     </p>
     <p>
       My nights: writing, hacks, and games.
