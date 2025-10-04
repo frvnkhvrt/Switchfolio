@@ -105,8 +105,8 @@ const projects: Project[] = [
     title: "AI Content Generator",
     status: 'running',
     content: "Intelligent content creation platform using OpenAI and Anthropic APIs. Features automated blog post generation, social media content creation, and SEO-optimized article writing.",
-    url: "https://ai-content-generator.frankhurt.dev",
-    github: "https://github.com/frvnkhvrt/ai-content-gen",
+    url: "",
+    github: "",
     skill: ["OpenAI API", "Anthropic API", "Next.js", "Node.js", "PostgreSQL", "Redis"],
     caseStudy: {
       problem: "Content creators struggle with consistent output and SEO optimization. Manual content creation is time-intensive and often lacks strategic keyword integration.",

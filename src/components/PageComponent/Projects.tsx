@@ -59,7 +59,7 @@ const Projects = () => {
       
       {showAllVis && (
         <motion.button
-          className="showMore-btn flex items-center justify-center gap-2 min-h-[44px] focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+          className="showMore-btn flex items-center justify-center gap-2 min-h-[36px] focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
           onClick={() => setShowAll((prev) => !prev)}
           aria-expanded={showAll}
           aria-label={showAll ? "Show fewer projects" : "Show all projects"}

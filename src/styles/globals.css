@@ -138,7 +138,7 @@ textarea {
   @apply md:w-[800px] md:mx-auto px-4 md:py-10 py-3;
 }
 .main-screen {
-  @apply py-2;
+  @apply py-2 pb-20;
 }
 
 .pro-pic {
@@ -150,7 +150,7 @@ textarea {
 }
 
 .skills-card {
-  @apply select-none transition-colors duration-100 flex flex-row gap-0.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm min-h-[44px];
+  @apply select-none transition-colors duration-100 flex flex-row gap-0.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm min-h-[36px];
 }
 
 .head-name {
@@ -158,11 +158,11 @@ textarea {
 }
 
 .showMore-btn {
-  @apply select-none bg-primaryBlue/10 w-full px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-100 text-xs;
+  @apply select-none bg-primaryBlue/10 w-full px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-100 text-xs min-h-[36px];
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-1.5 py-0.5 rounded-none shadow-sm dark:shadow-dark-sm text-xs;
+  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-1.5 py-0.5 rounded-none shadow-sm dark:shadow-dark-sm text-xs min-h-[36px];
 }
 
 .blog-post {

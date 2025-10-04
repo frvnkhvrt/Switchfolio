@@ -69,7 +69,7 @@ const EnhancedProjectBox: React.FC<EnhancedProjectBoxProps> = ({
       case 'complete':
         return {
           label: 'Complete',
-          color: 'bg-primaryBlue/10 text-primaryBlue dark:bg-primaryBlue/20 dark:text-primaryBlue'
+          color: 'bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400'
         }
       case 'building':
       default:
@@ -98,12 +98,12 @@ const EnhancedProjectBox: React.FC<EnhancedProjectBoxProps> = ({
     >
       <div className="flex flex-col gap-2 p-3">
         <div className="flex flex-col gap-1.5">
-          <div className="flex justify-between items-start">
-            <div className="flex gap-1.5 items-center truncate flex-1">
-              <h3 className="text-2xl font-semibold dark:text-backgroundCreamDark">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-0">
+            <div className="flex gap-1.5 items-center truncate flex-1 min-w-0">
+              <h3 className="text-xl sm:text-2xl font-semibold dark:text-backgroundCreamDark truncate">
                 {title}
               </h3>
-              <div className={`select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center ${statusColor}`}>
+              <div className={`select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center flex-shrink-0 ${statusColor}`}>
                 <motion.span
                   animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -113,16 +113,16 @@ const EnhancedProjectBox: React.FC<EnhancedProjectBoxProps> = ({
                 <span>{statusLabel}</span>
               </div>
             </div>
-            
+
             {/* Action Links */}
-            <div className="select-none flex gap-1.5 text-xl">
+            <div className="select-none flex gap-1.5 text-xl flex-shrink-0">
               {hasCaseStudy && onViewDetails && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation()
                     onViewDetails()
                   }}
-                  className="px-2 py-0.5 text-sm bg-primaryBlue text-white rounded-none hover:bg-primaryBlue/90 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  className="px-2 py-0.5 text-xs bg-primaryBlue text-white rounded-none hover:bg-primaryBlue/90 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 min-h-[36px]"
                   aria-label={`View detailed case study for ${title}`}
                 >
                   Details
