@@ -6,11 +6,6 @@
 import { useEffect, useCallback } from 'react'
 import { useSwitch } from '@/components/Context/SwitchContext'
 
-declare global {
-  interface Window {
-    plausible?: (event: string, options?: Record<string, any>) => void
-  }
-}
 
 export const useAnalytics = () => {
   const { isSwitchOn } = useSwitch()
@@ -28,7 +23,7 @@ export const useAnalytics = () => {
   }, [isSwitchOn])
 
   // Track custom events
-  const trackEvent = useCallback((eventName: string, props?: Record<string, any>) => {
+  const trackEvent = useCallback((eventName: string, props?: Record<string, unknown>) => {
     if (typeof window !== 'undefined' && window.plausible) {
       window.plausible(eventName, {
         props: {
@@ -74,7 +69,7 @@ export const useAnalytics = () => {
   }, [trackEvent])
 
   // Track PWA interactions
-  const trackPWAInteraction = useCallback((action: string, details?: Record<string, any>) => {
+  const trackPWAInteraction = useCallback((action: string, details?: Record<string, unknown>) => {
     trackEvent('pwa_interaction', {
       action,
       ...details

@@ -15,7 +15,6 @@ export const usePersonaSEO = () => {
 
   useEffect(() => {
     // Update document title
-    const baseTitle = "Francisco Hurtado"
     const personaTitle = isSwitchOn ? "Frankhurt" : "Francisco Hurtado"
     document.title = `${personaTitle} - ${currentPersona.bio.split('.')[0]}`
 

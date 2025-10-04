@@ -15,7 +15,6 @@ const contactSchema = z.object({
   persona: z.enum(['francisco', 'frankhurt']),
 })
 
-type ContactFormData = z.infer<typeof contactSchema>
 
 // Rate limiting (simple in-memory store)
 const submissions = new Map<string, number[]>()
@@ -171,7 +170,7 @@ IP Address: ${ip}
       return NextResponse.json(
         {
           error: 'Validation failed',
-          details: error.issues.map((err: any) => ({
+          details: error.issues.map((err) => ({
             field: err.path.join('.'),
             message: err.message,
           }))

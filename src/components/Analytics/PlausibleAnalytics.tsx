@@ -8,6 +8,13 @@
 import { useEffect, useContext } from 'react'
 import { SwitchContext } from '@/components/Context/SwitchContext'
 
+// Extend Window interface for Plausible
+declare global {
+  interface Window {
+    plausible?: (event: string, options?: { props?: Record<string, unknown> }) => void
+  }
+}
+
 interface PlausibleAnalyticsProps {
   domain?: string
   enabled?: boolean
@@ -32,8 +39,8 @@ export const PlausibleAnalytics: React.FC<PlausibleAnalyticsProps> = ({
 
     // Add manual pageview tracking for SPA navigation
     const trackPageview = () => {
-      if (typeof window !== 'undefined' && (window as any).plausible) {
-        ;(window as any).plausible('pageview', {
+      if (typeof window !== 'undefined' && window.plausible) {
+        window.plausible('pageview', {
           props: {
             persona: isSwitchOn ? 'frankhurt' : 'francisco',
             theme: isSwitchOn ? 'dark' : 'light',
@@ -53,8 +60,8 @@ export const PlausibleAnalytics: React.FC<PlausibleAnalyticsProps> = ({
 
     // Track persona switches
     const handlePersonaSwitch = () => {
-      if (typeof window !== 'undefined' && (window as any).plausible) {
-        ;(window as any).plausible('persona_switch', {
+      if (typeof window !== 'undefined' && window.plausible) {
+        window.plausible('persona_switch', {
           props: {
             from: isSwitchOn ? 'francisco' : 'frankhurt',
             to: isSwitchOn ? 'frankhurt' : 'francisco',

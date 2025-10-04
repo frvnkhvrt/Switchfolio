@@ -29,7 +29,7 @@ export const InstallPrompt: React.FC = () => {
     // Check if already installed
     if (typeof window !== 'undefined') {
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches
-      const isInWebAppiOS = (window.navigator as any).standalone === true
+      const isInWebAppiOS = (window.navigator as { standalone?: boolean }).standalone === true
       setIsInstalled(isStandalone || isInWebAppiOS)
     }
 

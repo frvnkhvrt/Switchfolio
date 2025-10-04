@@ -6,10 +6,9 @@
 "use client"
 
 import React from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 import { Icon } from "@iconify/react"
 import { AccessibleModal } from "@/components/Accessibility/AccessibleModal"
-import { designSystem } from "@/constants/designSystem"
 
 interface CaseStudy {
   problem: string

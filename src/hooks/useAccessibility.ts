@@ -150,7 +150,7 @@ export const useKeyboardUser = () => {
 /**
  * Hook for managing ARIA live region announcements
  */
-export const useLiveRegion = (politeness: 'polite' | 'assertive' = 'polite') => {
+export const useLiveRegion = () => {
   const [message, setMessage] = useState('')
   const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 

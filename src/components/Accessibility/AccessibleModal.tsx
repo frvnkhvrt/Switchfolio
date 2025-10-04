@@ -8,7 +8,6 @@
 import React, { useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useFocusTrap, useEscapeKey, useBodyScrollLock } from '@/hooks/useAccessibility'
-import { designSystem } from '@/constants/designSystem'
 
 interface AccessibleModalProps {
   isOpen: boolean
