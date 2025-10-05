@@ -24,8 +24,7 @@ export const EnhancedProfileImageModal: React.FC<EnhancedProfileImageModalProps>
     <AccessibleModal
       isOpen={isOpen}
       onClose={onClose}
-      title={`${persona.name}'s Profile Picture`}
-      description="Enlarged view of the profile picture. Press Escape or click the close button to dismiss."
+      title=""
       size="lg"
       closeOnBackdropClick={true}
     >

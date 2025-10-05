@@ -62,9 +62,9 @@ export const AccessibleModal: React.FC<AccessibleModalProps> = ({
   }
 
   const modalVariants = {
-    hidden: shouldReduceMotion 
+    hidden: shouldReduceMotion
       ? { opacity: 0 }
-      : { opacity: 0, scale: 0.95, y: 20 },
+      : { opacity: 0, scale: 0.95, y: 50 },
     visible: shouldReduceMotion
       ? { opacity: 1 }
       : { opacity: 1, scale: 1, y: 0 },
@@ -75,7 +75,7 @@ export const AccessibleModal: React.FC<AccessibleModalProps> = ({
       {isOpen && (
         <motion.div
           ref={containerRef as React.RefObject<HTMLDivElement>}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 min-h-screen"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -106,48 +106,78 @@ export const AccessibleModal: React.FC<AccessibleModalProps> = ({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-start justify-between p-6 border-b-2 border-primaryBlue dark:border-folderCream">
-              <div className="flex-1 pr-4">
-                <h2
-                  id="modal-title"
-                  className="text-2xl font-bold text-inkBlack dark:text-backgroundCreamDark"
-                >
-                  {title}
-                </h2>
-                {description && (
-                  <p
-                    id="modal-description"
-                    className="mt-2 text-sm text-gray-600 dark:text-gray-300"
+            {title && (
+              <div className="flex items-start justify-between p-6 border-b-2 border-primaryBlue dark:border-folderCream">
+                <div className="flex-1 pr-4">
+                  <h2
+                    id="modal-title"
+                    className="text-2xl font-bold text-inkBlack dark:text-backgroundCreamDark"
                   >
-                    {description}
-                  </p>
-                )}
-              </div>
+                    {title}
+                  </h2>
+                  {description && (
+                    <p
+                      id="modal-description"
+                      className="mt-2 text-sm text-gray-600 dark:text-gray-300"
+                    >
+                      {description}
+                    </p>
+                  )}
+                </div>
 
-              {/* Close Button */}
-              <motion.button
-                onClick={onClose}
-                className="flex-shrink-0 p-2 rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
-                aria-label="Close modal"
-                whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 90 }}
-                whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+                {/* Close Button */}
+                <motion.button
+                  onClick={onClose}
+                  className="flex-shrink-0 p-2 rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  aria-label="Close modal"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 90 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </motion.button>
-            </div>
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </motion.button>
+              </div>
+            )}
+
+            {/* Close Button - Always visible when no title */}
+            {!title && (
+              <div className="flex justify-end p-4">
+                <motion.button
+                  onClick={onClose}
+                  className="p-2 rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  aria-label="Close modal"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 90 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </motion.button>
+              </div>
+            )}
 
             {/* Body */}
             <div className="flex-1 overflow-y-auto p-6">
