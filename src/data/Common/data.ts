@@ -70,7 +70,7 @@ const projects: Project[] = [
     img: "/assets/Images/project/",
     title: "Bold Choice",
     status: 'building',
-    content: "Revolutionary tech startup building autonomous robotics solutions for industrial automation. Currently in development phase, focusing on AI-driven manufacturing optimization and smart factory implementations.",
+    content: "Tech startup building autonomous robotics solutions for industrial automation. Currently in development phase, focusing on AI-driven manufacturing optimization and smart factory implementations.",
     url: "",
     github: "",
     skill: ["Electronics", "Engineering", "Automation", "AI", "Robotics", "IoT"],

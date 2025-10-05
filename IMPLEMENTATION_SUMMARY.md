@@ -103,7 +103,7 @@
 - Proper ARIA attributes
 - Animated close button
 
-#### 6. Enhanced Animations ([`EnhancedAnimatedWrapper.tsx`](src/utils/EnhancedAnimatedWrapper.tsx:1))
+#### 6. Animations ([`AnimatedWrapper.tsx`](src/utils/AnimatedWrapper.tsx:1))
 - **118 lines** with 7 variants
 - fade, slide, slideUp, slideDown, scale, blur, rotate
 - Reduced motion support

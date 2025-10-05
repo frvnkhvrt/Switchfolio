@@ -11,7 +11,7 @@ import { useScreenReaderAnnouncement } from "@/hooks/useAccessibility"
 import { personaService } from "@/services/personaService"
 import { ariaLabels } from "@/utils/accessibility"
 
-export const KeyboardShortcuts = () => {
+const KeyboardShortcuts = () => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
   const announce = useScreenReaderAnnouncement()
 

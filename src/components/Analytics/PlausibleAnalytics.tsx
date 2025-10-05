@@ -20,7 +20,7 @@ interface PlausibleAnalyticsProps {
   enabled?: boolean
 }
 
-export const PlausibleAnalytics: React.FC<PlausibleAnalyticsProps> = ({
+const PlausibleAnalytics: React.FC<PlausibleAnalyticsProps> = ({
   domain = 'frankhurt.dev',
   enabled = process.env.NODE_ENV === 'production'
 }) => {

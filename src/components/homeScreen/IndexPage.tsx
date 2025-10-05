@@ -1,9 +1,9 @@
 "use client"
 import dynamic from "next/dynamic"
 import Screen from "@/layout/Screen"
-import EnhancedAnimatedWrapper from "@/utils/EnhancedAnimatedWrapper"
+import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { useSwitch } from "../Context/SwitchContext"
-import EnhancedNav from "../PageComponent/EnhancedNav"
+import Nav from "../PageComponent/Nav"
 import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
 import { SkeletonCard, SkeletonProject, SkeletonSkills, SkeletonWriting } from "../Loading/SkeletonLoader"
 
@@ -20,7 +20,7 @@ const ReachOut = dynamic(() => import("../PageComponent/ReachOut"), {
 const HireMe = dynamic(() => import("../PageComponent/HireMe"), {
   loading: () => <SkeletonCard className="h-16" />
 })
-const Skills = dynamic(() => import("../PageComponent/EnhancedSkills"), {
+const Skills = dynamic(() => import("../PageComponent/Skills"), {
   loading: () => <SkeletonSkills />
 })
 const SupportMe = dynamic(() => import("../PageComponent/SupportMe"), {
@@ -52,39 +52,39 @@ const IndexPage = () => {
         <main id="main-content" role="main">
           <PersonaSwitchTransition>
             <div className="flex flex-col gap-4">
-            <EnhancedAnimatedWrapper delay={0.15} variant="blur">
+            <AnimatedWrapper delay={0.15} variant="blur">
               <InfoCard />
-            </EnhancedAnimatedWrapper>
-            <EnhancedAnimatedWrapper delay={0.25} variant="slideUp">
+            </AnimatedWrapper>
+            <AnimatedWrapper delay={0.25} variant="slideUp">
               <AboutMe />
-            </EnhancedAnimatedWrapper>
-            <EnhancedAnimatedWrapper delay={0.35} variant="slideUp">
+            </AnimatedWrapper>
+            <AnimatedWrapper delay={0.35} variant="slideUp">
               <ReachOut />
-            </EnhancedAnimatedWrapper>
+            </AnimatedWrapper>
             {!isSwitchOn && (
-              <EnhancedAnimatedWrapper delay={0.45} variant="slideUp">
+              <AnimatedWrapper delay={0.45} variant="slideUp">
                 <HireMe />
-              </EnhancedAnimatedWrapper>
+              </AnimatedWrapper>
             )}
-            <EnhancedAnimatedWrapper delay={0.55} variant="fade">
+            <AnimatedWrapper delay={0.55} variant="fade">
               <Skills />
-            </EnhancedAnimatedWrapper>
-            <EnhancedAnimatedWrapper delay={0.65} variant="slideUp">
+            </AnimatedWrapper>
+            <AnimatedWrapper delay={0.65} variant="slideUp">
               <Projects />
-            </EnhancedAnimatedWrapper>
-            <EnhancedAnimatedWrapper delay={0.75} variant="slideUp">
+            </AnimatedWrapper>
+            <AnimatedWrapper delay={0.75} variant="slideUp">
               <Writings />
-            </EnhancedAnimatedWrapper>
-            <EnhancedAnimatedWrapper delay={0.95} variant="slideUp">
+            </AnimatedWrapper>
+            <AnimatedWrapper delay={0.95} variant="slideUp">
               <SupportMe />
-            </EnhancedAnimatedWrapper>
+            </AnimatedWrapper>
             </div>
-            <EnhancedAnimatedWrapper delay={1.15} variant="fade">
+            <AnimatedWrapper delay={1.15} variant="fade">
               <Footer />
-            </EnhancedAnimatedWrapper>
+            </AnimatedWrapper>
           </PersonaSwitchTransition>
         </main>
-        <EnhancedNav />
+        <Nav />
       </Screen>
     </>
   )

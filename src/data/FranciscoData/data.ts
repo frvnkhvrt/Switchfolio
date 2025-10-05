@@ -23,15 +23,15 @@ export const franciscoData = {
   links: [
     {
       id: 1,
-      name: "LinkedIn",
-      link: "https://www.linkedin.com/in/franciscoahm",
-      icon: "simple-icons:linkedin",
+      name: "Email",
+      link: "mailto:franciscoahurtado@icloud.com",
+      icon: "simple-icons:maildotru",
     },
     {
       id: 2,
-      name: "GitHub",
-      link: "https://github.com/frvnkhvrt",
-      icon: "simple-icons:github",
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/in/franciscoahm",
+      icon: "simple-icons:linkedin",
     },
   ],
   contactLinks: [

@@ -97,5 +97,3 @@ export const SkeletonWriting: React.FC = () => (
     <SkeletonLoader variant="line" count={3} />
   </div>
 )
-
-export default SkeletonLoader

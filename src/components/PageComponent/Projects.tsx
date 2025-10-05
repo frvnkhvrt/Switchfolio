@@ -1,33 +1,20 @@
 "use client"
 import { projects } from "@/data/Common/data"
-import EnhancedProjectBox from "../EnhancedProjectBox"
+import ProjectBox from "../ProjectBox"
 import SectionTitle from "../SectionTitle"
-import ProjectDetailModal from "../Projects/ProjectDetailModal"
 import { useState } from "react"
 import {
   MdKeyboardDoubleArrowDown,
   MdKeyboardDoubleArrowUp,
 } from "react-icons/md"
-import EnhancedAnimatedWrapper from "@/utils/EnhancedAnimatedWrapper"
+import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { motion, useReducedMotion } from "framer-motion"
 
 const Projects = () => {
   const showAllVis = projects.length > 2
   const [showAll, setShowAll] = useState(false)
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const visibleProjects = showAll ? projects : projects.slice(0, 2)
   const shouldReduceMotion = useReducedMotion()
-
-  const handleViewDetails = (project: typeof projects[0]) => {
-    setSelectedProject(project)
-    setIsModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedProject(null)
-  }
 
   let delayValue = 0
   
@@ -36,24 +23,22 @@ const Projects = () => {
       <SectionTitle title="Projects" level={4} />
       <div className="flex flex-col md:gap-2 gap-3" role="list" aria-label="Project list">
         {visibleProjects.map((project) => (
-          <EnhancedAnimatedWrapper
+          <AnimatedWrapper
             key={project.id}
             delay={project.id === 1 ? delayValue : (delayValue += 0.075)}
             variant="slideUp"
           >
             <div role="listitem">
-              <EnhancedProjectBox
+              <ProjectBox
                 title={project.title}
                 content={project.content}
                 status={project.status}
                 skill={project.skill}
                 url={project.url || ""}
                 github={project.github || ""}
-                onViewDetails={() => handleViewDetails(project)}
-                hasCaseStudy={!!project.caseStudy}
               />
             </div>
-          </EnhancedAnimatedWrapper>
+          </AnimatedWrapper>
         ))}
       </div>
       
@@ -76,11 +61,6 @@ const Projects = () => {
         </motion.button>
       )}
 
-      <ProjectDetailModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        project={selectedProject}
-      />
     </section>
   )
 }

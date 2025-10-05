@@ -1,14 +1,19 @@
+/**
+ * Enhanced Project Box Component
+ * Accessible, animated project card with expand/collapse functionality
+ */
+
 "use client"
 import React, { useState, useEffect } from "react"
 import { FiGithub } from "react-icons/fi"
 import { GoDotFill } from "react-icons/go"
 import { LuLink } from "react-icons/lu"
-import { InfoTipProjects } from "./InfoTipProjects"
-import { AnimatePresence, motion } from "motion/react"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { LINK_ATTRIBUTES } from "@/constants"
+import { ariaLabels, isActivationKey } from "@/utils/accessibility"
 
-interface ProjectBoxProps {
-  status: boolean
+interface EnhancedProjectBoxProps {
+  status: 'building' | 'running' | 'complete'
   title: string
   content: string
   url: string
@@ -16,7 +21,7 @@ interface ProjectBoxProps {
   skill: string[]
 }
 
-const ProjectBox: React.FC<ProjectBoxProps> = ({
+const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
   status,
   title,
   content,
@@ -24,132 +29,162 @@ const ProjectBox: React.FC<ProjectBoxProps> = ({
   github,
   skill,
 }) => {
-  const [open, setOpen] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement
       if (!target.closest(".project-box")) {
-        setOpen(false)
+        setIsExpanded(false)
       }
     }
 
     document.addEventListener("click", handleOutsideClick)
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick)
-    }
+    return () => document.removeEventListener("click", handleOutsideClick)
   }, [])
 
+  const handleToggle = () => {
+    setIsExpanded((prev) => !prev)
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (isActivationKey(e.key)) {
       e.preventDefault()
-      setOpen((prev) => !prev)
+      handleToggle()
     }
   }
 
+  const getStatusInfo = (status: 'building' | 'running' | 'complete') => {
+    switch (status) {
+      case 'running':
+        return {
+          label: 'Running',
+          color: 'bg-primaryBlue/10 text-primaryBlue dark:bg-green-500/10 dark:text-green-400'
+        }
+      case 'complete':
+        return {
+          label: 'Complete',
+          color: 'bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400'
+        }
+      case 'building':
+      default:
+        return {
+          label: 'Building',
+          color: 'bg-red-400/10 text-red-400'
+        }
+    }
+  }
+
+  const statusInfo = getStatusInfo(status)
+  const statusLabel = statusInfo.label
+  const statusColor = statusInfo.color
+
   return (
-    <div
-      onClick={() => setOpen((prev) => !prev)}
+    <motion.div
+      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm"
+      onClick={handleToggle}
       onKeyDown={handleKeyDown}
-      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 transition-colors duration-100 border border-primaryBlue rounded-none shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:focus:ring-folderCream/50"
       tabIndex={0}
       role="button"
-      aria-expanded={open}
-      aria-label={`Project: ${title}. ${status ? 'Running' : 'Building'}. Click to ${open ? 'collapse' : 'expand'} details.`}
+      aria-expanded={isExpanded}
+      aria-label={ariaLabels.projectCard(title, statusLabel)}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.99 }}
     >
-      <div className="flex flex-col gap-3 p-2">
-        <div className="flex flex-col gap-2">
-          <div className="flex justify-between items-start">
-            <div className="flex gap-2 items-center truncate flex-1">
-              <h1 className="text-2xl font-semibold dark:text-backgroundCreamDark">{title}</h1>
-              {status ? (
-                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-primaryBlue/10 text-primaryBlue dark:bg-availableGreen/10 dark:text-availableGreen">
-                  <span className="animate-pulse">
-                    <GoDotFill />
-                  </span>
-                  Running
-                </div>
-              ) : (
-                <div className="select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center bg-red-400/10 text-red-400">
-                  <span className="animate-pulse">
-                    <GoDotFill />
-                  </span>
-                  Building
-                </div>
-              )}
+      <div className="flex flex-col gap-2 p-3">
+        <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-0">
+            <div className="flex gap-1.5 items-center truncate flex-1 min-w-0">
+              <h3 className="text-xl sm:text-2xl font-semibold dark:text-backgroundCreamDark truncate">
+                {title}
+              </h3>
+              <div className={`select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center flex-shrink-0 ${statusColor}`}>
+                <motion.span
+                  animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <GoDotFill aria-hidden="true" />
+                </motion.span>
+                <span>{statusLabel}</span>
+              </div>
             </div>
-            <div className="select-none flex gap-3 text-lg">
+
+            {/* Action Links */}
+            <div className="select-none flex gap-1.5 text-xl flex-shrink-0">
               {url && (
-                <InfoTipProjects text="Live">
-                  <a
-                    target={LINK_ATTRIBUTES.target}
-                    rel={LINK_ATTRIBUTES.rel}
-                    className="hover:text-primaryBlue transition-colors duration-100"
-                    href={url}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                    }}
-                  >
-                    <LuLink />
-                  </a>
-                </InfoTipProjects>
+                <a
+                  target={LINK_ATTRIBUTES.target}
+                  rel={LINK_ATTRIBUTES.rel}
+                  className="p-2 hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  href={url}
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label={`View ${title} live site (opens in new tab)`}
+                >
+                  <LuLink aria-hidden="true" />
+                </a>
               )}
               {github && (
-                <InfoTipProjects text="Github">
-                  <a
-                    onClick={(e) => {
-                      e.stopPropagation()
-                    }}
-                    target={LINK_ATTRIBUTES.target}
-                    rel={LINK_ATTRIBUTES.rel}
-                    className="hover:text-primaryBlue transition-colors duration-100"
-                    href={github}
-                  >
-                    <FiGithub />
-                  </a>
-                </InfoTipProjects>
+                <a
+                  onClick={(e) => e.stopPropagation()}
+                  target={LINK_ATTRIBUTES.target}
+                  rel={LINK_ATTRIBUTES.rel}
+                  className="p-2 hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  href={github}
+                  aria-label={`View ${title} on GitHub (opens in new tab)`}
+                >
+                  <FiGithub aria-hidden="true" />
+                </a>
               )}
             </div>
           </div>
-          <p className="opacity-80 dark:text-backgroundCreamDark/80">{content}</p>
+          <p className="text-gray-700 dark:text-gray-300">{content}</p>
         </div>
       </div>
+
+      {/* Expandable Skills Section */}
       <AnimatePresence mode="wait">
-        {open && (
+        {isExpanded && (
           <motion.div
-            initial={{
+            initial={shouldReduceMotion ? { opacity: 0 } : {
               opacity: 0,
               height: 0,
             }}
-            animate={{
+            animate={shouldReduceMotion ? { opacity: 1 } : {
               opacity: 1,
               height: "auto",
             }}
-            exit={{
+            exit={shouldReduceMotion ? { opacity: 0 } : {
               opacity: 0,
               height: 0,
             }}
-            transition={{ ease: "easeInOut", duration: 0.3 }}
-            className=" overflow-hidden"
+            transition={{
+              ease: "easeInOut",
+              duration: shouldReduceMotion ? 0.01 : 0.3
+            }}
+            className="overflow-hidden"
           >
-            <div className="flex border-t border-primaryBlue dark:border-backgroundCream w-[97%] mt-3 md:mt-0 mx-auto" />
-            <div className="flex justify-start items-center md:py-2 py-3 px-3 transition-all duration-100">
-              <div className="flex flex-wrap gap-1.5 select-none">
-                {skill.map((skill, index) => (
-                  <p
+            <div className="flex border-t-2 border-primaryBlue dark:border-backgroundCream w-[95%] mx-auto" />
+            <div className="flex justify-start items-center py-2 px-3 transition-all duration-200">
+              <div className="flex flex-wrap gap-1.5 select-none" role="list" aria-label="Technologies used">
+                {skill.map((skillName, index) => (
+                  <motion.span
                     key={index}
-                    className="border border-primaryBlue px-2 py-0.5 rounded-none text-sm dark:border-folderCream dark:text-folderCream"
+                    role="listitem"
+                    className="border-2 border-primaryBlue px-1 py-1 rounded-none text-xs font-medium flex items-center justify-center text-gray-700 hover:border-primaryBlue hover:text-gray-700 dark:border-folderCream dark:text-folderCream dark:hover:border-folderCream dark:hover:text-folderCream"
+                    initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.8 }}
+                    animate={shouldReduceMotion ? {} : { opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {skill}
-                  </p>
+                    {skillName}
+                  </motion.span>
                 ))}
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   )
 }
 
