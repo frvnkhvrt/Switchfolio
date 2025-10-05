@@ -6,7 +6,6 @@
 "use client"
 
 import React from "react"
-import { AnimatePresence } from "framer-motion"
 import { Icon } from "@iconify/react"
 import { AccessibleModal } from "@/components/Accessibility/AccessibleModal"
 
@@ -22,7 +21,7 @@ interface Project {
   id: number
   img: string
   title: string
-  status: boolean
+  status: 'building' | 'running' | 'complete'
   content: string
   url: string
   github: string
