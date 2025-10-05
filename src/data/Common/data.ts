@@ -139,7 +139,7 @@ const writings: Writing[] = [
   {
     id: 1,
     img: "/assets/Images/writing/",
-    head: "My days as a engineer",
+    head: "Read my blog",
     des: "Follow me on Medium.",
     link: "https://frankhurt.medium.com",
   },
@@ -159,9 +159,9 @@ const navLinks: NavLink[] = [
   },
   {
     id: 2,
-    name: "GitHub",
-    link: "https://github.com/frvnkhvrt",
-    icon: "simple-icons:github",
+    name: "Medium",
+    link: "https://frankhurt.medium.com",
+    icon: "simple-icons:medium",
   },
   {
     id: 3,
