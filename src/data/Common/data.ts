@@ -70,7 +70,7 @@ const projects: Project[] = [
     img: "/assets/Images/project/",
     title: "Bold Choice",
     status: 'building',
-    content: "Startup creating autonomous robotics for industrial automation.",
+    content: "Startup creating robotics solutions for industrial automation.",
     url: "",
     github: "",
     skill: ["Electronics", "Automation", "AI", "Robotics", "IoT"],
