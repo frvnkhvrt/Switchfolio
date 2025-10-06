@@ -110,9 +110,6 @@ const navLinks: NavLink[] = [
   },
 ]
 
-const newsText =
-  "Stay wired on the chaos I'm unleashing."
-
   const supportText =
   "Support my work and future projects."
 
@@ -124,5 +121,4 @@ export {
   hireText,
   navLinks,
   supportText,
-  newsText,
 }
