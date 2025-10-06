@@ -18,7 +18,6 @@ A modern, accessible, and performant dual-persona portfolio website built with c
 
 ### 🎨 Modern Design System
 - **Fluid Typography**: Responsive text scaling with clamp() functions
-- **Consistent Spacing**: 4px base grid system
 - **Semantic Colors**: Light and dark theme support
 - **Advanced Animations**: Magnetic effects, blur transitions, and micro-interactions
 
