@@ -2,6 +2,14 @@ import { Persona } from '@/types'
 import { franciscoData } from '@/data/FranciscoData/data'
 import { frankhurtData } from '@/data/FrankhurtData/data'
 
+// Link interface for reusable typing
+interface LinkItem {
+  id: number
+  name: string
+  link: string
+  icon: string
+}
+
 // Validation schema for persona data
 interface PersonaDataSchema {
   name: string
@@ -10,9 +18,9 @@ interface PersonaDataSchema {
   about: string
   image: string
   contact: string
-  links: Array<{ id: number; name: string; link: string; icon: string }>
-  contactLinks: Array<{ id: number; name: string; link: string; icon: string }>
-  footerLinks: Array<{ id: number; name: string; link: string; icon: string }>
+  links: LinkItem[]
+  contactLinks: LinkItem[]
+  footerLinks: LinkItem[]
 }
 
 // Configuration interface for persona data
@@ -38,33 +46,35 @@ export class PersonaNotFoundError extends Error {
 
 // Validation utility
 class PersonaValidator {
-  static validatePersonaData(data: any): asserts data is PersonaDataSchema {
+  static validatePersonaData(data: unknown): asserts data is PersonaDataSchema {
     if (!data || typeof data !== 'object') {
       throw new PersonaValidationError('Persona data must be an object')
     }
 
+    const obj = data as Record<string, unknown>
+
     const requiredFields: (keyof PersonaDataSchema)[] = ['name', 'bio', 'about', 'image', 'contact', 'links', 'contactLinks', 'footerLinks']
     for (const field of requiredFields) {
-      if (!(field in data)) {
+      if (!(field in obj)) {
         throw new PersonaValidationError(`Missing required field: ${field}`, field)
       }
     }
 
-    if (typeof data.name !== 'string' || data.name.trim().length === 0) {
+    if (typeof obj.name !== 'string' || obj.name.trim().length === 0) {
       throw new PersonaValidationError('Name must be a non-empty string', 'name')
     }
 
-    if (typeof data.bio !== 'string' || data.bio.trim().length === 0) {
+    if (typeof obj.bio !== 'string' || obj.bio.trim().length === 0) {
       throw new PersonaValidationError('Bio must be a non-empty string', 'bio')
     }
 
     // Validate links arrays
     const linkArrays = ['links', 'contactLinks', 'footerLinks'] as const
     for (const linkArray of linkArrays) {
-      if (!Array.isArray(data[linkArray])) {
+      if (!Array.isArray(obj[linkArray])) {
         throw new PersonaValidationError(`${linkArray} must be an array`, linkArray)
       }
-      data[linkArray].forEach((link: any, index: number) => {
+      obj[linkArray].forEach((link: LinkItem, index: number) => {
         if (!link || typeof link !== 'object') {
           throw new PersonaValidationError(`${linkArray}[${index}] must be an object`, linkArray)
         }
