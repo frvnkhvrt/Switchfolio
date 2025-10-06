@@ -1,5 +1,4 @@
 import type { NextConfig } from "next"
-import withPWA from "./next-pwa.config"
 
 const nextConfig: NextConfig = {
   // Image optimization
@@ -42,4 +41,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withPWA(nextConfig)
+export default nextConfig

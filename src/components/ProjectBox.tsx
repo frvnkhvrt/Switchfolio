@@ -81,17 +81,17 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
 
   return (
     <motion.div
-      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm"
+      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-3 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-all duration-300 border-2 border-primaryBlue rounded-none shadow-sm hover:shadow-lg dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-xl"
       onClick={handleToggle}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="button"
       aria-expanded={isExpanded}
       aria-label={`${title} project - ${statusLabel}`}
-      whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
-      whileTap={shouldReduceMotion ? {} : { scale: 0.99 }}
+      whileHover={shouldReduceMotion ? {} : { scale: 1.005, y: -2, boxShadow: "0 10px 25px -5px rgba(62, 67, 240, 0.15)" }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.995 }}
     >
-      <div className="flex flex-col gap-2 p-3">
+      <div className="flex flex-col gap-3 p-4">
         <div className="flex flex-col gap-1.5">
           <div className="flex flex-row items-center gap-2">
             <div className="flex gap-1.5 items-center truncate flex-1 min-w-0">

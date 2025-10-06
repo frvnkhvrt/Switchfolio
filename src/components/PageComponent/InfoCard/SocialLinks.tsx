@@ -9,7 +9,7 @@ interface SocialLinksProps {
 
 export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
   return (
-    <div className="flex flex-wrap gap-1.5">
+    <div className="flex flex-wrap gap-1.5 justify-center sm:justify-start">
       {links.map((link) => (
         <a
           key={link.id}

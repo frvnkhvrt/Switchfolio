@@ -51,11 +51,6 @@ export interface AnimatedWrapperProps {
   className?: string
 }
 
-export interface InfoTipProps {
-  text: string
-  children: React.ReactNode
-}
-
 // API and data types
 export interface Project {
   id: number

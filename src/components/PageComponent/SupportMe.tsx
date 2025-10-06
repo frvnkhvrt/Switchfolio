@@ -13,17 +13,17 @@ const SupportMe = () => {
   const supportMessage = ""
 
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col gap-1">
       <SectionTitle title="Support Me" level={4} />
-      <div className="flex flex-col gap-2">
-        <p>{supportMessage}</p>
-        <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-col gap-1">
+        <p className="text-sm md:text-base leading-relaxed">{supportMessage}</p>
+        <div className="flex flex-wrap items-center gap-3 mt-1">
           <a
-            className="btn"
+            className="btn font-semibold"
             target="_blank"
             href="https://buymeacoffee.com/frankhurt"
           >
-            <Icon icon="simple-icons:buymeacoffee" className="text-yellow-400" />
+            <Icon icon="simple-icons:buymeacoffee" className="text-yellow-400 text-lg" />
             Buy Me a Coffee
           </a>
         </div>

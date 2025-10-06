@@ -5,18 +5,16 @@
 
 "use client"
 
-import { useState, useRef } from "react"
+import React, { useState, useRef, memo } from "react"
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion"
 import Image from "next/image"
-import { frankhurtImage } from "@/data/FrankhurtData/data"
-import { useSwitch } from "../Context/SwitchContext"
-import { franciscoImage } from "@/data/FranciscoData/data"
-import { navLinks } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
+import { useSwitch } from "../Context/SwitchContext"
+import { navLinks } from "@/data/Common/data"
 import { personaService } from "@/services/personaService"
 import { designSystem } from "@/constants/designSystem"
 
-const Nav = () => {
+const Nav: React.FC = memo(() => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
   const [isHovered, setIsHovered] = useState(false)
   const shouldReduceMotion = useReducedMotion()
@@ -29,7 +27,6 @@ const Nav = () => {
   const springX = useSpring(x, springConfig)
   const springY = useSpring(y, springConfig)
 
-  const currentPersona = personaService.getCurrentPersona(isSwitchOn)
   const nextPersona = personaService.getCurrentPersona(!isSwitchOn)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -138,8 +135,8 @@ const Nav = () => {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src={isSwitchOn ? franciscoImage : frankhurtImage}
-              alt={`${currentPersona.name}'s profile picture`}
+              src={nextPersona.image}
+              alt={`Switch to ${nextPersona.name}'s profile`}
               className="rounded-sm ring-2 ring-primaryBlue dark:ring-folderCream"
               width={48}
               height={48}
@@ -175,6 +172,8 @@ const Nav = () => {
       </motion.div>
     </nav>
   )
-}
+})
+
+Nav.displayName = "Nav"
 
 export default Nav

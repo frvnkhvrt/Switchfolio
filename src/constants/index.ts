@@ -1,16 +1,5 @@
 // Common constants used across the application
 
-// External links
-export const EXTERNAL_LINKS = {
-  googleTimeSearch: "https://www.google.com/search?q=time",
-} as const
-
-// Time formatting options
-export const TIME_FORMAT_OPTIONS = {
-  hour: "2-digit" as const,
-  minute: "2-digit" as const,
-}
-
 // Link attributes
 export const LINK_ATTRIBUTES = {
   target: "_blank" as const,
@@ -46,9 +35,4 @@ export const ANIMATION_DELAYS = {
   medium: 200,
   long: 300,
   extra: 350,
-} as const
-
-// Update intervals
-export const UPDATE_INTERVALS = {
-  time: 1000, // 1 second
 } as const

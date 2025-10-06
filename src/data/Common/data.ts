@@ -42,7 +42,7 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { id: 1, icon: "simple-icons:c", text: "C" },
+  { id: 1, icon: "mdi:chip", text: "Assembly" },
   { id: 2, icon: "simple-icons:cplusplus", text: "C++" },
   { id: 3, icon: "simple-icons:oracle", text: "Java" },
   { id: 4, icon: "simple-icons:python", text: "Python" },

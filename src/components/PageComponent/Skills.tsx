@@ -13,7 +13,7 @@ const Skills = () => {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section className="flex flex-col gap-3" id="skills">
+    <section className="flex flex-col gap-1" id="skills">
       <SectionTitle title="Tech Stack" level={4} />
       <div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
@@ -32,11 +32,12 @@ const Skills = () => {
               ease: "easeOut"
             }}
             whileHover={shouldReduceMotion ? {} : {
-              scale: 1.05,
-              y: -2,
-              transition: { duration: 0.2 }
+              scale: 1.08,
+              y: -3,
+              rotate: 1,
+              transition: { duration: 0.25, ease: "easeOut" }
             }}
-            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+            whileTap={shouldReduceMotion ? {} : { scale: 0.92 }}
           >
             <div
               className="skills-card min-h-[44px] px-2 py-2 cursor-default focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex flex-col items-center justify-center gap-2 text-center group"

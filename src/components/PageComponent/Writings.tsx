@@ -13,7 +13,7 @@ const Writings = () => {
   const visibleWritings = showAll ? writings : writings.slice(0, 2)
   let delayValue = 0
   return (
-    <section className="flex flex-col gap-3">
+    <section className="flex flex-col gap-1">
       <SectionTitle title="Writings" level={4} />
       {/* <StillWorking /> */}
       <div className="  flex flex-col gap-3">

@@ -9,14 +9,14 @@ const AboutMe: React.FC = () => {
   const currentPersona = personaService.getCurrentPersona(isSwitchOn)
 
   return (
-    <section className="flex flex-col gap-3">
+    <section className="flex flex-col gap-1">
       <SectionTitle title="About" level={4} />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <div
           dangerouslySetInnerHTML={{
             __html: currentPersona.about,
           }}
-          className="flex flex-col gap-1"
+          className="flex flex-col gap-2 text-sm md:text-base leading-relaxed"
           aria-label={`${currentPersona.name}'s about section`}
         />
       </div>

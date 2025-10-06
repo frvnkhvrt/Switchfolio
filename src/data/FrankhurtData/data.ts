@@ -17,7 +17,7 @@ export const frankhurtData = {
     <p>
     ロムっている。
     </p>`,
-  image: "/assets/Images/pfps/Frankhurt.jpg",
+  image: "/assets/Images/profile-pictures/Frankhurt.jpg",
   contact: "",
   links: [
     {

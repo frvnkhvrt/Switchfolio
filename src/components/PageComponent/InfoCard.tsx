@@ -1,21 +1,30 @@
 "use client"
-import React from "react"
+
+import React, { memo, useMemo } from "react"
 import Image from "next/image"
 import { personaService } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { COMPONENT_SIZES } from "@/constants"
-import Available from "../Available"
 
-const InfoCard: React.FC = () => {
+/**
+ * InfoCard component - displays persona profile information
+ * Shows avatar, name, bio, and social links
+ */
+const InfoCard: React.FC = memo(() => {
   const { isSwitchOn } = useSwitch()
-  const currentPersona = personaService.getCurrentPersona(isSwitchOn)
+  
+  // Memoize persona to prevent unnecessary recalculations
+  const currentPersona = useMemo(
+    () => personaService.getCurrentPersona(isSwitchOn),
+    [isSwitchOn]
+  )
 
   return (
-    <section>
+    <section aria-labelledby="profile-heading" className="mb-3 md:mb-4">
       <div className="flex flex-col">
-        <div className="flex gap-3 items-center">
-          <div className="select-none w-1/3 md:w-auto rounded-sm">
+        <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start">
+          <div className="select-none w-40 sm:w-36 md:w-auto rounded-sm flex-shrink-0">
             <Image
               src={currentPersona.image}
               alt={`${currentPersona.name}'s profile picture`}
@@ -26,20 +35,21 @@ const InfoCard: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <Available text="Available" />
-            <div className="flex items-center">
-              <h1 className="head-name">
-                {currentPersona.name}
-              </h1>
+          <div className="flex flex-col gap-3 flex-1 min-w-0 text-center sm:text-left">
+            <h1 id="profile-heading" className="head-name">
+              {currentPersona.name}
+            </h1>
+            <p className="text-sm md:text-base leading-relaxed">{currentPersona.bio}</p>
+            <div className="mt-2">
+              <SocialLinks links={currentPersona.links} />
             </div>
-            <p className="text-base">{currentPersona.bio}</p>
-            <SocialLinks links={currentPersona.links} />
           </div>
         </div>
       </div>
     </section>
   )
-}
+})
+
+InfoCard.displayName = "InfoCard"
 
 export default InfoCard

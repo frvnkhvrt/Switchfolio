@@ -18,7 +18,7 @@ export const franciscoData = {
     <p>
       🇨🇴 Bogotá-based.
     </p>`,
-  image: "/assets/Images/pfps/Francisco.jpg",
+  image: "/assets/Images/profile-pictures/Francisco.jpg",
   contact: "",
   links: [
     {

@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
-import { Toaster } from "react-hot-toast"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
 
 const geistMono = Geist_Mono({
@@ -25,30 +24,7 @@ export const metadata: Metadata = {
   creator: "Francisco Hurtado",
   metadataBase: new URL("https://www.frankhurt.dev"),
   icons: {
-    icon: [
-      {
-        media: "(prefers-color-scheme: light)",
-        url: "/assets/Images/icon/icon-light.png",
-        type: "image/png",
-      },
-      {
-        media: "(prefers-color-scheme: dark)",
-        url: "/assets/Images/icon/icon-dark.png",
-        type: "image/png",
-      },
-    ],
-    shortcut: [
-      {
-        media: "(prefers-color-scheme: light)",
-        url: "/assets/Images/icon/icon-light.png",
-        type: "image/png",
-      },
-      {
-        media: "(prefers-color-scheme: dark)",
-        url: "/assets/Images/icon/icon-dark.png",
-        type: "image/png",
-      },
-    ],
+    icon: "/assets/Images/favicon/favicon.png",
   },
   openGraph: {
     title: "Francisco Hurtado",
@@ -97,38 +73,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#3e43f0" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/assets/Images/icon/icon-192.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Switchfolio" />
       </head>
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: '#3e43f0',
-                color: '#fff',
-              },
-              success: {
-                iconTheme: {
-                  primary: '#22c55e',
-                  secondary: '#fff',
-                },
-              },
-              error: {
-                iconTheme: {
-                  primary: '#ef4444',
-                  secondary: '#fff',
-                },
-              },
-            }}
-          />
           {children}
         </ErrorBoundary>
       </body>

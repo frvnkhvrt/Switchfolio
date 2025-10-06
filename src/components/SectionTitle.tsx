@@ -18,7 +18,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   const shouldReduceMotion = useReducedMotion()
 
-  const baseClasses = "font-bold text-inkBlack dark:text-backgroundCreamDark relative"
+  const baseClasses = "font-bold text-inkBlack dark:text-backgroundCreamDark relative mb-2"
   const sizeClasses = {
     1: "text-3xl md:text-4xl lg:text-5xl",
     2: "text-2xl md:text-3xl lg:text-4xl",

@@ -1,11 +1,16 @@
 import React from "react"
+import Screen from "./Screen"
 
-interface ScreenProps {
+interface MainScreenProps {
   children: React.ReactNode
 }
 
-const MainScreen: React.FC<ScreenProps> = ({ children }) => {
-  return <div className="main-screen">{children}</div>
+/**
+ * MainScreen component - wrapper for the main application screen
+ * Uses the base Screen component with main-screen styling
+ */
+const MainScreen: React.FC<MainScreenProps> = ({ children }) => {
+  return <Screen className="main-screen">{children}</Screen>
 }
 
 export default MainScreen

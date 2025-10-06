@@ -10,13 +10,13 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="md:mb-12 mb-16">
-      <div className="border-t-2 border-primaryBlue dark:border-folderCream my-6" />
-      <div className="flex flex-col gap-2.5 items-center">
+      <div className="border-t-2 border-primaryBlue dark:border-folderCream my-8" />
+      <div className="flex flex-col gap-4 items-center">
         <div className="flex flex-wrap gap-4 items-center md:text-base text-sm">
           {currentPersona.footerLinks.map((link) => (
             <a
               key={link.id}
-              className="select-none md:text-base text-xl text-primaryBlue hover:opacity-75 flex gap-1 items-center transition duration-100"
+              className="select-none md:text-base text-xl text-primaryBlue hover:opacity-75 flex gap-1 items-center transition duration-200 hover:scale-105"
               target={LINK_ATTRIBUTES.target}
               rel={LINK_ATTRIBUTES.rel}
               href={link.link}
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
             </a>
           ))}
         </div>
-        <p className="text-sm">
+        <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
           © 2025 {currentPersona.shortName}. All rights reserved.
         </p>
       </div>

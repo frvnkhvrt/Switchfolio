@@ -50,7 +50,7 @@ const IndexPage: React.FC = memo(() => {
       <Screen>
         <main id="main-content" role="main" aria-label="Main content">
           <PersonaSwitchTransition>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-6">
               {pageSections.map((section, index) => {
                 const { component: Component, delay, variant, condition } = section
                 if (condition && !condition(isSwitchOn)) return null

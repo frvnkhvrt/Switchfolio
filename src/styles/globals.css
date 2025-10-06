@@ -84,11 +84,30 @@ h1, h2, h3, h4, h5, h6 {
 *:focus-visible {
   outline: 2px solid #3e43f0;
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
+  transition: outline-color 0.2s ease;
 }
 
 .dark .keyboard-user *:focus-visible,
 .dark *:focus-visible {
+  outline-color: #ecd4b4;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #3e43f0;
+  outline-offset: 2px;
+}
+
+.dark button:focus-visible,
+.dark a:focus-visible,
+.dark input:focus-visible,
+.dark select:focus-visible,
+.dark textarea:focus-visible {
   outline-color: #ecd4b4;
 }
 
@@ -135,10 +154,10 @@ textarea {
    ============================================ */
 
 .screen {
-  @apply md:w-[800px] md:mx-auto px-4 md:py-10 py-3;
+  @apply w-full max-w-[900px] mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-8 lg:py-12;
 }
 .main-screen {
-  @apply py-2 pb-20;
+  @apply py-2 pb-16 md:pb-20 lg:pb-24;
 }
 
 .pro-pic {
@@ -146,11 +165,11 @@ textarea {
 }
 
 .social-card {
-  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-1 text-[1.35rem] hover:bg-primaryBlue hover:text-backgroundCream duration-100 shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue;
+  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-2 text-lg hover:bg-primaryBlue hover:text-backgroundCream transition-all duration-300 ease-out shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue hover:scale-110 min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2;
 }
 
 .skills-card {
-  @apply select-none transition-colors duration-100 flex flex-row gap-0.5 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/80 shadow-sm dark:shadow-dark-sm min-h-[36px];
+  @apply select-none transition-all duration-300 ease-out flex flex-row gap-2 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-3 py-2 rounded-none hover:bg-primaryBlue/90 hover:shadow-lg shadow-sm dark:shadow-dark-sm min-h-[44px] hover:scale-105;
 }
 
 .head-name {
@@ -158,13 +177,13 @@ textarea {
 }
 
 .showMore-btn {
-  @apply select-none bg-primaryBlue/10 w-full px-1.5 py-0.5 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-100 text-sm min-h-[36px];
+  @apply select-none bg-primaryBlue/10 w-full px-3 py-2 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-all duration-300 ease-out text-sm min-h-[44px] border border-transparent hover:border-primaryBlue/30 flex items-center justify-center;
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none transition-colors duration-100 flex flex-row gap-1 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/80 hover:border-primaryBlue/80 px-1.5 py-0.5 rounded-none shadow-sm dark:shadow-dark-sm text-sm min-h-[36px];
+  @apply cursor-pointer w-fit select-none transition-all duration-300 ease-out flex flex-row gap-2 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/90 hover:border-primaryBlue/90 hover:shadow-lg px-3 py-2 rounded-none shadow-sm dark:shadow-dark-sm text-sm min-h-[44px] font-medium;
 }
 
 .blog-post {
-  @apply cursor-pointer bg-folderWhite border-2 border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-1.5 rounded-none transition-colors duration-100 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm;
+  @apply cursor-pointer bg-folderWhite border-2 border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-4 rounded-none transition-all duration-200 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm hover:shadow-md;
 }

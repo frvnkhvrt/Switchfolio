@@ -7,11 +7,11 @@ const HireMe = () => {
   return (
     <section className="flex flex-col gap-1">
       <SectionTitle title="Hire me" level={4} />
-      <div className=" flex flex-col gap-2">
-        <p>{hireText}</p>
-        <div>
-          <a className="btn" target="_blank" href={emailLink}>
-            <Icon icon="mdi:briefcase" />
+      <div className="flex flex-col gap-3">
+        <p className="text-sm md:text-base leading-relaxed">{hireText}</p>
+        <div className="mt-1">
+          <a className="btn font-semibold" target="_blank" href={emailLink}>
+            <Icon icon="mdi:briefcase" className="text-lg" />
             Hire Me
           </a>
         </div>
