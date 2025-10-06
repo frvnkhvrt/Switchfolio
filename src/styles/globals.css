@@ -161,7 +161,7 @@ textarea {
 }
 
 .pro-pic {
-  @apply md:size-[150px] w-full h-full object-cover rounded-none select-none;
+  @apply md:size-[150px] w-full h-full object-cover rounded-none select-none shadow-lg dark:shadow-xl;
 }
 
 .social-card {
