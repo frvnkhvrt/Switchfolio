@@ -34,13 +34,11 @@ switchfolio/
 │   └── assets/           # Static assets (images, icons)
 ├── src/
 │   ├── app/              # Next.js App Router
-│   │   ├── api/          # API routes
 │   │   ├── layout.tsx    # Root layout
 │   │   └── page.tsx      # Home page
 │   ├── components/       # React components
 │   │   ├── Context/      # React context providers
 │   │   ├── ErrorBoundary/# Error boundary components
-│   │   ├── Feedback/     # Toast and feedback components
 │   │   ├── PageComponent/# Page sections
 │   │   ├── Transitions/  # Animation transition components
 │   │   └── homeScreen/   # Home page components
@@ -60,7 +58,7 @@ switchfolio/
 
 ### Frontend Framework
 - **Next.js 15**: App Router, Server Components, Image optimization
-- **React 19**: Latest React features with concurrent rendering
+- **React 18**: Latest React features with concurrent rendering
 - **TypeScript**: Full type safety and better developer experience
 
 ### Styling & Animation
