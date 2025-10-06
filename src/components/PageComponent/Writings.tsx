@@ -25,6 +25,7 @@ const Writings = () => {
               head={writings.head}
               des={writings.des}
               link={writings.link}
+              img={writings.img}
             />
           </AnimatedWrapper>
         ))}

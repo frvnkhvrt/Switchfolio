@@ -31,75 +31,47 @@ const projects: PortfolioProject[] = [
     img: "/assets/Images/project/",
     title: "Bold Choice",
     status: 'building',
-    content: "Startup building robotics for industrial automation.",
+    content: "Automation startup.",
     url: "",
     github: "",
-    skill: ["Electronics", "Automation", "AI", "Robotics", "IoT"],
-    caseStudy: {
-      problem: "Traditional manufacturing faces inefficiencies in quality control, predictive maintenance, and process optimization. Manual inspection methods are time-consuming and error-prone.",
-      solution: "Developed an AI-powered autonomous inspection system using computer vision, machine learning, and IoT sensors to provide real-time quality assurance and predictive maintenance.",
-      challenges: "Integrating multiple sensor types, ensuring real-time processing, and maintaining accuracy in varying lighting conditions.",
-      results: "Achieved 95% defect detection accuracy, reduced inspection time by 80%, and enabled predictive maintenance preventing 70% of potential equipment failures.",
-      learnings: "The importance of robust data pipelines, the value of cross-disciplinary collaboration, and the need for scalable ML model deployment."
-    }
+    skill: ["Business", "Automation", "Marketing", "Sales", "AI"],
   },
   {
     id: 2,
     img: "/assets/Images/project/",
     title: "Switchfolio",
     status: 'running',
-    content: "A dual-persona portfolio website that switches between professional and creative identities.",
+    content: "A dual-persona portfolio that switches between professional and creative identities.",
     url: "",
     github: "https://github.com/frvnkhvrt/Portfolio",
     skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
-    caseStudy: {
-      problem: "Traditional portfolios are static and don't capture the multifaceted nature of creative professionals who work across different domains and audiences.",
-      solution: "Created a dynamic portfolio that switches between two distinct personas (Francisco - Engineer/Marketer, Frankhurt - Gamer/Creator) with smooth animations, shared content architecture, and responsive design.",
-      challenges: "Managing state across persona switches, optimizing animations for performance, ensuring accessibility across both themes, and maintaining SEO for dynamic content.",
-      results: "Achieved 95+ Lighthouse scores, WCAG 2.1 AA compliance, and created a unique user experience that effectively showcases dual professional identities.",
-      learnings: "The power of context-aware UI, the importance of performance optimization in animations, and the value of comprehensive accessibility testing."
-    }
   },
   {
     id: 3,
     img: "/assets/Images/project/",
-    title: "AI Content Generator",
+    title: "AI-powered UGC Automation",
     status: 'running',
-    content: "Intelligent content creation platform built with n8n automation, integrating Nano Banana, Veo 3, and Sora 2 LLMs. Features automated blog post generation, social media content creation, and SEO-optimized article writing.",
+    content: "AI-powered UGC n8n automation, integrating Nano Banana and Veo 3.",
     url: "",
     github: "",
     skill: ["n8n", "LLMs", "Nano Banana", "Veo 3", "Sora 2", "JavaScript", "Redis"],
-    caseStudy: {
-      problem: "Content creators struggle with consistent output and SEO optimization. Manual content creation is time-intensive and often lacks strategic keyword integration.",
-      solution: "Developed an n8n-based automation workflow integrating Nano Banana, Veo 3, and Sora 2 LLMs for comprehensive content generation, including templates, SEO analysis, and automated publishing.",
-      challenges: "Managing API rate limits, ensuring content quality, implementing proper caching, and creating intuitive content editing interfaces.",
-      results: "Generated 500+ pieces of content, improved client SEO rankings by 40%, and reduced content creation time by 75%.",
-      learnings: "The importance of content quality gates, the value of hybrid AI-human workflows, and the need for robust error handling in API integrations."
-    }
   },
   {
     id: 4,
     img: "/assets/Images/project/",
-    title: "Salesforce Integration Hub",
+    title: "mySchneider Partner Program",
     status: 'complete',
-    content: "Enterprise-grade integration platform connecting Salesforce CRM with multiple business systems. Features real-time data synchronization, automated workflows, and comprehensive reporting.",
-    url: "",
+    content: "Enterprise-grade Salesforce integration with portal, app, social, leads, and rewards systems — enabling real-time sync, automated marketing workflows, and reporting.",
+    url: "https://www.se.com/myschneider/",
     github: "",
     skill: ["Salesforce", "Apex", "Lightning Web Components", "Tableau", "Data Synchronization"],
-    caseStudy: {
-      problem: "Large enterprises struggle with data silos between CRM systems and other business applications, leading to inconsistent reporting and manual data entry errors.",
-      solution: "Developed a centralized integration hub using Salesforce APIs, custom Apex classes, and real-time data synchronization to connect CRM with ERP, marketing automation, and analytics platforms.",
-      challenges: "Managing complex data mappings, ensuring data integrity during synchronization, handling API rate limits, and creating user-friendly configuration interfaces.",
-      results: "Integrated 12+ business systems, reduced manual data entry by 90%, improved reporting accuracy by 95%, and enabled real-time business intelligence.",
-      learnings: "The criticality of data validation, the importance of comprehensive error logging, and the value of modular architecture for complex integrations."
-    }
   }
 ]
 
 const writings: Writing[] = [
   {
     id: 1,
-    img: "/assets/Images/writing/",
+    img: "/assets/Images/writing/medium.png",
     head: "Read my blog",
     des: "Follow me on Medium.",
     link: "https://frankhurt.medium.com",
