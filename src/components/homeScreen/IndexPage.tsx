@@ -14,9 +14,6 @@ const InfoCard = dynamic(() => import("../PageComponent/InfoCard"), {
 const AboutMe = dynamic(() => import("../PageComponent/AboutMe"), {
   loading: () => <SkeletonCard className="h-24" />
 })
-const ReachOut = dynamic(() => import("../PageComponent/ReachOut"), {
-  loading: () => <SkeletonCard className="h-20" />
-})
 const HireMe = dynamic(() => import("../PageComponent/HireMe"), {
   loading: () => <SkeletonCard className="h-16" />
 })
