@@ -10,7 +10,6 @@ import { GoDotFill } from "react-icons/go"
 import { LuLink } from "react-icons/lu"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { LINK_ATTRIBUTES } from "@/constants"
-import { ariaLabels, isActivationKey } from "@/utils/accessibility"
 
 interface EnhancedProjectBoxProps {
   status: 'building' | 'running' | 'complete'
@@ -49,7 +48,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (isActivationKey(e.key)) {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleToggle()
     }
@@ -88,7 +87,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
       tabIndex={0}
       role="button"
       aria-expanded={isExpanded}
-      aria-label={ariaLabels.projectCard(title, statusLabel)}
+      aria-label={`${title} project - ${statusLabel}`}
       whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
       whileTap={shouldReduceMotion ? {} : { scale: 0.99 }}
     >

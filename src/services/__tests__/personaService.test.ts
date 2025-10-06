@@ -89,9 +89,8 @@ describe('PersonaService', () => {
       expect(persona?.name).toBe('Frankhurt')
     })
 
-    it('should return undefined for non-existent persona', () => {
-      const persona = service.getPersona('nonexistent')
-      expect(persona).toBeUndefined()
+    it('should throw PersonaNotFoundError for non-existent persona', () => {
+      expect(() => service.getPersona('nonexistent')).toThrow('Persona with id \'nonexistent\' not found')
     })
   })
 

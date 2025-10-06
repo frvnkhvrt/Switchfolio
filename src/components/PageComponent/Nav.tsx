@@ -13,8 +13,6 @@ import { useSwitch } from "../Context/SwitchContext"
 import { franciscoImage } from "@/data/FranciscoData/data"
 import { navLinks } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
-import { ariaLabels, isActivationKey } from "@/utils/accessibility"
-import { useScreenReaderAnnouncement } from "@/hooks/useAccessibility"
 import { personaService } from "@/services/personaService"
 import { designSystem } from "@/constants/designSystem"
 
@@ -22,7 +20,6 @@ const Nav = () => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
   const [isHovered, setIsHovered] = useState(false)
   const shouldReduceMotion = useReducedMotion()
-  const announce = useScreenReaderAnnouncement()
   const ref = useRef<HTMLDivElement>(null)
   
   const x = useMotionValue(0)
@@ -54,14 +51,10 @@ const Nav = () => {
 
   const handlePersonaSwitch = () => {
     toggleSwitch()
-    announce(
-      ariaLabels.personaSwitched(nextPersona.name, nextPersona.bio),
-      'polite'
-    )
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (isActivationKey(e.key)) {
+    if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handlePersonaSwitch()
     }
@@ -70,7 +63,7 @@ const Nav = () => {
   return (
     <nav
       className="fixed bottom-6 left-0 right-0 flex justify-center items-center z-40"
-      aria-label={ariaLabels.mainNav}
+      aria-label="Main navigation"
       id="navigation"
     >
       <motion.div 
@@ -135,7 +128,7 @@ const Nav = () => {
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
           role="button"
           tabIndex={0}
-          aria-label={ariaLabels.personaSwitch(currentPersona.name, nextPersona.name)}
+          aria-label={`Switch to ${nextPersona.name} persona`}
           aria-pressed={isSwitchOn}
         >
           <motion.div

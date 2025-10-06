@@ -1,8 +1,7 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
-import { useReducedMotion } from "@/hooks/useAccessibility"
+import { motion, useReducedMotion } from "framer-motion"
 
 interface SectionTitleProps {
   title: string

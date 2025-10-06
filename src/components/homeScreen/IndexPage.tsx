@@ -1,77 +1,65 @@
 "use client"
+import React, { memo } from "react"
 import dynamic from "next/dynamic"
 import Screen from "@/layout/Screen"
 import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
-import { SkeletonCard, SkeletonProject, SkeletonSkills, SkeletonWriting } from "../Loading/SkeletonLoader"
 
-// Lazy load components for better performance with branded skeleton loaders
-const InfoCard = dynamic(() => import("../PageComponent/InfoCard"), {
-  loading: () => <SkeletonCard />
-})
-const AboutMe = dynamic(() => import("../PageComponent/AboutMe"), {
-  loading: () => <SkeletonCard className="h-24" />
-})
-const HireMe = dynamic(() => import("../PageComponent/HireMe"), {
-  loading: () => <SkeletonCard className="h-16" />
-})
-const Skills = dynamic(() => import("../PageComponent/Skills"), {
-  loading: () => <SkeletonSkills />
-})
-const SupportMe = dynamic(() => import("../PageComponent/SupportMe"), {
-  loading: () => <SkeletonCard className="h-20" />
-})
-const Footer = dynamic(() => import("../PageComponent/Footer"), {
-  loading: () => <SkeletonCard className="h-12" />
-})
+// Lazy load components for better performance
+const InfoCard = dynamic(() => import("../PageComponent/InfoCard"))
+const AboutMe = dynamic(() => import("../PageComponent/AboutMe"))
+const HireMe = dynamic(() => import("../PageComponent/HireMe"))
+const Skills = dynamic(() => import("../PageComponent/Skills"))
+const SupportMe = dynamic(() => import("../PageComponent/SupportMe"))
+const Footer = dynamic(() => import("../PageComponent/Footer"))
 
 // Dynamic imports for components
-const Projects = dynamic(() => import("../PageComponent/Projects"), {
-  loading: () => (
-    <div className="space-y-3">
-      <SkeletonProject />
-      <SkeletonProject />
-    </div>
-  )
-})
-const Writings = dynamic(() => import("../PageComponent/Writings"), {
-  loading: () => <SkeletonWriting />
-})
+const Projects = dynamic(() => import("../PageComponent/Projects"))
+const Writings = dynamic(() => import("../PageComponent/Writings"))
 
-const IndexPage = () => {
+// Configuration for page sections to improve maintainability and readability
+interface PageSection {
+  component: React.ComponentType
+  delay: number
+  variant: "blur" | "slideUp" | "fade"
+  condition?: (isSwitchOn: boolean) => boolean
+}
+
+const pageSections: PageSection[] = [
+  { component: InfoCard, delay: 0.15, variant: "blur" },
+  { component: AboutMe, delay: 0.25, variant: "slideUp" },
+  {
+    component: HireMe,
+    delay: 0.45,
+    variant: "slideUp",
+    condition: (isSwitchOn) => !isSwitchOn
+  },
+  { component: Skills, delay: 0.55, variant: "fade" },
+  { component: Projects, delay: 0.65, variant: "slideUp" },
+  { component: Writings, delay: 0.75, variant: "slideUp" },
+  { component: SupportMe, delay: 0.95, variant: "slideUp" },
+]
+
+const IndexPage: React.FC = memo(() => {
   const { isSwitchOn } = useSwitch()
 
   return (
     <>
       <Screen>
-        <main id="main-content" role="main">
+        <main id="main-content" role="main" aria-label="Main content">
           <PersonaSwitchTransition>
             <div className="flex flex-col gap-4">
-            <AnimatedWrapper delay={0.15} variant="blur">
-              <InfoCard />
-            </AnimatedWrapper>
-            <AnimatedWrapper delay={0.25} variant="slideUp">
-              <AboutMe />
-            </AnimatedWrapper>
-            {!isSwitchOn && (
-              <AnimatedWrapper delay={0.45} variant="slideUp">
-                <HireMe />
-              </AnimatedWrapper>
-            )}
-            <AnimatedWrapper delay={0.55} variant="fade">
-              <Skills />
-            </AnimatedWrapper>
-            <AnimatedWrapper delay={0.65} variant="slideUp">
-              <Projects />
-            </AnimatedWrapper>
-            <AnimatedWrapper delay={0.75} variant="slideUp">
-              <Writings />
-            </AnimatedWrapper>
-            <AnimatedWrapper delay={0.95} variant="slideUp">
-              <SupportMe />
-            </AnimatedWrapper>
+              {pageSections.map((section, index) => {
+                const { component: Component, delay, variant, condition } = section
+                if (condition && !condition(isSwitchOn)) return null
+                return (
+                  <AnimatedWrapper key={index} delay={delay} variant={variant}>
+                    <Component />
+                  </AnimatedWrapper>
+                )
+              })}
             </div>
             <AnimatedWrapper delay={1.15} variant="fade">
               <Footer />
@@ -82,6 +70,8 @@ const IndexPage = () => {
       </Screen>
     </>
   )
-}
+})
+
+IndexPage.displayName = "IndexPage"
 
 export default IndexPage

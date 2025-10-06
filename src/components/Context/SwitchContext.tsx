@@ -1,67 +1,101 @@
 "use client"
-import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from "react"
+import React, { createContext, useContext, useEffect, useReducer, useMemo, useCallback } from "react"
 import { SwitchContextType } from "@/types"
+
+// Action types for reducer
+type SwitchAction =
+  | { type: 'SET_SWITCH'; payload: boolean }
+  | { type: 'SET_LOADED'; payload: boolean }
+  | { type: 'TOGGLE_SWITCH' }
+
+// State interface
+interface SwitchState {
+  isSwitchOn: boolean
+  isLoaded: boolean
+}
+
+// Reducer for complex state management
+const switchReducer = (state: SwitchState, action: SwitchAction): SwitchState => {
+  switch (action.type) {
+    case 'SET_SWITCH':
+      return { ...state, isSwitchOn: action.payload }
+    case 'SET_LOADED':
+      return { ...state, isLoaded: action.payload }
+    case 'TOGGLE_SWITCH':
+      return { ...state, isSwitchOn: !state.isSwitchOn }
+    default:
+      return state
+  }
+}
 
 export const SwitchContext = createContext<SwitchContextType | undefined>(undefined)
 
 export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false)
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [state, dispatch] = useReducer(switchReducer, {
+    isSwitchOn: false,
+    isLoaded: false,
+  })
 
   useEffect(() => {
-    // Safely load initial value from localStorage
-    try {
-      const storedValue = localStorage.getItem("isSwitchOn")
-      if (storedValue !== null) {
-        const parsedValue = JSON.parse(storedValue)
-        if (typeof parsedValue === 'boolean') {
-          setIsSwitchOn(parsedValue)
+    // Safely load initial value from localStorage with enhanced error handling
+    const loadInitialState = () => {
+      try {
+        const storedValue = localStorage.getItem("isSwitchOn")
+        if (storedValue !== null) {
+          const parsedValue = JSON.parse(storedValue)
+          if (typeof parsedValue === 'boolean') {
+            dispatch({ type: 'SET_SWITCH', payload: parsedValue })
+          } else {
+            console.warn("Invalid switch state in localStorage, resetting to default")
+            localStorage.removeItem("isSwitchOn")
+          }
         }
+      } catch (error) {
+        console.error("Failed to load switch state from localStorage:", error)
+        // Clear corrupted data
+        localStorage.removeItem("isSwitchOn")
+      } finally {
+        dispatch({ type: 'SET_LOADED', payload: true })
       }
-    } catch (error) {
-      console.warn("Failed to load switch state from localStorage:", error)
-      // Clear corrupted data
-      localStorage.removeItem("isSwitchOn")
-    } finally {
-      setIsLoaded(true)
     }
+
+    loadInitialState()
   }, [])
 
   useEffect(() => {
-    if (isLoaded) {
-      if (isSwitchOn) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
+    if (state.isLoaded) {
+      // Update document class for theme switching
+      const action = state.isSwitchOn ? 'add' : 'remove'
+      document.documentElement.classList[action]('dark')
     }
-  }, [isSwitchOn, isLoaded])
+  }, [state.isSwitchOn, state.isLoaded])
 
   const toggleSwitch = useCallback(() => {
-    setIsSwitchOn((prev) => {
-      const newValue = !prev
+    dispatch({ type: 'TOGGLE_SWITCH' })
+    // Persist to localStorage after state update
+    setTimeout(() => {
+      const newValue = !state.isSwitchOn
       try {
         localStorage.setItem("isSwitchOn", JSON.stringify(newValue))
       } catch (error) {
         console.error("Failed to save switch state to localStorage:", error)
       }
-      return newValue
-    })
-  }, [])
+    }, 0)
+  }, [state.isSwitchOn])
 
-  const theme = isSwitchOn ? 'dark' : 'light'
+  const theme = state.isSwitchOn ? 'dark' : 'light'
 
   const contextValue = useMemo<SwitchContextType>(() => ({
-    isSwitchOn,
+    isSwitchOn: state.isSwitchOn,
     toggleSwitch,
     theme,
-  }), [isSwitchOn, toggleSwitch, theme])
+  }), [state.isSwitchOn, toggleSwitch, theme])
 
   return (
     <SwitchContext.Provider value={contextValue}>
-      {isLoaded ? children : null}
+      {state.isLoaded ? children : null}
     </SwitchContext.Provider>
   )
 }

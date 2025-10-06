@@ -142,7 +142,7 @@ textarea {
 }
 
 .pro-pic {
-  @apply md:size-[150px] rounded-none select-none;
+  @apply md:size-[150px] w-full h-full object-cover rounded-none select-none;
 }
 
 .social-card {
@@ -154,7 +154,7 @@ textarea {
 }
 
 .head-name {
-  @apply font-bold md:text-[2rem] text-[1.8rem] leading-[1.5rem] mb-2;
+  @apply font-bold md:text-[2rem] text-[1.8rem] leading-[0.5] mt-1
 }
 
 .showMore-btn {

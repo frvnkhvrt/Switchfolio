@@ -26,7 +26,7 @@ const InfoCard: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-1.5">
             <Available text="Available" />
             <div className="flex items-center">
               <h1 className="head-name">
