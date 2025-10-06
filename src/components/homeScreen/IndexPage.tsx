@@ -30,12 +30,7 @@ interface PageSection {
 const pageSections: PageSection[] = [
   { component: InfoCard, delay: 0.15, variant: "blur" },
   { component: AboutMe, delay: 0.25, variant: "slideUp" },
-  {
-    component: HireMe,
-    delay: 0.45,
-    variant: "slideUp",
-    condition: (isSwitchOn) => !isSwitchOn
-  },
+  { component: HireMe, delay: 0.45, variant: "slideUp" },
   { component: Skills, delay: 0.55, variant: "fade" },
   { component: Projects, delay: 0.65, variant: "slideUp" },
   { component: Writings, delay: 0.75, variant: "slideUp" },
