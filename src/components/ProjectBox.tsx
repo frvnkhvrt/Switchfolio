@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from "react"
 import { BsGithub } from "react-icons/bs"
 import { GoDotFill } from "react-icons/go"
-import { LuLink } from "react-icons/lu"
+import { FiExternalLink } from "react-icons/fi"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { LINK_ATTRIBUTES } from "@/constants"
 
@@ -118,7 +118,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
                   onClick={(e) => e.stopPropagation()}
                   aria-label={`View ${title} live site (opens in new tab)`}
                 >
-                  <LuLink aria-hidden="true" />
+                  <FiExternalLink aria-hidden="true" />
                 </a>
               )}
               {github && (
