@@ -5,7 +5,7 @@
 
 "use client"
 import React, { useState, useEffect } from "react"
-import { FiGithub } from "react-icons/fi"
+import { BsGithub } from "react-icons/bs"
 import { GoDotFill } from "react-icons/go"
 import { LuLink } from "react-icons/lu"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
@@ -94,7 +94,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
     >
       <div className="flex flex-col gap-2 p-3">
         <div className="flex flex-col gap-1.5">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-0">
+          <div className="flex flex-row items-center gap-2">
             <div className="flex gap-1.5 items-center truncate flex-1 min-w-0">
               <h3 className="text-xl sm:text-2xl font-semibold dark:text-backgroundCreamDark truncate">
                 {title}
@@ -108,15 +108,13 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
                 </motion.span>
                 <span>{statusLabel}</span>
               </div>
-            </div>
 
-            {/* Action Links */}
-            <div className="select-none flex gap-1.5 text-xl flex-shrink-0">
+              {/* Action Links - In same container */}
               {url && (
                 <a
                   target={LINK_ATTRIBUTES.target}
                   rel={LINK_ATTRIBUTES.rel}
-                  className="p-2 hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  className="select-none p-2 text-lg hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex-shrink-0 flex items-center"
                   href={url}
                   onClick={(e) => e.stopPropagation()}
                   aria-label={`View ${title} live site (opens in new tab)`}
@@ -129,11 +127,11 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
                   onClick={(e) => e.stopPropagation()}
                   target={LINK_ATTRIBUTES.target}
                   rel={LINK_ATTRIBUTES.rel}
-                  className="p-2 hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
+                  className="select-none p-2 text-lg hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex-shrink-0 flex items-center"
                   href={github}
                   aria-label={`View ${title} on GitHub (opens in new tab)`}
                 >
-                  <FiGithub aria-hidden="true" />
+                  <BsGithub aria-hidden="true" />
                 </a>
               )}
             </div>

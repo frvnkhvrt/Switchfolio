@@ -74,7 +74,8 @@ const Nav = () => {
       id="navigation"
     >
       <motion.div 
-        className="relative bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-4 py-3 rounded-none flex items-center gap-4 shadow-md dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
+        className="relative bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-4 py-3 rounded-none flex items-center gap-4 dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
+        style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ 

@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="md:mb-12 mb-16">
-      <div className="border-t-2 border-primaryBlue dark:border-backgroundCream my-6" />
+      <div className="border-t-2 border-primaryBlue dark:border-folderCream my-6" />
       <div className="flex flex-col gap-2.5 items-center">
         <div className="flex flex-wrap gap-4 items-center md:text-base text-sm">
           {currentPersona.footerLinks.map((link) => (

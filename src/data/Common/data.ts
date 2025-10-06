@@ -54,7 +54,7 @@ const skills: Skill[] = [
   { id: 10, icon: "simple-icons:nextdotjs", text: "Next.js" },
   { id: 11, icon: "simple-icons:vercel", text: "Vercel" },
   { id: 12, icon: "simple-icons:github", text: "GitHub" },
-  { id: 13, icon: "simple-icons:visualstudiocode", text: "VS Code" },
+  { id: 13, icon: "simple-icons:visualstudiocode", text: "VSCode" },
   { id: 14, icon: "simple-icons:openai", text: "OpenAI" },
   { id: 15, icon: "simple-icons:anthropic", text: "Anthropic" },
   { id: 16, icon: "simple-icons:n8n", text: "n8n" },
@@ -107,7 +107,7 @@ const projects: Project[] = [
     content: "Intelligent content creation platform built with n8n automation, integrating Nano Banana, Veo 3, and Sora 2 LLMs. Features automated blog post generation, social media content creation, and SEO-optimized article writing.",
     url: "",
     github: "",
-    skill: ["n8n", "LLMs", "Nano Banana", "Veo 3", "Sora 2", "Automation", "APIs", "JavaScript", "Redis"],
+    skill: ["n8n", "LLMs", "Nano Banana", "Veo 3", "Sora 2", "JavaScript", "Redis"],
     caseStudy: {
       problem: "Content creators struggle with consistent output and SEO optimization. Manual content creation is time-intensive and often lacks strategic keyword integration.",
       solution: "Developed an n8n-based automation workflow integrating Nano Banana, Veo 3, and Sora 2 LLMs for comprehensive content generation, including templates, SEO analysis, and automated publishing.",
@@ -124,7 +124,7 @@ const projects: Project[] = [
     content: "Enterprise-grade integration platform connecting Salesforce CRM with multiple business systems. Features real-time data synchronization, automated workflows, and comprehensive reporting.",
     url: "",
     github: "",
-    skill: ["Salesforce", "Apex", "Lightning Web Components", "APIs", "Data Synchronization", "Tableau"],
+    skill: ["Salesforce", "Apex", "Lightning Web Components", "Tableau", "Data Synchronization"],
     caseStudy: {
       problem: "Large enterprises struggle with data silos between CRM systems and other business applications, leading to inconsistent reporting and manual data entry errors.",
       solution: "Developed a centralized integration hub using Salesforce APIs, custom Apex classes, and real-time data synchronization to connect CRM with ERP, marketing automation, and analytics platforms.",
