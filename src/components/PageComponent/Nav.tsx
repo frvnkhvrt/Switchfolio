@@ -11,7 +11,7 @@ import Image from "next/image"
 import { Icon } from "@iconify/react"
 import { useSwitch } from "../Context/SwitchContext"
 import { navLinks } from "@/data/Common/data"
-import { personaService } from "@/services/personaService"
+import { getCurrentPersona } from "@/services/personaService"
 import { designSystem } from "@/constants/designSystem"
 
 const Nav: React.FC = memo(() => {
@@ -27,7 +27,7 @@ const Nav: React.FC = memo(() => {
   const springX = useSpring(x, springConfig)
   const springY = useSpring(y, springConfig)
 
-  const nextPersona = personaService.getCurrentPersona(!isSwitchOn)
+  const nextPersona = getCurrentPersona(!isSwitchOn)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (shouldReduceMotion || !ref.current) return

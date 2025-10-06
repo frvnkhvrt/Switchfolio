@@ -62,6 +62,48 @@ export interface Project {
   github?: string
 }
 
+// Portfolio-specific data types
+export interface PortfolioProject {
+  id: number
+  img: string
+  title: string
+  status: 'building' | 'running' | 'complete'
+  content: string
+  url: string
+  github: string
+  skill: string[]
+  caseStudy?: CaseStudy
+}
+
+export interface CaseStudy {
+  problem: string
+  solution: string
+  challenges: string
+  results: string
+  learnings: string
+}
+
+export interface Writing {
+  id: number
+  img: string
+  head: string
+  des: string
+  link: string
+}
+
+export interface NavLink {
+  id: number
+  name: string
+  link: string
+  icon: string
+}
+
+export interface PortfolioSkill {
+  id: number
+  icon: string
+  text: string
+}
+
 export interface Skill {
   id: number
   name: string

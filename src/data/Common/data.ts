@@ -1,47 +1,8 @@
 
 
-interface CaseStudy {
-  problem: string
-  solution: string
-  challenges: string
-  results: string
-  learnings: string
-}
+import { PortfolioProject, Writing, NavLink, PortfolioSkill } from '@/types'
 
-interface Project {
-  id: number
-  img: string
-  title: string
-  status: 'building' | 'running' | 'complete'
-  content: string
-  url: string
-  github: string
-  skill: string[]
-  caseStudy?: CaseStudy
-}
-
-interface Writing {
-  id: number
-  img: string
-  head: string
-  des: string
-  link: string
-}
-
-interface NavLink {
-  id: number
-  name: string
-  link: string
-  icon: string
-}
-
-interface Skill {
-  id: number
-  icon: string
-  text: string
-}
-
-const skills: Skill[] = [
+const skills: PortfolioSkill[] = [
   { id: 1, icon: "mdi:chip", text: "Assembly" },
   { id: 2, icon: "simple-icons:cplusplus", text: "C++" },
   { id: 3, icon: "simple-icons:oracle", text: "Java" },
@@ -64,7 +25,7 @@ const skills: Skill[] = [
   { id: 20, icon: "simple-icons:tableau", text: "Tableau" },
 ]
 
-const projects: Project[] = [
+const projects: PortfolioProject[] = [
   {
     id: 1,
     img: "/assets/Images/project/",

@@ -42,6 +42,8 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
     // Safely load initial value from localStorage with enhanced error handling
     const loadInitialState = () => {
       try {
+        if (typeof window === 'undefined') return // SSR safety
+
         const storedValue = localStorage.getItem("isSwitchOn")
         if (storedValue !== null) {
           const parsedValue = JSON.parse(storedValue)
@@ -55,7 +57,11 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
       } catch (error) {
         console.error("Failed to load switch state from localStorage:", error)
         // Clear corrupted data
-        localStorage.removeItem("isSwitchOn")
+        try {
+          localStorage.removeItem("isSwitchOn")
+        } catch (removeError) {
+          console.error("Failed to remove corrupted localStorage data:", removeError)
+        }
       } finally {
         dispatch({ type: 'SET_LOADED', payload: true })
       }

@@ -4,13 +4,7 @@ import SectionTitle from "../SectionTitle"
 import { Icon } from "@iconify/react"
 
 const SupportMe = () => {
-  
-  // Francisco (isSwitchOn = false): Professional tone
-  // Frankhurt (isSwitchOn = true): Casual, edgy tone
-  // const supportMessage = isSwitchOn
-  //   ? "Dig my vibe? Fuel my grind."
-  //   : "Support my work and future projects."
-  const supportMessage = ""
+  const supportMessage = "Support my work and future projects."
 
   return (
     <section className="flex flex-col gap-1">

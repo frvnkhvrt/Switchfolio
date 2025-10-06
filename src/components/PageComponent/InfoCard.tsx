@@ -2,7 +2,7 @@
 
 import React, { memo, useMemo } from "react"
 import Image from "next/image"
-import { personaService } from "@/services/personaService"
+import { getCurrentPersona } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { COMPONENT_SIZES } from "@/constants"
@@ -16,7 +16,7 @@ const InfoCard: React.FC = memo(() => {
   
   // Memoize persona to prevent unnecessary recalculations
   const currentPersona = useMemo(
-    () => personaService.getCurrentPersona(isSwitchOn),
+    () => getCurrentPersona(isSwitchOn),
     [isSwitchOn]
   )
 

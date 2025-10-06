@@ -2,18 +2,16 @@
 import { projects } from "@/data/Common/data"
 import ProjectBox from "../ProjectBox"
 import SectionTitle from "../SectionTitle"
-import { useState } from "react"
 import {
   MdKeyboardDoubleArrowDown,
   MdKeyboardDoubleArrowUp,
 } from "react-icons/md"
 import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { motion, useReducedMotion } from "framer-motion"
+import { useShowAll } from "@/utils/useShowAll"
 
 const Projects = () => {
-  const showAllVis = projects.length > 2
-  const [showAll, setShowAll] = useState(false)
-  const visibleProjects = showAll ? projects : projects.slice(0, 2)
+  const { visibleItems: visibleProjects, showAll, showAllVisible, toggleShowAll } = useShowAll(projects, 2)
   const shouldReduceMotion = useReducedMotion()
 
   let delayValue = 0
@@ -42,10 +40,10 @@ const Projects = () => {
         ))}
       </div>
       
-      {showAllVis && (
+      {showAllVisible && (
         <motion.button
           className="showMore-btn flex items-center justify-center gap-2 min-h-[36px] focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
-          onClick={() => setShowAll((prev) => !prev)}
+          onClick={toggleShowAll}
           aria-expanded={showAll}
           aria-label={showAll ? "Show fewer projects" : "Show all projects"}
           whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}

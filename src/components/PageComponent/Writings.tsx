@@ -1,16 +1,15 @@
 "use client"
-import React, { useState } from "react"
+import React from "react"
 import SectionTitle from "../SectionTitle"
 import { writings } from "@/data/Common/data"
 import { MdKeyboardDoubleArrowDown } from "react-icons/md"
 import { MdKeyboardDoubleArrowUp } from "react-icons/md"
 import WritingsBox from "../WritingsBox"
 import AnimatedWrapper from "@/utils/AnimatedWrapper"
+import { useShowAll } from "@/utils/useShowAll"
 
 const Writings = () => {
-  const showAllVis = writings.length > 2
-  const [showAll, setShowAll] = useState(false)
-  const visibleWritings = showAll ? writings : writings.slice(0, 2)
+  const { visibleItems: visibleWritings, showAll, showAllVisible, toggleShowAll } = useShowAll(writings, 2)
   let delayValue = 0
   return (
     <section className="flex flex-col gap-1">
@@ -30,21 +29,21 @@ const Writings = () => {
           </AnimatedWrapper>
         ))}
       </div>
-      {showAllVis && (
+      {showAllVisible && (
         <button
-          className="  showMore-btn "
-          onClick={() => setShowAll((prev) => !prev)}
+          className="showMore-btn"
+          onClick={toggleShowAll}
         >
           {showAll ? (
             <div className="flex gap-0.5 justify-center items-center">
-              <div className=" animate-pulse">
+              <div className="animate-pulse">
                 <MdKeyboardDoubleArrowUp />
               </div>
               Show less
             </div>
           ) : (
             <div className="flex gap-0.5 justify-center items-center">
-              <div className=" animate-pulse">
+              <div className="animate-pulse">
                 <MdKeyboardDoubleArrowDown />
               </div>
               Show all

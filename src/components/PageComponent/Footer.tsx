@@ -1,12 +1,12 @@
 "use client"
 import React from "react"
-import { personaService } from "@/services/personaService"
+import { getCurrentPersona } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
 import { LINK_ATTRIBUTES, ARIA_LABELS } from "@/constants"
 
 const Footer: React.FC = () => {
   const { isSwitchOn } = useSwitch()
-  const currentPersona = personaService.getCurrentPersona(isSwitchOn)
+  const currentPersona = getCurrentPersona(isSwitchOn)
 
   return (
     <footer className="md:mb-12 mb-16">

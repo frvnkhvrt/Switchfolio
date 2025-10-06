@@ -3,6 +3,7 @@
 // Centralized Frankhurt persona data
 export const frankhurtData = {
   name: "Frankhurt",
+  shortName: "Frankhurt",
   bio: "Gamer & Cinephile",
   about: `
     <p>

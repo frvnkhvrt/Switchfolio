@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
+import { getCurrentPersona } from "@/services/personaService"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -13,30 +14,33 @@ const rubik = Rubik({
   subsets: ["latin"],
 })
 
+// Default persona for metadata (Francisco)
+const defaultPersona = getCurrentPersona(false)
+
 export const metadata: Metadata = {
   title: {
-    default: "Francisco Hurtado",
-    template: "%s | Francisco Hurtado"
+    default: defaultPersona.name,
+    template: `%s | ${defaultPersona.name}`
   },
-  description: "Francisco Hurtado - Engineer + Marketer + Manager.",
-  keywords: ["Francisco Hurtado", "Portfolio", "Engineer", "Marketer", "Manager", "Coder"],
-  authors: [{ name: "Francisco Hurtado" }],
-  creator: "Francisco Hurtado",
+  description: `${defaultPersona.name} - ${defaultPersona.bio}`,
+  keywords: [defaultPersona.name, "Portfolio", "Engineer", "Marketer", "Manager", "Coder"],
+  authors: [{ name: defaultPersona.name }],
+  creator: defaultPersona.name,
   metadataBase: new URL("https://www.frankhurt.dev"),
   icons: {
     icon: "/assets/Images/favicon/favicon.png",
   },
   openGraph: {
-    title: "Francisco Hurtado",
-    description: "Frankhurt - Engineer, Marketer, Program Manager",
+    title: defaultPersona.name,
+    description: `${defaultPersona.name} - ${defaultPersona.bio}`,
     url: "https://frankhurt.dev",
-    siteName: "Frankfolio",
+    siteName: "Switchfolio",
     images: [
       {
-        url: "",
+        url: defaultPersona.image,
         width: 1200,
         height: 630,
-        alt: "Francisco Hurtado"
+        alt: `${defaultPersona.name}'s portfolio`
       },
     ],
     locale: "en-US",
@@ -44,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Francisco Hurtado",
-    description: "Frankhurt - Engineer, Marketer, Program Manager",
-    images: [""],
+    title: defaultPersona.name,
+    description: `${defaultPersona.name} - ${defaultPersona.bio}`,
+    images: [defaultPersona.image],
     creator: "@frvnkhvrt",
   },
   robots: {
