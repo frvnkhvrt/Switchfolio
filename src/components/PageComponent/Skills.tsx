@@ -13,7 +13,7 @@ const Skills = () => {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section className="flex flex-col gap-2" id="skills">
+    <section className="flex flex-col gap-3" id="skills">
       <SectionTitle title="Tech Stack" level={4} />
       <div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"

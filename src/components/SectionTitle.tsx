@@ -19,7 +19,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   const shouldReduceMotion = useReducedMotion()
 
-  const baseClasses = "font-bold text-inkBlack dark:text-backgroundCreamDark relative"
+  const baseClasses = "font-bold text-inkBlack dark:text-backgroundCreamDark relative mb-2"
   const sizeClasses = {
     1: "text-3xl md:text-4xl lg:text-5xl",
     2: "text-2xl md:text-3xl lg:text-4xl",
@@ -33,7 +33,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     <span className="relative inline-block">
       {title}
       <motion.span
-        className="absolute -bottom-1 left-0 h-0.5 bg-primaryBlue dark:bg-folderCream"
+        className="absolute -bottom-1 left-0 h-1 bg-primaryBlue dark:bg-folderCream"
         initial={shouldReduceMotion ? { width: "100%" } : { width: 0 }}
         animate={{ width: "100%" }}
         transition={{

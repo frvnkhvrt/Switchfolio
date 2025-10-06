@@ -19,7 +19,7 @@ const Projects = () => {
   let delayValue = 0
   
   return (
-    <section id="projects" className="flex flex-col gap-2">
+    <section id="projects" className="flex flex-col gap-3">
       <SectionTitle title="Projects" level={4} />
       <div className="flex flex-col md:gap-2 gap-3" role="list" aria-label="Project list">
         {visibleProjects.map((project) => (

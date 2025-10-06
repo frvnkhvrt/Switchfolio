@@ -3,9 +3,9 @@ import React from "react"
 import Image from "next/image"
 import { personaService } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
-import { ProfileHeader } from "@/components/PageComponent/InfoCard/ProfileHeader"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { COMPONENT_SIZES } from "@/constants"
+import Available from "../Available"
 
 const InfoCard: React.FC = () => {
   const { isSwitchOn } = useSwitch()
@@ -14,7 +14,6 @@ const InfoCard: React.FC = () => {
   return (
     <section>
       <div className="flex flex-col gap-1.5">
-        <ProfileHeader />
         <div className="flex gap-2 items-center">
           <div className="select-none w-1/3 md:w-auto rounded-sm">
             <Image
@@ -32,6 +31,7 @@ const InfoCard: React.FC = () => {
               <h1 className="head-name">
                 {currentPersona.name}
               </h1>
+              <Available text="Available" />
             </div>
             <p>{currentPersona.bio}</p>
             <SocialLinks links={currentPersona.links} />

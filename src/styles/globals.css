@@ -154,7 +154,7 @@ textarea {
 }
 
 .head-name {
-  @apply font-bold md:text-[2rem] text-[1.8rem] leading-[1.5rem];
+  @apply font-bold md:text-[2rem] text-[1.8rem] leading-[1.5rem] mb-2;
 }
 
 .showMore-btn {
@@ -166,5 +166,5 @@ textarea {
 }
 
 .blog-post {
-  @apply cursor-pointer bg-folderWhite border border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-1.5 rounded-none transition-colors duration-100 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm;
+  @apply cursor-pointer bg-folderWhite border-2 border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-1.5 rounded-none transition-colors duration-100 shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm;
 }
