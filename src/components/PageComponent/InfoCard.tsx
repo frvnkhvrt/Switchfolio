@@ -13,8 +13,8 @@ const InfoCard: React.FC = () => {
 
   return (
     <section>
-      <div className="flex flex-col gap-1.5">
-        <div className="flex gap-2 items-center">
+      <div className="flex flex-col">
+        <div className="flex gap-3 items-center">
           <div className="select-none w-1/3 md:w-auto rounded-sm">
             <Image
               src={currentPersona.image}
@@ -26,12 +26,12 @@ const InfoCard: React.FC = () => {
             />
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <div className="flex gap-3 items-center">
+          <div className="flex flex-col gap-0.5">
+            <Available text="Available" />
+            <div className="flex items-center">
               <h1 className="head-name">
                 {currentPersona.name}
               </h1>
-              <Available text="Available" />
             </div>
             <p className="text-base">{currentPersona.bio}</p>
             <SocialLinks links={currentPersona.links} />

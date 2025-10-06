@@ -58,9 +58,6 @@ const IndexPage = () => {
             <AnimatedWrapper delay={0.25} variant="slideUp">
               <AboutMe />
             </AnimatedWrapper>
-            <AnimatedWrapper delay={0.35} variant="slideUp">
-              <ReachOut />
-            </AnimatedWrapper>
             {!isSwitchOn && (
               <AnimatedWrapper delay={0.45} variant="slideUp">
                 <HireMe />

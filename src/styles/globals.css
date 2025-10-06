@@ -142,7 +142,7 @@ textarea {
 }
 
 .pro-pic {
-  @apply md:size-[130px] size-auto rounded-none select-none;
+  @apply md:size-[150px] rounded-none select-none;
 }
 
 .social-card {

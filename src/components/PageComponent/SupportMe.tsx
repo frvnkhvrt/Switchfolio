@@ -21,14 +21,6 @@ const SupportMe = () => {
           <a
             className="btn"
             target="_blank"
-            href="https://github.com/sponsors/frvnkhvrt"
-          >
-            <Icon icon="simple-icons:githubsponsors" className="text-pink-400" />
-            GitHub Sponsors
-          </a>
-          <a
-            className="btn"
-            target="_blank"
             href="https://buymeacoffee.com/frankhurt"
           >
             <Icon icon="simple-icons:buymeacoffee" className="text-yellow-400" />
