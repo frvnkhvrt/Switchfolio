@@ -88,7 +88,7 @@ const projects: Project[] = [
     title: "Switchfolio",
     status: 'running',
     content: "A dual-persona portfolio website that switches between professional and creative identities.",
-    url: "https://frankhurt.dev",
+    url: "",
     github: "https://github.com/frvnkhvrt/Portfolio",
     skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "PWA", "Accessibility", "Vercel"],
     caseStudy: {
