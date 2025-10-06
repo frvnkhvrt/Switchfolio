@@ -14,7 +14,7 @@ const Banner: React.FC = () => {
           rel={LINK_ATTRIBUTES.rel}
           className="  flex gap-1 md:gap-2 items-center text-white/65 hover:text-white/90 focus:text-white focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-100 font-medium rounded-sm"
         >
-          <span className=" hidden md:block text-inkBlack dark:text-backgroundCreamDark">Local time</span>
+          <span className=" hidden md:block text-base text-inkBlack dark:text-backgroundCreamDark">Local time</span>
           <time className="md:text-sm text-base text-inkBlack dark:text-backgroundCreamDark" dateTime={new Date().toISOString()}>
             <LocalTime />
           </time>

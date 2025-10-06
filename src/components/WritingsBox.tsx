@@ -15,7 +15,7 @@ const WritingsBox: React.FC<BlogBoxProps> = ({ head, des, link }) => {
       className=" blog-post flex flex-col gap-0.5 focus:outline-none focus:ring-2 focus:ring-primaryBlue/50 dark:focus:ring-folderCream/50 rounded-sm"
     >
       <h1 className=" md:text-lg text-xl font-semibold dark:text-backgroundCreamDark">{head}</h1>
-      <p className=" opacity-80 dark:text-backgroundCreamDark/80">{des}</p>
+      <p className="text-base opacity-80 dark:text-backgroundCreamDark/80">{des}</p>
     </a>
   )
 }

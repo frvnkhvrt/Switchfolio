@@ -138,7 +138,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
               )}
             </div>
           </div>
-          <p className="text-gray-700 dark:text-gray-300">{content}</p>
+          <p className="text-base text-gray-700 dark:text-gray-300">{content}</p>
         </div>
       </div>
 

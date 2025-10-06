@@ -33,7 +33,7 @@ const InfoCard: React.FC = () => {
               </h1>
               <Available text="Available" />
             </div>
-            <p>{currentPersona.bio}</p>
+            <p className="text-base">{currentPersona.bio}</p>
             <SocialLinks links={currentPersona.links} />
           </div>
         </div>

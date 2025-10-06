@@ -90,7 +90,7 @@ const projects: Project[] = [
     content: "A dual-persona portfolio website that switches between professional and creative identities.",
     url: "",
     github: "https://github.com/frvnkhvrt/Portfolio",
-    skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "PWA", "Accessibility", "Vercel"],
+    skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
     caseStudy: {
       problem: "Traditional portfolios are static and don't capture the multifaceted nature of creative professionals who work across different domains and audiences.",
       solution: "Created a dynamic portfolio that switches between two distinct personas (Francisco - Engineer/Marketer, Frankhurt - Gamer/Creator) with smooth animations, shared content architecture, and responsive design.",
