@@ -31,26 +31,26 @@ A modern, accessible, and performant dual-persona portfolio website built with c
 ```
 switchfolio/
 ├── public/
-│   └── assets/           # Static assets (images, icons)
+│   └── assets/              # Static assets (images, icons)
 ├── src/
-│   ├── app/              # Next.js App Router
-│   │   ├── layout.tsx    # Root layout
-│   │   └── page.tsx      # Home page
-│   ├── components/       # React components
-│   │   ├── Context/      # React context providers
-│   │   ├── ErrorBoundary/# Error boundary components
-│   │   ├── PageComponent/# Page sections
-│   │   ├── Transitions/  # Animation transition components
-│   │   └── homeScreen/   # Home page components
-│   ├── constants/        # App constants and design system
-│   ├── data/             # Static data for personas
-│   ├── layout/           # Layout components
-│   ├── services/         # Business logic services
-│   ├── styles/           # Global styles
-│   ├── types/            # TypeScript type definitions
-│   └── utils/            # Utility functions
-├── next.config.ts        # Next.js configuration
-├── tailwind.config.ts    # Tailwind CSS configuration
+│   ├── app/                 # Next.js App Router
+│   │   ├── layout.tsx       # Root layout
+│   │   └── page.tsx         # Home page
+│   ├── components/          # React components
+│   │   ├── Context/         # React context providers
+│   │   ├── ErrorBoundary/   # Error boundary components
+│   │   ├── PageComponent/   # Page sections
+│   │   ├── Transitions/     # Animation transition components
+│   │   └── homeScreen/      # Home page components
+│   ├── constants/           # App constants and design system
+│   ├── data/                # Static data for personas
+│   ├── layout/              # Layout components
+│   ├── services/            # Business logic services
+│   ├── styles/              # Global styles
+│   ├── types/               # TypeScript type definitions
+│   └── utils/               # Utility functions
+├── next.config.ts           # Next.js configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
 └── README.md
 ```
 
