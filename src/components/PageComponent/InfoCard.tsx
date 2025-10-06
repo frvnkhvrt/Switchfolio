@@ -2,6 +2,7 @@
 
 import React, { memo, useMemo } from "react"
 import Image from "next/image"
+import { motion, useReducedMotion } from "framer-motion"
 import { getCurrentPersona } from "@/services/personaService"
 import { useSwitch } from "../Context/SwitchContext"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
@@ -13,7 +14,8 @@ import { COMPONENT_SIZES } from "@/constants"
  */
 const InfoCard: React.FC = memo(() => {
   const { isSwitchOn } = useSwitch()
-  
+  const shouldReduceMotion = useReducedMotion()
+
   // Memoize persona to prevent unnecessary recalculations
   const currentPersona = useMemo(
     () => getCurrentPersona(isSwitchOn),
@@ -24,7 +26,12 @@ const InfoCard: React.FC = memo(() => {
     <section aria-labelledby="profile-heading" className="mb-3 md:mb-4">
       <div className="flex flex-col">
         <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start">
-          <div className="select-none w-40 sm:w-36 md:w-auto rounded-sm flex-shrink-0">
+          <motion.div
+            className="select-none w-40 sm:w-36 md:w-auto rounded-sm flex-shrink-0"
+            whileHover={shouldReduceMotion ? {} : { scale: 1.05, y: -3 }}
+            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
             <Image
               src={currentPersona.image}
               alt={`${currentPersona.name}'s profile picture`}
@@ -33,7 +40,7 @@ const InfoCard: React.FC = memo(() => {
               height={COMPONENT_SIZES.profileImageModal.height}
               priority
             />
-          </div>
+          </motion.div>
 
           <div className="flex flex-col gap-3 flex-1 min-w-0 text-center sm:text-left">
             <h1 id="profile-heading" className="head-name">
