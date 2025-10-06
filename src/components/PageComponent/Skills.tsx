@@ -48,7 +48,7 @@ const Skills = () => {
                 className="text-lg"
                 aria-hidden="true"
               />
-              <span className="font-medium text-xs leading-tight">{skill.text}</span>
+              <span className="font-medium text-sm leading-tight">{skill.text}</span>
             </div>
           </motion.div>
         ))}
