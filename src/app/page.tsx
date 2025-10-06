@@ -6,9 +6,7 @@ import IndexPage from "@/components/homeScreen/IndexPage"
 import MainScreen from "@/layout/MainScreen"
 import { TitleUpdater } from "@/utils/TitleUpdater"
 import SkipLinks from "@/components/Accessibility/SkipLinks"
-import FirstVisitTooltip from "@/components/Onboarding/FirstVisitTooltip"
 import KeyboardShortcuts from "@/components/Accessibility/KeyboardShortcuts"
-import InstallPrompt from "@/components/PWA/InstallPrompt"
 import { usePersonaSEO } from "@/hooks/usePersonaSEO"
 
 const Home = () => {
@@ -17,8 +15,6 @@ const Home = () => {
       <SkipLinks />
       <KeyboardShortcuts />
       <TitleUpdater />
-      <FirstVisitTooltip />
-      <InstallPrompt />
       <PersonaSEOUpdater />
       <MainScreen>
         <Banner />
