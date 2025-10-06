@@ -2,10 +2,8 @@
 import React from "react"
 import SectionTitle from "../SectionTitle"
 import { Icon } from "@iconify/react"
-import { useSwitch } from "../Context/SwitchContext"
 
 const SupportMe = () => {
-  const { isSwitchOn } = useSwitch()
   
   // Francisco (isSwitchOn = false): Professional tone
   // Frankhurt (isSwitchOn = true): Casual, edgy tone
