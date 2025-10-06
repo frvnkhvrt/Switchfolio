@@ -31,10 +31,10 @@ const projects: PortfolioProject[] = [
     img: "/assets/Images/project/",
     title: "Bold Choice",
     status: 'building',
-    content: "Automation startup.",
+    content: "Consulting agency.",
     url: "",
     github: "",
-    skill: ["Business", "Automation", "Marketing", "Sales", "AI"],
+    skill: ["Business", "Process Automation", "Marketing", "Sales", "Engineering", "AI"],
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ const projects: PortfolioProject[] = [
     content: "AI-powered UGC n8n automation, integrating Nano Banana and Veo 3.",
     url: "",
     github: "",
-    skill: ["n8n", "LLMs", "Nano Banana", "Veo 3", "Sora 2", "JavaScript", "Redis"],
+    skill: ["n8n", "Nano Banana", "Veo 3", "JavaScript"],
   },
   {
     id: 4,
@@ -110,9 +110,6 @@ const navLinks: NavLink[] = [
   },
 ]
 
-const newsText =
-  "Stay wired on the chaos I'm unleashing."
-
   const supportText =
   "Support my work and future projects."
 
@@ -124,5 +121,4 @@ export {
   hireText,
   navLinks,
   supportText,
-  newsText,
 }
