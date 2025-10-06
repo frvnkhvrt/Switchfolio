@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 import SectionTitle from "../SectionTitle"
 import { emailLink, hireText } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
@@ -12,7 +12,7 @@ const HireMe = () => {
         <div className="mt-1">
           <a className="btn font-semibold" target="_blank" href={emailLink}>
             <Icon icon="mdi:briefcase" className="text-lg" />
-            Hire Me
+            Get in touch
           </a>
         </div>
       </div>
