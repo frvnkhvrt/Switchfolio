@@ -12,7 +12,7 @@ const HireMe = () => {
         <div className="mt-1">
           <a className="btn font-semibold" target="_blank" href={emailLink}>
             <Icon icon="mdi:briefcase" className="text-lg" />
-            Get in touch
+            Hire me
           </a>
         </div>
       </div>
