@@ -12,7 +12,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { LINK_ATTRIBUTES } from "@/constants"
 
 interface EnhancedProjectBoxProps {
-  status: 'building' | 'running' | 'complete'
+  status: 'building' | 'running'
   title: string
   content: string
   url: string
@@ -54,17 +54,12 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
     }
   }
 
-  const getStatusInfo = (status: 'building' | 'running' | 'complete') => {
+  const getStatusInfo = (status: 'building' | 'running') => {
     switch (status) {
       case 'running':
         return {
           label: 'Running',
-          color: 'bg-primaryBlue/10 text-primaryBlue dark:bg-green-500/10 dark:text-green-400'
-        }
-      case 'complete':
-        return {
-          label: 'Complete',
-          color: 'bg-green-500/10 text-green-600 dark:bg-green-500/20 dark:text-green-400'
+          color: 'bg-[#22c55e]/10 text-[#22c55e] dark:bg-green-500/10 dark:text-green-400'
         }
       case 'building':
       default:

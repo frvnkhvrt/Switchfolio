@@ -34,7 +34,7 @@ const projects: PortfolioProject[] = [
     content: "Consulting agency.",
     url: "",
     github: "",
-    skill: ["Business", "Automation", "Marketing", "Sales", "Engineering", "AI"],
+    skill: ["Business", "Automation", "Marketing", "Sales", "Engineering", "Development", "AI"],
   },
   {
     id: 2,
@@ -60,11 +60,11 @@ const projects: PortfolioProject[] = [
     id: 4,
     img: "/assets/Images/project/",
     title: "mySchneider Partner Program",
-    status: 'complete',
+    status: 'running',
     content: "Enterprise-grade Salesforce integration with portal, app, social, leads, and rewards systems — enabling real-time sync, automated marketing workflows, and reporting.",
     url: "https://www.se.com/myschneider/",
     github: "",
-    skill: ["Salesforce", "Apex", "Tableau", "Data Sync", "Lightning Web Components"],
+    skill: ["Salesforce", "Lightning Web Components", "Apex", "Tableau", "Marketo", "AppsFlyer", "HTML", "CSS", "JavaScript"],
   }
 ]
 
