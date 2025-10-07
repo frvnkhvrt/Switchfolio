@@ -67,7 +67,7 @@ export interface PortfolioProject {
   id: number
   img: string
   title: string
-  status: 'building' | 'running' | 'complete'
+  status: 'building' | 'running'
   content: string
   url: string
   github: string
