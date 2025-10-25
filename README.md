@@ -105,6 +105,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Built with ❤️ using Next.js, React, TypeScript, and modern web standards**
-
 *Last updated: October 2025*
