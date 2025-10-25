@@ -28,7 +28,8 @@ export const metadata: Metadata = {
   creator: defaultPersona.name,
   metadataBase: new URL("https://www.frankhurt.dev"),
   icons: {
-    icon: "/assets/Images/favicon/favicon.png",
+    icon: "/assets/Images/favicon/favicon.ico",
+    apple: "/assets/Images/favicon/apple-touch-icon.png",
   },
   openGraph: {
     title: defaultPersona.name,
@@ -77,6 +78,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#3e43f0" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" type="image/x-icon" href="/assets/Images/favicon/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/Images/favicon/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/Images/favicon/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/Images/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/assets/Images/favicon/site.webmanifest" />
       </head>
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased`}

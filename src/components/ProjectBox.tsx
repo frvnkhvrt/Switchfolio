@@ -100,8 +100,9 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
       role="button"
       aria-expanded={isExpanded}
       aria-label={ARIA_LABELS.projectStatus(title, statusLabel)}
-      whileHover={shouldReduceMotion ? {} : { ...HOVER_ANIMATIONS.card, boxShadow: "0 10px 25px -5px rgba(62, 67, 240, 0.15)" }}
+      whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.card}
       whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
+      transition={{ duration: 0.2 }}
     >
       <div className="flex flex-col gap-3 p-4">
         <div className="flex flex-col gap-1.5">

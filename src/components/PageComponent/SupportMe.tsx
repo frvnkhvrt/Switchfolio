@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion"
 import { HOVER_ANIMATIONS } from "@/constants"
 
 const SupportMe = () => {
-  const supportMessage = "Support my work and future projects."
+  const supportMessage = "Support my work and future projects"
   const shouldReduceMotion = useReducedMotion()
 
   return (
