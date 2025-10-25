@@ -41,7 +41,7 @@ const projects: PortfolioProject[] = [
     img: "/assets/Images/project/",
     title: "Bold Choice",
     status: 'building',
-    content: "Consulting agency.",
+    content: "Consulting agency",
     url: "",
     github: "",
     skill: ["Business", "Automation", "Marketing", "Sales", "Engineering", "Development", "AI"],
@@ -51,7 +51,7 @@ const projects: PortfolioProject[] = [
     img: "/assets/Images/project/",
     title: "Switchfolio",
     status: 'running',
-    content: "A dual-persona portfolio that switches between professional and creative identities.",
+    content: "A dual-persona portfolio that switches between professional and creative identities",
     url: "",
     github: "https://github.com/frvnkhvrt/Portfolio",
     skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
@@ -61,7 +61,7 @@ const projects: PortfolioProject[] = [
     img: "/assets/Images/project/",
     title: "AI-powered UGC Automation",
     status: 'running',
-    content: "AI-powered UGC n8n automation, integrating Nano Banana and Veo 3.",
+    content: "AI-powered UGC n8n automation, integrating Nano Banana and Veo 3",
     url: "",
     github: "",
     skill: ["n8n", "Nano Banana", "Veo 3", "JavaScript"],
@@ -71,7 +71,7 @@ const projects: PortfolioProject[] = [
     img: "/assets/Images/project/",
     title: "mySchneider Partner Program",
     status: 'running',
-    content: "Enterprise-grade Salesforce integration with portal, app, social, leads, and rewards systems — enabling real-time sync, automated marketing workflows, and reporting.",
+    content: "Enterprise-grade Salesforce integration with portal, app, social, leads, and rewards systems — enabling real-time sync, automated marketing workflows, and reporting",
     url: "https://www.se.com/myschneider/",
     github: "",
     skill: ["Salesforce", "Lightning Web Components", "Apex", "Tableau", "Marketo", "AppsFlyer", "HTML", "CSS", "JavaScript"],
@@ -86,7 +86,7 @@ const writings: Writing[] = [
     id: 1,
     img: "/assets/Images/writing/medium.png",
     head: "Read my blog",
-    des: "Follow me on Medium.",
+    des: "Follow me on Medium",
     link: "https://frankhurt.medium.com",
   },
 ] as const
@@ -94,7 +94,7 @@ const writings: Writing[] = [
 /**
  * Hire me section content
  */
-const hireText = "Open to full-time and freelance jobs."
+const hireText = "Open to full-time and freelance jobs"
 const emailLink = "mailto:info@frankhurt.dev?subject=Interested%20in%20Hiring%20You"
 
 /**
@@ -130,7 +130,7 @@ const navLinks: NavLink[] = [
 /**
  * Support section content
  */
-const supportText = "Support my work and future projects."
+const supportText = "Support my work and future projects"
 
 export {
   projects,
