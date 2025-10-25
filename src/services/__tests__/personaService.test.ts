@@ -15,7 +15,8 @@ describe('personaService', () => {
     })
 
     it('should throw error for invalid persona id', () => {
-      expect(() => getPersona('invalid')).toThrow('Persona with id \'invalid\' not found')
+      // @ts-expect-error - Testing invalid input
+      expect(() => getPersona('invalid')).toThrow('Invalid persona ID')
     })
   })
 

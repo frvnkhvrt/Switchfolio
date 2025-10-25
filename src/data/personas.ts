@@ -1,5 +1,8 @@
-import { Persona } from '@/types'
+import { Persona, PersonaId } from '@/types'
 
+/**
+ * Francisco persona data - Professional identity
+ */
 export const franciscoData = {
   name: "Francisco",
   shortName: "Francisco",
@@ -27,6 +30,9 @@ export const franciscoData = {
   ],
 }
 
+/**
+ * Frankhurt persona data - Creative identity
+ */
 export const frankhurtData = {
   name: "Frankhurt",
   shortName: "Frankhurt",
@@ -54,13 +60,16 @@ export const frankhurtData = {
   ],
 }
 
-const personas: Record<string, Persona> = {
+/**
+ * All available personas mapped by ID
+ */
+const personas: Record<PersonaId, Persona> = {
   francisco: {
-    id: 'francisco',
+    id: 'francisco' as PersonaId,
     ...franciscoData,
   },
   frankhurt: {
-    id: 'frankhurt',
+    id: 'frankhurt' as PersonaId,
     ...frankhurtData,
   },
 }

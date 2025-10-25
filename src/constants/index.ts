@@ -1,18 +1,37 @@
-// Common constants used across the application
+/**
+ * Application Constants
+ * Centralized constants for consistency across the application
+ */
 
-// Link attributes
+// ============================================================================
+// ACCESSIBILITY CONSTANTS
+// ============================================================================
+
+/**
+ * Standard attributes for external links
+ */
 export const LINK_ATTRIBUTES = {
   target: "_blank" as const,
   rel: "noopener noreferrer" as const,
 } as const
 
-// Aria labels
+/**
+ * ARIA label generators for accessibility
+ */
 export const ARIA_LABELS = {
   profileImage: (name: string) => `View ${name}'s profile image`,
   socialLink: (name: string) => `${name} (opens in new tab)`,
+  projectStatus: (title: string, status: string) => `${title} project - ${status}`,
+  expandableSection: (isExpanded: boolean) => isExpanded ? 'Collapse section' : 'Expand section',
 } as const
 
-// Component sizes
+// ============================================================================
+// COMPONENT DIMENSIONS
+// ============================================================================
+
+/**
+ * Standard component sizes for consistency
+ */
 export const COMPONENT_SIZES = {
   profileImage: {
     width: 35,
@@ -28,7 +47,14 @@ export const COMPONENT_SIZES = {
   },
 } as const
 
-// Animation delays
+// ============================================================================
+// UI BEHAVIOR CONSTANTS
+// ============================================================================
+
+/**
+ * Animation delays for staggered entrance effects (in seconds)
+ * @deprecated Use 0 delay for instant feedback - kept for backward compatibility
+ */
 export const ANIMATION_DELAYS = {
   default: 0,
   short: 0.15,
@@ -41,15 +67,24 @@ export const ANIMATION_DELAYS = {
   giga: 1.15,
 } as const
 
-// List visibility
+/**
+ * Default visibility settings for lists
+ */
 export const LIST_VISIBILITY = {
   defaultVisible: 2,
+  showMoreIncrement: 5,
 } as const
 
-// Layout constants
+// ============================================================================
+// LAYOUT CONSTANTS
+// ============================================================================
+
+/**
+ * Layout dimensions and spacing
+ */
 export const LAYOUT = {
   maxWidth: '900px',
-  navBottomOffset: '1.5rem', // 24px
+  navBottomOffset: '1.5rem',
   navZIndex: 40,
   screenPadding: {
     mobile: '1rem',
@@ -61,27 +96,43 @@ export const LAYOUT = {
     tablet: '5rem',
     desktop: '6rem',
   },
+  contentGap: {
+    small: '0.75rem',
+    medium: '1.5rem',
+    large: '2rem',
+  },
 } as const
 
-// Navigation constants
+/**
+ * Navigation bar configuration
+ */
 export const NAVIGATION = {
   height: '64px',
   bottomOffset: '1.5rem',
-  iconSize: '1.5rem', // 24px
+  iconSize: '1.5rem',
   profileImageSize: 48,
   gapBetweenItems: '1rem',
   animationStagger: 0.1,
 } as const
 
-// Interaction timing (in milliseconds)
+// ============================================================================
+// TIMING CONSTANTS
+// ============================================================================
+
+/**
+ * Interaction timing values (in milliseconds)
+ */
 export const TIMING = {
   clickDelay: 300,
   hoverDelay: 150,
   debounceDelay: 250,
   tooltipDelay: 500,
+  transitionDuration: 200,
 } as const
 
-// Image dimensions
+/**
+ * Image dimension presets for Next.js Image optimization
+ */
 export const IMAGE_SIZES = {
   profile: {
     small: 35,
@@ -99,7 +150,13 @@ export const IMAGE_SIZES = {
   },
 } as const
 
-// Responsive breakpoint values (matches Tailwind)
+// ============================================================================
+// RESPONSIVE BREAKPOINTS
+// ============================================================================
+
+/**
+ * Responsive breakpoint values (matches Tailwind and designSystem)
+ */
 export const BREAKPOINTS = {
   xs: 320,
   sm: 375,
@@ -109,5 +166,17 @@ export const BREAKPOINTS = {
   '2xl': 2560,
 } as const
 
-// Re-export hover animations from unified system
+// ============================================================================
+// RE-EXPORTS FROM OTHER MODULES
+// ============================================================================
+
+/**
+ * Hover animations from unified animation system
+ */
 export { HOVER_PRESETS as HOVER_ANIMATIONS } from './animations'
+
+/**
+ * Design system tokens for use in components
+ */
+export { designSystem } from './designSystem'
+export { colors, shadows, borderRadius, fontFamily } from './theme'

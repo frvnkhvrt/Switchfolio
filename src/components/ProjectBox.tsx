@@ -1,18 +1,20 @@
 /**
- * Enhanced Project Box Component
+ * Project Box Component
  * Accessible, animated project card with expand/collapse functionality
+ * Displays project information including status, links, and technology stack
  */
 
 "use client"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import { BsGithub } from "react-icons/bs"
 import { GoDotFill } from "react-icons/go"
 import { FiExternalLink } from "react-icons/fi"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
-import { LINK_ATTRIBUTES, HOVER_ANIMATIONS } from "@/constants"
+import { LINK_ATTRIBUTES, HOVER_ANIMATIONS, ARIA_LABELS } from "@/constants"
+import type { ProjectStatus } from "@/types"
 
-interface EnhancedProjectBoxProps {
-  status: 'building' | 'running'
+interface ProjectBoxProps {
+  status: ProjectStatus
   title: string
   content: string
   url: string
@@ -20,7 +22,35 @@ interface EnhancedProjectBoxProps {
   skill: string[]
 }
 
-const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
+/**
+ * Status configuration with display info
+ */
+interface StatusInfo {
+  label: string
+  color: string
+}
+
+/**
+ * Get status display information
+ */
+const getStatusInfo = (status: ProjectStatus): StatusInfo => {
+  const statusMap: Record<ProjectStatus, StatusInfo> = {
+    running: {
+      label: 'Running',
+      color: 'bg-green-500/10 text-green-400',
+    },
+    building: {
+      label: 'Building',
+      color: 'bg-red-500/10 text-red-400',
+    },
+  }
+  return statusMap[status]
+}
+
+/**
+ * ProjectBox Component Implementation
+ */
+const ProjectBox: React.FC<ProjectBoxProps> = memo(({
   status,
   title,
   content,
@@ -31,6 +61,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
   const [isExpanded, setIsExpanded] = useState(false)
   const shouldReduceMotion = useReducedMotion()
 
+  // Handle clicks outside the project box to collapse it
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement
@@ -43,36 +74,22 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
     return () => document.removeEventListener("click", handleOutsideClick)
   }, [])
 
-  const handleToggle = () => {
+  // Toggle expansion state
+  const handleToggle = useCallback(() => {
     setIsExpanded((prev) => !prev)
-  }
+  }, [])
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  // Handle keyboard interactions for accessibility
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleToggle()
     }
-  }
+  }, [handleToggle])
 
-  const getStatusInfo = (status: 'building' | 'running') => {
-    switch (status) {
-      case 'running':
-        return {
-          label: 'Running',
-          color: 'bg-green-500/10 text-green-400'
-        }
-      case 'building':
-      default:
-        return {
-          label: 'Building',
-          color: 'bg-red-500/10 text-red-400'
-        }
-    }
-  }
-
+  // Get status display info
   const statusInfo = getStatusInfo(status)
-  const statusLabel = statusInfo.label
-  const statusColor = statusInfo.color
+  const { label: statusLabel, color: statusColor } = statusInfo
 
   return (
     <motion.div
@@ -82,7 +99,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
       tabIndex={0}
       role="button"
       aria-expanded={isExpanded}
-      aria-label={`${title} project - ${statusLabel}`}
+      aria-label={ARIA_LABELS.projectStatus(title, statusLabel)}
       whileHover={shouldReduceMotion ? {} : { ...HOVER_ANIMATIONS.card, boxShadow: "0 10px 25px -5px rgba(62, 67, 240, 0.15)" }}
       whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
     >
@@ -178,6 +195,8 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
       </AnimatePresence>
     </motion.div>
   )
-}
+})
+
+ProjectBox.displayName = 'ProjectBox'
 
 export default ProjectBox

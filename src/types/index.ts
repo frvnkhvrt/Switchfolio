@@ -1,6 +1,17 @@
-// Core application types
+/**
+ * Type Definitions
+ * Organized by domain for better maintainability
+ */
+
+// ============================================================================
+// CORE DOMAIN TYPES
+// ============================================================================
+
+/**
+ * Represents a user persona with all associated data
+ */
 export interface Persona {
-  id: string
+  id: PersonaId
   name: string
   shortName: string
   bio: string
@@ -9,6 +20,14 @@ export interface Persona {
   links: SocialLink[]
 }
 
+/**
+ * Valid persona identifiers
+ */
+export type PersonaId = 'francisco' | 'frankhurt'
+
+/**
+ * Social media link with icon
+ */
 export interface SocialLink {
   id: number
   name: string
@@ -16,41 +35,18 @@ export interface SocialLink {
   icon: string
 }
 
-// Context types
-export interface SwitchContextType {
-  isSwitchOn: boolean
-  toggleSwitch: () => void
-  theme: 'light' | 'dark'
-}
+// ============================================================================
+// PORTFOLIO CONTENT TYPES
+// ============================================================================
 
-// Component prop types
-export interface ScreenProps {
-  children: React.ReactNode
-}
-
-export interface AnimatedWrapperProps {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}
-
-// API and data types
-export interface Project {
-  id: number
-  title: string
-  description: string
-  image: string
-  tags: string[]
-  link?: string
-  github?: string
-}
-
-// Portfolio-specific data types
+/**
+ * Portfolio project with status and metadata
+ */
 export interface PortfolioProject {
   id: number
   img: string
   title: string
-  status: 'building' | 'running'
+  status: ProjectStatus
   content: string
   url: string
   github: string
@@ -58,6 +54,14 @@ export interface PortfolioProject {
   caseStudy?: CaseStudy
 }
 
+/**
+ * Project status indicator
+ */
+export type ProjectStatus = 'building' | 'running'
+
+/**
+ * Detailed project case study
+ */
 export interface CaseStudy {
   problem: string
   solution: string
@@ -66,6 +70,9 @@ export interface CaseStudy {
   learnings: string
 }
 
+/**
+ * Writing/blog post entry
+ */
 export interface Writing {
   id: number
   img: string
@@ -74,6 +81,18 @@ export interface Writing {
   link: string
 }
 
+/**
+ * Portfolio skill entry
+ */
+export interface PortfolioSkill {
+  id: number
+  icon: string
+  text: string
+}
+
+/**
+ * Navigation link with icon
+ */
 export interface NavLink {
   id: number
   name: string
@@ -81,32 +100,102 @@ export interface NavLink {
   icon: string
 }
 
-export interface PortfolioSkill {
-  id: number
-  icon: string
-  text: string
+// ============================================================================
+// CONTEXT TYPES
+// ============================================================================
+
+/**
+ * Switch context for persona toggling
+ */
+export interface SwitchContextType {
+  isSwitchOn: boolean
+  toggleSwitch: () => void
+  theme: Theme
 }
 
-export interface Skill {
-  id: number
-  name: string
-  level: number
-  category: string
+// ============================================================================
+// COMPONENT PROP TYPES
+// ============================================================================
+
+/**
+ * Base props for layout components
+ */
+export interface ScreenProps {
+  children: React.ReactNode
 }
 
-// Utility types
+/**
+ * Props for animated wrapper components
+ */
+export interface AnimatedWrapperProps {
+  children: React.ReactNode
+  delay?: number
+  duration?: number
+  className?: string
+  variant?: AnimationVariant
+}
+
+/**
+ * Available animation variants
+ */
+export type AnimationVariant = 'blur' | 'slideUp' | 'slideDown' | 'slide' | 'fade' | 'scale' | 'rotate'
+
+// ============================================================================
+// UI STATE TYPES
+// ============================================================================
+
+/**
+ * Theme mode type
+ */
 export type Theme = 'light' | 'dark'
+
+/**
+ * Responsive viewport breakpoints
+ */
 export type Viewport = 'mobile' | 'tablet' | 'desktop'
 
-// Error types
-export interface AppError {
-  code: string
-  message: string
-  details?: unknown
-}
-
-// Loading states
+/**
+ * Loading state with optional error
+ */
 export interface LoadingState {
   isLoading: boolean
   error?: string | null
 }
+
+// ============================================================================
+// ERROR HANDLING TYPES
+// ============================================================================
+
+/**
+ * Application error structure
+ */
+export interface AppError {
+  code: string
+  message: string
+  details?: unknown
+  timestamp?: Date
+}
+
+/**
+ * Error severity levels
+ */
+export type ErrorSeverity = 'info' | 'warning' | 'error' | 'critical'
+
+// ============================================================================
+// UTILITY TYPES
+// ============================================================================
+
+/**
+ * Generic callback function type
+ */
+export type Callback<T = void> = () => T
+
+/**
+ * Generic async callback function type
+ */
+export type AsyncCallback<T = void> = () => Promise<T>
+
+/**
+ * Extract readonly array type
+ */
+export type ReadonlyArrayType<T> = T extends readonly (infer U)[] ? U : never

@@ -1,15 +1,21 @@
 /**
- * Common Data
+ * Common Portfolio Data
  * Centralized data for skills, projects, writings, and navigation
+ * All data is typed and immutable for consistency
  * @module data/Common/data
  */
 
-import { PortfolioProject, Writing, NavLink, PortfolioSkill } from '@/types'
+import type { PortfolioProject, Writing, NavLink, PortfolioSkill, ProjectStatus } from '@/types'
+
+// ============================================================================
+// SKILLS & TECHNOLOGIES
+// ============================================================================
 
 /**
  * Skills and technologies portfolio
+ * Displayed as icons with labels in the skills section
  */
-const skills: PortfolioSkill[] = [
+const skills: readonly PortfolioSkill[] = [
   { id: 1, icon: "mdi:chip", text: "Assembly" },
   { id: 2, icon: "simple-icons:cplusplus", text: "C++" },
   { id: 3, icon: "simple-icons:oracle", text: "Java" },
@@ -33,14 +39,24 @@ const skills: PortfolioSkill[] = [
 ] as const
 
 /**
- * Portfolio projects with status, descriptions, and tech stack
+ * Get all skills
  */
-const projects: PortfolioProject[] = [
+export const getSkills = (): readonly PortfolioSkill[] => skills
+
+// ============================================================================
+// PORTFOLIO PROJECTS
+// ============================================================================
+
+/**
+ * Portfolio projects with status, descriptions, and tech stack
+ * Projects are displayed in the Projects section with expandable details
+ */
+const projects: readonly PortfolioProject[] = [
   {
     id: 1,
     img: "/assets/Images/project/",
     title: "Bold Choice",
-    status: 'building',
+    status: 'building' as ProjectStatus,
     content: "Consulting agency",
     url: "",
     github: "",
@@ -50,7 +66,7 @@ const projects: PortfolioProject[] = [
     id: 2,
     img: "/assets/Images/project/",
     title: "Switchfolio",
-    status: 'running',
+    status: 'running' as ProjectStatus,
     content: "A dual-persona portfolio that switches between professional and creative identities",
     url: "",
     github: "https://github.com/frvnkhvrt/Portfolio",
@@ -60,7 +76,7 @@ const projects: PortfolioProject[] = [
     id: 3,
     img: "/assets/Images/project/",
     title: "AI-powered UGC Automation",
-    status: 'running',
+    status: 'running' as ProjectStatus,
     content: "AI-powered UGC n8n automation, integrating Nano Banana and Veo 3",
     url: "",
     github: "",
@@ -70,7 +86,7 @@ const projects: PortfolioProject[] = [
     id: 4,
     img: "/assets/Images/project/",
     title: "mySchneider Partner Program",
-    status: 'running',
+    status: 'running' as ProjectStatus,
     content: "Enterprise-grade Salesforce integration with portal, app, social, leads, and rewards systems — enabling real-time sync, automated marketing workflows, and reporting",
     url: "https://www.se.com/myschneider/",
     github: "",
@@ -79,9 +95,26 @@ const projects: PortfolioProject[] = [
 ] as const
 
 /**
- * Blog posts and writings
+ * Get all projects
  */
-const writings: Writing[] = [
+export const getProjects = (): readonly PortfolioProject[] => projects
+
+/**
+ * Get projects by status
+ */
+export const getProjectsByStatus = (status: ProjectStatus): readonly PortfolioProject[] => {
+  return projects.filter(project => project.status === status)
+}
+
+// ============================================================================
+// WRITINGS & BLOG POSTS
+// ============================================================================
+
+/**
+ * Blog posts and writings
+ * External links to published content
+ */
+const writings: readonly Writing[] = [
   {
     id: 1,
     img: "/assets/Images/writing/medium.png",
@@ -92,15 +125,33 @@ const writings: Writing[] = [
 ] as const
 
 /**
+ * Get all writings
+ */
+export const getWritings = (): readonly Writing[] => writings
+
+// ============================================================================
+// CONTACT & HIRE INFORMATION
+// ============================================================================
+
+/**
  * Hire me section content
  */
-const hireText = "Open to full-time and freelance jobs"
-const emailLink = "mailto:info@frankhurt.dev?subject=Interested%20in%20Hiring%20You"
+export const hireText = "Open to full-time and freelance jobs" as const
+
+/**
+ * Contact email link with pre-filled subject
+ */
+export const emailLink = "mailto:info@frankhurt.dev?subject=Interested%20in%20Hiring%20You" as const
+
+// ============================================================================
+// NAVIGATION LINKS
+// ============================================================================
 
 /**
  * Social navigation links displayed in the navigation bar
+ * These appear as icons in the footer navigation
  */
-const navLinks: NavLink[] = [
+const navLinks: readonly NavLink[] = [
   {
     id: 1,
     name: "LinkedIn",
@@ -128,16 +179,30 @@ const navLinks: NavLink[] = [
 ] as const
 
 /**
+ * Get all navigation links
+ */
+export const getNavLinks = (): readonly NavLink[] => navLinks
+
+// ============================================================================
+// SUPPORT SECTION
+// ============================================================================
+
+/**
  * Support section content
  */
-const supportText = "Support my work and future projects"
+export const supportText = "Support my work and future projects" as const
 
+// ============================================================================
+// LEGACY EXPORTS (for backward compatibility)
+// ============================================================================
+
+/**
+ * Direct exports for backward compatibility
+ * Prefer using getter functions (getProjects, getSkills, etc.) for better encapsulation
+ */
 export {
   projects,
   writings,
-  emailLink,
   skills,
-  hireText,
   navLinks,
-  supportText,
 }
