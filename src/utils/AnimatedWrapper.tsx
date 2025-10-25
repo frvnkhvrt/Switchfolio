@@ -8,7 +8,7 @@
 import React from "react"
 import { motion, useReducedMotion, Variants } from "framer-motion"
 import { useSwitch } from "@/components/Context/SwitchContext"
-import { designSystem } from "@/constants/designSystem"
+import { DURATIONS, ENTRANCE_VARIANTS, ENTRANCE_TRANSITION } from "@/constants/animations"
 
 interface AnimatedWrapperProps {
   children: React.ReactNode
@@ -18,68 +18,8 @@ interface AnimatedWrapperProps {
   className?: string
 }
 
-// Animation variants with advanced techniques
-const animationVariants: Record<string, Variants> = {
-  fade: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  },
-  slide: {
-    initial: { opacity: 0, x: -20 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 20 },
-  },
-  slideUp: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-  },
-  slideDown: {
-    initial: { opacity: 0, y: -20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 20 },
-  },
-  scale: {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0, scale: 0.95 },
-  },
-  blur: {
-    initial: { 
-      opacity: 0, 
-      y: 20, 
-      filter: "blur(10px)" 
-    },
-    animate: { 
-      opacity: 1, 
-      y: 0, 
-      filter: "blur(0px)" 
-    },
-    exit: { 
-      opacity: 0, 
-      y: -20, 
-      filter: "blur(10px)" 
-    },
-  },
-  rotate: {
-    initial: { 
-      opacity: 0, 
-      rotate: -10,
-      scale: 0.95
-    },
-    animate: { 
-      opacity: 1, 
-      rotate: 0,
-      scale: 1
-    },
-    exit: { 
-      opacity: 0, 
-      rotate: 10,
-      scale: 0.95
-    },
-  },
-}
+// Use unified animation variants
+const animationVariants: Record<string, Variants> = ENTRANCE_VARIANTS
 
 // Reduced motion variants (simplified animations)
 const reducedMotionVariants: Variants = {
@@ -92,7 +32,7 @@ const AnimatedWrapper: React.FC<AnimatedWrapperProps> = ({
   children, 
   delay = 0,
   variant = 'blur',
-  duration = 0.6,
+  duration = DURATIONS.normal,
   className = '',
 }) => {
   const { isSwitchOn } = useSwitch()
@@ -114,10 +54,9 @@ const AnimatedWrapper: React.FC<AnimatedWrapperProps> = ({
       exit="exit"
       variants={selectedVariants}
       transition={{
+        ...ENTRANCE_TRANSITION,
         duration: animationDuration,
         delay: shouldReduceMotion ? 0 : delay,
-        ease: [0.25, 0.46, 0.45, 0.94], // Custom cubic-bezier easing
-        ...designSystem.animation.spring.default,
       }}
       className={className}
     >

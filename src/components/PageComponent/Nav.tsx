@@ -13,6 +13,8 @@ import { useSwitch } from "../Context/SwitchContext"
 import { navLinks } from "@/data/Common/data"
 import { getCurrentPersona } from "@/services/personaService"
 import { designSystem } from "@/constants/designSystem"
+import { NAVIGATION, LAYOUT, HOVER_ANIMATIONS } from "@/constants"
+import { DURATIONS } from "@/constants/animations"
 
 const Nav: React.FC = memo(() => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
@@ -59,7 +61,11 @@ const Nav: React.FC = memo(() => {
 
   return (
     <nav
-      className="fixed bottom-6 left-0 right-0 flex justify-center items-center z-40"
+      className="fixed left-0 right-0 flex justify-center items-center"
+      style={{ 
+        bottom: NAVIGATION.bottomOffset,
+        zIndex: LAYOUT.navZIndex 
+      }}
       aria-label="Main navigation"
       id="navigation"
     >
@@ -84,18 +90,18 @@ const Nav: React.FC = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                delay: shouldReduceMotion ? 0 : index * 0.1,
-                duration: shouldReduceMotion ? 0.01 : 0.3
+                delay: shouldReduceMotion ? 0 : index * NAVIGATION.animationStagger,
+                duration: shouldReduceMotion ? 0.01 : DURATIONS.normal
               }}
             >
               <motion.a
-                className="block p-2 rounded-sm transition-colors duration-200 hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
+                className="block p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
                 href={nav.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${nav.name} (opens in new tab)`}
-                whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
-                whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+                whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.icon}
+                whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
               >
                 <Icon icon={nav.icon} className="text-2xl" aria-hidden="true" />
               </motion.a>
@@ -120,8 +126,8 @@ const Nav: React.FC = memo(() => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={handleMouseLeave}
           style={shouldReduceMotion ? {} : { x: springX, y: springY }}
-          whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-          whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+          whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.button}
+          whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
           role="button"
           tabIndex={0}
@@ -138,8 +144,8 @@ const Nav: React.FC = memo(() => {
               src={nextPersona.image}
               alt={`Switch to ${nextPersona.name}'s profile`}
               className="rounded-sm ring-2 ring-primaryBlue dark:ring-folderCream"
-              width={48}
-              height={48}
+              width={NAVIGATION.profileImageSize}
+              height={NAVIGATION.profileImageSize}
               priority
             />
           </motion.div>

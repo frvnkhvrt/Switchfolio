@@ -7,7 +7,6 @@ import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
 import { getCurrentPersona } from "@/services/personaService"
-import { ANIMATION_DELAYS } from "@/constants"
 
 // Lazy load components for better performance
 const InfoCard = dynamic(() => import("../PageComponent/InfoCard"))
@@ -36,13 +35,13 @@ const IndexPage: React.FC = memo(() => {
   const currentPersona = getCurrentPersona(isSwitchOn)
 
   const pageSections: PageSection[] = [
-    { id: "info-card", component: InfoCard, delay: ANIMATION_DELAYS.short, variant: "blur", props: { persona: currentPersona } },
-    { id: "about-me", component: AboutMe, delay: ANIMATION_DELAYS.medium, variant: "slideUp", props: { persona: currentPersona } },
-    { id: "hire-me", component: HireMe, delay: ANIMATION_DELAYS.long, variant: "slideUp" },
-    { id: "skills", component: Skills, delay: ANIMATION_DELAYS.extra, variant: "fade" },
-    { id: "projects", component: Projects, delay: ANIMATION_DELAYS.super, variant: "slideUp" },
-    { id: "writings", component: Writings, delay: ANIMATION_DELAYS.hyper, variant: "slideUp" },
-    { id: "support-me", component: SupportMe, delay: ANIMATION_DELAYS.mega, variant: "slideUp" },
+    { id: "info-card", component: InfoCard, delay: 0, variant: "blur", props: { persona: currentPersona } },
+    { id: "about-me", component: AboutMe, delay: 0, variant: "slideUp", props: { persona: currentPersona } },
+    { id: "hire-me", component: HireMe, delay: 0, variant: "slideUp" },
+    { id: "skills", component: Skills, delay: 0, variant: "fade" },
+    { id: "projects", component: Projects, delay: 0, variant: "blur" },
+    { id: "writings", component: Writings, delay: 0, variant: "blur" },
+    { id: "support-me", component: SupportMe, delay: 0, variant: "slideUp" },
   ]
 
   return (
@@ -61,7 +60,7 @@ const IndexPage: React.FC = memo(() => {
                 )
               })}
             </div>
-            <AnimatedWrapper delay={ANIMATION_DELAYS.giga} variant="fade">
+            <AnimatedWrapper delay={0} variant="fade">
               <Footer persona={currentPersona} />
             </AnimatedWrapper>
           </PersonaSwitchTransition>

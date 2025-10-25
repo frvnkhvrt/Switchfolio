@@ -1,6 +1,7 @@
 "use client"
 import React, { createContext, useContext, useEffect, useReducer, useMemo, useCallback } from "react"
 import { SwitchContextType } from "@/types"
+import { getStorageItem, setStorageItem, STORAGE_KEYS } from "@/utils/storage"
 
 // Action types for reducer
 type SwitchAction =
@@ -41,30 +42,16 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     // Safely load initial value from localStorage with enhanced error handling
     const loadInitialState = () => {
-      try {
-        if (typeof window === 'undefined') return // SSR safety
-
-        const storedValue = localStorage.getItem("isSwitchOn")
-        if (storedValue !== null) {
-          const parsedValue = JSON.parse(storedValue)
-          if (typeof parsedValue === 'boolean') {
-            dispatch({ type: 'SET_SWITCH', payload: parsedValue })
-          } else {
-            console.warn("Invalid switch state in localStorage, resetting to default")
-            localStorage.removeItem("isSwitchOn")
-          }
-        }
-      } catch (error) {
-        console.error("Failed to load switch state from localStorage:", error)
-        // Clear corrupted data
-        try {
-          localStorage.removeItem("isSwitchOn")
-        } catch (removeError) {
-          console.error("Failed to remove corrupted localStorage data:", removeError)
-        }
-      } finally {
-        dispatch({ type: 'SET_LOADED', payload: true })
+      const storedValue = getStorageItem<boolean>(STORAGE_KEYS.SWITCH_STATE, false)
+      
+      // Validate that the stored value is actually a boolean
+      if (typeof storedValue === 'boolean') {
+        dispatch({ type: 'SET_SWITCH', payload: storedValue })
+      } else {
+        console.warn("Invalid switch state in localStorage, using default value")
       }
+      
+      dispatch({ type: 'SET_LOADED', payload: true })
     }
 
     loadInitialState()
@@ -79,19 +66,19 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [state.isSwitchOn, state.isLoaded])
 
   const toggleSwitch = useCallback(() => {
-    dispatch({ type: 'TOGGLE_SWITCH' });
-    try {
-      const storedValue = localStorage.getItem("isSwitchOn");
-      if (storedValue !== null) {
-        const currentIsOn = JSON.parse(storedValue);
-        localStorage.setItem("isSwitchOn", JSON.stringify(!currentIsOn));
-      } else {
-        localStorage.setItem("isSwitchOn", JSON.stringify(true));
-      }
-    } catch (error) {
-      console.error("Failed to save switch state to localStorage:", error);
+    // Update state first (optimistic update)
+    const newState = !state.isSwitchOn
+    dispatch({ type: 'SET_SWITCH', payload: newState })
+    
+    // Then persist to localStorage
+    const success = setStorageItem(STORAGE_KEYS.SWITCH_STATE, newState)
+    
+    // Revert state if save failed
+    if (!success) {
+      console.error("Failed to persist switch state, reverting")
+      dispatch({ type: 'SET_SWITCH', payload: state.isSwitchOn })
     }
-  }, []);
+  }, [state.isSwitchOn]);
 
   const theme = state.isSwitchOn ? 'dark' : 'light'
 

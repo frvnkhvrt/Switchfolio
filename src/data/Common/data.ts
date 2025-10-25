@@ -1,7 +1,14 @@
-
+/**
+ * Common Data
+ * Centralized data for skills, projects, writings, and navigation
+ * @module data/Common/data
+ */
 
 import { PortfolioProject, Writing, NavLink, PortfolioSkill } from '@/types'
 
+/**
+ * Skills and technologies portfolio
+ */
 const skills: PortfolioSkill[] = [
   { id: 1, icon: "mdi:chip", text: "Assembly" },
   { id: 2, icon: "simple-icons:cplusplus", text: "C++" },
@@ -23,8 +30,11 @@ const skills: PortfolioSkill[] = [
   { id: 18, icon: "simple-icons:linux", text: "Linux" },
   { id: 19, icon: "simple-icons:salesforce", text: "Salesforce" },
   { id: 20, icon: "simple-icons:tableau", text: "Tableau" },
-]
+] as const
 
+/**
+ * Portfolio projects with status, descriptions, and tech stack
+ */
 const projects: PortfolioProject[] = [
   {
     id: 1,
@@ -66,8 +76,11 @@ const projects: PortfolioProject[] = [
     github: "",
     skill: ["Salesforce", "Lightning Web Components", "Apex", "Tableau", "Marketo", "AppsFlyer", "HTML", "CSS", "JavaScript"],
   }
-]
+] as const
 
+/**
+ * Blog posts and writings
+ */
 const writings: Writing[] = [
   {
     id: 1,
@@ -76,13 +89,17 @@ const writings: Writing[] = [
     des: "Follow me on Medium.",
     link: "https://frankhurt.medium.com",
   },
-]
+] as const
 
-const hireText =
-  "Open to full-time and freelance jobs."
-const emailLink =
-  "mailto:info@frankhurt.dev?subject=Interested%20in%20Hiring%20You"
+/**
+ * Hire me section content
+ */
+const hireText = "Open to full-time and freelance jobs."
+const emailLink = "mailto:info@frankhurt.dev?subject=Interested%20in%20Hiring%20You"
 
+/**
+ * Social navigation links displayed in the navigation bar
+ */
 const navLinks: NavLink[] = [
   {
     id: 1,
@@ -108,10 +125,12 @@ const navLinks: NavLink[] = [
     link: "https://instagram.com/frvnkhvrt",
     icon: "simple-icons:instagram",
   },
-]
+] as const
 
-  const supportText =
-  "Support my work and future projects."
+/**
+ * Support section content
+ */
+const supportText = "Support my work and future projects."
 
 export {
   projects,

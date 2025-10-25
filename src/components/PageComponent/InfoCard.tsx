@@ -4,7 +4,7 @@ import React, { memo } from "react"
 import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
-import { COMPONENT_SIZES } from "@/constants"
+import { COMPONENT_SIZES, HOVER_ANIMATIONS } from "@/constants"
 import { Persona } from "@/types"
 
 interface InfoCardProps {
@@ -24,8 +24,8 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
         <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start">
           <motion.div
             className="select-none w-40 sm:w-36 md:w-auto rounded-sm flex-shrink-0"
-            whileHover={shouldReduceMotion ? {} : { scale: 1.05, y: -3 }}
-            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+            whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.card}
+            whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <Image

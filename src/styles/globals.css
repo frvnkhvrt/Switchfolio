@@ -161,15 +161,15 @@ textarea {
 }
 
 .pro-pic {
-  @apply md:size-[150px] w-full h-full object-cover rounded-none select-none shadow-sm hover:shadow-lg dark:shadow-dark-sm dark:hover:shadow-xl transition-shadow duration-300;
+  @apply md:size-[150px] w-full h-full object-cover rounded-none select-none shadow-sm hover:shadow-lg dark:shadow-dark-sm dark:hover:shadow-xl transition-shadow duration-200;
 }
 
 .social-card {
-  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-2 text-lg hover:bg-primaryBlue hover:text-backgroundCream transition-all duration-300 ease-out shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue hover:scale-110 hover:shadow-md dark:hover:shadow-md min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2;
+  @apply select-none text-inkBlack bg-folderWhite border border-primaryBlue rounded-none p-2 text-lg hover:bg-primaryBlue hover:text-backgroundCream transition-colors duration-200 ease-out shadow-sm dark:shadow-dark-sm dark:hover:bg-primaryBlue hover:shadow-md dark:hover:shadow-md min-h-[44px] min-w-[44px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2;
 }
 
 .skills-card {
-  @apply select-none transition-all duration-300 ease-out flex flex-row gap-2 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-3 py-2 rounded-none hover:bg-primaryBlue/90 hover:shadow-lg shadow-sm dark:shadow-dark-sm dark:hover:shadow-lg min-h-[44px] hover:scale-105;
+  @apply select-none transition-colors duration-200 ease-out flex flex-row gap-2 items-center bg-primaryBlue text-folderWhite border border-primaryBlue px-3 py-2 rounded-none hover:bg-primaryBlue/90 hover:shadow-lg shadow-sm dark:shadow-dark-sm dark:hover:shadow-lg min-h-[44px];
 }
 
 .head-name {
@@ -177,13 +177,13 @@ textarea {
 }
 
 .showMore-btn {
-  @apply select-none bg-primaryBlue/10 w-full px-3 py-2 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-all duration-300 ease-out text-sm min-h-[44px] border border-transparent hover:border-primaryBlue/30 flex items-center justify-center;
+  @apply select-none bg-primaryBlue/10 w-full px-3 py-2 rounded-none hover:bg-primaryBlue/20 hover:border-primaryBlue transition-colors duration-200 ease-out text-sm min-h-[44px] border border-transparent hover:border-primaryBlue/30 flex items-center justify-center;
 }
 
 .btn {
-  @apply cursor-pointer w-fit select-none transition-all duration-300 ease-out flex flex-row gap-2 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/90 hover:border-primaryBlue/90 hover:shadow-lg px-3 py-2 rounded-none shadow-sm dark:shadow-dark-sm dark:hover:shadow-lg text-sm min-h-[44px] font-medium;
+  @apply cursor-pointer w-fit select-none transition-colors duration-200 ease-out flex flex-row gap-2 items-center bg-primaryBlue text-folderWhite border border-primaryBlue hover:bg-primaryBlue/90 hover:border-primaryBlue/90 hover:shadow-lg px-3 py-2 rounded-none shadow-sm dark:shadow-dark-sm dark:hover:shadow-lg text-sm min-h-[44px] font-medium;
 }
 
 .blog-post {
-  @apply cursor-pointer bg-folderWhite border-2 border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-4 rounded-none transition-all duration-300 ease-out shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-md hover:shadow-md;
+  @apply cursor-pointer bg-folderWhite border-2 border-primaryBlue hover:bg-folderTan hover:border-primaryBlue p-4 rounded-none transition-colors duration-200 ease-out shadow-sm dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-md hover:shadow-md;
 }

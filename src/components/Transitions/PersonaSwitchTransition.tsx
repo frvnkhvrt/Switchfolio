@@ -21,7 +21,7 @@ export const PersonaSwitchTransition: React.FC<PersonaSwitchTransitionProps> = (
 
   return (
     <motion.div
-      key={isSwitchOn ? 'francisco' : 'frankhurt'}
+      key={isSwitchOn ? 'frankhurt' : 'francisco'}
       initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.98 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{

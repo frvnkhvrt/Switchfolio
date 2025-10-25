@@ -8,6 +8,7 @@ import SectionTitle from "../SectionTitle"
 import { skills } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
 import { motion, useReducedMotion } from "framer-motion"
+import { HOVER_ANIMATIONS } from "@/constants"
 
 const Skills = () => {
   const shouldReduceMotion = useReducedMotion()
@@ -20,24 +21,12 @@ const Skills = () => {
         role="list"
         aria-label="Tech stack skills"
       >
-        {skills.map((skill, index) => (
+        {skills.map((skill) => (
           <motion.div
             key={skill.id}
             role="listitem"
-            initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.8, y: 20 }}
-            animate={shouldReduceMotion ? {} : { opacity: 1, scale: 1, y: 0 }}
-            transition={{
-              delay: shouldReduceMotion ? 0 : index * 0.05,
-              duration: shouldReduceMotion ? 0 : 0.4,
-              ease: "easeOut"
-            }}
-            whileHover={shouldReduceMotion ? {} : {
-              scale: 1.08,
-              y: -3,
-              rotate: 1,
-              transition: { duration: 0.25, ease: "easeOut" }
-            }}
-            whileTap={shouldReduceMotion ? {} : { scale: 0.92 }}
+            whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.button}
+            whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
           >
             <div
               className="skills-card min-h-[44px] px-2 py-2 cursor-default focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex flex-col items-center justify-center gap-2 text-center group"

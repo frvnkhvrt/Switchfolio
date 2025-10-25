@@ -1,38 +1,48 @@
-// Theme constants for unified color management
+/**
+ * Unified Theme Constants
+ * Extends designSystem with Tailwind-specific and legacy mappings
+ * This file serves as a bridge between the comprehensive design system
+ * and Tailwind CSS configuration for backward compatibility
+ */
+
+import { designSystem } from './designSystem'
+
+// Re-export design system colors with legacy aliases for backward compatibility
 export const colors = {
-  // Light theme
+  // Light theme (maps to design system)
   light: {
-    bg: "#f0f6ffff",
-    font: "#000000",
-    accent: "#ecd4b4ff",
+    bg: designSystem.colors.light.bg,
+    font: designSystem.colors.light.text,
+    accent: designSystem.colors.light.accent,
   },
 
-  // Dark theme
+  // Dark theme (maps to design system)
   dark: {
-    bg: "#0f172a",
-    font: "#f0f6ffff",
-    accent: "#ecd4b4ff",
+    bg: designSystem.colors.dark.bg,
+    font: designSystem.colors.dark.text,
+    accent: designSystem.colors.dark.accent,
   },
 
-  // General colors
-  availableGreen: "#22c55e",
-  primaryBlue: "#3e43f0",
+  // Semantic colors (maps to design system)
+  availableGreen: designSystem.colors.success.DEFAULT,
+  primaryBlue: designSystem.colors.primary[500],
 
-  // Additional colors still in use
-  folderCream: "#f5f5dc",
-  folderWhite: "#ffffff",
-}
+  // Additional colors (legacy aliases)
+  folderCream: designSystem.colors.dark.border,
+  folderWhite: designSystem.colors.light.surface,
+} as const
 
-// Shadow values
+// Shadow values (maps to design system)
 export const shadows = {
-  light: "4px 4px 0px 0px rgba(62, 67, 240, 0.15)",
-  dark: "4px 4px 0px 0px rgba(255, 255, 255, 0.1)",
-}
+  light: designSystem.shadows.custom.light,
+  dark: designSystem.shadows.custom.dark,
+} as const
 
-// Other theme constants
-export const borderRadius = "0px" // Sharp corners as per design
+// Border radius (maps to design system)
+export const borderRadius = designSystem.borderRadius.none
 
+// Font families (maps to design system via explicit definition)
 export const fontFamily = {
   sans: ['Rubik', 'sans-serif'],
   mono: ['Geist Mono', 'monospace'],
-}
+} as const
