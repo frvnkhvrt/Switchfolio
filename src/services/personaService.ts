@@ -4,17 +4,7 @@
  */
 
 import { Persona, PersonaId } from '@/types'
-import personas from '@/data/personas'
-
-/**
- * Valid persona IDs for runtime validation
- */
-const VALID_PERSONA_IDS: readonly PersonaId[] = ['francisco', 'frankhurt'] as const
-
-/**
- * Default persona to use as fallback
- */
-const DEFAULT_PERSONA_ID: PersonaId = 'francisco'
+import personas, { PERSONA_IDS, DEFAULT_PERSONA_ID } from '@/data/personas'
 
 /**
  * Type guard to check if a string is a valid PersonaId
@@ -22,7 +12,7 @@ const DEFAULT_PERSONA_ID: PersonaId = 'francisco'
  * @returns True if id is a valid PersonaId
  */
 export function isValidPersonaId(id: unknown): id is PersonaId {
-  return typeof id === 'string' && VALID_PERSONA_IDS.includes(id as PersonaId)
+  return typeof id === 'string' && PERSONA_IDS.includes(id as PersonaId)
 }
 
 /**
@@ -38,7 +28,7 @@ export function isValidPersonaId(id: unknown): id is PersonaId {
  */
 export function getPersona(id: PersonaId): Persona {
   if (!isValidPersonaId(id)) {
-    throw new Error(`Invalid persona ID: '${id}'. Valid IDs are: ${VALID_PERSONA_IDS.join(', ')}`)
+    throw new Error(`Invalid persona ID: '${id}'. Valid IDs are: ${PERSONA_IDS.join(', ')}`)
   }
   
   const persona = personas[id]
@@ -96,7 +86,7 @@ export function getAllPersonas(): Persona[] {
  * @returns Array of all persona IDs
  */
 export function getAllPersonaIds(): PersonaId[] {
-  return [...VALID_PERSONA_IDS]
+  return [...PERSONA_IDS]
 }
 
 /**
