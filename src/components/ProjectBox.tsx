@@ -59,13 +59,13 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
       case 'running':
         return {
           label: 'Running',
-          color: 'bg-[#22c55e]/10 text-[#22c55e] dark:bg-green-500/10 dark:text-green-400'
+          color: 'bg-green-500/10 text-green-400'
         }
       case 'building':
       default:
         return {
           label: 'Building',
-          color: 'bg-red-400/10 text-red-400'
+          color: 'bg-red-500/10 text-red-400'
         }
     }
   }
@@ -93,7 +93,7 @@ const ProjectBox: React.FC<EnhancedProjectBoxProps> = ({
               <h3 className="text-xl sm:text-2xl font-semibold dark:text-backgroundCreamDark truncate">
                 {title}
               </h3>
-              <div className={`select-none font-medium text-xs w-fit px-1.5 py-0.5 gap-0.5 rounded-none flex items-center flex-shrink-0 ${statusColor}`}>
+              <div className={`select-none font-medium text-xs w-fit px-2 py-1 gap-1 rounded-full flex items-center flex-shrink-0 ${statusColor}`}>
                 <motion.span
                   animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}

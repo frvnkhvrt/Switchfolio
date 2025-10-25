@@ -2,17 +2,13 @@
 import { projects } from "@/data/Common/data"
 import ProjectBox from "../ProjectBox"
 import SectionTitle from "../SectionTitle"
-import {
-  MdKeyboardDoubleArrowDown,
-  MdKeyboardDoubleArrowUp,
-} from "react-icons/md"
 import AnimatedWrapper from "@/utils/AnimatedWrapper"
-import { motion, useReducedMotion } from "framer-motion"
 import { useShowAll } from "@/utils/useShowAll"
+import ShowMoreButton from "../ShowMoreButton"
+import { LIST_VISIBILITY } from "@/constants"
 
 const Projects = () => {
-  const { visibleItems: visibleProjects, showAll, showAllVisible, toggleShowAll } = useShowAll(projects, 2)
-  const shouldReduceMotion = useReducedMotion()
+  const { visibleItems: visibleProjects, showAll, showAllVisible, toggleShowAll } = useShowAll(projects, LIST_VISIBILITY.defaultVisible)
 
   let delayValue = 0
   
@@ -41,22 +37,7 @@ const Projects = () => {
       </div>
       
       {showAllVisible && (
-        <motion.button
-          className="showMore-btn flex items-center justify-center gap-2 min-h-[36px] mt-4 focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
-          onClick={toggleShowAll}
-          aria-expanded={showAll}
-          aria-label={showAll ? "Show fewer projects" : "Show all projects"}
-          whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-          whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
-        >
-          <motion.div
-            animate={shouldReduceMotion ? {} : { y: showAll ? [-2, 2, -2] : [2, -2, 2] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            {showAll ? <MdKeyboardDoubleArrowUp aria-hidden="true" /> : <MdKeyboardDoubleArrowDown aria-hidden="true" />}
-          </motion.div>
-          <span>{showAll ? 'Show less' : 'Show all'}</span>
-        </motion.button>
+        <ShowMoreButton showAll={showAll} toggleShowAll={toggleShowAll} />
       )}
 
     </section>

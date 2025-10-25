@@ -1,26 +1,22 @@
 "use client"
 
-import React, { memo, useMemo } from "react"
+import React, { memo } from "react"
 import Image from "next/image"
 import { motion, useReducedMotion } from "framer-motion"
-import { getCurrentPersona } from "@/services/personaService"
-import { useSwitch } from "../Context/SwitchContext"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { COMPONENT_SIZES } from "@/constants"
+import { Persona } from "@/types"
+
+interface InfoCardProps {
+  persona: Persona
+}
 
 /**
  * InfoCard component - displays persona profile information
  * Shows avatar, name, bio, and social links
  */
-const InfoCard: React.FC = memo(() => {
-  const { isSwitchOn } = useSwitch()
+const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
   const shouldReduceMotion = useReducedMotion()
-
-  // Memoize persona to prevent unnecessary recalculations
-  const currentPersona = useMemo(
-    () => getCurrentPersona(isSwitchOn),
-    [isSwitchOn]
-  )
 
   return (
     <section aria-labelledby="profile-heading" className="mb-3 md:mb-4">
@@ -33,8 +29,8 @@ const InfoCard: React.FC = memo(() => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             <Image
-              src={currentPersona.image}
-              alt={`${currentPersona.name}'s profile picture`}
+              src={persona.image}
+              alt={`${persona.name}'s profile picture`}
               className="pro-pic"
               width={COMPONENT_SIZES.profileImageModal.width}
               height={COMPONENT_SIZES.profileImageModal.height}
@@ -44,11 +40,11 @@ const InfoCard: React.FC = memo(() => {
 
           <div className="flex flex-col gap-3 flex-1 min-w-0 text-center sm:text-left">
             <h1 id="profile-heading" className="head-name">
-              {currentPersona.name}
+              {persona.name}
             </h1>
-            <p className="text-sm md:text-base leading-relaxed">{currentPersona.bio}</p>
+            <p className="text-sm md:text-base leading-relaxed">{persona.bio}</p>
             <div className="mt-2">
-              <SocialLinks links={currentPersona.links} />
+              <SocialLinks links={persona.links} />
             </div>
           </div>
         </div>

@@ -6,27 +6,10 @@ export interface Persona {
   bio: string
   about: string[]
   image: string
-  contact: string
   links: SocialLink[]
-  contactLinks: ContactLink[]
-  footerLinks: FooterLink[]
 }
 
 export interface SocialLink {
-  id: number
-  name: string
-  link: string
-  icon: string
-}
-
-export interface ContactLink {
-  id: number
-  name: string
-  link: string
-  icon: string
-}
-
-export interface FooterLink {
   id: number
   name: string
   link: string

@@ -1,34 +1,5 @@
 import { Persona } from '@/types'
-import { franciscoData } from '@/data/FranciscoData/data'
-import { frankhurtData } from '@/data/FrankhurtData/data'
-
-// Simple persona data mapping
-const personas: Record<string, Persona> = {
-  francisco: {
-    id: 'francisco',
-    name: franciscoData.name,
-    shortName: franciscoData.shortName,
-    bio: franciscoData.bio,
-    about: franciscoData.about,
-    image: franciscoData.image,
-    contact: franciscoData.contact,
-    links: franciscoData.links,
-    contactLinks: franciscoData.contactLinks,
-    footerLinks: franciscoData.footerLinks,
-  },
-  frankhurt: {
-    id: 'frankhurt',
-    name: frankhurtData.name,
-    shortName: frankhurtData.shortName,
-    bio: frankhurtData.bio,
-    about: frankhurtData.about,
-    image: frankhurtData.image,
-    contact: frankhurtData.contact,
-    links: frankhurtData.links,
-    contactLinks: frankhurtData.contactLinks,
-    footerLinks: frankhurtData.footerLinks,
-  },
-}
+import personas from '@/data/personas'
 
 /**
  * Retrieves a persona by its unique identifier

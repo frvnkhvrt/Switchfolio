@@ -1,14 +1,14 @@
 import React from "react"
 import Image from "next/image"
 import { LINK_ATTRIBUTES } from "@/constants"
-interface BlogBoxProps {
+interface WritingsBoxProps {
   head: string
-  des: string
+  description: string
   link: string
   img?: string
 }
 
-const WritingsBox: React.FC<BlogBoxProps> = ({ head, des, link, img }) => {
+const WritingsBox: React.FC<WritingsBoxProps> = ({ head, description, link, img }) => {
   return (
     <a
       href={link}
@@ -18,7 +18,7 @@ const WritingsBox: React.FC<BlogBoxProps> = ({ head, des, link, img }) => {
     >
       <div className="flex-1">
         <h1 className=" md:text-lg text-xl font-semibold dark:text-backgroundCreamDark">{head}</h1>
-        <p className="text-sm opacity-80 dark:text-backgroundCreamDark/80">{des}</p>
+        <p className="text-sm opacity-80 dark:text-backgroundCreamDark/80">{description}</p>
       </div>
       {img && (
         <div className="flex-shrink-0">

@@ -31,8 +31,17 @@ export const COMPONENT_SIZES = {
 // Animation delays
 export const ANIMATION_DELAYS = {
   default: 0,
-  short: 100,
-  medium: 200,
-  long: 300,
-  extra: 350,
+  short: 0.15,
+  medium: 0.25,
+  long: 0.45,
+  extra: 0.55,
+  super: 0.65,
+  hyper: 0.75,
+  mega: 0.95,
+  giga: 1.15,
+} as const
+
+// List visibility
+export const LIST_VISIBILITY = {
+  defaultVisible: 2,
 } as const

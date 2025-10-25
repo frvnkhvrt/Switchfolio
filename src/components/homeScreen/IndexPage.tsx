@@ -6,6 +6,8 @@ import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
+import { getCurrentPersona } from "@/services/personaService"
+import { ANIMATION_DELAYS } from "@/constants"
 
 // Lazy load components for better performance
 const InfoCard = dynamic(() => import("../PageComponent/InfoCard"))
@@ -22,24 +24,26 @@ const Writings = dynamic(() => import("../PageComponent/Writings"))
 // Configuration for page sections to improve maintainability and readability
 interface PageSection {
   id: string;
-  component: React.ComponentType
+  component: React.ComponentType<any>
   delay: number
   variant: "blur" | "slideUp" | "fade"
   condition?: (isSwitchOn: boolean) => boolean
+  props?: any
 }
-
-const pageSections: PageSection[] = [
-  { id: "info-card", component: InfoCard, delay: 0.15, variant: "blur" },
-  { id: "about-me", component: AboutMe, delay: 0.25, variant: "slideUp" },
-  { id: "hire-me", component: HireMe, delay: 0.45, variant: "slideUp" },
-  { id: "skills", component: Skills, delay: 0.55, variant: "fade" },
-  { id: "projects", component: Projects, delay: 0.65, variant: "slideUp" },
-  { id: "writings", component: Writings, delay: 0.75, variant: "slideUp" },
-  { id: "support-me", component: SupportMe, delay: 0.95, variant: "slideUp" },
-]
 
 const IndexPage: React.FC = memo(() => {
   const { isSwitchOn } = useSwitch()
+  const currentPersona = getCurrentPersona(isSwitchOn)
+
+  const pageSections: PageSection[] = [
+    { id: "info-card", component: InfoCard, delay: ANIMATION_DELAYS.short, variant: "blur", props: { persona: currentPersona } },
+    { id: "about-me", component: AboutMe, delay: ANIMATION_DELAYS.medium, variant: "slideUp", props: { persona: currentPersona } },
+    { id: "hire-me", component: HireMe, delay: ANIMATION_DELAYS.long, variant: "slideUp" },
+    { id: "skills", component: Skills, delay: ANIMATION_DELAYS.extra, variant: "fade" },
+    { id: "projects", component: Projects, delay: ANIMATION_DELAYS.super, variant: "slideUp" },
+    { id: "writings", component: Writings, delay: ANIMATION_DELAYS.hyper, variant: "slideUp" },
+    { id: "support-me", component: SupportMe, delay: ANIMATION_DELAYS.mega, variant: "slideUp" },
+  ]
 
   return (
     <>
@@ -48,17 +52,17 @@ const IndexPage: React.FC = memo(() => {
           <PersonaSwitchTransition>
             <div className="flex flex-col gap-6">
               {pageSections.map((section) => {
-                const { id, component: Component, delay, variant, condition } = section
+                const { id, component: Component, delay, variant, condition, props } = section
                 if (condition && !condition(isSwitchOn)) return null
                 return (
                   <AnimatedWrapper key={id} delay={delay} variant={variant}>
-                    <Component />
+                    <Component {...props} />
                   </AnimatedWrapper>
                 )
               })}
             </div>
-            <AnimatedWrapper delay={1.15} variant="fade">
-              <Footer />
+            <AnimatedWrapper delay={ANIMATION_DELAYS.giga} variant="fade">
+              <Footer persona={currentPersona} />
             </AnimatedWrapper>
           </PersonaSwitchTransition>
         </main>
