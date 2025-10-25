@@ -45,4 +45,4 @@ export const borderRadius = designSystem.borderRadius.none
 export const fontFamily = {
   sans: ['Rubik', 'sans-serif'],
   mono: ['Geist Mono', 'monospace'],
-} as const
+}
