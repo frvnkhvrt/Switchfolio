@@ -5,7 +5,7 @@
  */
 
 "use client"
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { useState, useEffect, useCallback, memo, useRef } from "react"
 import { BsGithub } from "react-icons/bs"
 import { GoDotFill } from "react-icons/go"
 import { FiExternalLink } from "react-icons/fi"
@@ -33,19 +33,18 @@ interface StatusInfo {
 /**
  * Get status display information
  */
-const getStatusInfo = (status: ProjectStatus): StatusInfo => {
-  const statusMap: Record<ProjectStatus, StatusInfo> = {
-    running: {
-      label: 'Running',
-      color: 'bg-green-500/10 text-green-400',
-    },
-    building: {
-      label: 'Building',
-      color: 'bg-red-500/10 text-red-400',
-    },
-  }
-  return statusMap[status]
+const STATUS_INFO: Record<ProjectStatus, StatusInfo> = {
+  running: {
+    label: 'Running',
+    color: 'bg-green-500/10 text-green-400',
+  },
+  building: {
+    label: 'Building',
+    color: 'bg-red-500/10 text-red-400',
+  },
 }
+
+const getStatusInfo = (status: ProjectStatus): StatusInfo => STATUS_INFO[status]
 
 /**
  * ProjectBox Component Implementation
@@ -60,19 +59,36 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const shouldReduceMotion = useReducedMotion()
+  const boxRef = useRef<HTMLDivElement | null>(null)
 
   // Handle clicks outside the project box to collapse it
   useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement
-      if (!target.closest(".project-box")) {
+    if (!isExpanded) {
+      return
+    }
+
+    // Collapse when interaction occurs outside the component or Escape is pressed
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node
+      if (boxRef.current && !boxRef.current.contains(target)) {
         setIsExpanded(false)
       }
     }
 
-    document.addEventListener("click", handleOutsideClick)
-    return () => document.removeEventListener("click", handleOutsideClick)
-  }, [])
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsExpanded(false)
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown)
+    document.addEventListener("keydown", handleEscape)
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown)
+      document.removeEventListener("keydown", handleEscape)
+    }
+  }, [isExpanded])
 
   // Toggle expansion state
   const handleToggle = useCallback(() => {
@@ -94,6 +110,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
   return (
     <motion.div
       className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-3 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm hover:shadow-lg dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-xl"
+      ref={boxRef}
       onClick={handleToggle}
       onKeyDown={handleKeyDown}
       tabIndex={0}
