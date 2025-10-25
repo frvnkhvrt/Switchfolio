@@ -294,14 +294,6 @@ This project is licensed under the MIT License.
 
 ---
 
-## 👨‍💻 Author
-
-**Frank Hurt**
-- Portfolio: [switchfolio](https://github.com/frvnkhvrt/switchfolio)
-- GitHub: [@frvnkhvrt](https://github.com/frvnkhvrt)
-
----
-
 ## 🙏 Acknowledgments
 
 - Built with modern web technologies

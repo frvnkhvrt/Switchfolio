@@ -23,10 +23,12 @@ const Writings = dynamic(() => import("../PageComponent/Writings"))
 // Configuration for page sections to improve maintainability and readability
 interface PageSection {
   id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component: React.ComponentType<any>
   delay: number
   variant: "blur" | "slideUp" | "fade"
   condition?: (isSwitchOn: boolean) => boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   props?: any
 }
 
