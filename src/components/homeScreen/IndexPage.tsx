@@ -21,6 +21,7 @@ const Writings = dynamic(() => import("../PageComponent/Writings"))
 
 // Configuration for page sections to improve maintainability and readability
 interface PageSection {
+  id: string;
   component: React.ComponentType
   delay: number
   variant: "blur" | "slideUp" | "fade"
@@ -28,13 +29,13 @@ interface PageSection {
 }
 
 const pageSections: PageSection[] = [
-  { component: InfoCard, delay: 0.15, variant: "blur" },
-  { component: AboutMe, delay: 0.25, variant: "slideUp" },
-  { component: HireMe, delay: 0.45, variant: "slideUp" },
-  { component: Skills, delay: 0.55, variant: "fade" },
-  { component: Projects, delay: 0.65, variant: "slideUp" },
-  { component: Writings, delay: 0.75, variant: "slideUp" },
-  { component: SupportMe, delay: 0.95, variant: "slideUp" },
+  { id: "info-card", component: InfoCard, delay: 0.15, variant: "blur" },
+  { id: "about-me", component: AboutMe, delay: 0.25, variant: "slideUp" },
+  { id: "hire-me", component: HireMe, delay: 0.45, variant: "slideUp" },
+  { id: "skills", component: Skills, delay: 0.55, variant: "fade" },
+  { id: "projects", component: Projects, delay: 0.65, variant: "slideUp" },
+  { id: "writings", component: Writings, delay: 0.75, variant: "slideUp" },
+  { id: "support-me", component: SupportMe, delay: 0.95, variant: "slideUp" },
 ]
 
 const IndexPage: React.FC = memo(() => {
@@ -46,11 +47,11 @@ const IndexPage: React.FC = memo(() => {
         <main id="main-content" role="main" aria-label="Main content">
           <PersonaSwitchTransition>
             <div className="flex flex-col gap-6">
-              {pageSections.map((section, index) => {
-                const { component: Component, delay, variant, condition } = section
+              {pageSections.map((section) => {
+                const { id, component: Component, delay, variant, condition } = section
                 if (condition && !condition(isSwitchOn)) return null
                 return (
-                  <AnimatedWrapper key={index} delay={delay} variant={variant}>
+                  <AnimatedWrapper key={id} delay={delay} variant={variant}>
                     <Component />
                   </AnimatedWrapper>
                 )

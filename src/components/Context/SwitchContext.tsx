@@ -79,16 +79,19 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [state.isSwitchOn, state.isLoaded])
 
   const toggleSwitch = useCallback(() => {
-    const newValue = !state.isSwitchOn
-    dispatch({ type: 'TOGGLE_SWITCH' })
-    
-    // Persist to localStorage immediately with the new value
+    dispatch({ type: 'TOGGLE_SWITCH' });
     try {
-      localStorage.setItem("isSwitchOn", JSON.stringify(newValue))
+      const storedValue = localStorage.getItem("isSwitchOn");
+      if (storedValue !== null) {
+        const currentIsOn = JSON.parse(storedValue);
+        localStorage.setItem("isSwitchOn", JSON.stringify(!currentIsOn));
+      } else {
+        localStorage.setItem("isSwitchOn", JSON.stringify(true));
+      }
     } catch (error) {
-      console.error("Failed to save switch state to localStorage:", error)
+      console.error("Failed to save switch state to localStorage:", error);
     }
-  }, [state.isSwitchOn])
+  }, []);
 
   const theme = state.isSwitchOn ? 'dark' : 'light'
 

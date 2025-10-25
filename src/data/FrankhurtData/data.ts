@@ -5,19 +5,12 @@ export const frankhurtData = {
   name: "Frankhurt",
   shortName: "Frankhurt",
   bio: "Gamer & Cinephile",
-  about: `
-    <p>
-      Words conjurer and axiom arsonist.
-    </p>
-    <p>
-      My nights: writing, hacks, and games.
-    </p>
-    <p>
-    Driven by Coke and digital addiction.
-    </p>
-    <p>
-    ロムっている。
-    </p>`,
+  about: [
+    "Words conjurer and axiom arsonist.",
+    "My nights: writing, hacks, and games.",
+    "Driven by Coke and digital addiction.",
+    "ロムっている。",
+  ],
   image: "/assets/Images/profile-pictures/Frankhurt.jpg",
   contact: "",
   links: [
@@ -52,15 +45,3 @@ export const frankhurtData = {
     // Add your footer links here
   ],
 }
-
-// Legacy exports for backward compatibility
-export const {
-  name: frankhurtName,
-  bio: frankhurtBio,
-  about: frankhurtAbout,
-  image: frankhurtImage,
-  contact: frankhurtContact,
-  links: frankhurtLink,
-  contactLinks: frankhurtContactLink,
-  footerLinks: frankhurtFooterLink,
-} = frankhurtData

@@ -4,7 +4,7 @@ export interface Persona {
   name: string
   shortName: string
   bio: string
-  about: string
+  about: string[]
   image: string
   contact: string
   links: SocialLink[]

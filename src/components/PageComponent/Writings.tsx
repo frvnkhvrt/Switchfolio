@@ -32,7 +32,7 @@ const Writings = () => {
       </div>
       {showAllVisible && (
         <button
-          className="showMore-btn"
+          className="showMore-btn mt-4"
           onClick={toggleShowAll}
         >
           {showAll ? (

@@ -5,26 +5,19 @@ export const franciscoData = {
   name: "Francisco",
   shortName: "Francisco",
   bio: "Engineer & Marketer",
-  about: `
-    <p>
-      Tech wizard and status quo saboteur.
-    </p>
-    <p>
-      My days: reading, coding, and movies.
-    </p>
-    <p>
-      Fueled by cappuccinos and dog walks.
-    </p>
-    <p>
-      🇨🇴 Bogotá-based.
-    </p>`,
+  about: [
+    "Tech wizard and status quo saboteur.",
+    "My days: reading, coding, and movies.",
+    "Fueled by cappuccinos and dog walks.",
+    "🇨🇴 Bogotá-based.",
+  ],
   image: "/assets/Images/profile-pictures/Francisco.jpg",
   contact: "",
   links: [
     {
       id: 1,
       name: "Email",
-      link: "mailto:franciscoahurtado@icloud.com",
+      link: "mailto:info@frankhurt.dev",
       icon: "simple-icons:maildotru",
     },
     {
@@ -38,7 +31,7 @@ export const franciscoData = {
     {
       id: 1,
       name: "Email",
-      link: "mailto:franciscoahurtado@icloud.com",
+      link: "mailto:info@frankhurt.dev",
       icon: "simple-icons:maildotru",
     },
     {
@@ -52,16 +45,3 @@ export const franciscoData = {
     // Add your footer links here
   ],
 }
-
-// Legacy exports for backward compatibility
-export const {
-  name: franciscoName,
-  shortName: franciscoShortName,
-  bio: franciscoBio,
-  about: franciscoAbout,
-  image: franciscoImage,
-  contact: franciscoContact,
-  links: franciscoLink,
-  contactLinks: franciscoContactLink,
-  footerLinks: franciscoFooterLink,
-} = franciscoData
