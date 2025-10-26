@@ -9,11 +9,16 @@ interface AboutMeProps {
 
 const AboutMe: React.FC<AboutMeProps> = ({ persona }) => {
   return (
-    <section className="flex flex-col gap-1">
+    <section
+      className="flex flex-col gap-3 sm:gap-4"
+      aria-labelledby="about"
+      aria-describedby="about-section-description"
+    >
       <SectionTitle title="About" level={4} />
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 sm:gap-4">
         <div
-          className="flex flex-col gap-2 text-sm md:text-base leading-relaxed"
+          id="about-section-description"
+          className="flex flex-col gap-2 text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300"
           aria-label={`${persona.name}'s about section`}
         >
           {persona.about.map((paragraph, index) => (

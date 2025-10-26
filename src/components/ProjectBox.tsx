@@ -123,49 +123,53 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
     >
       <div className="flex flex-col gap-3 p-4">
         <div className="flex flex-col gap-1.5">
-          <div className="flex flex-row items-center gap-2">
-            <div className="flex gap-1.5 items-center truncate flex-1 min-w-0">
-              <h3 className="text-xl sm:text-2xl font-semibold dark:text-backgroundCreamDark truncate">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+            <div className="flex flex-wrap items-center gap-2 min-w-0">
+              <h3 className="text-lg sm:text-2xl font-semibold dark:text-backgroundCreamDark break-words">
                 {title}
               </h3>
-              <div className={`select-none font-medium text-xs w-fit px-2 py-1 gap-1 rounded-full flex items-center flex-shrink-0 ${statusColor}`}>
-                <motion.span
-                  animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <GoDotFill aria-hidden="true" />
-                </motion.span>
-                <span>{statusLabel}</span>
+              <div className="flex items-center gap-2 sm:ml-auto">
+                <div className={`select-none font-medium text-xs w-fit px-2 py-1 gap-1 rounded-full flex items-center flex-shrink-0 ${statusColor}`}>
+                  <motion.span
+                    animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <GoDotFill aria-hidden="true" />
+                  </motion.span>
+                  <span>{statusLabel}</span>
+                </div>
+                {(url || github) && (
+                  <div className="flex items-center gap-2">
+                    {url && (
+                      <a
+                        target={LINK_ATTRIBUTES.target}
+                        rel={LINK_ATTRIBUTES.rel}
+                        className="select-none p-2 text-base sm:text-lg hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex-shrink-0 flex items-center"
+                        href={url}
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`View ${title} live site (opens in new tab)`}
+                      >
+                        <FiExternalLink aria-hidden="true" />
+                      </a>
+                    )}
+                    {github && (
+                      <a
+                        onClick={(e) => e.stopPropagation()}
+                        target={LINK_ATTRIBUTES.target}
+                        rel={LINK_ATTRIBUTES.rel}
+                        className="select-none p-2 text-base sm:text-lg hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex-shrink-0 flex items-center"
+                        href={github}
+                        aria-label={`View ${title} on GitHub (opens in new tab)`}
+                      >
+                        <BsGithub aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
-
-              {/* Action Links - In same container */}
-              {url && (
-                <a
-                  target={LINK_ATTRIBUTES.target}
-                  rel={LINK_ATTRIBUTES.rel}
-                  className="select-none p-2 text-lg hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex-shrink-0 flex items-center"
-                  href={url}
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`View ${title} live site (opens in new tab)`}
-                >
-                  <FiExternalLink aria-hidden="true" />
-                </a>
-              )}
-              {github && (
-                <a
-                  onClick={(e) => e.stopPropagation()}
-                  target={LINK_ATTRIBUTES.target}
-                  rel={LINK_ATTRIBUTES.rel}
-                  className="select-none p-2 text-lg hover:text-primaryBlue dark:hover:text-folderCream transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex-shrink-0 flex items-center"
-                  href={github}
-                  aria-label={`View ${title} on GitHub (opens in new tab)`}
-                >
-                  <BsGithub aria-hidden="true" />
-                </a>
-              )}
             </div>
           </div>
-          <p className="text-sm text-gray-700 dark:text-gray-300">{content}</p>
+          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">{content}</p>
         </div>
       </div>
 

@@ -38,8 +38,8 @@ export const COMPONENT_SIZES = {
     height: 35,
   },
   profileImageModal: {
-    width: 200,
-    height: 200,
+    width: 180,
+    height: 180,
   },
   modalImage: {
     width: 600,
@@ -72,7 +72,6 @@ export const ANIMATION_DELAYS = {
  */
 export const LIST_VISIBILITY = {
   defaultVisible: 2,
-  showMoreIncrement: 5,
 } as const
 
 // ============================================================================

@@ -8,13 +8,15 @@ interface SectionTitleProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6
   className?: string
   animated?: boolean
+  id?: string
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({
   title,
   level = 2,
   className = "",
-  animated = true
+  animated = true,
+  id,
 }) => {
   const shouldReduceMotion = useReducedMotion()
 
@@ -34,10 +36,12 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     </span>
   )
 
+  const resolvedId = id ?? title.toLowerCase().replace(/\s+/g, '-')
+
   const renderHeading = (headingLevel: number) => {
     const headingProps = {
       className: `${baseClasses} ${sizeClasses[headingLevel as keyof typeof sizeClasses]} ${className}`,
-      id: title.toLowerCase().replace(/\s+/g, '-')
+      id: resolvedId,
     }
 
     switch (headingLevel) {

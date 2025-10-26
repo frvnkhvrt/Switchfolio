@@ -23,6 +23,10 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 h1, h2, h3, h4, h5, h6 {
   @apply font-sans;
 }
@@ -158,10 +162,23 @@ textarea {
 }
 .main-screen {
   @apply py-2 pb-16 md:pb-20 lg:pb-24;
+  padding-bottom: calc(4rem + var(--safe-area-bottom));
+}
+
+@media (min-width: 768px) {
+  .main-screen {
+    padding-bottom: calc(5rem + var(--safe-area-bottom));
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-screen {
+    padding-bottom: calc(6rem + var(--safe-area-bottom));
+  }
 }
 
 .pro-pic {
-  @apply md:size-[150px] w-full h-full object-cover rounded-none select-none shadow-sm hover:shadow-lg dark:shadow-dark-sm dark:hover:shadow-xl transition-shadow duration-200;
+  @apply md:size-[180px] lg:size-[165px] w-full h-full object-cover rounded-none select-none shadow-sm hover:shadow-lg dark:shadow-dark-sm dark:hover:shadow-xl transition-shadow duration-200;
 }
 
 .social-card {
@@ -173,7 +190,7 @@ textarea {
 }
 
 .head-name {
-  @apply font-bold md:text-[2rem] text-[1.8rem] leading-[0.5] mt-1
+  @apply font-bold text-[1.75rem] leading-tight md:text-[2rem] md:leading-tight mt-1;
 }
 
 .showMore-btn {

@@ -6,24 +6,24 @@ import { motion, useReducedMotion } from "framer-motion"
 import { HOVER_ANIMATIONS } from "@/constants"
 
 const SupportMe = () => {
-  const supportMessage = "Support my work and future projects"
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section className="flex flex-col gap-1">
-      <SectionTitle title="Support Me" level={4} />
-      <div className="flex flex-col gap-1">
-        <p className="text-sm md:text-base leading-relaxed">{supportMessage}</p>
-        <div className="flex flex-wrap items-center gap-3 mt-1">
+    <section className="flex flex-col gap-3 sm:gap-4" aria-labelledby="support-me-heading">
+      <SectionTitle title="Support Me" level={4} className="mb-1" />
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <div className="flex flex-wrap items-center gap-3 mt-1 sm:mt-2">
           <motion.a
             className="btn font-semibold"
             target="_blank"
             href="https://buymeacoffee.com/frankhurt"
+            rel="noopener noreferrer"
             whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.button}
             whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
+            aria-label="Support my work on Buy Me a Coffee (opens in new tab)"
           >
-            <Icon icon="simple-icons:buymeacoffee" className="text-yellow-400 text-lg" />
-            Buy Me a Coffee
+            <Icon icon="simple-icons:buymeacoffee" className="text-yellow-400 text-lg" aria-hidden="true" />
+            <span>Buy Me a Coffee</span>
           </motion.a>
         </div>
       </div>

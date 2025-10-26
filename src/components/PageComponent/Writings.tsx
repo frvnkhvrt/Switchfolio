@@ -17,10 +17,18 @@ const Writings = () => {
   const { visibleItems: visibleWritings, showAll, showAllVisible, toggleShowAll } = useShowAll(writings, LIST_VISIBILITY.defaultVisible)
   
   return (
-    <section className="flex flex-col gap-1">
+    <section
+      className="flex flex-col gap-3 sm:gap-4"
+      aria-labelledby="writings-heading"
+      aria-describedby="writings-description"
+    >
       <SectionTitle title="Writings" level={4} />
-      {/* <StillWorking /> */}
-      <div className="flex flex-col gap-3">
+      <p
+        id="writings-description"
+        className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed"
+      >
+      </p>
+      <div className="flex flex-col gap-3 sm:gap-4">
         {visibleWritings.map((writing) => (
           <AnimatedWrapper
             key={writing.id}

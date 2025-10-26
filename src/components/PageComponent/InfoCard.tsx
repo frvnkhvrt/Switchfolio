@@ -19,11 +19,15 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section aria-labelledby="profile-heading" className="mb-3 md:mb-4">
-      <div className="flex flex-col">
-        <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start">
+    <section
+      aria-labelledby="profile-heading"
+      aria-describedby="profile-summary"
+      className="flex flex-col gap-4 mb-4 md:mb-6 lg:mb-8"
+    >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6 lg:gap-8">
           <motion.div
-            className="select-none w-40 sm:w-36 md:w-auto rounded-sm flex-shrink-0"
+            className="select-none rounded-sm flex-shrink-0 overflow-hidden mx-auto sm:mx-0"
             whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.card}
             whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -34,16 +38,23 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
               className="pro-pic"
               width={COMPONENT_SIZES.profileImageModal.width}
               height={COMPONENT_SIZES.profileImageModal.height}
+              sizes="(max-width: 640px) 160px, 210px"
               priority
             />
           </motion.div>
 
           <div className="flex flex-col gap-3 flex-1 min-w-0 text-center sm:text-left">
-            <h1 id="profile-heading" className="head-name">
+            <h1 id="profile-heading" className="head-name break-words">
               {persona.name}
             </h1>
-            <p className="text-sm md:text-base leading-relaxed">{persona.bio}</p>
-            <div className="mt-2">
+            <p id="profile-summary" className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+              {persona.bio}
+            </p>
+            <div
+              className="mt-2 sm:mt-3"
+              role="navigation"
+              aria-label={`${persona.name}'s social profiles`}
+            >
               <SocialLinks links={persona.links} />
             </div>
           </div>

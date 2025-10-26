@@ -71,7 +71,7 @@ const usePersonaSwitcherMotion = (isEnabled: boolean) => {
 }
 
 const NavigationLinks: React.FC<{ shouldReduceMotion: boolean }> = ({ shouldReduceMotion }) => (
-  <div className="flex gap-4 items-center" role="list">
+  <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5" role="list">
     {navLinks.map((nav, index) => {
       const linkMotion = getLinkMotion(shouldReduceMotion, index)
 
@@ -84,7 +84,7 @@ const NavigationLinks: React.FC<{ shouldReduceMotion: boolean }> = ({ shouldRedu
           transition={linkMotion.transition}
         >
           <motion.a
-            className="block p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
+            className="flex items-center justify-center p-1.5 sm:p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
             href={nav.link}
             target="_blank"
             rel="noopener noreferrer"
@@ -92,7 +92,7 @@ const NavigationLinks: React.FC<{ shouldReduceMotion: boolean }> = ({ shouldRedu
             whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.icon}
             whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
           >
-            <Icon icon={nav.icon} className="text-2xl" aria-hidden="true" />
+            <Icon icon={nav.icon} className="text-3xl sm:text-[40px]" aria-hidden="true" />
           </motion.a>
         </motion.div>
       )
@@ -137,7 +137,7 @@ const PersonaSwitcher: React.FC<PersonaSwitcherProps> = ({
   return (
     <motion.div
       ref={ref}
-      className="relative rounded-sm cursor-pointer p-1"
+      className="relative rounded-sm cursor-pointer p-1 focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2"
       onClick={onToggle}
       onKeyDown={handleKeyDown}
       onMouseMove={handleMouseMove}
@@ -187,19 +187,20 @@ const Nav: React.FC = memo(() => {
   const prefersReducedMotion = useReducedMotion()
   const shouldReduceMotion = prefersReducedMotion ?? false
   const nextPersona = getCurrentPersona(!isSwitchOn)
+  const navBottomOffset = `calc(${NAVIGATION.bottomOffset} + var(--safe-area-bottom))`
 
   return (
     <nav
-      className="fixed left-0 right-0 flex justify-center items-center"
+      className="fixed inset-x-0 flex items-end justify-center px-3 sm:px-4"
       style={{
-        bottom: NAVIGATION.bottomOffset,
+        bottom: navBottomOffset,
         zIndex: LAYOUT.navZIndex,
       }}
       aria-label="Main navigation"
       id="navigation"
     >
       <motion.div
-        className="relative bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-4 py-3 rounded-none flex items-center gap-4 dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
+        className="relative inline-flex items-center justify-between gap-2 sm:gap-2.5 bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-2 sm:px-3 py-2 sm:py-2.5 rounded-none dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
         style={{ boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)" }}
         initial={NAV_CONTAINER_MOTION.initial}
         animate={NAV_CONTAINER_MOTION.animate}
@@ -221,7 +222,7 @@ const Nav: React.FC = memo(() => {
         />
 
         <motion.div
-          className="absolute -top-2 -right-2 w-3 h-3 bg-success-DEFAULT rounded-full"
+          className="absolute -top-2 -right-2 h-3 w-3 rounded-full bg-success-DEFAULT"
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1.2, 1] }}
           transition={{

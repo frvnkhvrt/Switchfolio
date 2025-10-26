@@ -55,43 +55,36 @@ const projects: readonly PortfolioProject[] = [
   {
     id: 1,
     img: "/assets/Images/project/",
-    title: "Bold Choice",
-    status: 'building' as ProjectStatus,
-    content: "Consulting agency",
-    url: "",
+    title: "Bold Choice ",
+    status: 'running' as ProjectStatus,
+    content: "A strategic agency focused on business growth and operational efficiency.",
+    url: "https://boldchoice.co/",
     github: "",
-    skill: ["Business", "Automation", "Marketing", "Sales", "Engineering", "Development", "AI"],
+    skill: [
+      "Strategic Consulting", 
+      "Digital Transformation", 
+      "Marketing Strategy", 
+      "Process Automation", 
+    ],
   },
   {
     id: 2,
     img: "/assets/Images/project/",
-    title: "Switchfolio",
+    title: "mySchneider",
     status: 'running' as ProjectStatus,
-    content: "A dual-persona portfolio that switches between professional and creative identities",
-    url: "",
-    github: "https://github.com/frvnkhvrt/Portfolio",
-    skill: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion", "Vercel"],
-  },
-  {
-    id: 3,
-    img: "/assets/Images/project/",
-    title: "AI-powered UGC Automation",
-    status: 'running' as ProjectStatus,
-    content: "AI-powered UGC n8n automation, integrating Nano Banana and Veo 3",
-    url: "",
-    github: "",
-    skill: ["n8n", "Nano Banana", "Veo 3", "JavaScript"],
-  },
-  {
-    id: 4,
-    img: "/assets/Images/project/",
-    title: "mySchneider Partner Program",
-    status: 'running' as ProjectStatus,
-    content: "Enterprise-grade Salesforce integration with portal, app, social, leads, and rewards systems — enabling real-time sync, automated marketing workflows, and reporting",
+    content: "An enterprise partner platform for automated marketing, analytics, and real-time systems integration.",
     url: "https://www.se.com/myschneider/",
     github: "",
-    skill: ["Salesforce", "Lightning Web Components", "Apex", "Tableau", "Marketo", "AppsFlyer", "HTML", "CSS", "JavaScript"],
-  }
+    skill: [
+      "Salesforce Platform",
+      "Lightning Web Components (LWC)",
+      "Apex",
+      "Tableau (BI & Reporting)",
+      "Marketo (Marketing Automation)",
+      "API & Systems Integration",
+      "AppsFlyer (Mobile Analytics)"
+    ],
+  },
 ] as const
 
 /**
@@ -182,15 +175,6 @@ const navLinks: readonly NavLink[] = [
  * Get all navigation links
  */
 export const getNavLinks = (): readonly NavLink[] => navLinks
-
-// ============================================================================
-// SUPPORT SECTION
-// ============================================================================
-
-/**
- * Support section content
- */
-export const supportText = "Support my work and future projects" as const
 
 // ============================================================================
 // LEGACY EXPORTS (for backward compatibility)
