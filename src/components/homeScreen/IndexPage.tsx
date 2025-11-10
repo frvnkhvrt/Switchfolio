@@ -82,11 +82,13 @@ const SECTION_DEFINITIONS: SectionDefinition[] = [
     id: "writings",
     Component: SectionComponents.Writings,
     variant: "blur",
+    shouldRender: () => false,
   },
   {
     id: "support-me",
     Component: SectionComponents.SupportMe,
     variant: "slideUp",
+    shouldRender: () => false,
   },
 ]
 
