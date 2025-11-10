@@ -76,6 +76,7 @@ const SECTION_DEFINITIONS: SectionDefinition[] = [
     id: "projects",
     Component: SectionComponents.Projects,
     variant: "blur",
+    shouldRender: () => false,
   },
   {
     id: "writings",
