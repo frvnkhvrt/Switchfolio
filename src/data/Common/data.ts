@@ -16,22 +16,43 @@ import type { PortfolioProject, Writing, NavLink, PortfolioSkill, ProjectStatus 
  * Displayed as icons with labels in the skills section
  */
 const skills: readonly PortfolioSkill[] = [
-  { id: 1, icon: "mdi:chip", text: "Assembly" },
-  { id: 2, icon: "simple-icons:cplusplus", text: "C++" },
-  { id: 3, icon: "simple-icons:python", text: "Python" },
-  { id: 4, icon: "simple-icons:mysql", text: "SQL" },
-  { id: 5, icon: "simple-icons:pytorch", text: "PyTorch" },
-  { id: 6, icon: "simple-icons:typescript", text: "TypeScript" },
-  { id: 7, icon: "simple-icons:nextdotjs", text: "Next.js" },
-  { id: 8, icon: "simple-icons:github", text: "GitHub" },
-  { id: 9, icon: "simple-icons:google", text: "Antigravity" },
-  { id: 10, icon: "simple-icons:openai", text: "Codex" },
-  { id: 11, icon: "simple-icons:anthropic", text: "Claude Code" },
-  { id: 12, icon: "simple-icons:linux", text: "Linux" },
-  { id: 13, icon: "simple-icons:n8n", text: "n8n" },
-  { id: 14, icon: "simple-icons:docker", text: "Docker" },
-  { id: 15, icon: "simple-icons:salesforce", text: "Salesforce" },
-  { id: 16, icon: "simple-icons:tableau", text: "Tableau" },
+  // Management & Business
+  { id: 1, icon: "simple-icons:jira", text: "Jira" },
+  { id: 2, icon: "simple-icons:confluence", text: "Confluence" },
+  { id: 3, icon: "simple-icons:notion", text: "Notion" },
+  { id: 4, icon: "simple-icons:slack", text: "Slack" },
+  { id: 5, icon: "simple-icons:microsoftexcel", text: "Excel" },
+  { id: 6, icon: "simple-icons:salesforce", text: "Salesforce" },
+  { id: 7, icon: "simple-icons:tableau", text: "Tableau" },
+  { id: 8, icon: "simple-icons:n8n", text: "n8n" },
+
+  // Engineering & Embedded
+  { id: 9, icon: "simple-icons:c", text: "C" },
+  { id: 10, icon: "simple-icons:cplusplus", text: "C++" },
+  { id: 11, icon: "mdi:chip", text: "Assembly" },
+  { id: 12, icon: "simple-icons:arduino", text: "Arduino" },
+  { id: 13, icon: "simple-icons:raspberrypi", text: "Raspberry Pi" },
+  { id: 14, icon: "simple-icons:kicad", text: "KiCad" },
+  { id: 15, icon: "file-icons:matlab", text: "MATLAB" },
+  { id: 16, icon: "file-icons:matlab", text: "Simulink" },
+
+  // Software & Web
+  { id: 17, icon: "simple-icons:python", text: "Python" },
+  { id: 18, icon: "simple-icons:typescript", text: "TypeScript" },
+  { id: 19, icon: "simple-icons:nextdotjs", text: "Next.js" },
+  { id: 20, icon: "simple-icons:fastapi", text: "FastAPI" },
+  { id: 21, icon: "simple-icons:mysql", text: "SQL" },
+  { id: 22, icon: "simple-icons:google", text: "Antigravity" },
+
+  // AI & Data
+  { id: 23, icon: "simple-icons:pytorch", text: "PyTorch" },
+  { id: 28, icon: "simple-icons:tensorflow", text: "TensorFlow" },
+
+  // DevOps & Tools
+  { id: 24, icon: "simple-icons:amazon", text: "AWS" },
+  { id: 25, icon: "simple-icons:linux", text: "Linux" },
+  { id: 26, icon: "simple-icons:docker", text: "Docker" },
+  { id: 27, icon: "simple-icons:github", text: "GitHub" },
 ] as const
 
 /**
