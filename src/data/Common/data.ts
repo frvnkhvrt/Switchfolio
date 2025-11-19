@@ -30,9 +30,9 @@ const skills: readonly PortfolioSkill[] = [
   { id: 9, icon: "simple-icons:c", text: "C" },
   { id: 10, icon: "simple-icons:cplusplus", text: "C++" },
   { id: 11, icon: "mdi:chip", text: "Assembly" },
-  { id: 12, icon: "simple-icons:arduino", text: "Arduino" },
-  { id: 13, icon: "simple-icons:raspberrypi", text: "Raspberry Pi" },
-  { id: 14, icon: "simple-icons:kicad", text: "KiCad" },
+  { id: 12, icon: "simple-icons:kicad", text: "KiCad" },
+  { id: 13, icon: "simple-icons:arduino", text: "Arduino" },
+  { id: 14, icon: "simple-icons:raspberrypi", text: "Raspberry Pi" },
   { id: 15, icon: "file-icons:matlab", text: "MATLAB" },
   { id: 16, icon: "file-icons:matlab", text: "Simulink" },
 
