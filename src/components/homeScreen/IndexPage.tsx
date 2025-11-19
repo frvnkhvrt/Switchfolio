@@ -6,91 +6,14 @@
 
 "use client"
 import React, { memo, useMemo } from "react"
-import dynamic from "next/dynamic"
+
 import Screen from "@/layout/Screen"
 import AnimatedWrapper from "@/utils/AnimatedWrapper"
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
 import { getCurrentPersona } from "@/services/personaService"
-import type { AnimationVariant, Persona } from "@/types"
-
-// ============================================================================
-// DYNAMIC COMPONENT REGISTRY
-// ============================================================================
-
-const SectionComponents = {
-  InfoCard: dynamic(() => import("../PageComponent/InfoCard")),
-  AboutMe: dynamic(() => import("../PageComponent/AboutMe")),
-  HireMe: dynamic(() => import("../PageComponent/HireMe")),
-  Skills: dynamic(() => import("../PageComponent/Skills")),
-  Projects: dynamic(() => import("../PageComponent/Projects")),
-  Writings: dynamic(() => import("../PageComponent/Writings")),
-  SupportMe: dynamic(() => import("../PageComponent/SupportMe")),
-  Footer: dynamic(() => import("../PageComponent/Footer")),
-}
-
-// ============================================================================
-// SECTION DEFINITIONS
-// ============================================================================
-
-type SectionContext = {
-  persona: Persona
-  isSwitchOn: boolean
-}
-
-interface SectionDefinition {
-  id: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Component: React.ComponentType<any>
-  variant: AnimationVariant
-  delay?: number
-  getProps?: (context: SectionContext) => Record<string, unknown>
-  shouldRender?: (context: SectionContext) => boolean
-}
-
-const SECTION_DEFINITIONS: SectionDefinition[] = [
-  {
-    id: "info-card",
-    Component: SectionComponents.InfoCard,
-    variant: "blur",
-    getProps: ({ persona }) => ({ persona }),
-  },
-  {
-    id: "about-me",
-    Component: SectionComponents.AboutMe,
-    variant: "slideUp",
-    getProps: ({ persona }) => ({ persona }),
-  },
-  {
-    id: "hire-me",
-    Component: SectionComponents.HireMe,
-    variant: "slideUp",
-  },
-  {
-    id: "skills",
-    Component: SectionComponents.Skills,
-    variant: "fade",
-  },
-  {
-    id: "projects",
-    Component: SectionComponents.Projects,
-    variant: "blur",
-    shouldRender: () => false,
-  },
-  {
-    id: "writings",
-    Component: SectionComponents.Writings,
-    variant: "blur",
-    shouldRender: () => false,
-  },
-  {
-    id: "support-me",
-    Component: SectionComponents.SupportMe,
-    variant: "slideUp",
-    shouldRender: () => false,
-  },
-]
+import { SECTION_DEFINITIONS, SectionComponents, SectionContext } from "@/config/sections"
 
 // ============================================================================
 // COMPONENT

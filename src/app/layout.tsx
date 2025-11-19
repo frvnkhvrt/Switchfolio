@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
+import SkipLink from "@/components/SkipLink"
 import { getCurrentPersona } from "@/services/personaService"
 
 const geistMono = Geist_Mono({
@@ -88,6 +89,7 @@ export default function RootLayout({
         className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <ErrorBoundary>
+          <SkipLink />
           {children}
         </ErrorBoundary>
       </body>
