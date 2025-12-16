@@ -17,7 +17,7 @@ const HireMe = () => {
         </p>
         <div className="mt-1 sm:mt-2">
           <motion.a 
-            className="btn font-semibold"
+            className="btn btn-glow font-semibold"
             target="_blank"
             rel="noopener noreferrer"
             href={emailLink}

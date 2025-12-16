@@ -21,15 +21,22 @@ const Skills = () => {
         role="list"
         aria-label="Tech stack skills"
       >
-        {skills.map((skill) => (
+        {skills.map((skill, index) => (
           <motion.div
             key={skill.id}
             role="listitem"
+            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: shouldReduceMotion ? 0 : index * 0.05,
+              duration: 0.4,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
             whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.button}
             whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
           >
             <div
-              className="skills-card min-h-[44px] px-2 py-2 cursor-default focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex flex-col items-center justify-center gap-2 text-center group"
+              className="skill-card-premium skills-card min-h-[44px] px-2 py-2 cursor-default focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 flex flex-col items-center justify-center gap-2 text-center group"
               tabIndex={0}
               aria-label={skill.text}
             >

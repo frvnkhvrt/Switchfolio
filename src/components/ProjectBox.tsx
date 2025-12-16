@@ -109,7 +109,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
 
   return (
     <motion.div
-      className="project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-3 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm hover:shadow-lg dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-xl"
+      className="project-card-accent project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-3 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm hover:shadow-lg dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-xl"
       ref={boxRef}
       onClick={handleToggle}
       onKeyDown={handleKeyDown}
@@ -131,6 +131,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
               <div className="flex items-center gap-2 sm:ml-auto">
                 <div className={`select-none font-medium text-xs w-fit px-2 py-1 gap-1 rounded-full flex items-center flex-shrink-0 ${statusColor}`}>
                   <motion.span
+                    className="status-badge-pulse"
                     animate={shouldReduceMotion ? {} : { scale: [1, 1.2, 1] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
