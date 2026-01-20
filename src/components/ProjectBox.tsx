@@ -11,6 +11,7 @@ import { GoDotFill } from "react-icons/go"
 import { FiExternalLink } from "react-icons/fi"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { LINK_ATTRIBUTES, HOVER_ANIMATIONS, ARIA_LABELS } from "@/constants"
+import { SCROLL_VARIANTS, TILT_CONFIG } from "@/constants/animations"
 import type { ProjectStatus } from "@/types"
 
 interface ProjectBoxProps {
@@ -58,8 +59,29 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
   skill,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [tiltStyle, setTiltStyle] = useState({ rotateX: 0, rotateY: 0 })
   const shouldReduceMotion = useReducedMotion()
   const boxRef = useRef<HTMLDivElement | null>(null)
+
+  // Handle 3D tilt effect on mouse move
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion || !boxRef.current) return
+    
+    const rect = boxRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    
+    const rotateX = ((y - centerY) / centerY) * -TILT_CONFIG.maxTilt
+    const rotateY = ((x - centerX) / centerX) * TILT_CONFIG.maxTilt
+    
+    setTiltStyle({ rotateX, rotateY })
+  }, [shouldReduceMotion])
+
+  const handleMouseLeave = useCallback(() => {
+    setTiltStyle({ rotateX: 0, rotateY: 0 })
+  }, [])
 
   // Handle clicks outside the project box to collapse it
   useEffect(() => {
@@ -109,17 +131,28 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
 
   return (
     <motion.div
-      className="project-card-accent project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-3 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm hover:shadow-lg dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-xl"
+      className="project-card-accent animated-border-gradient project-box bg-folderWhite cursor-pointer hover:bg-folderTan focus:bg-folderTan focus-visible:outline-3 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream focus-visible:outline-offset-2 transition-colors duration-200 border-2 border-primaryBlue rounded-none shadow-sm hover:shadow-lg dark:bg-darkerBlue dark:hover:bg-folderCream/20 dark:focus:bg-folderCream/20 dark:border-folderCream dark:shadow-dark-sm dark:hover:shadow-xl perspective-1000"
       ref={boxRef}
       onClick={handleToggle}
       onKeyDown={handleKeyDown}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       tabIndex={0}
       role="button"
       aria-expanded={isExpanded}
       aria-label={ARIA_LABELS.projectStatus(title, statusLabel)}
-      whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.card}
+      variants={SCROLL_VARIANTS.fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      style={{
+        transform: shouldReduceMotion 
+          ? undefined 
+          : `perspective(${TILT_CONFIG.perspective}px) rotateX(${tiltStyle.rotateX}deg) rotateY(${tiltStyle.rotateY}deg)`,
+        transition: 'transform 0.15s ease-out',
+      }}
+      whileHover={shouldReduceMotion ? {} : { scale: TILT_CONFIG.scale }}
       whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
-      transition={{ duration: 0.2 }}
     >
       <div className="flex flex-col gap-3 p-4">
         <div className="flex flex-col gap-1.5">

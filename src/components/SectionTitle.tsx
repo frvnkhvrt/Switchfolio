@@ -21,7 +21,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   const shouldReduceMotion = useReducedMotion();
 
   const baseClasses =
-    "font-bold text-inkBlack dark:text-backgroundCreamDark relative mb-2";
+    "font-bold text-inkBlack dark:text-backgroundCreamDark relative mb-2 heading-tight";
   const sizeClasses = {
     1: "text-3xl md:text-4xl lg:text-5xl",
     2: "text-2xl md:text-3xl lg:text-4xl",
@@ -74,12 +74,12 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       initial={
         shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
       }
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{
         duration: shouldReduceMotion ? 0 : 0.5,
-        ease: "easeOut",
+        ease: [0.25, 0.46, 0.45, 0.94],
       }}
-      className=""
     >
       {renderHeading(level)}
     </motion.div>

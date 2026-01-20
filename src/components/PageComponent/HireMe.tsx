@@ -4,12 +4,20 @@ import { emailLink, hireText } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
 import { motion, useReducedMotion } from "framer-motion"
 import { HOVER_ANIMATIONS } from "@/constants"
+import { SCROLL_VARIANTS } from "@/constants/animations"
 
 const HireMe = () => {
   const shouldReduceMotion = useReducedMotion()
   
   return (
-    <section className="flex flex-col gap-3 sm:gap-4" aria-labelledby="hire-me-heading">
+    <motion.section 
+      className="flex flex-col gap-3 sm:gap-4" 
+      aria-labelledby="hire-me-heading"
+      variants={SCROLL_VARIANTS.fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
       <SectionTitle title="Get in touch" level={4} className="mb-1" />
       <div className="flex flex-col gap-3 sm:gap-4">
         <p id="hire-me-heading" className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
@@ -17,7 +25,7 @@ const HireMe = () => {
         </p>
         <div className="mt-1 sm:mt-2">
           <motion.a 
-            className="btn btn-glow font-semibold"
+            className="btn btn-glow cta-glow font-semibold"
             target="_blank"
             rel="noopener noreferrer"
             href={emailLink}
@@ -30,7 +38,7 @@ const HireMe = () => {
           </motion.a>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

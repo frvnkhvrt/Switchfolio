@@ -45,8 +45,10 @@ export const typography = {
   },
   letterSpacing: {
     tight: '-0.025em',
+    tighter: '-0.03em',
     normal: '0',
     wide: '0.025em',
+    wider: '0.05em',
   },
 } as const
 

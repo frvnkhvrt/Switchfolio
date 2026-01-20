@@ -3,6 +3,7 @@ import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
 import SkipLink from "@/components/SkipLink"
+import ScrollProgress from "@/components/ScrollProgress"
 import { getCurrentPersona } from "@/services/personaService"
 
 const geistMono = Geist_Mono({
@@ -86,8 +87,9 @@ export default function RootLayout({
         <link rel="manifest" href="/assets/Images/favicon/site.webmanifest" />
       </head>
       <body
-        className={`${rubik.variable} ${geistMono.variable} antialiased`}
+        className={`${rubik.variable} ${geistMono.variable} antialiased gradient-mesh-bg theme-transition`}
       >
+        <ScrollProgress />
         <ErrorBoundary>
           <SkipLink />
           {children}

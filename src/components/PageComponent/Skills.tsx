@@ -9,6 +9,7 @@ import { skills } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
 import { motion, useReducedMotion } from "framer-motion"
 import { HOVER_ANIMATIONS } from "@/constants"
+import { STAGGER_CONTAINER, STAGGER_ITEM } from "@/constants/animations"
 
 const Skills = () => {
   const shouldReduceMotion = useReducedMotion()
@@ -16,22 +17,20 @@ const Skills = () => {
   return (
     <section className="flex flex-col gap-3 sm:gap-4" id="skills" aria-labelledby="skills-heading" aria-describedby="skills-description">
       <SectionTitle title="Tech Stack" level={4} />
-      <div
+      <motion.div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3"
         role="list"
         aria-label="Tech stack skills"
+        variants={shouldReduceMotion ? {} : STAGGER_CONTAINER}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
       >
-        {skills.map((skill, index) => (
+        {skills.map((skill) => (
           <motion.div
             key={skill.id}
             role="listitem"
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              delay: shouldReduceMotion ? 0 : index * 0.05,
-              duration: 0.4,
-              ease: [0.25, 0.46, 0.45, 0.94]
-            }}
+            variants={shouldReduceMotion ? {} : STAGGER_ITEM}
             whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.button}
             whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
           >
@@ -42,14 +41,14 @@ const Skills = () => {
             >
               <Icon
                 icon={skill.icon}
-                className="text-lg"
+                className="text-lg group-hover:scale-110 transition-transform duration-200"
                 aria-hidden="true"
               />
               <span className="font-medium text-sm leading-tight">{skill.text}</span>
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }

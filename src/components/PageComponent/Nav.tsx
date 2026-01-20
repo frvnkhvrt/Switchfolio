@@ -50,7 +50,7 @@ const NavigationLinks: React.FC<{ shouldReduceMotion: boolean }> = ({ shouldRedu
           transition={linkMotion.transition}
         >
           <motion.a
-            className="flex items-center justify-center p-1.5 sm:p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
+            className="flex items-center justify-center p-1.5 sm:p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream icon-hover-bounce"
             href={nav.link}
             target="_blank"
             rel="noopener noreferrer"
@@ -84,7 +84,7 @@ const Nav: React.FC = memo(() => {
       id="navigation"
     >
       <motion.div
-        className="nav-glassmorphism relative inline-flex items-center justify-between gap-2 sm:gap-2.5 bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-2 sm:px-3 py-2 sm:py-2.5 rounded-none dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
+        className="nav-glassmorphism relative inline-flex items-center justify-between gap-2 sm:gap-2.5 bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-2 sm:px-3 py-2 sm:py-2.5 rounded-none shadow-sm dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
         initial={NAV_CONTAINER_MOTION.initial}
         animate={NAV_CONTAINER_MOTION.animate}
         transition={NAV_CONTAINER_MOTION.transition}
@@ -105,7 +105,7 @@ const Nav: React.FC = memo(() => {
         />
 
         <motion.div
-          className="nav-status-indicator absolute -top-2 -right-2 h-3 w-3 rounded-full bg-success-DEFAULT"
+          className="nav-status-indicator float-animation absolute -top-2 -right-2 h-3 w-3 rounded-full bg-success-DEFAULT"
           initial={{ scale: 0 }}
           animate={{ scale: [0, 1.2, 1] }}
           transition={{
