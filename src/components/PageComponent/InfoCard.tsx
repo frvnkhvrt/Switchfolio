@@ -2,7 +2,7 @@
 
 import React, { memo } from "react"
 import Image from "next/image"
-import { motion, useReducedMotion } from "framer-motion"
+import { motion, useReducedMotion, useMotionValue, useTransform } from "framer-motion"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { COMPONENT_SIZES, HOVER_ANIMATIONS } from "@/constants"
 import { SCROLL_VARIANTS, FLOAT_ANIMATION } from "@/constants/animations"
@@ -19,6 +19,18 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
   const shouldReduceMotion = useReducedMotion()
 
+  // 3D Tilt Effect
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  
+  // Create dampeners for position (only move 10% of mouse distance)
+  const xPos = useTransform(x, [-100, 100], [-10, 10])
+  const yPos = useTransform(y, [-100, 100], [-10, 10])
+  
+  // Rotation (reduced to 10 degrees for subtlety)
+  const rotateX = useTransform(y, [-100, 100], [10, -10])
+  const rotateY = useTransform(x, [-100, 100], [-10, 10])
+
   return (
     <section
       aria-labelledby="profile-heading"
@@ -28,7 +40,7 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6 lg:gap-8">
           <motion.div
-            className="select-none rounded-sm flex-shrink-0 overflow-hidden mx-auto sm:mx-0"
+            className="select-none rounded-sm flex-shrink-0 mx-auto sm:mx-0 card-3d-tilt perspective-1000"
             variants={SCROLL_VARIANTS.scaleUp}
             initial="hidden"
             whileInView="visible"
@@ -36,6 +48,20 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
             whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.card}
             whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
             animate={shouldReduceMotion ? {} : FLOAT_ANIMATION}
+            style={{ x: xPos, y: yPos, rotateX, rotateY, z: 100 }}
+            onMouseMove={(e) => {
+               if (shouldReduceMotion) return
+               const rect = e.currentTarget.getBoundingClientRect()
+               const centerX = rect.left + rect.width / 2
+               const centerY = rect.top + rect.height / 2
+               x.set(e.clientX - centerX)
+               y.set(e.clientY - centerY)
+            }}
+            onMouseLeave={() => {
+               if (shouldReduceMotion) return
+               x.set(0)
+               y.set(0)
+            }}
           >
             <Image
               src={persona.image}

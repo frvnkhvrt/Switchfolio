@@ -5,13 +5,13 @@
 
 "use client"
 
-import React, { memo } from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import React, { memo, useRef } from "react"
+import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion"
 import { Icon } from "@iconify/react"
 import { useSwitch } from "../Context/SwitchContext"
 import { navLinks } from "@/data/Common/data"
 import { getCurrentPersona } from "@/services/personaService"
-import { NAVIGATION, LAYOUT, HOVER_ANIMATIONS } from "@/constants"
+import { NAVIGATION, LAYOUT } from "@/constants"
 import { DURATIONS } from "@/constants/animations"
 
 const NAV_CONTAINER_MOTION = {
@@ -36,33 +36,87 @@ const getLinkMotion = (shouldReduceMotion: boolean, index: number) => ({
 
 import PersonaSwitcher from "./PersonaSwitcher"
 
+/**
+ * Individual Magnetic Nav Item
+ * Handles its own physics for smooth magnetic attraction
+ */
+const MagneticNavItem = ({ nav, index, shouldReduceMotion }: { nav: typeof navLinks[0], index: number, shouldReduceMotion: boolean }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  
+  // Physics values
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  // Smooth springs for the magnetic effect - Heavily damped to prevent bouncing
+  const springConfig = { damping: 40, stiffness: 200, mass: 0.8 }
+  const xSpring = useSpring(x, springConfig)
+  const ySpring = useSpring(y, springConfig)
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (shouldReduceMotion || !ref.current) return
+    
+    const { clientX, clientY } = e
+    const { height, width, left, top } = ref.current.getBoundingClientRect()
+    
+    // Calculate distance from center
+    const centerX = left + width / 2
+    const centerY = top + height / 2
+    
+    const distanceX = clientX - centerX
+    const distanceY = clientY - centerY
+
+    // Apply magnetic pull (capped)
+    x.set(distanceX * 0.4)
+    y.set(distanceY * 0.4)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
+  const linkMotion = getLinkMotion(shouldReduceMotion, index)
+
+  return (
+    <motion.div
+      key={nav.id}
+      role="listitem"
+      initial={linkMotion.initial}
+      animate={linkMotion.animate}
+      transition={linkMotion.transition}
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.a
+        className="flex items-center justify-center p-1.5 sm:p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
+        href={nav.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${nav.name} (opens in new tab)`}
+        style={{ x: xSpring, y: ySpring }}
+        whileHover={shouldReduceMotion ? {} : {
+          scale: 1.25,
+          transition: { duration: 0.2, ease: "easeOut" }
+        }}
+        whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+      >
+        <Icon icon={nav.icon} className="text-3xl sm:text-[40px]" aria-hidden="true" />
+      </motion.a>
+    </motion.div>
+  )
+}
+
 const NavigationLinks: React.FC<{ shouldReduceMotion: boolean }> = ({ shouldReduceMotion }) => (
   <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5" role="list">
-    {navLinks.map((nav, index) => {
-      const linkMotion = getLinkMotion(shouldReduceMotion, index)
-
-      return (
-        <motion.div
-          key={nav.id}
-          role="listitem"
-          initial={linkMotion.initial}
-          animate={linkMotion.animate}
-          transition={linkMotion.transition}
-        >
-          <motion.a
-            className="flex items-center justify-center p-1.5 sm:p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream icon-hover-bounce"
-            href={nav.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${nav.name} (opens in new tab)`}
-            whileHover={shouldReduceMotion ? {} : HOVER_ANIMATIONS.icon}
-            whileTap={shouldReduceMotion ? {} : HOVER_ANIMATIONS.tap}
-          >
-            <Icon icon={nav.icon} className="text-3xl sm:text-[40px]" aria-hidden="true" />
-          </motion.a>
-        </motion.div>
-      )
-    })}
+    {navLinks.map((nav, index) => (
+      <MagneticNavItem 
+        key={nav.id} 
+        nav={nav} 
+        index={index} 
+        shouldReduceMotion={shouldReduceMotion} 
+      />
+    ))}
   </div>
 )
 
@@ -84,7 +138,7 @@ const Nav: React.FC = memo(() => {
       id="navigation"
     >
       <motion.div
-        className="nav-glassmorphism relative inline-flex items-center justify-between gap-2 sm:gap-2.5 bg-folderWhite text-primaryBlue border-2 border-primaryBlue px-2 sm:px-3 py-2 sm:py-2.5 rounded-none shadow-sm dark:shadow-dark-sm dark:bg-darkerBlue dark:border-folderCream dark:text-folderCream"
+        className="nav-glassmorphism relative inline-flex items-center justify-between gap-2 sm:gap-2.5 px-2 sm:px-3 py-2 sm:py-2.5 rounded-2xl shadow-lg dark:shadow-dark-lg text-primaryBlue dark:text-folderCream"
         initial={NAV_CONTAINER_MOTION.initial}
         animate={NAV_CONTAINER_MOTION.animate}
         transition={NAV_CONTAINER_MOTION.transition}
