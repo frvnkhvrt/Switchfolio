@@ -14,6 +14,8 @@ export interface Persona {
   id: PersonaId
   name: string
   shortName: string
+  headline: string
+  subheadline: string
   bio: string
   about: string[]
   image: string
@@ -51,6 +53,7 @@ export interface PortfolioProject {
   url: string
   github: string
   skill: string[]
+  results?: string[]
   caseStudy?: CaseStudy
 }
 

@@ -21,6 +21,7 @@ interface ProjectBoxProps {
   url: string
   github: string
   skill: string[]
+  results?: string[]
 }
 
 /**
@@ -57,6 +58,7 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
   url,
   github,
   skill,
+  results,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const [tiltStyle, setTiltStyle] = useState({ rotateX: 0, rotateY: 0 })
@@ -203,7 +205,25 @@ const ProjectBox: React.FC<ProjectBoxProps> = memo(({
               </div>
             </div>
           </div>
-          <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">{content}</p>
+          <div className="flex flex-col gap-3">
+            {/* Results Section */}
+            {results && results.length > 0 && (
+              <div className="flex flex-col gap-1.5 mt-1">
+                 <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wide opacity-80">
+                    Key Results
+                 </h4>
+                 <ul className="list-none flex flex-col gap-1">
+                    {results.map((result, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0" />
+                        <span>{result}</span>
+                      </li>
+                    ))}
+                 </ul>
+              </div>
+            )}
+            <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">{content}</p>
+          </div>
         </div>
       </div>
 

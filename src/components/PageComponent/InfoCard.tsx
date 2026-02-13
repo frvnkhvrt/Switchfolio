@@ -4,7 +4,7 @@ import React, { memo } from "react"
 import Image from "next/image"
 import { motion, useReducedMotion, useMotionValue, useTransform } from "framer-motion"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
-import { COMPONENT_SIZES, HOVER_ANIMATIONS } from "@/constants"
+import { HOVER_ANIMATIONS } from "@/constants"
 import { SCROLL_VARIANTS, FLOAT_ANIMATION } from "@/constants/animations"
 import { Persona } from "@/types"
 
@@ -35,12 +35,52 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
     <section
       aria-labelledby="profile-heading"
       aria-describedby="profile-summary"
-      className="flex flex-col gap-4 mb-4 md:mb-6 lg:mb-8"
+      className="flex flex-col gap-8 mb-8 md:mb-12 lg:mb-16 pt-8 md:pt-12"
     >
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6 lg:gap-8">
+      <div className="flex flex-col gap-6 md:gap-8">
+        <div className="flex flex-col-reverse md:flex-row md:items-start gap-6 md:gap-10">
+          <motion.div 
+            className="flex flex-col gap-4 flex-1 min-w-0 text-center md:text-left"
+            variants={SCROLL_VARIANTS.fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col gap-2">
+              <h2 className="text-secondaryBlue dark:text-folderCream font-medium text-base md:text-lg tracking-wide uppercase">
+                {persona.subheadline}
+              </h2>
+              <h1 id="profile-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
+                {persona.headline}
+              </h1>
+            </div>
+            
+            <p id="profile-summary" className="text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0">
+              {persona.bio}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start mt-2">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+                  </span>
+                  Available for hire
+                </span>
+              </div>
+              
+              <div
+                role="navigation"
+                aria-label={`${persona.name}'s social profiles`}
+              >
+                <SocialLinks links={persona.links} />
+              </div>
+            </div>
+          </motion.div>
+
           <motion.div
-            className="select-none rounded-sm flex-shrink-0 mx-auto sm:mx-0 card-3d-tilt perspective-1000"
+            className="select-none flex-shrink-0 mx-auto md:mx-0"
             variants={SCROLL_VARIANTS.scaleUp}
             initial="hidden"
             whileInView="visible"
@@ -63,48 +103,15 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
                y.set(0)
             }}
           >
-            <Image
-              src={persona.image}
-              alt={`${persona.name}'s profile picture`}
-              className="pro-pic"
-              width={COMPONENT_SIZES.profileImageModal.width}
-              height={COMPONENT_SIZES.profileImageModal.height}
-              sizes="(max-width: 640px) 160px, 210px"
-              priority
-            />
-          </motion.div>
-
-          <motion.div 
-            className="flex flex-col gap-3 flex-1 min-w-0 text-center sm:text-left"
-            variants={SCROLL_VARIANTS.fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <h1 id="profile-heading" className="head-name break-words heading-tight text-shadow-subtle">
-              {persona.name}
-            </h1>
-            <p id="profile-summary" className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
-              {persona.bio}
-            </p>
-
-            {/* Availability badge */}
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-                </span>
-                Available for hire
-              </span>
-            </div>
-
-            <div
-              className="mt-2 sm:mt-3"
-              role="navigation"
-              aria-label={`${persona.name}'s social profiles`}
-            >
-              <SocialLinks links={persona.links} />
+            <div className="relative w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full border-4 border-white dark:border-gray-800 shadow-xl overflow-hidden">
+                <Image
+                  src={persona.image}
+                  alt={`${persona.name}'s profile picture`}
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 768px) 160px, (max-width: 1024px) 224px, 256px"
+                  priority
+                />
             </div>
           </motion.div>
         </div>

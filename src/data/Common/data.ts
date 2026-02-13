@@ -77,6 +77,11 @@ const projects: readonly PortfolioProject[] = [
     content: "A strategic agency focused on business growth and operational efficiency.",
     url: "https://boldchoice.co/",
     github: "",
+    results: [
+      "Streamlined operations, reducing overhead by 30%",
+      "Developed a custom client portal improving retention",
+      "Automated lead generation workflows"
+    ],
     skill: [
       "Strategic Consulting",
       "Digital Transformation",
@@ -92,6 +97,11 @@ const projects: readonly PortfolioProject[] = [
     content: "An enterprise partner platform for automated marketing, analytics, and real-time systems integration.",
     url: "https://www.se.com/myschneider/",
     github: "",
+    results: [
+      "Supported 100k+ enterprise users globally",
+      "Integrated Salesforce & Marketo for real-time analytics",
+      "Reduced report generation time from days to minutes"
+    ],
     skill: [
       "Salesforce Platform",
       "Lightning Web Components (LWC)",

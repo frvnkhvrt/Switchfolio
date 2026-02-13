@@ -14,6 +14,8 @@ import Nav from "../PageComponent/Nav"
 import PersonaSwitchTransition from "../Transitions/PersonaSwitchTransition"
 import { getCurrentPersona } from "@/services/personaService"
 import { SECTION_DEFINITIONS, SectionComponents, SectionContext } from "@/config/sections"
+import TrustBar from "../PageComponent/TrustBar"
+import InfoCard from "../PageComponent/InfoCard"
 
 // ============================================================================
 // COMPONENT
@@ -45,7 +47,15 @@ const IndexPage: React.FC = memo(() => {
       <main id="main-content" role="main" aria-label="Main content">
         <PersonaSwitchTransition>
           <div className="flex flex-col gap-6">
-            {sectionsToRender.map(({ id, Component, delay, variant, props }) => (
+            <AnimatedWrapper delay={0} variant="fade">
+                <InfoCard persona={persona} />
+            </AnimatedWrapper>
+            
+            <AnimatedWrapper delay={0.1} variant="fade">
+                <TrustBar />
+            </AnimatedWrapper>
+
+            {sectionsToRender.filter(s => s.id !== 'info-card').map(({ id, Component, delay, variant, props }) => (
               <AnimatedWrapper key={id} delay={delay} variant={variant}>
                 <Component {...props} />
               </AnimatedWrapper>

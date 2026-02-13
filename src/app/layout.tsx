@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: `%s | ${defaultPersona.name}`
   },
   description: `${defaultPersona.name} — Engineer, Marketer & Digital Strategist based in Bogotá. Building scalable tech solutions, growth strategies, and creative digital experiences.`,
-  keywords: [defaultPersona.name, "Portfolio", "Engineer", "Marketer", "Digital Strategist", "Developer", "Bogotá"],
+  keywords: [defaultPersona.name, "Portfolio", "Engineer", "Marketer", "Tech Growth Lead", "Product Strategist", "Developer", "Bogotá"],
   authors: [{ name: defaultPersona.name }],
   creator: defaultPersona.name,
   metadataBase: new URL(siteUrl),

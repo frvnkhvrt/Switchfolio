@@ -44,6 +44,7 @@ const Projects = () => {
                 skill={project.skill}
                 url={project.url || ""}
                 github={project.github || ""}
+                results={project.results}
               />
             </div>
           </AnimatedWrapper>

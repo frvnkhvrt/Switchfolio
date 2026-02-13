@@ -23,7 +23,6 @@ export function isValidPersonaId(id: unknown): id is PersonaId {
  * @example
  * ```typescript
  * const francisco = getPersona('francisco');
- * console.log(francisco.name); // "Francisco"
  * ```
  */
 export function getPersona(id: PersonaId): Persona {

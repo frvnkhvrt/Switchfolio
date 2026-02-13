@@ -13,6 +13,7 @@ import { navLinks } from "@/data/Common/data"
 import { getCurrentPersona } from "@/services/personaService"
 import { NAVIGATION, LAYOUT } from "@/constants"
 import { DURATIONS } from "@/constants/animations"
+import PersonaSwitcher from "./PersonaSwitcher"
 
 const NAV_CONTAINER_MOTION = {
   initial: { y: 100, opacity: 0 },
@@ -34,7 +35,7 @@ const getLinkMotion = (shouldReduceMotion: boolean, index: number) => ({
   },
 })
 
-import PersonaSwitcher from "./PersonaSwitcher"
+
 
 /**
  * Individual Magnetic Nav Item
