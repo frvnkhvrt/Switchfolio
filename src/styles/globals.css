@@ -6,18 +6,20 @@
    BASE STYLES — NEOBRUTALIST FOUNDATION
    ============================================ */
 
-html {
+html,
+body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-padding-top: 2rem;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
   @apply bg-backgroundCream text-inkBlack font-sans dark:bg-darkerBlue dark:text-backgroundCreamDark cursor-crosshair;
   min-height: 100vh;
-  overflow-x: hidden;
-  
+
   /* Neobrutalist Dot Grid Background */
   background-image: radial-gradient(circle, #000000 1px, transparent 1px);
   background-size: 24px 24px;
@@ -31,7 +33,12 @@ body {
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-sans;
 }
 
@@ -115,14 +122,17 @@ textarea:focus-visible {
   * {
     border-width: 2px !important;
   }
-  button, a {
+  button,
+  a {
     text-decoration: underline;
   }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -195,22 +205,38 @@ textarea {
 }
 
 @keyframes ticker {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 
 /* Glitch Effect */
 .glitch-hover:hover {
-  animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
 }
 
 @keyframes glitch {
-  0% { transform: translate(0) }
-  20% { transform: translate(-2px, 2px) }
-  40% { transform: translate(-2px, -2px) }
-  60% { transform: translate(2px, 2px) }
-  80% { transform: translate(2px, -2px) }
-  100% { transform: translate(0) }
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
 
 /* Scrollbar hide */
@@ -224,7 +250,7 @@ textarea {
 
 /* Terminal / Code Font */
 .font-terminal {
-  font-family: 'Geist Mono', monospace;
+  font-family: "Geist Mono", monospace;
   text-transform: uppercase;
   letter-spacing: -0.05em;
 }
