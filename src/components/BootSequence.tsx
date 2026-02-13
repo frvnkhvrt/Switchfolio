@@ -20,16 +20,30 @@ const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
   const [logs, setLogs] = useState<string[]>([])
   
   useEffect(() => {
+    const timeoutIds: NodeJS.Timeout[] = []
     let delay = 0
+    
     BOOT_LOGS.forEach((log, index) => {
-      delay += Math.random() * 500 + 200
-      setTimeout(() => {
+      // Shorter random delay for snappier feel
+      const duration = Math.random() * 300 + 100
+      delay += duration
+      
+      const id = setTimeout(() => {
         setLogs(prev => [...prev, log])
+        
+        // On last item, trigger complete
         if (index === BOOT_LOGS.length - 1) {
-          setTimeout(onComplete, 800)
+          const completeId = setTimeout(onComplete, 800)
+          timeoutIds.push(completeId)
         }
       }, delay)
+      
+      timeoutIds.push(id)
     })
+
+    return () => {
+      timeoutIds.forEach(clearTimeout)
+    }
   }, [onComplete])
 
   return (

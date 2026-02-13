@@ -190,13 +190,13 @@ textarea {
 }
 
 .ticker {
-  display: inline-block;
-  animation: ticker 20s linear infinite;
+  display: flex;
+  animation: ticker 60s linear infinite;
 }
 
 @keyframes ticker {
   0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 /* Glitch Effect */

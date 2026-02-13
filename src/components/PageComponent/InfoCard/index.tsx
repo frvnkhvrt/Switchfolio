@@ -27,7 +27,7 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
             <div>
                 {/* ID Badge */}
                 <div className="inline-block bg-black dark:bg-white text-white dark:text-black px-3 py-1 font-terminal text-sm mb-6 uppercase tracking-wider">
-                    ID: {persona.name.split(' ')[0]}_01
+                    ID: {persona.name.split(' ')[0]}_{persona.id === 'frankhurt' ? '02' : '01'}
                 </div>
 
                 {/* MASSIVE NAME */}

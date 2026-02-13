@@ -66,7 +66,8 @@ const projects: readonly PortfolioProject[] = [
     results: [
       "Streamlined operations, reducing overhead by 30%",
       "Developed a custom client portal improving retention",
-      "Automated lead generation workflows"
+      "Automated lead generation workflows",
+      "Increased client retention by 50%"
     ],
     skill: [
       "Strategic Consulting",
@@ -84,9 +85,10 @@ const projects: readonly PortfolioProject[] = [
     url: "https://www.se.com/myschneider/",
     github: "",
     results: [
-      "Supported 30k+ enterprise users in LATAM",
+      "Supported 10k+ enterprise users in LATAM",
       "Integrated Salesforce & Marketo for real-time analytics",
-      "Reduced report generation time from days to minutes"
+      "Reduced report generation time from days to minutes",
+      "Optimized API response time by 40%"
     ],
     skill: [
       "Salesforce Platform",

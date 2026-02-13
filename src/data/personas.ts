@@ -7,7 +7,7 @@ const PERSONA_DATA = {
     shortName: 'Francisco',
     headline: 'Building Scalable Products',
     subheadline: 'Tech Growth Lead',
-    bio: 'Bridging the gap between technical execution and business strategy.',
+    bio: 'Bridging the gap between technical execution and business strategy. 🇨🇴 Bogotá-based.',
     about: [
       'I turn complex problems into elegant, scalable solutions.',
       'Specialized in high-performance web apps and growth infrastructure.',
@@ -36,7 +36,7 @@ const PERSONA_DATA = {
     shortName: 'Frankhurt',
     headline: 'Crafting Immersive Worlds',
     subheadline: 'Product Strategist',
-    bio: 'Pushing the boundaries of web interaction to create memorable journeys.',
+    bio: 'Word Conjurer and Axiom Arsonist. My nights are mostly about learning, writing, hacking, and gaming. Fueled by Cappuccinos, Coca-Cola, and digital addiction. ロムっている。',
     about: [
       'Word Conjurer and Axiom Arsonist.',
       'My nights: writing, hacks, and games.',

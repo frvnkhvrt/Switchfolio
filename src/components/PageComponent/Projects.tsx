@@ -12,7 +12,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const ProjectItem = memo(({ project, index, isOpen, toggle }: { project: typeof projects[0], index: number, isOpen: boolean, toggle: () => void }) => {
   return (
-    <div className="border-b-2 border-black dark:border-white group/item">
+    <div className="border-b-2 border-black dark:border-white group/item last:border-b-0">
       {/* HEADER ROW */}
       <button 
         onClick={toggle}
@@ -22,7 +22,7 @@ const ProjectItem = memo(({ project, index, isOpen, toggle }: { project: typeof 
       >
         <div className="flex items-center gap-4 md:gap-8">
             {/* Index number */}
-            <span className="font-terminal text-sm md:text-base opacity-50 w-8">
+            <span className="font-terminal text-sm md:text-base opacity-50 w-8 text-left">
                 {(index + 1).toString().padStart(2, '0')}
             </span>
             
@@ -44,7 +44,7 @@ const ProjectItem = memo(({ project, index, isOpen, toggle }: { project: typeof 
         </div>
 
         {/* Corner marker */}
-        <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-black dark:bg-white group-hover/item:bg-white dark:group-hover/item:bg-black" />
+        <div className="absolute top-1 right-1 w-2 h-2 bg-black dark:bg-white group-hover/item:bg-white dark:group-hover/item:bg-black" />
       </button>
 
       {/* EXPANDED CONTENT */}
@@ -66,11 +66,11 @@ const ProjectItem = memo(({ project, index, isOpen, toggle }: { project: typeof 
 
                       {/* METRICS GRID */}
                       {project.results && (
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px] bg-black dark:bg-white border-2 border-black dark:border-white">
                                {project.results.map((res, i) => (
-                                   <div key={i} className="flex items-center gap-3 text-sm font-bold bg-white dark:bg-black border-2 border-black dark:border-white p-3 -mt-[2px] -ml-[2px] first:mt-0 first:ml-0 font-terminal uppercase">
-                                       <div className="w-2 h-2 bg-status-ok flex-shrink-0" />
-                                       {res}
+                                   <div key={i} className="flex items-start gap-4 text-sm font-bold bg-white dark:bg-black p-4 font-terminal uppercase h-full min-w-0">
+                                       <div className="w-2.5 h-2.5 bg-status-ok flex-shrink-0 mt-1.5" />
+                                       <span className="leading-tight truncate">{res}</span>
                                    </div>
                                ))}
                           </div>
@@ -94,7 +94,7 @@ const ProjectItem = memo(({ project, index, isOpen, toggle }: { project: typeof 
                                     href={project.url} 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="flex items-center gap-2 px-4 py-2 bg-black dark:bg-white text-white dark:text-black border-2 border-black dark:border-white font-terminal text-xs uppercase hover:bg-cta hover:text-black transition-colors duration-0"
+                                    className="flex items-center gap-2 px-4 py-2 bg-black dark:bg-white text-white dark:text-black border-2 border-black dark:border-white font-terminal text-xs uppercase hover:bg-cta dark:hover:bg-cta hover:text-black transition-colors duration-0"
                                     aria-label={`View ${project.title} live site (opens in new tab)`}
                                   >
                                       LIVE_LINK <Icon icon="mdi:arrow-top-right" />
@@ -140,7 +140,7 @@ const Projects = () => {
         <span className="font-terminal text-xs">ARCHIVE: {projects.length} ENTRIES</span>
       </div>
 
-      <div className="border-t-4 border-l-2 border-r-2 border-black dark:border-white">
+      <div className="border-4 border-black dark:border-white">
         {projects.map((project, index) => (
             <ProjectItem 
                 key={project.id} 
