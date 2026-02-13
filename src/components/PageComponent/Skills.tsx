@@ -20,7 +20,7 @@ const SkillItem = memo(({ skill, index }: { skill: typeof skills[0], index: numb
           alt="" 
           width={40}
           height={40}
-          className="w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] object-contain grayscale brightness-0 group-hover:brightness-[10] dark:brightness-[10] dark:group-hover:brightness-0 transition-all duration-0"
+          className="w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] object-contain grayscale brightness-0 group-hover:invert dark:invert dark:group-hover:invert-0 transition-all duration-0"
           aria-hidden="true"
         />
       ) : (

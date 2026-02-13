@@ -16,6 +16,7 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   useDocumentTheme(isSwitchOn, isLoaded)
 
   const theme = isSwitchOn ? 'dark' : 'light'
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   // Announce persona changes to screen readers
   useEffect(() => {
@@ -24,11 +25,28 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
     setAnnouncement(`Switched to ${persona.name}'s profile. ${persona.bio}.`)
   }, [isSwitchOn, isLoaded])
 
+  const handleToggle = React.useCallback(() => {
+    if (isTransitioning) return
+    
+    setIsTransitioning(true)
+    
+    // COVER PHASE (500ms)
+    setTimeout(() => {
+      toggleSwitch()
+      
+      // REVEAL PHASE (500ms)
+      setTimeout(() => {
+        setIsTransitioning(false)
+      }, 500)
+    }, 500)
+  }, [isTransitioning, toggleSwitch])
+
   const contextValue = useMemo<SwitchContextType>(() => ({
     isSwitchOn,
-    toggleSwitch,
+    toggleSwitch: handleToggle,
     theme,
-  }), [isSwitchOn, toggleSwitch, theme])
+    isTransitioning,
+  }), [isSwitchOn, handleToggle, theme, isTransitioning])
 
   return (
     <SwitchContext.Provider value={contextValue}>

@@ -115,6 +115,7 @@ export interface SwitchContextType {
   isSwitchOn: boolean
   toggleSwitch: () => void
   theme: Theme
+  isTransitioning: boolean
 }
 
 // ============================================================================
