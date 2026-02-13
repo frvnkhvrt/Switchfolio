@@ -25,30 +25,56 @@ const BootTransition: React.FC<BootTransitionProps> = ({ isCompleting, onTransit
     return (
         <AnimatePresence onExitComplete={onTransitionComplete}>
             {show && (
-                <motion.div
-                    initial={{ y: "100%" }}
-                    animate={{ y: "0%" }}
-                    exit={{ y: "-100%" }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="fixed inset-0 z-[10001] bg-black flex items-center justify-center border-t-4 border-black"
-                >
-                    <div className="flex flex-col items-center gap-6">
-                        <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-status-ok animate-pulse" />
-                            <span className="font-terminal text-white text-xl md:text-3xl font-bold tracking-[0.3em] uppercase">
-                                SYSTEM_READY
-                            </span>
+                <div className="fixed inset-0 z-[10001] pointer-events-none">
+                    {/* Top Half */}
+                    <motion.div
+                        initial={{ y: "0%" }}
+                        animate={{ y: "0%" }}
+                        exit={{ y: "-100%" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute top-0 left-0 w-full h-1/2 bg-black border-b border-white/5"
+                    />
+
+                    {/* Bottom Half */}
+                    <motion.div
+                        initial={{ y: "0%" }}
+                        animate={{ y: "0%" }}
+                        exit={{ y: "100%" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute bottom-0 left-0 w-full h-1/2 bg-black border-t border-white/5"
+                    />
+
+                    {/* Content Overlay */}
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0 flex items-center justify-center z-10"
+                    >
+                        <div className="flex flex-col items-center gap-6">
+                            <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 bg-status-ok animate-pulse" />
+                                <span className="font-terminal text-white text-xl md:text-3xl font-bold tracking-[0.4em] uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                                    SYSTEM_READY
+                                </span>
+                            </div>
+                            <div className="h-[1px] w-48 bg-white/10 overflow-hidden relative">
+                                <motion.div 
+                                    className="h-full bg-white/40 w-full"
+                                    initial={{ x: "-100%" }}
+                                    animate={{ x: "100%" }}
+                                    transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                                />
+                            </div>
                         </div>
-                        <div className="h-[2px] w-32 bg-white/10 overflow-hidden">
-                            <motion.div 
-                                className="h-full bg-white/40 w-full"
-                                initial={{ x: "-100%" }}
-                                animate={{ x: "100%" }}
-                                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                            />
-                        </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+
+                    {/* Global FX */}
+                    <div className="scanline" />
+                    <div className="noise" />
+                    <div className="crt-vignette opacity-50" />
+                </div>
             )}
         </AnimatePresence>
     )

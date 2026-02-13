@@ -5,7 +5,7 @@
 
 "use client"
 import React, { memo, useMemo, useState } from "react"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 import Screen from "@/layout/Screen"
 import { useSwitch } from "../Context/SwitchContext"
@@ -69,19 +69,65 @@ const IndexPage: React.FC = memo(() => {
 
       {showContent && (
         <>
-            <main id="main-content" role="main" aria-label="Main content">
+            <motion.main 
+              id="main-content" 
+              role="main" 
+              aria-label="Main content"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.15,
+                    delayChildren: 0.2
+                  }
+                }
+              }}
+            >
                 <div className="flex flex-col">
-                    {/* HARD ENTRY - NO FADE */}
-                    <InfoCard persona={persona} />
-                    <TrustBar />
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                      }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <InfoCard persona={persona} />
+                    </motion.div>
+
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                      }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <TrustBar />
+                    </motion.div>
 
                     {sectionsToRender.map(({ id, Component, props }) => (
-                        <Component key={id} {...props} />
+                        <motion.div 
+                          key={id}
+                          variants={{
+                            hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+                            visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                          }}
+                          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                          <Component {...props} />
+                        </motion.div>
                     ))}
                     
-                    <SectionComponents.Footer persona={persona} />
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 }
+                      }}
+                    >
+                      <SectionComponents.Footer persona={persona} />
+                    </motion.div>
                 </div>
-            </main>
+            </motion.main>
             <Nav />
         </>
       )}
