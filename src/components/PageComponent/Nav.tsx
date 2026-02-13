@@ -12,6 +12,7 @@ import { useSwitch } from "../Context/SwitchContext"
 import { navLinks } from "@/data/Common/data"
 import { getCurrentPersona } from "@/services/personaService"
 import PersonaSwitcher from "./PersonaSwitcher"
+import Marquee from "../ui/Marquee"
 
 const NavLink = ({ nav }: { nav: typeof navLinks[0] }) => {
   return (
@@ -35,16 +36,20 @@ const NavLink = ({ nav }: { nav: typeof navLinks[0] }) => {
 
 const MarqueeBar = () => {
   return (
-    <div className="w-full h-8 bg-black dark:bg-white text-white dark:text-black border-t-2 border-b-4 border-black dark:border-white overflow-hidden flex items-center font-terminal text-xs">
-      <div className="ticker-wrap w-full">
-        <div className="ticker">
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="mx-4">
-              {"///"} SYSTEM STATUS: ONLINE {"///"} AVAILABLE FOR WORK {"///"} INITIALIZING PROTOCOLS {"///"}
-            </span>
-          ))}
-        </div>
-      </div>
+    <div className="w-full h-8 bg-black dark:bg-accent text-white dark:text-black border-t-2 border-b-4 border-black dark:border-black overflow-hidden flex items-center font-terminal text-xs">
+      <Marquee speed={60} className="w-full">
+          <div className="flex items-center shrink-0 font-bold">
+            <div className="flex items-center gap-2 mx-4">
+                <div className="w-2 h-2 bg-status-ok animate-pulse" />
+                <span>SYSTEM STATUS: ONLINE</span>
+            </div>
+            <span className="mx-4 opacity-50 shrink-0">{"///"}</span>
+            <span className="mx-4">AVAILABLE FOR WORK</span>
+            <span className="mx-4 opacity-50 shrink-0">{"///"}</span>
+            <span className="mx-4">INITIALIZING PROTOCOLS</span>
+            <span className="mx-4 opacity-50 shrink-0">{"///"}</span>
+          </div>
+      </Marquee>
     </div>
   )
 }
@@ -75,7 +80,7 @@ const Nav: React.FC = memo(() => {
         <div className="flex h-16 md:h-20 max-w-[100vw]">
           {/* Brand / Status Area */}
           <div className="flex-1 flex items-center px-4 md:px-8 font-terminal text-sm md:text-base border-r-2 border-black dark:border-white truncate">
-            <span className="font-bold mr-2">FRANKHURT_SYS</span>
+            <span className="font-bold mr-2 text-nowrap">FRANKHURT_SYS</span>
             <span className="hidden sm:inline opacity-60">{"///"} V.2026.1</span>
           </div>
 

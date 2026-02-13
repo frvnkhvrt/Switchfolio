@@ -39,7 +39,7 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Frankhurt /// Engineer + Marketer",
+    default: "Frankhurt /// Digital Strategist",
     template: "%s | Frankhurt"
   },
   description: `${defaultPersona.name} — Engineer, Marketer & Digital Strategist based in Bogotá. Building scalable tech solutions, growth strategies, and creative digital experiences.`,
