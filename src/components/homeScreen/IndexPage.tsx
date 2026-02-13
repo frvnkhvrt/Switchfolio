@@ -55,7 +55,7 @@ const IndexPage: React.FC = memo(() => {
   ), [sectionContext])
 
   return (
-    <Screen>
+    <Screen className={(isBooting || isTransitioning) ? "bg-black" : ""}>
       <AnimatePresence mode="wait">
         {isBooting && (
           <BootSequence key="boot" onComplete={handleBootComplete} />

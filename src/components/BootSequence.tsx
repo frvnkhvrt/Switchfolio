@@ -33,7 +33,7 @@ const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
         
         // On last item, trigger complete
         if (index === BOOT_LOGS.length - 1) {
-          const completeId = setTimeout(onComplete, 800)
+          const completeId = setTimeout(onComplete, 1200)
           timeoutIds.push(completeId)
         }
       }, delay)

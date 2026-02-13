@@ -16,7 +16,7 @@ interface ScreenProps {
  */
 const Screen: React.FC<ScreenProps> = ({ children, className = "" }) => {
   return (
-    <div className={`screen ${className}`.trim()}>
+    <div className={`screen min-h-screen transition-colors duration-0 ${className}`.trim()}>
         <CustomCursor />
         {children}
     </div>
