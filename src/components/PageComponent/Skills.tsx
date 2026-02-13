@@ -4,7 +4,6 @@ import SectionTitle from "../SectionTitle"
 import { skills } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
 import { motion, useReducedMotion } from "framer-motion"
-import { HOVER_ANIMATIONS } from "@/constants"
 import { STAGGER_CONTAINER, STAGGER_ITEM } from "@/constants/animations"
 
 const SkillItem = memo(({ skill }: { skill: typeof skills[0] }) => (
