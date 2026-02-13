@@ -54,7 +54,9 @@ const MagneticNavItem = ({ nav, index, shouldReduceMotion }: { nav: typeof navLi
   const ySpring = useSpring(y, springConfig)
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (shouldReduceMotion || !ref.current) return
+    // Disable magnetic effect on touch devices or reduced motion
+    const isTouch = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
+    if (shouldReduceMotion || isTouch || !ref.current) return
     
     const { clientX, clientY } = e
     const { height, width, left, top } = ref.current.getBoundingClientRect()
