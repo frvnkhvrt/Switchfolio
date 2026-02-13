@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss"
-import { colors, shadows, fontFamily } from "./src/constants/theme"
+import { colors, fontFamily } from "./src/constants/theme"
 
 export default {
   content: [
@@ -31,10 +31,33 @@ export default {
         // Keep existing mappings for backward compatibility
       },
       boxShadow: {
-        'sm': shadows.light,
-        'DEFAULT': shadows.light,
-        'dark-sm': shadows.dark,
-        'dark': shadows.dark,
+        'sm': '2px 2px 0 0 rgba(0,0,0,1)',
+        'DEFAULT': '4px 4px 0 0 rgba(0,0,0,1)',
+        'neo': '4px 4px 0 0 rgba(0,0,0,1)',
+        'neo-lg': '6px 6px 0 0 rgba(0,0,0,1)',
+        'neo-xl': '10px 10px 0 0 rgba(0,0,0,1)',
+        'dark-sm': '2px 2px 0 0 rgba(255,255,255,1)',
+        'dark': '4px 4px 0 0 rgba(255,255,255,1)',
+      },
+      borderRadius: {
+        'none': '0',
+        'sm': '0',
+        'DEFAULT': '0',
+        'md': '0',
+        'lg': '0',
+        'xl': '0',
+        '2xl': '0',
+        '3xl': '0',
+        'full': '9999px', // Keep full for specific circular needs (avatars), but widely use 0
+      },
+      borderWidth: {
+        'DEFAULT': '2px',
+        '0': '0',
+        '2': '2px',
+        '3': '3px',
+        '4': '4px',
+        '6': '6px',
+        '8': '8px',
       },
       fontFamily,
     },

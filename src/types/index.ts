@@ -91,6 +91,7 @@ export interface PortfolioSkill {
   id: number
   icon: string
   text: string
+  link?: string
 }
 
 /**

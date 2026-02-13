@@ -9,6 +9,7 @@ import React from "react";
 export const SectionComponents = {
   InfoCard: dynamic(() => import("../components/PageComponent/InfoCard")),
   AboutMe: dynamic(() => import("../components/PageComponent/AboutMe")),
+  Projects: dynamic(() => import("../components/PageComponent/Projects")), // Add Projects
   HireMe: dynamic(() => import("../components/PageComponent/HireMe")),
   Skills: dynamic(() => import("../components/PageComponent/Skills")),
   SupportMe: dynamic(() => import("../components/PageComponent/SupportMe")),
@@ -47,16 +48,22 @@ export const SECTION_DEFINITIONS: SectionDefinition[] = [
     Component: SectionComponents.AboutMe as React.ComponentType<unknown>,
     variant: "slideUp",
     getProps: ({ persona }) => ({ persona }),
-  },
-  {
-    id: "hire-me",
-    Component: SectionComponents.HireMe as React.ComponentType<unknown>,
-    variant: "slideUp",
+    shouldRender: () => false, // Disable AboutMe to focus on Manifesto
   },
   {
     id: "skills",
     Component: SectionComponents.Skills as React.ComponentType<unknown>,
     variant: "fade",
+  },
+  {
+    id: "projects",
+    Component: SectionComponents.Projects as React.ComponentType<unknown>,
+    variant: "fade",
+  },
+  {
+    id: "hire-me",
+    Component: SectionComponents.HireMe as React.ComponentType<unknown>,
+    variant: "slideUp",
   },
   {
     id: "support-me",

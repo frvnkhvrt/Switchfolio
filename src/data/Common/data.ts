@@ -16,43 +16,29 @@ import type { PortfolioProject, Writing, NavLink, PortfolioSkill, ProjectStatus 
  * Displayed as icons with labels in the skills section
  */
 const skills: readonly PortfolioSkill[] = [
-  // Management & Business
-  { id: 1, icon: "simple-icons:jira", text: "Jira" },
-  { id: 2, icon: "simple-icons:confluence", text: "Confluence" },
-  { id: 3, icon: "simple-icons:notion", text: "Notion" },
-  { id: 4, icon: "simple-icons:slack", text: "Slack" },
-  { id: 5, icon: "simple-icons:microsoftexcel", text: "Excel" },
-  { id: 6, icon: "simple-icons:salesforce", text: "Salesforce" },
-  { id: 7, icon: "simple-icons:tableau", text: "Tableau" },
-  { id: 8, icon: "simple-icons:n8n", text: "n8n" },
+  // [SECTOR] INTELLIGENCE & AUTO (6)
+  { id: 1, icon: "/assets/Images/Google_Antigravity_icon.svg", text: "Antigravity", link: "https://antigravity.google/" },
+  { id: 2, icon: "simple-icons:cursor", text: "Cursor", link: "https://cursor.com" },
+  { id: 3, icon: "simple-icons:anthropic", text: "Claude Code", link: "https://www.anthropic.com" },
+  { id: 4, icon: "simple-icons:openai", text: "Codex", link: "https://openai.com/blog/openai-codex" },
+  { id: 5, icon: "simple-icons:huggingface", text: "HuggingFace", link: "https://huggingface.co" },
+  { id: 6, icon: "simple-icons:python", text: "Python", link: "https://www.python.org" },
 
-  // Engineering & Embedded
-  { id: 9, icon: "simple-icons:c", text: "C" },
-  { id: 10, icon: "simple-icons:cplusplus", text: "C++" },
-  { id: 11, icon: "mdi:chip", text: "Assembly" },
-  { id: 12, icon: "simple-icons:kicad", text: "KiCad" },
-  { id: 13, icon: "simple-icons:arduino", text: "Arduino" },
-  { id: 14, icon: "simple-icons:raspberrypi", text: "Raspberry Pi" },
-  { id: 15, icon: "file-icons:matlab", text: "MATLAB" },
-  { id: 16, icon: "file-icons:matlab", text: "Simulink" },
+  // [SECTOR] PRODUCT COMMAND (6)
+  { id: 7, icon: "simple-icons:linear", text: "Linear", link: "https://linear.app" },
+  { id: 8, icon: "mdi:chess-knight", text: "Product Strategy" },
+  { id: 9, icon: "mdi:trending-up", text: "Growth Engineering" },
+  { id: 10, icon: "simple-icons:posthog", text: "PostHog", link: "https://posthog.com" },
+  { id: 11, icon: "simple-icons:n8n", text: "n8n", link: "https://n8n.io" },
+  { id: 12, icon: "simple-icons:figma", text: "Figma", link: "https://www.figma.com" },
 
-  // Software & Web
-  { id: 17, icon: "simple-icons:python", text: "Python" },
-  { id: 18, icon: "simple-icons:typescript", text: "TypeScript" },
-  { id: 19, icon: "simple-icons:nextdotjs", text: "Next.js" },
-  { id: 20, icon: "simple-icons:fastapi", text: "FastAPI" },
-  { id: 21, icon: "simple-icons:mysql", text: "SQL" },
-  { id: 22, icon: "simple-icons:google", text: "Antigravity" },
-
-  // AI & Data
-  { id: 23, icon: "simple-icons:pytorch", text: "PyTorch" },
-  { id: 28, icon: "simple-icons:tensorflow", text: "TensorFlow" },
-
-  // DevOps & Tools
-  { id: 24, icon: "simple-icons:amazon", text: "AWS" },
-  { id: 25, icon: "simple-icons:linux", text: "Linux" },
-  { id: 26, icon: "simple-icons:docker", text: "Docker" },
-  { id: 27, icon: "simple-icons:github", text: "GitHub" },
+  // [SECTOR] CORE ENGINEERING (6)
+  { id: 13, icon: "simple-icons:nextdotjs", text: "Next.js", link: "https://nextjs.org" },
+  { id: 14, icon: "simple-icons:typescript", text: "TypeScript", link: "https://www.typescriptlang.org" },
+  { id: 15, icon: "simple-icons:linux", text: "Linux", link: "https://www.kernel.org" },
+  { id: 16, icon: "simple-icons:docker", text: "Docker", link: "https://www.docker.com" },
+  { id: 17, icon: "simple-icons:cplusplus", text: "C++", link: "https://isocpp.org/" },
+  { id: 18, icon: "simple-icons:kicad", text: "KiCad", link: "https://www.kicad.org" },
 ] as const
 
 /**
@@ -98,7 +84,7 @@ const projects: readonly PortfolioProject[] = [
     url: "https://www.se.com/myschneider/",
     github: "",
     results: [
-      "Supported 100k+ enterprise users globally",
+      "Supported 30k+ enterprise users in LATAM",
       "Integrated Salesforce & Marketo for real-time analytics",
       "Reduced report generation time from days to minutes"
     ],

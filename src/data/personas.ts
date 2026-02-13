@@ -5,7 +5,7 @@ const PERSONA_DATA = {
     id: 'francisco',
     name: 'Francisco',
     shortName: 'Francisco',
-    headline: 'Building Scalable Products for Growth',
+    headline: 'Building Scalable Digital Products',
     subheadline: 'Tech Growth Lead',
     bio: 'Bridging the gap between technical execution and business strategy.',
     about: [

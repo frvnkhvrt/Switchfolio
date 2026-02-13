@@ -1,59 +1,49 @@
+/**
+ * HireMe Component - "The Hotlink"
+ * Neobrutalist Emergency CTA
+ */
+
 "use client"
-import SectionTitle from "../SectionTitle"
+
 import { emailLink } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
-import { motion, useReducedMotion } from "framer-motion"
-import { SCROLL_VARIANTS, GLOW_PULSE } from "@/constants/animations"
 
 const HireMe = () => {
-  const shouldReduceMotion = useReducedMotion()
-  
   return (
-    <motion.section 
-      className="flex flex-col gap-6 sm:gap-8 py-8 md:py-12 border-t border-gray-100 dark:border-gray-800" 
-      aria-labelledby="hire-me-heading"
-      variants={SCROLL_VARIANTS.fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+    <section 
+      aria-label="Contact Section"
+      className="pb-20"
     >
-      <div className="flex flex-col items-center text-center gap-4 max-w-2xl mx-auto">
-        <SectionTitle title="Ready to Scale Your Product?" level={2} className="mb-2" />
-        <p id="hire-me-heading" className="text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-          Whether you need a technical audit, a growth strategy, or full-stack development, I can help you move faster.
-        </p>
+      <div className="w-full border-4 border-black dark:border-white bg-[#FFD700] dark:bg-[#FFFF00] relative overflow-hidden group">
         
-        <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-          <motion.a 
-            className="flex items-center justify-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-primaryBlue text-white rounded-md font-bold text-sm sm:text-base md:text-lg shadow-lg hover:bg-blue-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 dark:bg-folderCream dark:text-gray-900 dark:hover:bg-white"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={emailLink}
-            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-            animate={shouldReduceMotion ? {} : GLOW_PULSE}
-            aria-label="Book a call or send email"
-          >
-            <Icon icon="mdi:calendar-check" className="text-lg md:text-xl" aria-hidden="true" />
-            <span className="whitespace-nowrap">Book a Discovery Call</span>
-          </motion.a>
-          
-          <motion.a 
-            className="flex items-center justify-center gap-2 px-4 py-3 md:px-6 md:py-4 bg-transparent border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-md font-semibold text-sm sm:text-base md:text-lg hover:border-primaryBlue hover:text-primaryBlue dark:hover:border-folderCream dark:hover:text-folderCream transition-all duration-300"
-            href={emailLink}
-            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-          >
-            <Icon icon="mdi:email-outline" className="text-lg md:text-xl" aria-hidden="true" />
-            <span className="whitespace-nowrap">Send Email</span>
-          </motion.a>
+        {/* WARNING STRIPES PATTERN */}
+        <div className="absolute inset-0 opacity-10 bg-[url('/stripes.png')] bg-repeat pointer-events-none" />
+
+        <div className="relative p-8 md:p-16 flex flex-col items-center justify-center text-center gap-8">
+            <h2 className="text-5xl md:text-8xl font-black text-black uppercase tracking-tighter leading-[0.8] mb-4">
+                NEED_SPEED?
+                <br />
+                <span className="text-white text-stroke-black">GET_REAL.</span>
+            </h2>
+
+            <p className="font-terminal text-black text-base md:text-xl max-w-xl font-bold uppercase tracking-wide">
+                /// STOP WASTING FRAMES. START SHIPPING. ///
+            </p>
+
+            <a 
+                href={emailLink}
+                className="relative inline-flex items-center justify-center px-12 py-6 bg-black text-white text-xl md:text-3xl font-bold uppercase tracking-widest hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-75 border-4 border-transparent hover:border-black shadow-neo-lg"
+            >
+                <Icon icon="mdi:flash" className="mr-4 text-yellow-400" />
+                INITIATE_CONTACT
+            </a>
+
+            <div className="mt-8 font-terminal text-xs text-black opacity-60">
+                RESPONSE_TIME: &lt; 24HRS /// SYNC_STATUS: READY
+            </div>
         </div>
-        
-        <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-            Average response time: &lt; 24 hours
-        </p>
       </div>
-    </motion.section>
+    </section>
   )
 }
 

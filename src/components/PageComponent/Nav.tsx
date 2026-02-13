@@ -1,179 +1,121 @@
 /**
- * Navigation Component
- * Accessible, animated navigation with persona switcher
+ * Navigation Component - "The Command Deck"
+ * Neobrutalist Control Panel
  */
 
 "use client"
 
-import React, { memo, useRef } from "react"
-import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion"
+import React, { memo } from "react"
+import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { Icon } from "@iconify/react"
 import { useSwitch } from "../Context/SwitchContext"
 import { navLinks } from "@/data/Common/data"
 import { getCurrentPersona } from "@/services/personaService"
-import { NAVIGATION, LAYOUT } from "@/constants"
-import { DURATIONS } from "@/constants/animations"
 import PersonaSwitcher from "./PersonaSwitcher"
 
-const NAV_CONTAINER_MOTION = {
-  initial: { y: 100, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: {
-    type: "spring",
-    stiffness: 260,
-    damping: 20,
-    delay: 0.2,
-  },
-} as const
-
-const getLinkMotion = (shouldReduceMotion: boolean, index: number) => ({
-  initial: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: {
-    delay: shouldReduceMotion ? 0 : index * NAVIGATION.animationStagger,
-    duration: shouldReduceMotion ? 0.01 : DURATIONS.normal,
-  },
-})
-
-
-
-/**
- * Individual Magnetic Nav Item
- * Handles its own physics for smooth magnetic attraction
- */
-const MagneticNavItem = ({ nav, index, shouldReduceMotion }: { nav: typeof navLinks[0], index: number, shouldReduceMotion: boolean }) => {
-  const ref = useRef<HTMLDivElement>(null)
-  
-  // Physics values
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  // Smooth springs for the magnetic effect - Heavily damped to prevent bouncing
-  const springConfig = { damping: 40, stiffness: 200, mass: 0.8 }
-  const xSpring = useSpring(x, springConfig)
-  const ySpring = useSpring(y, springConfig)
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    // Disable magnetic effect on touch devices or reduced motion
-    const isTouch = typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches
-    if (shouldReduceMotion || isTouch || !ref.current) return
-    
-    const { clientX, clientY } = e
-    const { height, width, left, top } = ref.current.getBoundingClientRect()
-    
-    // Calculate distance from center
-    const centerX = left + width / 2
-    const centerY = top + height / 2
-    
-    const distanceX = clientX - centerX
-    const distanceY = clientY - centerY
-
-    // Apply magnetic pull (capped)
-    x.set(distanceX * 0.4)
-    y.set(distanceY * 0.4)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  const linkMotion = getLinkMotion(shouldReduceMotion, index)
-
+const NavLink = ({ nav }: { nav: typeof navLinks[0] }) => {
   return (
-    <motion.div
-      key={nav.id}
-      role="listitem"
-      initial={linkMotion.initial}
-      animate={linkMotion.animate}
-      transition={linkMotion.transition}
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+    <a
+      href={nav.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative h-full flex items-center justify-center px-6 border-l-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-0"
+      aria-label={`${nav.name} (opens in new tab)`}
     >
-      <motion.a
-        className="flex items-center justify-center p-1.5 sm:p-2 rounded-sm transition-colors duration-[200ms] hover:text-primaryBlue dark:hover:text-folderCream focus-visible:outline-2 focus-visible:outline-primaryBlue dark:focus-visible:outline-folderCream"
-        href={nav.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${nav.name} (opens in new tab)`}
-        style={{ x: xSpring, y: ySpring }}
-        whileHover={shouldReduceMotion ? {} : {
-          scale: 1.25,
-          transition: { duration: 0.2, ease: "easeOut" }
-        }}
-        whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-      >
-        <Icon icon={nav.icon} className="text-3xl sm:text-[40px]" aria-hidden="true" />
-      </motion.a>
-    </motion.div>
+      <Icon icon={nav.icon} className="text-2xl lg:text-3xl" aria-hidden="true" />
+      <span className="sr-only">{nav.name}</span>
+      
+      {/* Hover Status Indicator */}
+      <div className="absolute top-1 right-1 opacity-0 group-hover:opacity-100">
+        <div className="size-2 bg-white dark:bg-black animate-pulse" />
+      </div>
+    </a>
   )
 }
 
-const NavigationLinks: React.FC<{ shouldReduceMotion: boolean }> = ({ shouldReduceMotion }) => (
-  <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5" role="list">
-    {navLinks.map((nav, index) => (
-      <MagneticNavItem 
-        key={nav.id} 
-        nav={nav} 
-        index={index} 
-        shouldReduceMotion={shouldReduceMotion} 
-      />
-    ))}
-  </div>
-)
+const MarqueeBar = () => {
+  return (
+    <div className="w-full h-8 bg-black dark:bg-white text-white dark:text-black border-t-2 border-b-4 border-black dark:border-white overflow-hidden flex items-center font-terminal text-xs">
+      <div className="ticker-wrap w-full">
+        <div className="ticker">
+          {[...Array(10)].map((_, i) => (
+            <span key={i} className="mx-4">
+              /// SYSTEM STATUS: ONLINE /// AVAILABLE FOR WORK /// INITIALIZING PROTOCOLS ///
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const Nav: React.FC = memo(() => {
   const { isSwitchOn, toggleSwitch } = useSwitch()
-  const prefersReducedMotion = useReducedMotion()
-  const shouldReduceMotion = prefersReducedMotion ?? false
   const nextPersona = getCurrentPersona(!isSwitchOn)
-  const navBottomOffset = `calc(${NAVIGATION.bottomOffset} + var(--safe-area-bottom))`
+  const [isHidden, setIsHidden] = React.useState(false)
+  const { scrollY } = useScroll()
+
+  // Auto-hide logic for mobile, strictly mechanical
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0
+    if (latest > previous && latest > 150) {
+      setIsHidden(true)
+    } else {
+      setIsHidden(false)
+    }
+  })
 
   return (
-    <nav
-      className="fixed inset-x-0 flex items-end justify-center px-3 sm:px-4"
-      style={{
-        bottom: navBottomOffset,
-        zIndex: LAYOUT.navZIndex,
-      }}
-      aria-label="Main navigation"
-      id="navigation"
-    >
-      <motion.div
-        className="nav-glassmorphism relative inline-flex items-center justify-between gap-2 sm:gap-2.5 px-2 sm:px-3 py-2 sm:py-2.5 rounded-2xl shadow-lg dark:shadow-dark-lg text-primaryBlue dark:text-folderCream"
-        initial={NAV_CONTAINER_MOTION.initial}
-        animate={NAV_CONTAINER_MOTION.animate}
-        transition={NAV_CONTAINER_MOTION.transition}
+    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col pointer-events-none">
+      {/* Top Bar - Pointer events allowed for interaction */}
+      <nav 
+        className={`pointer-events-auto bg-white dark:bg-black border-b-2 border-black dark:border-white transition-transform duration-200 ease-linear ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
+        aria-label="Main navigation"
       >
-        <NavigationLinks shouldReduceMotion={shouldReduceMotion} />
+        <div className="flex h-16 md:h-20 max-w-[100vw]">
+          {/* Brand / Status Area */}
+          <div className="flex-1 flex items-center px-4 md:px-8 font-terminal text-sm md:text-base border-r-2 border-black dark:border-white truncate">
+            <span className="font-bold mr-2">FRANKHURT_SYS</span>
+            <span className="hidden sm:inline opacity-60">/// V.2026.1</span>
+          </div>
 
-        <div
-          className="h-10 w-[2px] bg-primaryBlue dark:bg-folderCream"
-          role="separator"
-          aria-hidden="true"
-        />
+          {/* Desktop Links */}
+          <div className="hidden md:flex">
+             {navLinks.map((nav) => (
+               <NavLink key={nav.id} nav={nav} />
+             ))}
+          </div>
 
-        <PersonaSwitcher
-          isSwitchOn={isSwitchOn}
-          onToggle={toggleSwitch}
-          shouldReduceMotion={shouldReduceMotion}
-          nextPersona={nextPersona}
-        />
+          {/* Switcher Cell */}
+          <div className="w-[80px] md:w-[100px] border-l-2 border-black dark:border-white flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+             <PersonaSwitcher 
+               isSwitchOn={isSwitchOn} 
+               onToggle={toggleSwitch}
+               shouldReduceMotion={true} // Force no spring logic
+               nextPersona={nextPersona}
+             />
+          </div>
+        </div>
+        
+        {/* Marquee Bar */}
+        <MarqueeBar />
+      </nav>
 
-        <motion.div
-          className="nav-status-indicator float-animation absolute -top-2 -right-2 h-3 w-3 rounded-full bg-success-DEFAULT"
-          initial={{ scale: 0 }}
-          animate={{ scale: [0, 1.2, 1] }}
-          transition={{
-            delay: 1,
-            duration: 0.5,
-            ease: "easeOut",
-          }}
-          aria-hidden="true"
-        />
-      </motion.div>
-    </nav>
+      {/* Mobile Bottom Bar (If needed, or just rely on top bar. Let's start with Top Bar for all) */}
+      <div className="md:hidden pointer-events-auto fixed bottom-0 left-0 right-0 bg-white dark:bg-black border-t-4 border-black dark:border-white grid grid-cols-4 h-16">
+          {navLinks.map((nav) => (
+             <a
+              key={nav.id}
+              href={nav.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center border-r-2 last:border-r-0 border-black dark:border-white active:bg-black active:text-white dark:active:bg-white dark:active:text-black"
+             >
+               <Icon icon={nav.icon} className="text-2xl" />
+             </a>
+          ))}
+      </div>
+    </header>
   )
 })
 
