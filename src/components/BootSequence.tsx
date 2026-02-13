@@ -50,8 +50,8 @@ const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
     <motion.div
         className="fixed inset-0 z-[10000] bg-black text-white font-terminal p-8 md:p-12 flex flex-col justify-end items-start"
         initial={{ opacity: 1 }}
-        exit={{ y: "-100%" }}
-        transition={{ duration: 0.5, ease: "circIn" }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
     >
         <div className="flex flex-col gap-2 uppercase tracking-widest text-sm md:text-xl">
             {logs.map((log, i) => (

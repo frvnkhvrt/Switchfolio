@@ -4,7 +4,8 @@
  */
 
 "use client"
-import React, { memo, useMemo, useState, useEffect } from "react"
+import React, { memo, useMemo, useState } from "react"
+import { AnimatePresence } from "framer-motion"
 
 import Screen from "@/layout/Screen"
 import { useSwitch } from "../Context/SwitchContext"
@@ -14,6 +15,7 @@ import { SECTION_DEFINITIONS, SectionComponents, SectionContext } from "@/config
 import TrustBar from "../PageComponent/TrustBar"
 import InfoCard from "../PageComponent/InfoCard"
 import BootSequence from "@/components/BootSequence"
+import BootTransition from "@/components/Transitions/BootTransition"
 
 // ============================================================================
 // COMPONENT
@@ -23,13 +25,17 @@ const IndexPage: React.FC = memo(() => {
   const { isSwitchOn } = useSwitch()
   const persona = getCurrentPersona(isSwitchOn)
   const [isBooting, setIsBooting] = useState(true)
-
-  useEffect(() => {
-    // Boot sequence runs once per page load
-  }, [])
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [showContent, setShowContent] = useState(false)
 
   const handleBootComplete = () => {
     setIsBooting(false)
+    setIsTransitioning(true)
+  }
+
+  const handleTransitionComplete = () => {
+    setIsTransitioning(false)
+    setShowContent(true)
   }
 
   const sectionContext = useMemo<SectionContext>(() => ({
@@ -50,9 +56,18 @@ const IndexPage: React.FC = memo(() => {
 
   return (
     <Screen>
-      {isBooting && <BootSequence onComplete={handleBootComplete} />}
+      <AnimatePresence mode="wait">
+        {isBooting && (
+          <BootSequence key="boot" onComplete={handleBootComplete} />
+        )}
+      </AnimatePresence>
 
-      {!isBooting && (
+      <BootTransition 
+        isCompleting={isTransitioning} 
+        onTransitionComplete={handleTransitionComplete} 
+      />
+
+      {showContent && (
         <>
             <main id="main-content" role="main" aria-label="Main content">
                 <div className="flex flex-col">
