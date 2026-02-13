@@ -6,7 +6,7 @@
 "use client"
 
 import React, { memo } from "react"
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+import { useScroll, useMotionValueEvent } from "framer-motion"
 import { Icon } from "@iconify/react"
 import { useSwitch } from "../Context/SwitchContext"
 import { navLinks } from "@/data/Common/data"
@@ -40,7 +40,7 @@ const MarqueeBar = () => {
         <div className="ticker">
           {[...Array(10)].map((_, i) => (
             <span key={i} className="mx-4">
-              /// SYSTEM STATUS: ONLINE /// AVAILABLE FOR WORK /// INITIALIZING PROTOCOLS ///
+              {"///"} SYSTEM STATUS: ONLINE {"///"} AVAILABLE FOR WORK {"///"} INITIALIZING PROTOCOLS {"///"}
             </span>
           ))}
         </div>
@@ -76,7 +76,7 @@ const Nav: React.FC = memo(() => {
           {/* Brand / Status Area */}
           <div className="flex-1 flex items-center px-4 md:px-8 font-terminal text-sm md:text-base border-r-2 border-black dark:border-white truncate">
             <span className="font-bold mr-2">FRANKHURT_SYS</span>
-            <span className="hidden sm:inline opacity-60">/// V.2026.1</span>
+            <span className="hidden sm:inline opacity-60">{"///"} V.2026.1</span>
           </div>
 
           {/* Desktop Links */}

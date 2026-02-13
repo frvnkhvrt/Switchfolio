@@ -28,7 +28,7 @@ const TrustBar = () => {
                             {TRUST_METRICS.map((metric) => (
                                 <React.Fragment key={metric.id}>
                                     <span className="mx-4 font-bold">{metric.text}</span>
-                                    <span className="mx-4 opacity-50">///</span>
+                                    <span className="mx-4 opacity-50">{"///"}</span>
                                 </React.Fragment>
                             ))}
                         </span>

@@ -27,7 +27,7 @@ const HireMe = () => {
             </h2>
 
             <p className="font-terminal text-black text-base md:text-xl max-w-xl font-bold uppercase tracking-wide">
-                /// STOP WASTING FRAMES. START SHIPPING. ///
+                {"///"} STOP WASTING FRAMES. START SHIPPING. {"///"}
             </p>
 
             <a 

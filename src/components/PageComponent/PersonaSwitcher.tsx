@@ -1,9 +1,7 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import Image from "next/image"
-import { HOVER_ANIMATIONS } from "@/constants"
 import type { Persona } from "@/types"
 
 interface PersonaSwitcherProps {
