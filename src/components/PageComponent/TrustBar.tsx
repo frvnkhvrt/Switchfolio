@@ -17,20 +17,6 @@ const TRUST_METRICS = [
 ]
 
 const TrustBar = () => {
-    const TrustItems = () => (
-        <>
-            {TRUST_METRICS.map((metric) => (
-                <React.Fragment key={metric.id}>
-                    <div className="flex items-center gap-2 mx-8">
-                        <Icon icon={metric.icon} className="text-xl opacity-70" />
-                        <span className="font-bold whitespace-nowrap">{metric.text}</span>
-                    </div>
-                    <span className="mx-8 opacity-50 shrink-0">{"///"}</span>
-                </React.Fragment>
-            ))}
-        </>
-    )
-
     return (
         <section 
             aria-label="Professional Metrics"
@@ -39,7 +25,15 @@ const TrustBar = () => {
             <div className="ticker-wrap w-full font-terminal text-lg md:text-xl tracking-widest uppercase flex">
                 <Marquee speed={60} className="w-full">
                     <div className="flex items-center shrink-0">
-                        <TrustItems />
+                        {TRUST_METRICS.map((metric) => (
+                            <React.Fragment key={metric.id}>
+                                <div className="flex items-center gap-2 mx-8">
+                                    <Icon icon={metric.icon} className="text-xl opacity-70" />
+                                    <span className="font-bold whitespace-nowrap">{metric.text}</span>
+                                </div>
+                                <span className="mx-8 opacity-50 shrink-0">{"///"}</span>
+                            </React.Fragment>
+                        ))}
                     </div>
                 </Marquee>
             </div>
