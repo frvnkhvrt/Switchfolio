@@ -654,18 +654,20 @@ textarea {
 }
 
 /* Subtle gradient mesh background */
-.gradient-mesh-bg {
-  background-image:
-    radial-gradient(at 20% 30%, rgba(62, 67, 240, 0.03) 0px, transparent 50%),
-    radial-gradient(at 80% 70%, rgba(139, 150, 248, 0.03) 0px, transparent 50%),
-    radial-gradient(at 50% 90%, rgba(236, 212, 180, 0.02) 0px, transparent 50%);
-}
+/* Subtle gradient mesh background - Desktop Only & Simplified */
+@media (min-width: 1024px) {
+  .gradient-mesh-bg {
+    background-image:
+      radial-gradient(at 20% 30%, rgba(62, 67, 240, 0.02) 0px, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(139, 150, 248, 0.02) 0px, transparent 50%);
+    background-attachment: fixed; /* Attempt to fix background to prevent repaint on scroll */
+  }
 
-.dark .gradient-mesh-bg {
-  background-image:
-    radial-gradient(at 20% 30%, rgba(62, 67, 240, 0.05) 0px, transparent 50%),
-    radial-gradient(at 80% 70%, rgba(139, 150, 248, 0.04) 0px, transparent 50%),
-    radial-gradient(at 50% 90%, rgba(236, 212, 180, 0.03) 0px, transparent 50%);
+  .dark .gradient-mesh-bg {
+    background-image:
+      radial-gradient(at 20% 30%, rgba(62, 67, 240, 0.03) 0px, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(139, 150, 248, 0.02) 0px, transparent 50%);
+  }
 }
 
 /* Smooth theme transition */

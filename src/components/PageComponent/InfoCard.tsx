@@ -5,7 +5,7 @@ import Image from "next/image"
 import { motion, useReducedMotion, useMotionValue, useTransform } from "framer-motion"
 import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
 import { HOVER_ANIMATIONS } from "@/constants"
-import { SCROLL_VARIANTS, FLOAT_ANIMATION } from "@/constants/animations"
+import { SCROLL_VARIANTS, FLOAT_ANIMATION, TEXT_REVEAL } from "@/constants/animations"
 import { Persona } from "@/types"
 
 interface InfoCardProps {
@@ -46,14 +46,27 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <div className="flex flex-col gap-2">
-              <h2 className="text-secondaryBlue dark:text-folderCream font-medium text-base md:text-lg tracking-wide uppercase">
+            <motion.div 
+              className="flex flex-col gap-2"
+              variants={TEXT_REVEAL.container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.h2 
+                className="text-secondaryBlue dark:text-folderCream font-medium text-base md:text-lg tracking-wide uppercase"
+                variants={TEXT_REVEAL.word}
+              >
                 {persona.subheadline}
-              </h2>
-              <h1 id="profile-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
+              </motion.h2>
+              <motion.h1 
+                id="profile-heading" 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white"
+                variants={TEXT_REVEAL.word}
+              >
                 {persona.headline}
-              </h1>
-            </div>
+              </motion.h1>
+            </motion.div>
             
             <p id="profile-summary" className="text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0">
               {persona.bio}

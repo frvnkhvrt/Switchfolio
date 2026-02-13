@@ -6,7 +6,7 @@ const PERSONA_DATA = {
     name: 'Francisco',
     shortName: 'Francisco',
     headline: 'Building Scalable Products for Growth',
-    subheadline: 'Tech Growth Lead (Engineering + Marketing)',
+    subheadline: 'Tech Growth Lead',
     bio: 'Bridging the gap between technical execution and business strategy.',
     about: [
       'I turn complex problems into elegant, scalable solutions.',
@@ -35,7 +35,7 @@ const PERSONA_DATA = {
     name: 'Frankhurt',
     shortName: 'Frankhurt',
     headline: 'Crafting Immersive Digital Experiences',
-    subheadline: 'Creative Developer (Code + Art + Story)',
+    subheadline: 'Product Strategist',
     bio: 'Pushing the boundaries of web interaction to create memorable journeys.',
     about: [
       'Word Conjurer and Axiom Arsonist.',

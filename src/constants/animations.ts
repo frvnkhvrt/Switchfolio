@@ -227,11 +227,10 @@ export const TEXT_REVEAL = {
     },
   },
   word: {
-    hidden: { opacity: 0, y: 15, filter: "blur(4px)" },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   },
@@ -264,11 +263,8 @@ export const FLOAT_ANIMATION = {
  * Glow pulse animation for buttons/CTAs
  */
 export const GLOW_PULSE = {
-  boxShadow: [
-    "0 0 20px rgba(62, 67, 240, 0.3)",
-    "0 0 30px rgba(62, 67, 240, 0.5)",
-    "0 0 20px rgba(62, 67, 240, 0.3)",
-  ] as string[],
+  opacity: [1, 0.8, 1],
+  scale: [1, 1.02, 1],
   transition: {
     duration: 2,
     repeat: Infinity,

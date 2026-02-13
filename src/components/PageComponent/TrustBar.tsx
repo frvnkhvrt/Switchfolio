@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion"
 import { Icon } from "@iconify/react"
 
 const TRUST_METRICS = [
-  { id: 1, label: "Years of Exp.", value: "10+", icon: "mdi:calendar-check" },
+  { id: 1, label: "Years Experience", value: "10+", icon: "mdi:calendar-check" },
   { id: 2, label: "Projects Delivered", value: "20+", icon: "mdi:rocket-launch" },
   { id: 3, label: "Enterprise Users", value: "100k+", icon: "mdi:account-group" },
   { id: 4, label: "Growth Generated", value: "30%", icon: "mdi:chart-line-variant" },
