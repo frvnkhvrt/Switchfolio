@@ -16,7 +16,7 @@ const Skills = () => {
 
   return (
     <section className="flex flex-col gap-3 sm:gap-4" id="skills" aria-labelledby="skills-heading" aria-describedby="skills-description">
-      <SectionTitle title="Tech Stack" level={4} />
+      <SectionTitle title="Tech Stack" level={2} />
       <motion.div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-3"
         role="list"

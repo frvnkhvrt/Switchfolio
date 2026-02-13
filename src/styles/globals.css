@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  @apply bg-backgroundCream text-inkBlack font-mono dark:bg-darkerBlue dark:text-backgroundCreamDark;
+  @apply bg-backgroundCream text-inkBlack font-sans dark:bg-darkerBlue dark:text-backgroundCreamDark;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -74,7 +74,7 @@ h6 {
   left: -9999px;
   top: 0;
   padding: 1rem 1.5rem;
-  background: #3e43f0;
+  background: theme('colors.primaryBlue');
   color: white;
   text-decoration: none;
   font-weight: 600;
@@ -91,7 +91,7 @@ h6 {
 /* Focus visible styles for keyboard navigation */
 .keyboard-user *:focus-visible,
 *:focus-visible {
-  outline: 2px solid #3e43f0;
+  outline: 2px solid theme('colors.primaryBlue');
   outline-offset: 2px;
   border-radius: 4px;
   transition: outline-color 0.2s ease;
@@ -99,7 +99,7 @@ h6 {
 
 .dark .keyboard-user *:focus-visible,
 .dark *:focus-visible {
-  outline-color: #ecd4b4;
+  outline-color: theme('colors.folderTan');
 }
 
 /* Enhanced focus for interactive elements */
@@ -108,7 +108,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid #3e43f0;
+  outline: 3px solid theme('colors.primaryBlue');
   outline-offset: 2px;
 }
 
@@ -117,7 +117,7 @@ textarea:focus-visible {
 .dark input:focus-visible,
 .dark select:focus-visible,
 .dark textarea:focus-visible {
-  outline-color: #ecd4b4;
+  outline-color: theme('colors.folderTan');
 }
 
 /* High contrast mode support */
@@ -184,7 +184,7 @@ textarea {
 }
 
 .pro-pic {
-  @apply md:size-[180px] lg:size-[165px] w-full h-full object-cover rounded-none select-none shadow-sm hover:shadow-lg dark:shadow-dark-sm dark:hover:shadow-xl transition-shadow duration-200;
+  @apply md:size-[180px] lg:size-[200px] w-full h-full object-cover rounded-none select-none shadow-sm hover:shadow-lg dark:shadow-dark-sm dark:hover:shadow-xl transition-shadow duration-200;
 }
 
 .social-card {
@@ -228,7 +228,7 @@ textarea {
   bottom: -4px;
   height: 3px;
   width: 100%;
-  background: linear-gradient(90deg, #3e43f0 0%, #8b96f8 50%, #3e43f0 100%);
+  background: linear-gradient(90deg, theme('colors.primaryBlue') 0%, theme('colors.primaryLight') 50%, theme('colors.primaryBlue') 100%);
   background-size: 200% 100%;
   border-radius: 2px;
   transform: scaleX(0);
@@ -253,7 +253,7 @@ textarea {
 }
 
 .dark .section-title-underline::after {
-  background: linear-gradient(90deg, #ecd4b4 0%, #f5f5dc 50%, #ecd4b4 100%);
+  background: linear-gradient(90deg, theme('colors.folderTan') 0%, theme('colors.folderCream') 50%, theme('colors.folderTan') 100%);
   background-size: 200% 100%;
 }
 
@@ -262,7 +262,7 @@ textarea {
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 
+  box-shadow:
     0 10px 40px -10px rgba(0, 0, 0, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -270,7 +270,7 @@ textarea {
 
 .dark .nav-glassmorphism {
   background: rgba(13, 17, 23, 0.85) !important;
-  box-shadow: 
+  box-shadow:
     0 10px 40px -10px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -280,7 +280,7 @@ textarea {
 .skill-card-premium {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #3e43f0 0%, #3538d4 100%);
+  background: linear-gradient(135deg, theme('colors.primaryBlue') 0%, theme('colors.primaryDark') 100%);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -320,7 +320,7 @@ textarea {
 /* Project card accent border */
 .project-card-accent {
   position: relative;
-  border-left: 4px solid #3e43f0;
+  border-left: 4px solid theme('colors.primaryBlue');
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -331,7 +331,7 @@ textarea {
   top: 0;
   height: 0;
   width: 4px;
-  background: linear-gradient(180deg, #8b96f8 0%, #3e43f0 100%);
+  background: linear-gradient(180deg, theme('colors.primaryLight') 0%, theme('colors.primaryBlue') 100%);
   transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -341,11 +341,11 @@ textarea {
 }
 
 .dark .project-card-accent {
-  border-left-color: #ecd4b4;
+  border-left-color: theme('colors.folderTan');
 }
 
 .dark .project-card-accent::before {
-  background: linear-gradient(180deg, #f5f5dc 0%, #ecd4b4 100%);
+  background: linear-gradient(180deg, theme('colors.folderCream') 0%, theme('colors.folderTan') 100%);
 }
 
 /* Premium button glow */
@@ -386,8 +386,8 @@ textarea {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #3e43f0 20%,
-    #3e43f0 80%,
+    theme('colors.primaryBlue') 20%,
+    theme('colors.primaryBlue') 80%,
     transparent 100%
   );
 }
@@ -396,8 +396,8 @@ textarea {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #ecd4b4 20%,
-    #ecd4b4 80%,
+    theme('colors.folderTan') 20%,
+    theme('colors.folderTan') 80%,
     transparent 100%
   );
 }
@@ -458,7 +458,7 @@ textarea {
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #3e43f0 0%, #8b96f8 50%, #3e43f0 100%);
+  background: linear-gradient(90deg, theme('colors.primaryBlue') 0%, theme('colors.primaryLight') 50%, theme('colors.primaryBlue') 100%);
   background-size: 200% 100%;
   animation: gradientShift 3s ease infinite;
   z-index: 10000;
@@ -466,7 +466,7 @@ textarea {
 }
 
 .dark .scroll-progress {
-  background: linear-gradient(90deg, #ecd4b4 0%, #f5f5dc 50%, #ecd4b4 100%);
+  background: linear-gradient(90deg, theme('colors.folderTan') 0%, theme('colors.folderCream') 50%, theme('colors.folderTan') 100%);
   background-size: 200% 100%;
 }
 
@@ -519,14 +519,14 @@ textarea {
 
 /* Premium Gradient Text */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #3e43f0 0%, #8b96f8 100%);
+  background: linear-gradient(135deg, theme('colors.primaryBlue') 0%, theme('colors.primaryLight') 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .dark .text-gradient-primary {
-  background: linear-gradient(135deg, #ecd4b4 0%, #f5f5dc 100%);
+  background: linear-gradient(135deg, theme('colors.folderTan') 0%, theme('colors.folderCream') 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -543,7 +543,7 @@ textarea {
   position: absolute;
   inset: 0;
   padding: 2px;
-  background: linear-gradient(135deg, #3e43f0, #8b96f8, #3e43f0);
+  background: linear-gradient(135deg, theme('colors.primaryBlue'), theme('colors.primaryLight'), theme('colors.primaryBlue'));
   background-size: 200% 200%;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -575,7 +575,7 @@ textarea {
 }
 
 .dark .animated-border-gradient::before {
-  background: linear-gradient(135deg, #ecd4b4, #f5f5dc, #ecd4b4);
+  background: linear-gradient(135deg, theme('colors.folderTan'), theme('colors.folderCream'), theme('colors.folderTan'));
   background-size: 200% 200%;
 }
 
@@ -667,7 +667,7 @@ textarea {
   content: "";
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, #3e43f0, #8b96f8, #3e43f0);
+  background: linear-gradient(135deg, theme('colors.primaryBlue'), theme('colors.primaryLight'), theme('colors.primaryBlue'));
   background-size: 200% 200%;
   border-radius: inherit;
   z-index: -1;
@@ -694,7 +694,7 @@ textarea {
 }
 
 .dark .cta-glow::after {
-  background: linear-gradient(135deg, #ecd4b4, #f5f5dc, #ecd4b4);
+  background: linear-gradient(135deg, theme('colors.folderTan'), theme('colors.folderCream'), theme('colors.folderTan'));
 }
 
 /* Smooth reveal mask */

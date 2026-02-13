@@ -10,7 +10,7 @@ const SupportMe = () => {
 
   return (
     <section className="flex flex-col gap-3 sm:gap-4" aria-labelledby="support-me-heading">
-      <SectionTitle title="Support Me" level={4} className="mb-1" />
+      <SectionTitle title="Support Me" level={2} className="mb-1" />
       <div className="flex flex-col gap-3 sm:gap-4">
         <div className="flex flex-wrap items-center gap-3 mt-1 sm:mt-2">
           <motion.a

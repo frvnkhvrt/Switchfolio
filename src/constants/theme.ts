@@ -26,6 +26,8 @@ export const colors = {
   // Semantic colors (maps to design system)
   availableGreen: designSystem.colors.success.DEFAULT,
   primaryBlue: designSystem.colors.primary[500],
+  primaryLight: designSystem.colors.primary[400],
+  primaryDark: designSystem.colors.primary[600],
 
   // Additional colors (legacy aliases)
   folderCream: designSystem.colors.dark.border,

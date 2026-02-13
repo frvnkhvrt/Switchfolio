@@ -151,7 +151,7 @@ export const hireText = "Open to full-time and freelance jobs" as const
 /**
  * Contact email link with pre-filled subject
  */
-export const emailLink = "mailto:info@frankhurt.dev?subject=Interested%20in%20Hiring%20You" as const
+export const emailLink = "mailto:frankhurt@icloud.com?subject=Interested%20in%20Hiring%20You" as const
 
 // ============================================================================
 // NAVIGATION LINKS

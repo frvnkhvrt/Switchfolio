@@ -17,7 +17,7 @@ const PERSONA_DATA = {
       {
         id: 1,
         name: 'Email',
-        link: 'mailto:info@frankhurt.dev',
+        link: 'mailto:frankhurt@icloud.com',
         icon: 'simple-icons:maildotru',
       },
       {

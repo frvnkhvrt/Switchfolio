@@ -14,7 +14,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ persona }) => {
       aria-labelledby="about"
       aria-describedby="about-section-description"
     >
-      <SectionTitle title="About" level={4} />
+      <SectionTitle title="About" level={2} />
       <div className="flex flex-col gap-3 sm:gap-4">
         <div
           id="about-section-description"

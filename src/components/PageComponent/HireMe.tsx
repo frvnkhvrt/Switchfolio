@@ -18,7 +18,7 @@ const HireMe = () => {
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
-      <SectionTitle title="Get in touch" level={4} className="mb-1" />
+      <SectionTitle title="Get in touch" level={2} className="mb-1" />
       <div className="flex flex-col gap-3 sm:gap-4">
         <p id="hire-me-heading" className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
           {hireText}

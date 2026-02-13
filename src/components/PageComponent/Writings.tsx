@@ -22,7 +22,7 @@ const Writings = () => {
       aria-labelledby="writings-heading"
       aria-describedby="writings-description"
     >
-      <SectionTitle title="Writings" level={4} />
+      <SectionTitle title="Writings" level={2} />
       <p
         id="writings-description"
         className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed"

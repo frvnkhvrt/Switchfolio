@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({ persona }) => {
         viewport={{ once: true }}
       >
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 font-medium tracking-wide">
-          © 2025 {persona.shortName}. All rights reserved.
+          © {new Date().getFullYear()} {persona.shortName}. All rights reserved.
         </p>
       </motion.div>
     </footer>

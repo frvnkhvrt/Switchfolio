@@ -19,25 +19,46 @@ const rubik = Rubik({
 // Default persona for metadata (Francisco)
 const defaultPersona = getCurrentPersona(false)
 
+const siteUrl = "https://www.frankhurt.dev"
+
+// JSON-LD structured data for Person schema
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: defaultPersona.name,
+  url: siteUrl,
+  jobTitle: defaultPersona.bio,
+  image: `${siteUrl}${defaultPersona.image}`,
+  sameAs: defaultPersona.links.map((link) => link.link),
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bogotá",
+    addressCountry: "CO",
+  },
+}
+
 export const metadata: Metadata = {
   title: {
-    default: defaultPersona.name,
+    default: `${defaultPersona.name} — ${defaultPersona.bio}`,
     template: `%s | ${defaultPersona.name}`
   },
-  description: `${defaultPersona.name} - ${defaultPersona.bio}`,
-  keywords: [defaultPersona.name, "Portfolio", "Engineer", "Marketer", "Manager", "Coder"],
+  description: `${defaultPersona.name} — Engineer, Marketer & Digital Strategist based in Bogotá. Building scalable tech solutions, growth strategies, and creative digital experiences.`,
+  keywords: [defaultPersona.name, "Portfolio", "Engineer", "Marketer", "Digital Strategist", "Developer", "Bogotá"],
   authors: [{ name: defaultPersona.name }],
   creator: defaultPersona.name,
-  metadataBase: new URL("https://www.frankhurt.dev"),
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   icons: {
     icon: "/assets/Images/favicon/favicon.ico",
     apple: "/assets/Images/favicon/apple-touch-icon.png",
   },
   openGraph: {
-    title: defaultPersona.name,
-    description: `${defaultPersona.name} - ${defaultPersona.bio}`,
-    url: "https://frankhurt.dev",
-    siteName: "Switchfolio",
+    title: `${defaultPersona.name} — ${defaultPersona.bio}`,
+    description: `${defaultPersona.name} — Engineer, Marketer & Digital Strategist. Building scalable tech solutions and growth strategies.`,
+    url: siteUrl,
+    siteName: defaultPersona.name,
     images: [
       {
         url: defaultPersona.image,
@@ -51,8 +72,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: defaultPersona.name,
-    description: `${defaultPersona.name} - ${defaultPersona.bio}`,
+    title: `${defaultPersona.name} — ${defaultPersona.bio}`,
+    description: `Engineer, Marketer & Digital Strategist. Building scalable tech solutions and growth strategies.`,
     images: [defaultPersona.image],
     creator: "@frvnkhvrt",
   },
@@ -85,6 +106,10 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/Images/favicon/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/Images/favicon/apple-touch-icon.png" />
         <link rel="manifest" href="/assets/Images/favicon/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased gradient-mesh-bg theme-transition`}

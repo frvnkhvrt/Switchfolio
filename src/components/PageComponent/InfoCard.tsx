@@ -14,7 +14,7 @@ interface InfoCardProps {
 
 /**
  * InfoCard component - displays persona profile information
- * Shows avatar, name, bio, and social links
+ * Shows avatar, name, bio, social links, and availability badge
  */
 const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
   const shouldReduceMotion = useReducedMotion()
@@ -87,6 +87,18 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
             <p id="profile-summary" className="text-sm md:text-base leading-relaxed text-gray-700 dark:text-gray-300">
               {persona.bio}
             </p>
+
+            {/* Availability badge */}
+            <div className="flex items-center gap-2 justify-center sm:justify-start">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-full">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                </span>
+                Available for hire
+              </span>
+            </div>
+
             <div
               className="mt-2 sm:mt-3"
               role="navigation"
