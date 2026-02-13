@@ -80,7 +80,8 @@ const Nav: React.FC = memo(() => {
         <div className="flex h-16 md:h-20 max-w-[100vw]">
           {/* Brand / Status Area */}
           <div className="flex-1 flex items-center px-4 md:px-8 font-terminal text-sm md:text-base border-r-2 border-black dark:border-white truncate">
-            <span className="font-bold mr-2 text-nowrap">FRANKHURT_SYS</span>
+            <span className="font-bold mr-2 text-nowrap dark:hidden">FRANCISCO_SYS</span>
+            <span className="font-bold mr-2 text-nowrap hidden dark:inline">FRANKHURT_SYS</span>
             <span className="hidden sm:inline opacity-60">{"///"} V.2026.1</span>
           </div>
 
