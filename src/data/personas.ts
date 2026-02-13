@@ -36,7 +36,7 @@ const PERSONA_DATA = {
     shortName: 'Frankhurt',
     headline: 'Crafting Immersive Worlds',
     subheadline: 'Product Strategist',
-    bio: 'Word Conjurer and Axiom Arsonist. My nights are mostly about learning, writing, hacking, and gaming. Fueled by Cappuccinos, Coca-Cola, and digital addiction. ロムっている。',
+    bio: 'Word Conjurer and Axiom Arsonist. My nights are mostly about learning, writing, hacking, and gaming. Fueled by Cappuccinos and dog walks.',
     about: [
       'Word Conjurer and Axiom Arsonist.',
       'My nights: writing, hacks, and games.',
