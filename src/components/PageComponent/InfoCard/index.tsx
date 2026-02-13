@@ -7,7 +7,7 @@
 
 import React, { memo } from "react"
 import Image from "next/image"
-import { SocialLinks } from "@/components/PageComponent/InfoCard/SocialLinks"
+import { SocialLinks } from "./SocialLinks"
 import { Persona } from "@/types"
 
 interface InfoCardProps {
