@@ -87,7 +87,7 @@ const Nav: React.FC = memo(() => {
           </div>
 
           {/* Switcher Cell */}
-          <div className="w-[80px] md:w-[100px] border-l-2 border-black dark:border-white flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+          <div className="w-[80px] md:w-[100px] border-l-2 border-black dark:border-white flex items-center justify-center bg-surface-alt dark:bg-surface-alt-dark">
              <PersonaSwitcher 
                isSwitchOn={isSwitchOn} 
                onToggle={toggleSwitch}

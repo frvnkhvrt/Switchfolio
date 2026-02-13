@@ -1,7 +1,6 @@
 /**
  * Index Page
  * Main page component that assembles all portfolio sections
- * Uses dynamic imports for optimal bundle size
  */
 
 "use client"
@@ -25,16 +24,12 @@ const IndexPage: React.FC = memo(() => {
   const persona = getCurrentPersona(isSwitchOn)
   const [isBooting, setIsBooting] = useState(true)
 
-  // Handle Boot Sequence
   useEffect(() => {
-    // Optional: Check session storage to only show boot once per session
-    // const hasBooted = sessionStorage.getItem("hasBooted")
-    // if (hasBooted) setIsBooting(false)
+    // Boot sequence runs once per page load
   }, [])
 
   const handleBootComplete = () => {
     setIsBooting(false)
-    // sessionStorage.setItem("hasBooted", "true")
   }
 
   const sectionContext = useMemo<SectionContext>(() => ({
@@ -45,6 +40,7 @@ const IndexPage: React.FC = memo(() => {
   const sectionsToRender = useMemo(() => (
     SECTION_DEFINITIONS
       .filter((definition) => definition.shouldRender ? definition.shouldRender(sectionContext) : true)
+      .filter(s => s.id !== 'info-card')
       .map((definition) => ({
         id: definition.id,
         Component: definition.Component,
@@ -64,7 +60,7 @@ const IndexPage: React.FC = memo(() => {
                     <InfoCard persona={persona} />
                     <TrustBar />
 
-                    {sectionsToRender.filter(s => s.id !== 'info-card').map(({ id, Component, props }) => (
+                    {sectionsToRender.map(({ id, Component, props }) => (
                         <Component key={id} {...props} />
                     ))}
                     

@@ -3,18 +3,14 @@
 @tailwind utilities;
 
 /* ============================================
-   BASE STYLES
+   BASE STYLES — NEOBRUTALIST FOUNDATION
    ============================================ */
-
-* {
-  @apply focus-visible:outline-none;
-}
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-padding-top: 2rem; /* Account for fixed nav */
+  scroll-padding-top: 2rem;
 }
 
 body {
@@ -35,12 +31,7 @@ body {
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   @apply font-sans;
 }
 
@@ -53,21 +44,16 @@ h6 {
 }
 
 /* ============================================
-   ACCESSIBILITY STYLES
+   HARD RESET — ZERO BORDER RADIUS
    ============================================ */
 
-/* Screen reader only content */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+* {
+  border-radius: 0 !important;
 }
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
 
 /* Skip links */
 .skip-links {
@@ -82,11 +68,10 @@ h6 {
   left: -9999px;
   top: 0;
   padding: 1rem 1.5rem;
-  background: theme("colors.primaryBlue");
+  background: theme("colors.brand");
   color: white;
   text-decoration: none;
   font-weight: 600;
-  border-radius: 0 0 0.5rem 0;
   transition: all 0.2s ease;
 }
 
@@ -96,18 +81,15 @@ h6 {
   outline-offset: 2px;
 }
 
-/* Focus visible styles for keyboard navigation */
-.keyboard-user *:focus-visible,
+/* Focus visible — keyboard navigation */
 *:focus-visible {
-  outline: 2px solid theme("colors.primaryBlue");
+  outline: 2px solid theme("colors.brand");
   outline-offset: 2px;
-  border-radius: 4px;
   transition: outline-color 0.2s ease;
 }
 
-.dark .keyboard-user *:focus-visible,
 .dark *:focus-visible {
-  outline-color: theme("colors.folderTan");
+  outline-color: theme("colors.accent");
 }
 
 /* Enhanced focus for interactive elements */
@@ -116,7 +98,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid theme("colors.primaryBlue");
+  outline: 3px solid theme("colors.brand");
   outline-offset: 2px;
 }
 
@@ -125,26 +107,22 @@ textarea:focus-visible {
 .dark input:focus-visible,
 .dark select:focus-visible,
 .dark textarea:focus-visible {
-  outline-color: theme("colors.folderTan");
+  outline-color: theme("colors.accent");
 }
 
-/* High contrast mode support */
+/* High contrast mode */
 @media (prefers-contrast: high) {
   * {
     border-width: 2px !important;
   }
-
-  button,
-  a {
+  button, a {
     text-decoration: underline;
   }
 }
 
-/* Reduced motion support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -152,9 +130,9 @@ textarea:focus-visible {
   }
 }
 
-/* Touch target minimum size */
+/* Touch targets — interactive elements only */
 button,
-a,
+[role="button"],
 input,
 select,
 textarea {
@@ -162,26 +140,28 @@ textarea {
   min-width: 44px;
 }
 
-/* Ensure sufficient color contrast */
-.text-secondary {
-  @apply text-gray-600 dark:text-gray-300;
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: theme("colors.brand");
+  transform-origin: 0%;
+  z-index: 9998;
+}
+
+.dark .scroll-progress {
+  background: theme("colors.accent");
 }
 
 /* ============================================
-   COMPONENT STYLES
+   NEOBRUTALIST UTILITIES
    ============================================ */
-
-/* ============================================
-   NEOBRUTALIST UTILITIES (ZERO MEDIOCRITY)
-   ============================================ */
-
-/* Hard Reset */
-* {
-  border-radius: 0 !important;
-}
-
-/* Custom Cursor */
-/* cursor: crosshair is applied to body */
 
 /* Neo-Border Utilities */
 .neo-box {
@@ -219,7 +199,7 @@ textarea {
   100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* Glitch Effect (Optional Use) */
+/* Glitch Effect */
 .glitch-hover:hover {
   animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
 }
@@ -233,7 +213,7 @@ textarea {
   100% { transform: translate(0) }
 }
 
-/* Utility to hide scrollbar but allow scroll */
+/* Scrollbar hide */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -242,24 +222,14 @@ textarea {
   scrollbar-width: none;
 }
 
-/* TERMINAL / CODE STYLES */
+/* Terminal / Code Font */
 .font-terminal {
   font-family: 'Geist Mono', monospace;
   text-transform: uppercase;
   letter-spacing: -0.05em;
 }
 
-
-.nav-scroll-shrink.scrolled {
-  transform: scale(0.97);
-  box-shadow: 0 12px 40px rgba(62, 67, 240, 0.15);
-}
-
-.dark .nav-scroll-shrink.scrolled {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Enhanced focus ring for premium feel */
+/* Focus ring premium */
 .focus-ring-premium:focus-visible {
   outline: none;
   box-shadow:

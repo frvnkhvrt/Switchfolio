@@ -1,49 +1,54 @@
 /**
- * Unified Theme Constants
- * Extends designSystem with Tailwind-specific and legacy mappings
- * This file serves as a bridge between the comprehensive design system
- * and Tailwind CSS configuration for backward compatibility
+ * Tailwind Theme Bridge
+ * Maps designSystem tokens to Tailwind-compatible format
  */
 
 import { designSystem } from './designSystem'
 
-// Re-export design system colors with legacy aliases for backward compatibility
+// Semantic colors mapped for Tailwind consumption
 export const colors = {
-  // Light theme (maps to design system)
-  light: {
-    bg: designSystem.colors.light.bg,
-    font: designSystem.colors.light.text,
-    accent: designSystem.colors.light.accent,
+  surface: {
+    DEFAULT: designSystem.colors.surface.DEFAULT,
+    dark: designSystem.colors.surface.dark,
   },
-
-  // Dark theme (maps to design system)
-  dark: {
-    bg: designSystem.colors.dark.bg,
-    font: designSystem.colors.dark.text,
-    accent: designSystem.colors.dark.accent,
+  ink: {
+    DEFAULT: designSystem.colors.ink.DEFAULT,
+    dark: designSystem.colors.ink.dark,
   },
+  'ink-secondary': {
+    DEFAULT: designSystem.colors['ink-secondary'].DEFAULT,
+    dark: designSystem.colors['ink-secondary'].dark,
+  },
+  'surface-alt': {
+    DEFAULT: designSystem.colors['surface-alt'].DEFAULT,
+    dark: designSystem.colors['surface-alt'].dark,
+  },
+  accent: designSystem.colors.accent,
+  brand: designSystem.colors.brand,
+  cta: designSystem.colors.cta,
+  'status-ok': designSystem.colors['status-ok'],
 
-  // Semantic colors (maps to design system)
-  availableGreen: designSystem.colors.success.DEFAULT,
-  primaryBlue: designSystem.colors.primary[500],
-  primaryLight: designSystem.colors.primary[400],
-  primaryDark: designSystem.colors.primary[600],
-
-  // Additional colors (legacy aliases)
-  folderCream: designSystem.colors.dark.border,
-  folderWhite: designSystem.colors.light.surface,
+  // Legacy aliases (for backward compat during migration — will be removed)
+  backgroundCream: designSystem.colors.surface.DEFAULT,
+  inkBlack: designSystem.colors.ink.DEFAULT,
+  darkerBlue: designSystem.colors.surface.dark,
+  backgroundCreamDark: designSystem.colors.ink.dark,
+  folderTan: designSystem.colors.accent,
+  primaryBlue: designSystem.colors.brand,
+  folderCream: designSystem.colors.accent,
+  folderWhite: designSystem.colors.surface.DEFAULT,
 } as const
 
-// Shadow values (maps to design system)
+// Shadow values
 export const shadows = {
-  light: designSystem.shadows.custom.light,
-  dark: designSystem.shadows.custom.dark,
+  light: '4px 4px 0px 0px rgba(62, 67, 240, 0.15)',
+  dark: '4px 4px 0px 0px rgba(255, 255, 255, 0.1)',
 } as const
 
-// Border radius (maps to design system)
-export const borderRadius = designSystem.borderRadius.none
+// Border radius (Neobrutalist: always 0)
+export const borderRadius = '0'
 
-// Font families (maps to design system via explicit definition)
+// Font families
 export const fontFamily = {
   sans: ['Rubik', 'sans-serif'],
   mono: ['Geist Mono', 'monospace'],

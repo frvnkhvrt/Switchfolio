@@ -17,7 +17,7 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ links }) => {
       {links.map((link) => (
         <motion.a
           key={link.id}
-          className="social-card flex items-center justify-center w-12 h-12"
+          className="flex items-center justify-center w-12 h-12 border-2 border-black dark:border-white bg-white dark:bg-black hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-0"
           href={link.link}
           target={LINK_ATTRIBUTES.target}
           rel={LINK_ATTRIBUTES.rel}

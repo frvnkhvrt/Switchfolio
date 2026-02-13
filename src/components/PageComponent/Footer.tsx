@@ -1,8 +1,11 @@
+/**
+ * Footer Component
+ * Neobrutalist Sign-Off
+ */
+
 "use client"
 import React from "react"
-import { motion } from "framer-motion"
 import { Persona } from "@/types"
-import { SCROLL_VARIANTS } from "@/constants/animations"
 
 interface FooterProps {
   persona: Persona
@@ -10,26 +13,15 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ persona }) => {
   return (
-    <footer className="md:mb-12 mb-16">
-      <motion.div 
-        className="footer-divider my-8 reveal-mask" 
-        aria-hidden="true"
-        initial={{ scaleX: 0, originX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      />
-      <motion.div 
-        className="flex flex-col gap-4 items-center"
-        variants={SCROLL_VARIANTS.fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 font-medium tracking-wide">
+    <footer className="mb-20" aria-label="Site footer">
+      {/* Hard Divider */}
+      <div className="border-t-4 border-black dark:border-white my-8" aria-hidden="true" />
+      
+      <div className="flex flex-col gap-4 items-center">
+        <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark mt-2 font-terminal uppercase tracking-wider">
           © {new Date().getFullYear()} {persona.shortName}. All rights reserved.
         </p>
-      </motion.div>
+      </div>
     </footer>
   )
 }

@@ -21,14 +21,6 @@ export default {
       },
       colors: {
         ...colors,
-        // Flatten theme colors for Tailwind compatibility
-        backgroundCream: colors.light.bg,
-        inkBlack: colors.light.font,
-        folderTan: colors.light.accent,
-        darkerBlue: colors.dark.bg,
-        // Map for dark mode text
-        backgroundCreamDark: colors.dark.font,
-        // Keep existing mappings for backward compatibility
       },
       boxShadow: {
         'sm': '2px 2px 0 0 rgba(0,0,0,1)',
@@ -48,7 +40,7 @@ export default {
         'xl': '0',
         '2xl': '0',
         '3xl': '0',
-        'full': '9999px', // Keep full for specific circular needs (avatars), but widely use 0
+        'full': '9999px',
       },
       borderWidth: {
         'DEFAULT': '2px',

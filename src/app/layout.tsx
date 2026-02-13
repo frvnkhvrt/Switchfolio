@@ -112,7 +112,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${rubik.variable} ${geistMono.variable} antialiased gradient-mesh-bg theme-transition`}
+        className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
         <ScrollProgress />
         <ErrorBoundary>

@@ -1,6 +1,5 @@
 import React from "react";
 import Screen from "./Screen";
-import AnimatedBackground from "@/components/Background/AnimatedBackground";
 
 interface MainScreenProps {
   children: React.ReactNode;
@@ -13,7 +12,6 @@ interface MainScreenProps {
 const MainScreen: React.FC<MainScreenProps> = ({ children }) => {
   return (
     <Screen className="main-screen">
-      <AnimatedBackground />
       {children}
     </Screen>
   );

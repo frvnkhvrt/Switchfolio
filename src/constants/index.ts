@@ -48,33 +48,6 @@ export const COMPONENT_SIZES = {
 } as const
 
 // ============================================================================
-// UI BEHAVIOR CONSTANTS
-// ============================================================================
-
-/**
- * Animation delays for staggered entrance effects (in seconds)
- * @deprecated Use 0 delay for instant feedback - kept for backward compatibility
- */
-export const ANIMATION_DELAYS = {
-  default: 0,
-  short: 0.15,
-  medium: 0.25,
-  long: 0.45,
-  extra: 0.55,
-  super: 0.65,
-  hyper: 0.75,
-  mega: 0.95,
-  giga: 1.15,
-} as const
-
-/**
- * Default visibility settings for lists
- */
-export const LIST_VISIBILITY = {
-  defaultVisible: 2,
-} as const
-
-// ============================================================================
 // LAYOUT CONSTANTS
 // ============================================================================
 

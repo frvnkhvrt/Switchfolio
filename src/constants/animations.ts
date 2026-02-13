@@ -5,49 +5,42 @@
 
 /**
  * Animation Durations (in seconds)
- * Use these consistently throughout the application
  */
 export const DURATIONS = {
-  instant: 0.1,    // For immediate feedback
-  fast: 0.2,       // For hover states and quick interactions
-  normal: 0.3,     // For standard transitions
-  slow: 0.5,       // For page/section transitions
-  emphasis: 1.5,   // For decorative/infinite animations
+  instant: 0.1,
+  fast: 0.2,
+  normal: 0.3,
+  slow: 0.5,
+  emphasis: 1.5,
 } as const
 
 /**
  * Animation Easings
- * Consistent easing curves for natural motion
  */
 export const EASINGS = {
-  default: [0.25, 0.46, 0.45, 0.94] as const,  // Smooth in-out
-  out: "easeOut" as const,                       // Quick start, slow end
-  inOut: "easeInOut" as const,                   // Balanced
+  default: [0.25, 0.46, 0.45, 0.94] as const,
+  out: "easeOut" as const,
+  inOut: "easeInOut" as const,
   spring: { type: "spring" as const, stiffness: 300, damping: 30 },
 } as const
 
 /**
  * Hover Animation Presets
- * Consistent hover behaviors for all interactive elements
  */
 export const HOVER_PRESETS = {
-  // Buttons and small interactive elements
   button: {
     scale: 1.05,
     transition: { duration: DURATIONS.fast, ease: EASINGS.out }
   },
-  // Cards and medium-sized interactive areas
   card: {
     scale: 1.03,
     y: -2,
     transition: { duration: DURATIONS.fast, ease: EASINGS.out }
   },
-  // Icons and small targets
   icon: {
     scale: 1.1,
     transition: { duration: DURATIONS.fast, ease: EASINGS.out }
   },
-  // Tap/click feedback (universal)
   tap: {
     scale: 0.95,
     transition: { duration: DURATIONS.instant }
@@ -56,7 +49,6 @@ export const HOVER_PRESETS = {
 
 /**
  * Entrance Animation Variants
- * For page load and scroll-triggered animations
  */
 export const ENTRANCE_VARIANTS = {
   fade: {
@@ -89,16 +81,10 @@ export const ENTRANCE_VARIANTS = {
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.95 },
   },
-  rotate: {
-    initial: { opacity: 0, rotate: -10, scale: 0.95 },
-    animate: { opacity: 1, rotate: 0, scale: 1 },
-    exit: { opacity: 0, rotate: 10, scale: 0.95 },
-  },
 } as const
 
 /**
- * Standard transition configuration
- * Use this for entrance animations
+ * Standard entrance transition
  */
 export const ENTRANCE_TRANSITION = {
   duration: DURATIONS.normal,
@@ -106,8 +92,7 @@ export const ENTRANCE_TRANSITION = {
 } as const
 
 /**
- * Infinite animation configuration
- * For decorative elements (status dots, arrows, etc)
+ * Infinite animation (status dots, decorative elements)
  */
 export const INFINITE_ANIMATION = {
   duration: DURATIONS.emphasis,
@@ -117,7 +102,6 @@ export const INFINITE_ANIMATION = {
 
 /**
  * CSS Transition Strings
- * For use in className or style attributes
  */
 export const CSS_TRANSITIONS = {
   colors: `transition-colors duration-200 ease-out`,
@@ -128,7 +112,6 @@ export const CSS_TRANSITIONS = {
 
 /**
  * Scroll-triggered animation variants
- * For use with Framer Motion's whileInView
  */
 export const SCROLL_VARIANTS = {
   fadeUp: {
@@ -154,19 +137,10 @@ export const SCROLL_VARIANTS = {
       transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
     },
   },
-  slideFromLeft: {
-    hidden: { opacity: 0, x: -30 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
-    },
-  },
 } as const
 
 /**
  * Stagger container variants
- * Parent wrapper for staggered children animations
  */
 export const STAGGER_CONTAINER = {
   hidden: { opacity: 0 },
@@ -181,7 +155,6 @@ export const STAGGER_CONTAINER = {
 
 /**
  * Stagger item variants
- * For children inside stagger containers
  */
 export const STAGGER_ITEM = {
   hidden: { opacity: 0, y: 20 },
@@ -194,80 +167,10 @@ export const STAGGER_ITEM = {
 
 /**
  * 3D Tilt effect configuration
- * For interactive card hover effects
  */
 export const TILT_CONFIG = {
-  maxTilt: 5, // degrees
+  maxTilt: 5,
   perspective: 1000,
   scale: 1.02,
   transitionDuration: 0.3,
 } as const
-
-/**
- * Text reveal animation variants
- * For character-by-character or word-by-word reveals
- */
-export const TEXT_REVEAL = {
-  container: {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.03,
-        delayChildren: 0.1,
-      },
-    },
-  },
-  character: {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] },
-    },
-  },
-  word: {
-    hidden: { opacity: 0, y: 15 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-    },
-  },
-} as const
-
-/**
- * Premium spring configurations
- * For more natural, physics-based animations
- */
-export const PREMIUM_SPRINGS = {
-  smooth: { type: "spring", stiffness: 100, damping: 20 },
-  snappy: { type: "spring", stiffness: 400, damping: 30 },
-  bouncy: { type: "spring", stiffness: 300, damping: 15 },
-  gentle: { type: "spring", stiffness: 80, damping: 25 },
-} as const
-
-/**
- * Float animation for decorative elements
- */
-export const FLOAT_ANIMATION = {
-  y: [0, -8, 0] as number[],
-  transition: {
-    duration: 3,
-    repeat: Infinity,
-    ease: "easeInOut",
-  },
-}
-
-/**
- * Glow pulse animation for buttons/CTAs
- */
-export const GLOW_PULSE = {
-  opacity: [1, 0.8, 1],
-  scale: [1, 1.02, 1],
-  transition: {
-    duration: 2,
-    repeat: Infinity,
-    ease: "easeInOut",
-  },
-}

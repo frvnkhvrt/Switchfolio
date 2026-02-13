@@ -1,3 +1,8 @@
+/**
+ * SectionTitle Component
+ * Consistent heading with optional scroll animation
+ */
+
 "use client";
 
 import React from "react";
@@ -21,7 +26,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   const shouldReduceMotion = useReducedMotion();
 
   const baseClasses =
-    "font-bold text-inkBlack dark:text-backgroundCreamDark relative mb-2 heading-tight";
+    "font-bold text-black dark:text-white relative mb-2";
   const sizeClasses = {
     1: "text-3xl md:text-4xl lg:text-5xl",
     2: "text-2xl md:text-3xl lg:text-4xl",
@@ -30,12 +35,6 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     5: "text-base md:text-lg lg:text-xl",
     6: "text-sm md:text-base lg:text-lg",
   };
-
-  const titleContent = (
-    <span className="relative inline-block section-title-underline">
-      {title}
-    </span>
-  );
 
   const resolvedId = id ?? title.toLowerCase().replace(/\s+/g, "-");
 
@@ -47,22 +46,8 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       id: resolvedId,
     };
 
-    switch (headingLevel) {
-      case 1:
-        return <h1 {...headingProps}>{titleContent}</h1>;
-      case 2:
-        return <h2 {...headingProps}>{titleContent}</h2>;
-      case 3:
-        return <h3 {...headingProps}>{titleContent}</h3>;
-      case 4:
-        return <h4 {...headingProps}>{titleContent}</h4>;
-      case 5:
-        return <h5 {...headingProps}>{titleContent}</h5>;
-      case 6:
-        return <h6 {...headingProps}>{titleContent}</h6>;
-      default:
-        return <h2 {...headingProps}>{titleContent}</h2>;
-    }
+    const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+    return <HeadingTag {...headingProps}>{title}</HeadingTag>;
   };
 
   if (!animated) {

@@ -17,7 +17,7 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
   return (
     <section 
-        className="relative w-full border-black dark:border-white mb-20 md:mb-32 pt-24 md:pt-28"
+        className="relative w-full border-black dark:border-white mb-20 pt-24 md:pt-28"
         aria-labelledby="profile-heading"
     >
       <div className="flex flex-col md:grid md:grid-cols-[1.5fr_1fr] gap-0 border-b-4 border-black dark:border-white bg-white dark:bg-black">
@@ -39,7 +39,7 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
             </div>
 
             <div className="mt-8 md:mt-20">
-                <p className="font-terminal text-sm md:text-base leading-relaxed max-w-md mb-8 uppercase text-gray-700 dark:text-gray-300">
+                <p className="font-terminal text-sm md:text-base leading-relaxed max-w-md mb-8 uppercase text-ink-secondary dark:text-ink-secondary-dark">
                     {persona.bio}
                 </p>
                 
@@ -61,18 +61,12 @@ const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
                 priority
             />
             
-            {/* Overlay Grid */}
-            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-20 pointer-events-none" />
-            
             {/* Status Tag */}
-            <div className="absolute top-0 right-0 bg-green-500 text-black px-4 py-2 font-bold font-terminal text-sm border-l-4 border-b-4 border-black dark:border-white">
+            <div className="absolute top-0 right-0 bg-status-ok text-black px-4 py-2 font-bold font-terminal text-sm border-l-4 border-b-4 border-black dark:border-white">
                 STATUS: AVAILABLE
             </div>
         </div>
       </div>
-
-      {/* DECORATIVE ELEMENTS */}
-      <div className="absolute -bottom-4 left-0 right-0 h-4 bg-stripes-black dark:bg-stripes-white opacity-20" />
     </section>
   )
 })
