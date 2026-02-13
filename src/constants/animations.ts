@@ -65,9 +65,9 @@ export const ENTRANCE_VARIANTS = {
     exit: { opacity: 0 },
   },
   blur: {
-    initial: { opacity: 0, y: 20, filter: "blur(10px)" },
-    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-    exit: { opacity: 0, y: -20, filter: "blur(10px)" },
+    initial: { opacity: 0, scale: 0.95, y: 10 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+    exit: { opacity: 0, scale: 0.95, y: -10 },
   },
   slideUp: {
     initial: { opacity: 0, y: 20 },

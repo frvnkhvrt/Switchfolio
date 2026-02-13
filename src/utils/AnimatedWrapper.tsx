@@ -67,7 +67,7 @@ const AnimatedWrapper: React.FC<AnimatedWrapperProps> = memo(({
         duration: animationDuration,
         delay: shouldReduceMotion ? 0 : delay,
       }}
-      className={className}
+      className={`${className} will-change-transform`}
     >
       {children}
     </motion.div>
