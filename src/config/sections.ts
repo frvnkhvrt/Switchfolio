@@ -8,6 +8,7 @@ import React from "react";
 
 export const SectionComponents = {
   InfoCard: dynamic(() => import("../components/PageComponent/InfoCard")),
+  TrustBar: dynamic(() => import("../components/PageComponent/TrustBar")),
   Projects: dynamic(() => import("../components/PageComponent/Projects")),
   HireMe: dynamic(() => import("../components/PageComponent/HireMe")),
   Skills: dynamic(() => import("../components/PageComponent/Skills")),
@@ -40,6 +41,11 @@ export const SECTION_DEFINITIONS: SectionDefinition[] = [
     getProps: ({ persona }) => ({ persona }),
   },
   {
+    id: "trust-bar",
+    Component: SectionComponents.TrustBar as React.ComponentType<unknown>,
+    variant: "blur",
+  },
+  {
     id: "skills",
     Component: SectionComponents.Skills as React.ComponentType<unknown>,
     variant: "fade",
@@ -53,5 +59,11 @@ export const SECTION_DEFINITIONS: SectionDefinition[] = [
     id: "hire-me",
     Component: SectionComponents.HireMe as React.ComponentType<unknown>,
     variant: "slideUp",
+  },
+  {
+    id: "footer",
+    Component: SectionComponents.Footer as React.ComponentType<unknown>,
+    variant: "fade",
+    getProps: ({ persona }) => ({ persona }),
   },
 ];

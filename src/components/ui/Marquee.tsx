@@ -25,33 +25,48 @@ const Marquee: React.FC<MarqueeProps> = ({
   const x = useMotionValue(0)
 
   useEffect(() => {
+    let lastContent = 0
+    let lastContainer = 0
+    let stableCount = 0
+
     const measure = () => {
       if (contentRef.current && containerRef.current) {
-        // Use scrollWidth to get the full untruncated width of the content
         const cWidth = contentRef.current.scrollWidth
         const containerW = containerRef.current.offsetWidth
-        
+
         if (cWidth > 0) {
-            setContentWidth(cWidth)
-            setContainerWidth(containerW)
+          if (cWidth === lastContent && containerW === lastContainer) {
+            stableCount += 1
+          } else {
+            stableCount = 0
+          }
+          lastContent = cWidth
+          lastContainer = containerW
+          setContentWidth(cWidth)
+          setContainerWidth(containerW)
         }
       }
     }
 
-    // Initial measurement
     measure()
-    
-    // Resize observation
+
     const resizeObserver = new ResizeObserver(() => measure())
     if (contentRef.current) resizeObserver.observe(contentRef.current)
     if (containerRef.current) resizeObserver.observe(containerRef.current)
-    
-    // Additional checks to handle dynamic content (like icons loading)
-    const interval = setInterval(measure, 500)
-    
+
+    const intervalId = setInterval(() => {
+      measure()
+      if (stableCount >= 2) {
+        clearInterval(intervalId)
+      }
+    }, 500)
+
+    const stopInterval = setTimeout(() => clearInterval(intervalId), 3000)
+
     return () => {
       resizeObserver.disconnect()
-      clearInterval(interval)
+      clearInterval(intervalId)
+      clearTimeout(stopInterval)
     }
   }, [children])
 

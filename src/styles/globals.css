@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  @apply bg-backgroundCream text-inkBlack font-sans dark:bg-darkerBlue dark:text-backgroundCreamDark cursor-crosshair;
+  @apply bg-surface text-ink font-sans dark:bg-surface-dark dark:text-ink-dark cursor-crosshair;
   min-height: 100vh;
 
   /* Neobrutalist Dot Grid Background */
@@ -43,11 +43,11 @@ h6 {
 }
 
 ::selection {
-  @apply bg-folderTan text-inkBlack;
+  @apply bg-accent text-ink;
 }
 
 ::-moz-selection {
-  @apply bg-folderTan text-inkBlack;
+  @apply bg-accent text-ink;
 }
 
 /* ============================================

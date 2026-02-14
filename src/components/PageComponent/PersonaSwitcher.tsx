@@ -8,17 +8,22 @@ interface PersonaSwitcherProps {
   isSwitchOn: boolean
   onToggle: () => void
   nextPersona: Persona
+  isTransitioning?: boolean
 }
 
 const PersonaSwitcher: React.FC<PersonaSwitcherProps> = ({
   isSwitchOn,
   onToggle,
   nextPersona,
+  isTransitioning = false,
 }) => {
     return (
         <button
+            type="button"
             onClick={onToggle}
-            className="group relative w-12 h-12 flex items-center justify-center bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-0 focus-visible:outline-4 focus-visible:outline-offset-2"
+            disabled={isTransitioning}
+            aria-busy={isTransitioning}
+            className="group relative w-12 h-12 flex items-center justify-center bg-white dark:bg-black border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-0 focus-visible:outline-4 focus-visible:outline-offset-2 disabled:opacity-70 disabled:pointer-events-none"
             aria-label={`Switch to ${nextPersona.name} persona`}
             aria-pressed={isSwitchOn}
         >

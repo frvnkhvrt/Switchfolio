@@ -5,7 +5,7 @@
 
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
 const BOOT_LOGS = [
@@ -18,33 +18,35 @@ const BOOT_LOGS = [
 
 const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
   const [logs, setLogs] = useState<string[]>([])
-  
+  const onCompleteRef = useRef(onComplete)
+  onCompleteRef.current = onComplete
+
   useEffect(() => {
     const timeoutIds: NodeJS.Timeout[] = []
     let delay = 0
-    
+
     BOOT_LOGS.forEach((log, index) => {
-      // Shorter random delay for snappier feel
       const duration = Math.random() * 300 + 100
       delay += duration
-      
+
       const id = setTimeout(() => {
         setLogs(prev => [...prev, log])
-        
-        // On last item, trigger complete
+
         if (index === BOOT_LOGS.length - 1) {
-          const completeId = setTimeout(onComplete, 1200)
+          const completeId = setTimeout(() => {
+            onCompleteRef.current()
+          }, 1200)
           timeoutIds.push(completeId)
         }
       }, delay)
-      
+
       timeoutIds.push(id)
     })
 
     return () => {
       timeoutIds.forEach(clearTimeout)
     }
-  }, [onComplete])
+  }, [])
 
   return (
     <motion.div

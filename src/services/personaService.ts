@@ -1,6 +1,10 @@
 /**
  * Persona Service
- * Centralized business logic for persona management
+ * Centralized business logic for persona management.
+ *
+ * Public API (used by app): getPersona, getCurrentPersona, isValidPersonaId.
+ * Other exports (getPersonaSafe, getOppositePersona, getAllPersonas, getAllPersonaIds, personaExists)
+ * are available for tests and future features.
  */
 
 import { Persona, PersonaId } from '@/types'

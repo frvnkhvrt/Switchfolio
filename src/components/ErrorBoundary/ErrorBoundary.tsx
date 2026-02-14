@@ -6,6 +6,7 @@ interface Props {
   children: ReactNode
   fallback?: ReactNode
   onError?: (error: Error, errorInfo: ErrorInfo) => void
+  onReset?: () => void
 }
 
 interface State {
@@ -34,6 +35,11 @@ export class ErrorBoundary extends Component<Props, State> {
 
     // Call optional error handler
     this.props.onError?.(error, errorInfo)
+  }
+
+  resetError = () => {
+    this.setState({ hasError: false, error: undefined, errorInfo: undefined })
+    this.props.onReset?.()
   }
 
   render() {
@@ -70,13 +76,21 @@ export class ErrorBoundary extends Component<Props, State> {
             </div>
             <div className="mb-4">
               <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark">
-                We encountered an unexpected error. Please try refreshing the page.
+                We encountered an unexpected error. You can try again or refresh the page.
               </p>
             </div>
-            <div className="flex justify-end">
+            <div className="flex flex-wrap justify-end gap-2">
               <button
-                onClick={() => window.location.reload()}
+                type="button"
+                onClick={this.resetError}
                 className="bg-brand hover:opacity-90 text-white dark:bg-accent dark:text-black dark:hover:opacity-90 px-4 py-2 border-2 border-black dark:border-white font-semibold text-sm transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:focus-visible:outline-accent"
+              >
+                Try again
+              </button>
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="bg-white dark:bg-black text-black dark:text-white hover:opacity-90 px-4 py-2 border-2 border-black dark:border-white font-semibold text-sm transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:focus-visible:outline-accent"
               >
                 Refresh Page
               </button>

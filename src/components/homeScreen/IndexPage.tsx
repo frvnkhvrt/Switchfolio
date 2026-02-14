@@ -4,16 +4,14 @@
  */
 
 "use client"
-import React, { memo, useMemo, useState } from "react"
+import React, { memo, useMemo, useState, useCallback } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import { getCurrentPersona } from "@/services/personaService"
-import { SECTION_DEFINITIONS, SectionComponents, SectionContext } from "@/config/sections"
+import { SECTION_DEFINITIONS, SectionContext } from "@/config/sections"
 import { ENTRANCE_VARIANTS, BLUR_UP_TRANSITION } from "@/constants/animations"
-import TrustBar from "../PageComponent/TrustBar"
-import InfoCard from "../PageComponent/InfoCard"
 import BootSequence from "@/components/BootSequence"
 import BootTransition from "@/components/Transitions/BootTransition"
 
@@ -28,15 +26,15 @@ const IndexPage: React.FC = memo(() => {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [showContent, setShowContent] = useState(false)
 
-  const handleBootComplete = () => {
+  const handleBootComplete = useCallback(() => {
     setIsBooting(false)
     setIsTransitioning(true)
-  }
+  }, [])
 
-  const handleTransitionComplete = () => {
+  const handleTransitionComplete = useCallback(() => {
     setIsTransitioning(false)
     setShowContent(true)
-  }
+  }, [])
 
   const sectionContext = useMemo<SectionContext>(() => ({
     persona,
@@ -46,11 +44,11 @@ const IndexPage: React.FC = memo(() => {
   const sectionsToRender = useMemo(() => (
     SECTION_DEFINITIONS
       .filter((definition) => definition.shouldRender ? definition.shouldRender(sectionContext) : true)
-      .filter(s => s.id !== 'info-card')
       .map((definition) => ({
         id: definition.id,
         Component: definition.Component,
         props: definition.getProps ? definition.getProps(sectionContext) : undefined,
+        variant: definition.variant,
       }))
   ), [sectionContext])
 
@@ -85,33 +83,15 @@ const IndexPage: React.FC = memo(() => {
               }}
             >
                 <div className="flex flex-col">
-                    <motion.div
-                      variants={ENTRANCE_VARIANTS.blurUp}
-                      transition={BLUR_UP_TRANSITION}
-                    >
-                      <InfoCard persona={persona} />
-                    </motion.div>
-
-                    <motion.div
-                      variants={ENTRANCE_VARIANTS.blurUp}
-                      transition={BLUR_UP_TRANSITION}
-                    >
-                      <TrustBar />
-                    </motion.div>
-
-                    {sectionsToRender.map(({ id, Component, props }) => (
+                    {sectionsToRender.map(({ id, Component, props, variant }) => (
                       <motion.div
                         key={id}
-                        variants={ENTRANCE_VARIANTS.blurUp}
+                        variants={variant === "fade" ? ENTRANCE_VARIANTS.fadeStagger : ENTRANCE_VARIANTS.blurUp}
                         transition={BLUR_UP_TRANSITION}
                       >
-                        <Component {...props} />
+                        <Component {...(props ?? {})} />
                       </motion.div>
                     ))}
-
-                    <motion.div variants={ENTRANCE_VARIANTS.fadeStagger}>
-                      <SectionComponents.Footer persona={persona} />
-                    </motion.div>
                 </div>
             </motion.main>
             <Nav />

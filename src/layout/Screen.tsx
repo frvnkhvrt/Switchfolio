@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 
 const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false })
 
-interface ScreenProps {
+interface ScreenComponentProps {
   children: React.ReactNode
   className?: string
 }
@@ -14,7 +14,7 @@ interface ScreenProps {
  * Screen component - provides consistent layout wrapper
  * Can be used for both main screens and sub-screens
  */
-const Screen: React.FC<ScreenProps> = ({ children, className = "" }) => {
+const Screen: React.FC<ScreenComponentProps> = ({ children, className = "" }) => {
   return (
     <div className={`screen min-h-screen transition-colors duration-0 ${className}`.trim()}>
         <CustomCursor />

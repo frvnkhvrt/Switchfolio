@@ -1,9 +1,12 @@
 "use client"
-import React, { createContext, useContext, useMemo, useState, useEffect } from "react"
+import React, { createContext, useContext, useMemo, useState, useEffect, useRef } from "react"
 import { SwitchContextType } from "@/types"
 import { usePersistentSwitch } from "@/hooks/usePersistentSwitch"
 import { useDocumentTheme } from "@/hooks/useDocumentTheme"
 import { getCurrentPersona } from "@/services/personaService"
+
+const COVER_MS = 500
+const REVEAL_MS = 500
 
 export const SwitchContext = createContext<SwitchContextType | undefined>(undefined)
 
@@ -18,6 +21,18 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
   const theme = isSwitchOn ? 'dark' : 'light'
   const [isTransitioning, setIsTransitioning] = useState(false)
 
+  const timeoutIdsRef = useRef<ReturnType<typeof setTimeout>[]>([])
+  const isMountedRef = useRef(true)
+
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+      timeoutIdsRef.current.forEach(clearTimeout)
+      timeoutIdsRef.current = []
+    }
+  }, [])
+
   // Announce persona changes to screen readers
   useEffect(() => {
     if (!isLoaded) return
@@ -27,18 +42,20 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const handleToggle = React.useCallback(() => {
     if (isTransitioning) return
-    
+
     setIsTransitioning(true)
-    
-    // COVER PHASE (500ms)
-    setTimeout(() => {
+
+    const coverId = setTimeout(() => {
+      if (!isMountedRef.current) return
       toggleSwitch()
-      
-      // REVEAL PHASE (500ms)
-      setTimeout(() => {
+
+      const revealId = setTimeout(() => {
+        if (!isMountedRef.current) return
         setIsTransitioning(false)
-      }, 500)
-    }, 500)
+      }, REVEAL_MS)
+      timeoutIdsRef.current.push(revealId)
+    }, COVER_MS)
+    timeoutIdsRef.current.push(coverId)
   }, [isTransitioning, toggleSwitch])
 
   const contextValue = useMemo<SwitchContextType>(() => ({

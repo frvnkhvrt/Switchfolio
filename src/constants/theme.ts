@@ -28,7 +28,7 @@ export const colors = {
   cta: designSystem.colors.cta,
   'status-ok': designSystem.colors['status-ok'],
 
-  // Legacy aliases (for backward compat during migration — will be removed)
+  /** @deprecated Use semantic tokens: surface, ink, accent, brand */
   backgroundCream: designSystem.colors.surface.DEFAULT,
   inkBlack: designSystem.colors.ink.DEFAULT,
   darkerBlue: designSystem.colors.surface.dark,

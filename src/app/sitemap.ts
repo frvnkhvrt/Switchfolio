@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/config/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.frankhurt.dev'
-
     return [
         {
-            url: baseUrl,
+            url: SITE_URL,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 1,

@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss"
 import { colors, fontFamily } from "./src/constants/theme"
-import { zIndex } from "./src/constants/designSystem"
+import { zIndex, shadows } from "./src/constants/designSystem"
 
 export default {
   content: [
@@ -26,15 +26,7 @@ export default {
       colors: {
         ...colors,
       },
-      boxShadow: {
-        'sm': '2px 2px 0 0 rgba(0,0,0,1)',
-        'DEFAULT': '4px 4px 0 0 rgba(0,0,0,1)',
-        'neo': '4px 4px 0 0 rgba(0,0,0,1)',
-        'neo-lg': '6px 6px 0 0 rgba(0,0,0,1)',
-        'neo-xl': '10px 10px 0 0 rgba(0,0,0,1)',
-        'dark-sm': '2px 2px 0 0 rgba(255,255,255,1)',
-        'dark': '4px 4px 0 0 rgba(255,255,255,1)',
-      },
+      boxShadow: shadows,
       borderRadius: {
         'none': '0',
         'sm': '0',

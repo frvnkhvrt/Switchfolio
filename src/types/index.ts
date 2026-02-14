@@ -123,9 +123,9 @@ export interface SwitchContextType {
 // ============================================================================
 
 /**
- * Base props for layout components
+ * Base props for layout/screen wrapper components (optional use)
  */
-export interface ScreenProps {
+export interface BaseLayoutProps {
   children: React.ReactNode
 }
 

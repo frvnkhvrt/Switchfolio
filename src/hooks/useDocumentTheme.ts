@@ -1,8 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 const DARK_CLASS = "dark"
 
 export const useDocumentTheme = (isDarkMode: boolean, isReady: boolean) => {
+  const appliedDarkRef = useRef(false)
+
   useEffect(() => {
     if (!isReady || typeof document === "undefined") {
       return
@@ -12,12 +14,16 @@ export const useDocumentTheme = (isDarkMode: boolean, isReady: boolean) => {
 
     if (isDarkMode) {
       classList.add(DARK_CLASS)
+      appliedDarkRef.current = true
     } else {
       classList.remove(DARK_CLASS)
+      appliedDarkRef.current = false
     }
 
     return () => {
-      classList.remove(DARK_CLASS)
+      if (appliedDarkRef.current) {
+        classList.remove(DARK_CLASS)
+      }
     }
   }, [isDarkMode, isReady])
 }

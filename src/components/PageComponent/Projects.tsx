@@ -5,17 +5,18 @@
 
 "use client"
 
-import React, { useState, memo } from "react"
+import React, { useState, memo, useCallback } from "react"
 import { projects } from "@/data/Common/data"
 import { Icon } from "@iconify/react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const ProjectItem = memo(({ project, index, isOpen, toggle }: { project: typeof projects[0], index: number, isOpen: boolean, toggle: () => void }) => {
+const ProjectItem = memo(({ project, index, isOpen, onToggle }: { project: typeof projects[0], index: number, isOpen: boolean, onToggle: (index: number) => void }) => {
+  const handleToggle = useCallback(() => onToggle(index), [index, onToggle])
   return (
     <div className="border-b-2 border-black dark:border-white group/item last:border-b-0">
       {/* HEADER ROW */}
       <button 
-        onClick={toggle}
+        onClick={handleToggle}
         className="relative w-full flex items-center justify-between p-4 md:p-6 bg-white dark:bg-black hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-0"
         aria-expanded={isOpen}
         aria-label={`${project.title} — ${project.status === 'running' ? 'Live' : 'Building'}`}
@@ -127,9 +128,9 @@ ProjectItem.displayName = "ProjectItem"
 const Projects = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const toggleProject = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+  const toggleProject = useCallback((index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index))
+  }, [])
 
   return (
     <section id="projects" className="mb-20">
@@ -147,7 +148,7 @@ const Projects = () => {
                 project={project} 
                 index={index} 
                 isOpen={openIndex === index}
-                toggle={() => toggleProject(index)}
+                onToggle={toggleProject}
             />
         ))}
       </div>

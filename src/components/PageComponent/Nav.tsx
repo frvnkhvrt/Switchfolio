@@ -55,7 +55,7 @@ const MarqueeBar = () => {
 }
 
 const Nav: React.FC = memo(() => {
-  const { isSwitchOn, toggleSwitch } = useSwitch()
+  const { isSwitchOn, toggleSwitch, isTransitioning } = useSwitch()
   const nextPersona = getCurrentPersona(!isSwitchOn)
   const [isHidden, setIsHidden] = React.useState(false)
   const { scrollY } = useScroll()
@@ -98,6 +98,7 @@ const Nav: React.FC = memo(() => {
               isSwitchOn={isSwitchOn}
               onToggle={toggleSwitch}
               nextPersona={nextPersona}
+              isTransitioning={isTransitioning}
             />
           </div>
         </div>
