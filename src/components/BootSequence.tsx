@@ -48,7 +48,7 @@ const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <motion.div
-        className="fixed inset-0 z-[10000] bg-black text-white font-terminal p-8 md:p-12 flex flex-col justify-end items-start overflow-hidden"
+        className="fixed inset-0 z-bootSequence bg-black text-white font-terminal p-8 md:p-12 flex flex-col justify-end items-start overflow-hidden"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}

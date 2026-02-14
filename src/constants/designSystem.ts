@@ -124,6 +124,8 @@ export const zIndex = {
   tooltip: 70,
   notification: 80,
   bootSequence: 10000,
+  /** Full-screen overlays (boot transition, mode transition, custom cursor) */
+  fullScreenOverlay: 10001,
 } as const
 
 // ============================================================================

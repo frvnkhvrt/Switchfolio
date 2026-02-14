@@ -58,7 +58,7 @@ export const SwitchProvider: React.FC<{ children: React.ReactNode }> = ({
       >
         {announcement}
       </div>
-      {isLoaded ? children : null}
+      {children}
     </SwitchContext.Provider>
   )
 }

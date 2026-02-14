@@ -1,15 +1,19 @@
 import type { Config } from "tailwindcss"
 import { colors, fontFamily } from "./src/constants/theme"
+import { zIndex } from "./src/constants/designSystem"
 
 export default {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/layout/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: 'class',
   theme: {
     extend: {
+      zIndex: Object.fromEntries(
+        Object.entries(zIndex).map(([k, v]) => [k, String(v)])
+      ) as Record<keyof typeof zIndex, string>,
       animation: {
         shimmer: 'shimmer 2s infinite',
       },

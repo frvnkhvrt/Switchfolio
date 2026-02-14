@@ -25,7 +25,7 @@ const BootTransition: React.FC<BootTransitionProps> = ({ isCompleting, onTransit
     return (
         <AnimatePresence onExitComplete={onTransitionComplete}>
             {show && (
-                <div className="fixed inset-0 z-[10001] pointer-events-none">
+                <div className="fixed inset-0 z-fullScreenOverlay pointer-events-none">
                     {/* Top Half */}
                     <motion.div
                         initial={{ y: "0%" }}

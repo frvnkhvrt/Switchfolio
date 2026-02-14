@@ -98,6 +98,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var k='isSwitchOn';try{var v=localStorage.getItem(k);if(v!==null){var b=JSON.parse(v);if(b===true)document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');}}catch(e){}})();`,
+          }}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#3e43f0" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />

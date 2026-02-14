@@ -62,30 +62,36 @@ h6 {
    ACCESSIBILITY
    ============================================ */
 
-/* Skip links */
-.skip-links {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-}
-
+/* Skip links — visible on focus only */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
+  z-index: 50;
   padding: 1rem 1.5rem;
   background: theme("colors.brand");
   color: white;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.2s ease;
+  border: 2px solid theme("colors.brand");
 }
 
 .skip-link:focus {
-  left: 0;
+  left: 1rem;
+  top: 1rem;
   outline: 2px solid white;
   outline-offset: 2px;
+}
+
+.dark .skip-link {
+  background: theme("colors.accent");
+  color: black;
+  border-color: theme("colors.accent");
+}
+
+.dark .skip-link:focus {
+  outline-color: black;
 }
 
 /* Focus visible — keyboard navigation */

@@ -24,7 +24,7 @@ const ModeTransition = () => {
                     animate={{ y: "0%" }}
                     exit={{ y: "100%" }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="fixed inset-0 z-[9999] bg-brand flex items-center justify-center"
+                    className="fixed inset-0 z-fullScreenOverlay bg-brand flex items-center justify-center"
                 >
                     <div className="flex flex-col items-center gap-4">
                         <div className="w-12 h-12 border-4 border-white animate-spin" />

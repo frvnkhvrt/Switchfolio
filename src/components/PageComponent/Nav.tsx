@@ -94,12 +94,11 @@ const Nav: React.FC = memo(() => {
 
           {/* Switcher Cell */}
           <div className="w-[80px] md:w-[100px] border-l-2 border-black dark:border-white flex items-center justify-center bg-surface-alt dark:bg-surface-alt-dark">
-             <PersonaSwitcher 
-               isSwitchOn={isSwitchOn} 
-               onToggle={toggleSwitch}
-               shouldReduceMotion={true} // Force no spring logic
-               nextPersona={nextPersona}
-             />
+             <PersonaSwitcher
+              isSwitchOn={isSwitchOn}
+              onToggle={toggleSwitch}
+              nextPersona={nextPersona}
+            />
           </div>
         </div>
         
@@ -115,9 +114,10 @@ const Nav: React.FC = memo(() => {
               href={nav.link}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${nav.name} (opens in new tab)`}
               className="flex items-center justify-center border-r-2 last:border-r-0 border-black dark:border-white active:bg-black active:text-white dark:active:bg-white dark:active:text-black"
              >
-               <Icon icon={nav.icon} className="text-2xl" />
+               <Icon icon={nav.icon} className="text-2xl" aria-hidden />
              </a>
           ))}
       </div>

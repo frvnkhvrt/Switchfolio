@@ -81,6 +81,22 @@ export const ENTRANCE_VARIANTS = {
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.95 },
   },
+  /** Page section entrance: blur + slide up (IndexPage sections) */
+  blurUp: {
+    hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+  },
+  /** Simple fade for stagger children (hidden/visible keys) */
+  fadeStagger: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  },
+} as const
+
+/** Transition for blurUp section entrance */
+export const BLUR_UP_TRANSITION = {
+  duration: 0.8,
+  ease: [0.22, 1, 0.36, 1] as const,
 } as const
 
 /**

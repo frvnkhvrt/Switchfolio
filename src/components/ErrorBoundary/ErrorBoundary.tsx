@@ -43,15 +43,16 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
+        <div className="min-h-screen flex items-center justify-center bg-surface dark:bg-surface-dark text-ink dark:text-ink-dark p-4">
+          <div className="max-w-md w-full bg-surface-alt dark:bg-surface-alt-dark border-4 border-black dark:border-white shadow-neo p-6">
             <div className="flex items-center mb-4">
               <div className="flex-shrink-0">
                 <svg
-                  className="h-8 w-8 text-red-400"
+                  className="h-8 w-8 text-brand dark:text-accent"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden
                 >
                   <path
                     strokeLinecap="round"
@@ -62,30 +63,30 @@ export class ErrorBoundary extends Component<Props, State> {
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-gray-800">
+                <h3 className="text-sm font-semibold text-ink dark:text-ink-dark">
                   Something went wrong
                 </h3>
               </div>
             </div>
             <div className="mb-4">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-ink-secondary dark:text-ink-secondary-dark">
                 We encountered an unexpected error. Please try refreshing the page.
               </p>
             </div>
             <div className="flex justify-end">
               <button
                 onClick={() => window.location.reload()}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                className="bg-brand hover:opacity-90 text-white dark:bg-accent dark:text-black dark:hover:opacity-90 px-4 py-2 border-2 border-black dark:border-white font-semibold text-sm transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:focus-visible:outline-accent"
               >
                 Refresh Page
               </button>
             </div>
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="mt-4">
-                <summary className="text-sm text-gray-500 cursor-pointer">
+                <summary className="text-sm text-ink-secondary dark:text-ink-secondary-dark cursor-pointer">
                   Error Details (Development)
                 </summary>
-                <pre className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded overflow-auto">
+                <pre className="mt-2 text-xs text-ink dark:text-ink-dark bg-surface dark:bg-surface-dark border-2 border-black dark:border-white p-2 overflow-auto">
                   {this.state.error.toString()}
                   {this.state.errorInfo?.componentStack}
                 </pre>

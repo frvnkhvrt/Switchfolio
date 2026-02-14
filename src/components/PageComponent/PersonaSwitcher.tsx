@@ -5,16 +5,15 @@ import Image from "next/image"
 import type { Persona } from "@/types"
 
 interface PersonaSwitcherProps {
-    isSwitchOn: boolean
-    onToggle: () => void
-    shouldReduceMotion: boolean
-    nextPersona: Persona
+  isSwitchOn: boolean
+  onToggle: () => void
+  nextPersona: Persona
 }
 
 const PersonaSwitcher: React.FC<PersonaSwitcherProps> = ({
-    isSwitchOn,
-    onToggle,
-    nextPersona,
+  isSwitchOn,
+  onToggle,
+  nextPersona,
 }) => {
     return (
         <button

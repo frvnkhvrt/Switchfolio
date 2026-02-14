@@ -38,7 +38,7 @@ export const usePersistentSwitch = () => {
 
       if (typeof storedValue === "boolean") {
         dispatch({ type: "SET_SWITCH", payload: storedValue })
-      } else {
+      } else if (process.env.NODE_ENV === "development") {
         console.warn("Invalid switch state in localStorage, using default value")
       }
 

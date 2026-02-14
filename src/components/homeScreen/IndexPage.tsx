@@ -7,11 +7,11 @@
 import React, { memo, useMemo, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
-import Screen from "@/layout/Screen"
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import { getCurrentPersona } from "@/services/personaService"
 import { SECTION_DEFINITIONS, SectionComponents, SectionContext } from "@/config/sections"
+import { ENTRANCE_VARIANTS, BLUR_UP_TRANSITION } from "@/constants/animations"
 import TrustBar from "../PageComponent/TrustBar"
 import InfoCard from "../PageComponent/InfoCard"
 import BootSequence from "@/components/BootSequence"
@@ -55,7 +55,7 @@ const IndexPage: React.FC = memo(() => {
   ), [sectionContext])
 
   return (
-    <Screen className={(isBooting || isTransitioning) ? "bg-black" : ""}>
+    <div className={(isBooting || isTransitioning) ? "min-h-screen bg-black" : ""}>
       <AnimatePresence mode="wait">
         {isBooting && (
           <BootSequence key="boot" onComplete={handleBootComplete} />
@@ -86,44 +86,30 @@ const IndexPage: React.FC = memo(() => {
             >
                 <div className="flex flex-col">
                     <motion.div
-                      variants={{
-                        hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-                        visible: { opacity: 1, y: 0, filter: "blur(0px)" }
-                      }}
-                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      variants={ENTRANCE_VARIANTS.blurUp}
+                      transition={BLUR_UP_TRANSITION}
                     >
                       <InfoCard persona={persona} />
                     </motion.div>
 
                     <motion.div
-                      variants={{
-                        hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-                        visible: { opacity: 1, y: 0, filter: "blur(0px)" }
-                      }}
-                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      variants={ENTRANCE_VARIANTS.blurUp}
+                      transition={BLUR_UP_TRANSITION}
                     >
                       <TrustBar />
                     </motion.div>
 
                     {sectionsToRender.map(({ id, Component, props }) => (
-                        <motion.div 
-                          key={id}
-                          variants={{
-                            hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-                            visible: { opacity: 1, y: 0, filter: "blur(0px)" }
-                          }}
-                          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                          <Component {...props} />
-                        </motion.div>
+                      <motion.div
+                        key={id}
+                        variants={ENTRANCE_VARIANTS.blurUp}
+                        transition={BLUR_UP_TRANSITION}
+                      >
+                        <Component {...props} />
+                      </motion.div>
                     ))}
-                    
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1 }
-                      }}
-                    >
+
+                    <motion.div variants={ENTRANCE_VARIANTS.fadeStagger}>
                       <SectionComponents.Footer persona={persona} />
                     </motion.div>
                 </div>
@@ -131,7 +117,7 @@ const IndexPage: React.FC = memo(() => {
             <Nav />
         </>
       )}
-    </Screen>
+    </div>
   )
 })
 
