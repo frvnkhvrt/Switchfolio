@@ -1,102 +1,74 @@
-/**
- * Persona Service
- * Centralized business logic for persona management.
- *
- * Public API (used by app): getPersona, getCurrentPersona, isValidPersonaId.
- * Other exports (getPersonaSafe, getOppositePersona, getAllPersonas, getAllPersonaIds, personaExists)
- * are available for tests and future features.
- */
-
 import { Persona, PersonaId } from '@/types'
 import personas, { PERSONA_IDS, DEFAULT_PERSONA_ID } from '@/data/personas'
 
 /**
- * Type guard to check if a string is a valid PersonaId
- * @param id - String to validate
- * @returns True if id is a valid PersonaId
+ * Validates if a value is a known PersonaId.
  */
 export function isValidPersonaId(id: unknown): id is PersonaId {
-  return typeof id === 'string' && PERSONA_IDS.includes(id as PersonaId)
+  return typeof id === 'string' && (PERSONA_IDS as readonly string[]).includes(id)
 }
 
 /**
- * Retrieves a persona by its unique identifier with type safety
- * @param id - The persona identifier
- * @returns The persona object with all its properties
- * @throws Error if the persona ID does not exist
- * @example
- * ```typescript
- * const francisco = getPersona('francisco');
- * ```
+ * Retrieves a persona by its unique identifier.
+ * @throws Error if the persona ID is invalid or not found.
  */
 export function getPersona(id: PersonaId): Persona {
-  if (!isValidPersonaId(id)) {
-    throw new Error(`Invalid persona ID: '${id}'. Valid IDs are: ${PERSONA_IDS.join(', ')}`)
-  }
-  
   const persona = personas[id]
+  
   if (!persona) {
-    throw new Error(`Persona with id '${id}' not found in data store`)
+    const availableIds = PERSONA_IDS.join(', ')
+    throw new Error(`[PersonaService] Persona '${id}' not found. Available: ${availableIds}`)
   }
   
   return persona
 }
 
 /**
- * Safely retrieves a persona with fallback to default
- * @param id - The persona identifier
- * @returns The persona object or default persona if not found
+ * Safely retrieves a persona with fallback to the system default.
  */
 export function getPersonaSafe(id: PersonaId): Persona {
   try {
     return getPersona(id)
   } catch (error) {
-    console.warn(`Failed to get persona '${id}', falling back to default:`, error)
+    console.error(`[PersonaService] Fallback triggered for ID '${id}':`, error)
     return personas[DEFAULT_PERSONA_ID]
   }
 }
 
 /**
- * Get the current persona based on switch state
- * @param isSwitchOn - Whether the switch is toggled on (true = frankhurt, false = francisco)
- * @returns The appropriate persona
+ * Get the current persona based on system state.
+ * Map-based logic for deterministic results.
  */
 export function getCurrentPersona(isSwitchOn: boolean): Persona {
-  const personaId: PersonaId = isSwitchOn ? 'frankhurt' : 'francisco'
-  return personas[personaId]
+  const targetId: PersonaId = isSwitchOn ? 'frankhurt' : 'francisco'
+  return getPersona(targetId)
 }
 
 /**
- * Get the opposite persona from the current one
- * @param currentPersonaId - Current persona ID
- * @returns The opposite persona
+ * Returns the alternate persona.
  */
 export function getOppositePersona(currentPersonaId: PersonaId): Persona {
   const oppositeId: PersonaId = currentPersonaId === 'francisco' ? 'frankhurt' : 'francisco'
-  return personas[oppositeId]
+  return getPersona(oppositeId)
 }
 
 /**
- * Get all available personas as an array
- * @returns Array of all personas
+ * Returns all registered personas.
  */
 export function getAllPersonas(): Persona[] {
-  return Object.values(personas)
+  return Object.freeze(Object.values(personas)) as Persona[]
 }
 
 /**
- * Get all available persona IDs
- * @returns Array of all persona IDs
+ * Returns all valid persona IDs in the system.
  */
 export function getAllPersonaIds(): PersonaId[] {
-  return [...PERSONA_IDS]
+  return Object.freeze([...PERSONA_IDS]) as PersonaId[]
 }
 
 /**
- * Check if a persona exists
- * @param id - Persona ID to check
- * @returns True if persona exists
+ * System-level existence check.
  */
-export function personaExists(id: PersonaId): boolean {
-  return id in personas
+export function personaExists(id: PersonaId | string): boolean {
+  return isValidPersonaId(id) && id in personas
 }

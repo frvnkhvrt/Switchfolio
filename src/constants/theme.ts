@@ -27,16 +27,6 @@ export const colors = {
   brand: designSystem.colors.brand,
   cta: designSystem.colors.cta,
   'status-ok': designSystem.colors['status-ok'],
-
-  /** @deprecated Use semantic tokens: surface, ink, accent, brand */
-  backgroundCream: designSystem.colors.surface.DEFAULT,
-  inkBlack: designSystem.colors.ink.DEFAULT,
-  darkerBlue: designSystem.colors.surface.dark,
-  backgroundCreamDark: designSystem.colors.ink.dark,
-  folderTan: designSystem.colors.accent,
-  primaryBlue: designSystem.colors.brand,
-  folderCream: designSystem.colors.accent,
-  folderWhite: designSystem.colors.surface.DEFAULT,
 } as const
 
 // Shadow values

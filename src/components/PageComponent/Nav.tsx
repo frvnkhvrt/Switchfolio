@@ -36,7 +36,7 @@ const NavLink = ({ nav }: { nav: typeof navLinks[0] }) => {
 
 const MarqueeBar = () => {
   return (
-    <div className="w-full h-8 bg-black dark:bg-accent text-white dark:text-black border-t-2 border-b-4 border-black dark:border-black overflow-hidden flex items-center font-terminal text-xs">
+    <div className="w-full h-8 bg-black dark:bg-accent text-white dark:text-black border-t-2 border-b-4 border-black dark:border-white overflow-hidden flex items-center font-terminal text-xs">
       <Marquee speed={60} className="w-full">
           <div className="flex items-center shrink-0 font-bold">
             <div className="flex items-center gap-2 mx-4">
@@ -74,7 +74,7 @@ const Nav: React.FC = memo(() => {
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col pointer-events-none">
       {/* Top Bar - Pointer events allowed for interaction */}
       <nav 
-        className={`pointer-events-auto bg-white dark:bg-black border-b-2 border-black dark:border-white transition-transform duration-200 ease-linear ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
+        className={`pointer-events-auto bg-white dark:bg-black transition-transform duration-200 ease-linear ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}
         aria-label="Main navigation"
       >
         <div className="flex h-16 md:h-20 max-w-[100vw]">

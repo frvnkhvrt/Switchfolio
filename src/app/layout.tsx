@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Geist_Mono, Rubik } from "next/font/google"
 import "../styles/globals.css"
+import { SwitchProvider } from "@/components/Context/SwitchContext"
 import { ErrorBoundary } from "@/components/ErrorBoundary/ErrorBoundary"
 import SkipLink from "@/components/SkipLink"
 import ScrollProgress from "@/components/ScrollProgress"
@@ -119,11 +120,13 @@ export default function RootLayout({
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased`}
       >
-        <ScrollProgress />
-        <ErrorBoundary>
-          <SkipLink />
-          {children}
-        </ErrorBoundary>
+        <SwitchProvider>
+          <ScrollProgress />
+          <ErrorBoundary>
+            <SkipLink />
+            {children}
+          </ErrorBoundary>
+        </SwitchProvider>
       </body>
     </html>
   )

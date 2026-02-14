@@ -17,10 +17,10 @@ interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = memo(({ persona }) => {
   return (
     <section 
-        className="relative w-full border-black dark:border-white mb-20 pt-24 md:pt-28"
+        className="relative w-full mb-20 pt-24 md:pt-28"
         aria-labelledby="profile-heading"
     >
-      <div className="flex flex-col md:grid md:grid-cols-[1.5fr_1fr] gap-0 border-b-4 border-black dark:border-white bg-white dark:bg-black">
+      <div className="flex flex-col md:grid md:grid-cols-[1.5fr_1fr] gap-0 border-t-4 border-b-4 border-black dark:border-white bg-white dark:bg-black">
         
         {/* LEFT COL: CONTENT */}
         <div className="flex flex-col justify-between p-6 md:p-12 border-r-0 md:border-r-4 border-black dark:border-white">

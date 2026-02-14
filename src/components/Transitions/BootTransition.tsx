@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import LoadingSquare from "../ui/LoadingSquare"
 
 interface BootTransitionProps {
     isCompleting: boolean
@@ -53,8 +54,8 @@ const BootTransition: React.FC<BootTransitionProps> = ({ isCompleting, onTransit
                         className="absolute inset-0 flex items-center justify-center z-10"
                     >
                         <div className="flex flex-col items-center gap-6">
-                            <div className="flex items-center gap-3">
-                                <div className="w-2 h-2 bg-status-ok animate-pulse" />
+                            <div className="flex items-center gap-4">
+                                <LoadingSquare size="sm" color="#22c55e" />
                                 <span className="font-terminal text-white text-xl md:text-3xl font-bold tracking-[0.4em] uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                                     SYSTEM_READY
                                 </span>
