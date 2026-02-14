@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { useSwitch } from "../Context/SwitchContext"
 import Nav from "../PageComponent/Nav"
 import { getCurrentPersona } from "@/services/personaService"
-import { SECTION_DEFINITIONS, SectionContext } from "@/config/sections"
+import { SECTION_DEFINITIONS, SectionContext, SectionComponents } from "@/config/sections"
 import { ENTRANCE_VARIANTS, BLUR_UP_TRANSITION } from "@/constants/animations"
 import BootSequence from "@/components/BootSequence"
 import BootTransition from "@/components/Transitions/BootTransition"
@@ -43,6 +43,7 @@ const IndexPage: React.FC = memo(() => {
 
   const sectionsToRender = useMemo(() => (
     SECTION_DEFINITIONS
+      .filter((d) => d.id !== "info-card")
       .filter((definition) => definition.shouldRender ? definition.shouldRender(sectionContext) : true)
       .map((definition) => ({
         id: definition.id,
@@ -83,6 +84,12 @@ const IndexPage: React.FC = memo(() => {
               }}
             >
                 <div className="flex flex-col">
+                    <motion.div
+                      variants={ENTRANCE_VARIANTS.blurUp}
+                      transition={BLUR_UP_TRANSITION}
+                    >
+                      <SectionComponents.InfoCard persona={persona} />
+                    </motion.div>
                     {sectionsToRender.map(({ id, Component, props, variant }) => (
                       <motion.div
                         key={id}
