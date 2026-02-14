@@ -27,12 +27,18 @@ const CustomCursor = () => {
       
       // Check target for hover state
       const target = e.target as HTMLElement
-      const isClickable = target.closest("a, button, [role='button']")
-      const isText = target.closest("input, textarea, [contenteditable='true']")
       
-      if (isText) setHoverState("text")
-      else if (isClickable) setHoverState("pointer")
-      else setHoverState("default")
+      // Safety check: target must be an Element to support .closest()
+      if (target && typeof target.closest === "function") {
+        const isClickable = target.closest("a, button, [role='button']")
+        const isText = target.closest("input, textarea, [contenteditable='true']")
+        
+        if (isText) setHoverState("text")
+        else if (isClickable) setHoverState("pointer")
+        else setHoverState("default")
+      } else {
+        setHoverState("default")
+      }
     }
 
     const handleMouseLeave = () => setIsVisible(false)
